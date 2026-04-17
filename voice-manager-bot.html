@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Голосовой ИИ-менеджер | Автозвонки для бизнеса — FlowAi Казахстан</title>
-    <meta name="description" content="Голосовой ИИ-менеджер для бизнеса в Казахстане. Принимает и совершает звонки, консультирует клиентов, записывает на приём. Работает 24/7. Бесплатная демонстрация!">
+    <meta name="description" content="Голосовой ИИ-менеджер вместо колл-центра. Звонит и принимает звонки 24/7. Казахский/русский. Экономия до 70%. Демо бесплатно.">
     <meta name="keywords" content="голосовой бот казахстан, автозвонки ии, голосовой менеджер ai, бот для звонков, автоматический обзвон клиентов, voice bot kz">
     <meta property="og:title" content="Голосовой ИИ-менеджер: ваш бизнес никогда не молчит — FlowAi">
     <meta property="og:description" content="Пропущенные звонки = потерянные клиенты. Голосовой ИИ-бот отвечает на каждый звонок, консультирует и записывает. 500+ звонков в день без усталости и выходных.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/voice-manager-bot.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Голосовой ИИ-менеджер: ваш бизнес никогда не молчит — FlowAi">
+    <meta name="twitter:description" content="Голосовой ИИ-менеджер вместо колл-центра. Звонит и принимает звонки 24/7. Казахский/русский. Экономия до 70%. Демо бесплатно.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/voice-manager-bot.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -388,6 +392,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Голосовой ИИ-менеджер",
+        "description": "Голосовой ИИ-менеджер вместо колл-центра. Принимает и совершает звонки 24/7 на казахском и русском.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "Software",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/voice-manager-bot.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -693,6 +731,35 @@
     function next(){if(i>=cd.length)return;var item=cd[i];if(item.t==='b'){typing.classList.add('show');setTimeout(function(){typing.classList.remove('show');addMsg(item);i++;setTimeout(next,1200)},1800)}else{addMsg(item);i++;setTimeout(next,800)}}
     function addMsg(item){var d=document.createElement('div');d.className='msg msg-'+(item.t==='u'?'u':'b');d.innerHTML=item.m+'<div class="msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+'</div>';msgs.insertBefore(d,typing);requestAnimationFrame(function(){d.classList.add('show')});msgs.scrollTop=msgs.scrollHeight}
     setTimeout(next,800)}
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

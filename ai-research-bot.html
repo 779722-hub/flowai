@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИИ-бот для исследований | AI Research и аналитика — FlowAi KZ</title>
-    <meta name="description" content="ИИ-бот исследует рынки и анализирует конкурентов за минуты. Автоматический сбор данных и структурированные отчёты. Для бизнеса и аналитиков Казахстана и СНГ.">
+    <meta name="description" content="AI Research Bot — исследования рынка и конкурентов за минуты. Структурированные отчёты по вашему запросу. Для маркетологов и аналитиков.">
     <meta name="keywords" content="ии исследование рынка казахстан, ai аналитик бот, анализ конкурентов ии, research bot kz, автоматический анализ рынка, нейросеть для аналитики, бизнес аналитика ии казахстан">
     <meta property="og:title" content="ИИ-исследователь: анализ рынка за 5 минут вместо 5 дней — FlowAi">
     <meta property="og:description" content="Конкурентный анализ, мониторинг рынка, исследование ЦА — всё автоматически. Наш ИИ-бот соберёт данные из 100+ источников и сделает отчёт. Попробуйте!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/ai-research-bot.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ИИ-исследователь: анализ рынка за 5 минут вместо 5 дней — FlowAi">
+    <meta name="twitter:description" content="AI Research Bot — исследования рынка и конкурентов за минуты. Структурированные отчёты по вашему запросу. Для маркетологов и аналитиков.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/ai-research-bot.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -863,6 +867,35 @@
     var header=document.getElementById('header'),backBtn=document.getElementById('backBtn'),scrollTopBtn=document.getElementById('scrollTop');
     addEventListener('scroll',function(){var s=scrollY;header.classList.toggle('scrolled',s>60);backBtn.classList.toggle('show',s>300);scrollTopBtn.classList.toggle('show',s>300)});
     scrollTopBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

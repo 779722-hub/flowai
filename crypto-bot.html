@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto-бот для Telegram | FlowAi — Криптовалютный ИИ-бот, Астана</title>
-    <meta name="description" content="Telegram-бот для трейдеров и инвесторов: цены криптовалют в реальном времени, книга ордеров, свечи, статистика 24ч. Разработка от 200 000 ₸, аренда от 20 000 ₸/мес.">
+    <meta name="description" content="Crypto-бот с ИИ: курсы, сигналы, технический анализ 24/7. RSI, MACD, уровни. Мониторинг 100+ монет. Telegram-уведомления.">
     <meta name="keywords" content="крипто бот Telegram, криптовалютный бот, бот для трейдеров, цены криптовалют бот, книга ордеров Telegram, FlowAi, Казахстан, Астана, крипто трейдинг бот">
     <meta property="og:title" content="Crypto-бот для Telegram | FlowAi">
     <meta property="og:description" content="Мгновенная информация о криптовалютах в Telegram. Цены, ордера, свечи, объёмы.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/crypto-bot">
     <meta property="og:locale" content="ru_KZ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Crypto-бот для Telegram | FlowAi">
+    <meta name="twitter:description" content="Crypto-бот с ИИ: курсы, сигналы, технический анализ 24/7. RSI, MACD, уровни. Мониторинг 100+ монет. Telegram-уведомления.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <link rel="canonical" href="https://flowai.kz/crypto-bot">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -615,6 +619,35 @@ const cd=[
 let cs=false;const cobs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting&&!cs){cs=true;sc()}})},{threshold:.3});
 const ce=document.getElementById('chat-demo');if(ce)cobs.observe(ce);
 function sc(){const c=document.getElementById('chat-msgs'),ty=document.getElementById('typing');let i=0;function n(){if(i>=cd.length)return;const it=cd[i];if(it.t==='b'){ty.classList.add('show');setTimeout(()=>{ty.classList.remove('show');am(it);i++;setTimeout(n,800)},1400)}else{am(it);i++;setTimeout(n,600)}}function am(it){const d=document.createElement('div');d.className=`msg msg-${it.t==='u'?'u':'b'}`;d.innerHTML=it.m.replace(/\n/g,'<br>')+'<div class="msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+'</div>';c.insertBefore(d,ty);requestAnimationFrame(()=>d.classList.add('show'));c.scrollTop=c.scrollHeight}setTimeout(n,800)}
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
+})();
 </script>
 </body>
 </html>

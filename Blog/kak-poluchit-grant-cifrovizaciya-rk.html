@@ -13,6 +13,10 @@
     <meta property="og:url" content="https://flowai.kz/blog/kak-poluchit-grant-cifrovizaciya-rk">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Как получить грант на цифровизацию бизнеса в РК 2026 — FlowAi">
+    <meta name="twitter:description" content="Гранты до 350 млн ₸ на внедрение ИИ: QazInnovations, Business Aru, гранты для МСБ. Пошаговый алгоритм + типичные ошибки. Для бизнеса в Казахстане.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="geo.region" content="KZ">
     <meta name="geo.placename" content="Астана">
@@ -241,6 +245,32 @@
         @media (max-width: 360px) { .container { padding: 0 12px } .article-hero h1 { font-size: 1.25rem } .btn { padding: 12px 16px; font-size: .84rem } }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .01ms !important } }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://flowai.kz/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Блог",
+                "item": "https://flowai.kz/Blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Как получить грант на цифровизацию бизнеса в РК 2026",
+                "item": "https://flowai.kz/Blog/kak-poluchit-grant-cifrovizaciya-rk.html"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -283,7 +313,7 @@
         <h1 class="fi">Как получить грант на<br><span class="gtext">цифровизацию бизнеса в РК</span></h1>
         <p class="article-lead fi">Государство и международные фонды готовы оплачивать до 80% стоимости вашей цифровой трансформации. Главное — правильно подготовить заявку. Гид по программам 2026 года.</p>
         <div class="hero-img-wrap fi">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=600&fit=crop" alt="Бизнесмен подписывает документы на грант" width="1200" height="600" decoding="async">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=600&fit=crop" alt="Бизнесмен подписывает документы на грант" width="1200" height="600" decoding="async" loading="lazy">
             <div class="hero-img-overlay">
                 <div class="hero-stat"><div class="hero-stat-num emerald">350 млн</div><div class="hero-stat-label">макс. сумма гранта</div></div>
                 <div class="hero-stat"><div class="hero-stat-num blue">80%</div><div class="hero-stat-label">покрытие расходов</div></div>
@@ -535,6 +565,35 @@
     var sections = document.querySelectorAll('[id^="s"]'), tocLinks = document.querySelectorAll('.toc a');
     var tocObs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { tocLinks.forEach(function(l) { l.classList.remove('active') }); var link = document.querySelector('.toc a[href="#' + e.target.id + '"]'); if (link) link.classList.add('active') } }) }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
     sections.forEach(function(s) { tocObs.observe(s) });
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

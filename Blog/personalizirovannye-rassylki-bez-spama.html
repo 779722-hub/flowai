@@ -13,6 +13,10 @@
     <meta property="og:url" content="https://flowai.kz/blog/personalizirovannye-rassylki-bez-spama">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:image" content="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=630&fit=crop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Персонализированные рассылки, которые не попадают в спам — FlowAi">
+    <meta name="twitter:description" content="ИИ создаёт уникальное письмо для каждого клиента: динамический контент, идеальное время отправки, индивидуальные заголовки. Open Rate x3 для бизнеса в Казахстане.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=630&fit=crop">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="geo.region" content="KZ">
     <meta name="geo.placename" content="Астана">
@@ -244,6 +248,32 @@
         @media (max-width: 360px) { .container { padding: 0 12px } .article-hero h1 { font-size: 1.25rem } .btn { padding: 12px 16px; font-size: .84rem } }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .01ms !important } }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://flowai.kz/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Блог",
+                "item": "https://flowai.kz/Blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Персонализированные рассылки, которые не попадают в спам",
+                "item": "https://flowai.kz/Blog/personalizirovannye-rassylki-bez-spama.html"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -286,7 +316,7 @@
         <h1 class="fi">Персонализированные рассылки,<br><span class="gtext">которые не попадают в спам</span></h1>
         <p class="article-lead fi">Эра массовых рассылок по принципу «пушки по воробьям» завершена. Чтобы письмо было прочитано, оно должно быть персональным. И сделать это в масштабе тысяч клиентов без ИИ — невозможно.</p>
         <div class="hero-img-wrap fi">
-            <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=600&fit=crop" alt="Email-маркетинг и персонализированные рассылки" width="1200" height="600" decoding="async">
+            <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=600&fit=crop" alt="Email-маркетинг и персонализированные рассылки" width="1200" height="600" decoding="async" loading="lazy">
             <div class="hero-img-overlay">
                 <div class="hero-stat"><div class="hero-stat-num teal">x3</div><div class="hero-stat-label">рост Open Rate</div></div>
                 <div class="hero-stat"><div class="hero-stat-num green">0%</div><div class="hero-stat-label">попадание в спам</div></div>
@@ -577,6 +607,35 @@
     var sections = document.querySelectorAll('[id^="s"]'), tocLinks = document.querySelectorAll('.toc a');
     var tocObs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { tocLinks.forEach(function(l) { l.classList.remove('active') }); var link = document.querySelector('.toc a[href="#' + e.target.id + '"]'); if (link) link.classList.add('active') } }) }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
     sections.forEach(function(s) { tocObs.observe(s) });
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

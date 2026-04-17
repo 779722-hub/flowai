@@ -5,7 +5,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowAi — ИИ-боты и автоматизация бизнеса в Казахстане | 14 решений</title>
-    <meta name="description" content="FlowAi — №1 автоматизация с ИИ в Казахстане. WhatsApp-боты, Telegram-боты, голосовые менеджеры, RAG-чатботы. Ответ за 2 сек. 24/7. Старт от 10 000 ₸/мес.">
+    <meta name="description" content="ИИ-боты и автоматизация для бизнеса в Казахстане. WhatsApp, Telegram, голосовые менеджеры, RAG-чатботы. Ответ за 2 сек. От 10 000 ₸/мес.">
     <meta name="keywords" content="автоматизация бизнеса казахстан, ии бот казахстан, whatsapp бот для бизнеса, chatbot казахстан, flowai, чат-бот алматы, ии решения кз, голосовой бот казахстан, rag chatbot">
     <meta property="og:title" content="FlowAi — ИИ-автоматизация бизнеса в Казахстане">
     <meta property="og:description" content="14 ИИ-решений для вашего бизнеса. Боты, голосовые менеджеры, чатботы. Ответ за 2 секунды 24/7.">
@@ -13,6 +13,10 @@
     <meta property="og:url" content="https://flowai.kz/">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:image" content="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=630&fit=crop&q=90">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FlowAi — ИИ-автоматизация бизнеса в Казахстане">
+    <meta name="twitter:description" content="ИИ-боты и автоматизация для бизнеса в Казахстане. WhatsApp, Telegram, голосовые менеджеры, RAG-чатботы. Ответ за 2 сек. От 10 000 ₸/мес.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=630&fit=crop&q=90">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="geo.region" content="KZ">
     <meta name="geo.placename" content="Астана">
@@ -1543,6 +1547,25 @@
             #neural-canvas { display: none !important }
         }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "FlowAi",
+        "alternateName": "FlowAi.kz",
+        "url": "https://flowai.kz/",
+        "inLanguage": "ru-KZ",
+        "publisher": {"@type": "Organization", "name": "FlowAi"},
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://flowai.kz/Blog/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -1624,7 +1647,7 @@
                  alt="Счастливая команда с FlowAI ботом"
                  class="hero-img"
                  width="500"
-                 height="600">
+                 height="600" loading="lazy">
         </div>
     </div>
     <div class="marquee-wrap">
@@ -1827,7 +1850,7 @@
              alt="Счастливая команда у ноутбука"
              class="howit-img fil"
              width="1200"
-             height="500">
+             height="500" loading="lazy">
     </div>
     <div class="section-wave">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,50 C360,10 720,70 1080,20 C1260,10 1380,30 1440,25 L1440,80 L0,80 Z" fill="#02091A"/></svg>
@@ -2035,7 +2058,7 @@
              alt="Разнообразная деловая команда"
              class="niches-img fil"
              width="1200"
-             height="350">
+             height="350" loading="lazy">
     </div>
     <div class="section-wave">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 720,10 1200,60 C1360,70 1440,50 1440,40 L1440,80 L0,80 Z" fill="#02091A"/></svg>
@@ -2253,7 +2276,7 @@
                  alt="Дружелюбная команда поддержки"
                  class="contact-img fir"
                  width="500"
-                 height="550">
+                 height="550" loading="lazy">
         </div>
     </div>
 </section>
@@ -2535,5 +2558,34 @@
 })();
 </script>
 
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
+})();
+</script>
 </body>
 </html>

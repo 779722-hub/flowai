@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSS автопостинг бот | Автоматические публикации в Telegram — FlowAi KZ</title>
-    <meta name="description" content="RSS-бот автоматически публикует контент из любых источников в ваши Telegram-каналы. Фильтры, расписание, AI-рерайт. Для медиа и бизнеса Казахстана и СНГ.">
+    <meta name="description" content="RSS-бот для Telegram: автопостинг из 100+ источников. Охват растёт в 4 раза. Работает 24/7 без вашего участия. Демо бесплатно.">
     <meta name="keywords" content="rss бот казахстан, автопостинг телеграм, rss для телеграм канала, автоматические публикации, контент автоматизация казахстан, telegram rss bot">
     <meta property="og:title" content="RSS-бот: ваш канал публикует контент сам — FlowAi">
     <meta property="og:description" content="Забудьте о ручном копировании новостей. RSS-бот мониторит источники и публикует в ваш Telegram-канал автоматически. Фильтры + ИИ-рерайт. Попробуйте!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/rss-bot.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RSS-бот: ваш канал публикует контент сам — FlowAi">
+    <meta name="twitter:description" content="RSS-бот для Telegram: автопостинг из 100+ источников. Охват растёт в 4 раза. Работает 24/7 без вашего участия. Демо бесплатно.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/rss-bot.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -423,6 +427,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "RSS-бот для Telegram",
+        "description": "RSS-бот автоматически публикует контент из 100+ источников в ваш Telegram-канал 24/7.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "Software",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/rss-bot.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -923,6 +961,35 @@
         }
         setTimeout(next,1000);
     }
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

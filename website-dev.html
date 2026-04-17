@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Разработка сайтов Казахстан | Лендинги под ключ — FlowAi</title>
-    <meta name="description" content="Профессиональная разработка сайтов в Казахстане. Лендинги, корпоративные сайты, интернет-магазины. Быстро, красиво, с гарантией конверсии. Оставьте заявку!">
+    <meta name="description" content="Разработка сайтов под ключ за 14 дней в Казахстане. SEO, адаптив, 90+ Google PageSpeed. Сайты, которые продают. Бесплатная консультация.">
     <meta name="keywords" content="разработка сайтов казахстан, заказать сайт алматы, создание лендинга казахстан, веб разработка алматы, корпоративный сайт под ключ, сайт для бизнеса казахстан">
     <meta property="og:title" content="Сайт под ключ за 14 дней — разработка в Казахстане | FlowAi">
     <meta property="og:description" content="Создаём сайты, которые продают. Современный дизайн + SEO + быстрая загрузка = больше клиентов. Сдача в срок, исправления включены. Узнайте стоимость!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/website-dev.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Сайт под ключ за 14 дней — разработка в Казахстане | FlowAi">
+    <meta name="twitter:description" content="Разработка сайтов под ключ за 14 дней в Казахстане. SEO, адаптив, 90+ Google PageSpeed. Сайты, которые продают. Бесплатная консультация.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/website-dev.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -848,6 +852,35 @@
     });
     scrollTop.addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}) });
 }();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
+})();
 </script>
 </body>
 </html>

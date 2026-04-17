@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Брендовое видео с ИИ | Видеопроизводство для бизнеса — FlowAi KZ</title>
-    <meta name="description" content="Создание брендовых и рекламных видео для бизнеса в Казахстане. ИИ-инструменты + профессиональная команда. Быстро, стильно, с конверсией. Получите КП!">
+    <meta name="description" content="Брендовое видео под ключ за 5 рабочих дней. Сценарий, съёмка, монтаж, субтитры. Рост доверия в 7 раз. Прозрачные цены.">
     <meta name="keywords" content="создание видео казахстан, брендовое видео алматы, видеопроизводство для бизнеса, ии видео реклама, рекламное видео казахстан, видеомаркетинг казахстан">
     <meta property="og:title" content="Брендовое видео с ИИ: стильно, быстро, по цене Казахстана — FlowAi">
     <meta property="og:description" content="Продающее видео для вашего бизнеса с ИИ-продакшном. В 3 раза быстрее традиционного производства, в 2 раза дешевле. Покажите бренд с лучшей стороны!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/brand-video.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Брендовое видео с ИИ: стильно, быстро, по цене Казахстана — FlowAi">
+    <meta name="twitter:description" content="Брендовое видео под ключ за 5 рабочих дней. Сценарий, съёмка, монтаж, субтитры. Рост доверия в 7 раз. Прозрачные цены.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/brand-video.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -674,6 +678,35 @@ addEventListener('scroll',()=>{const s=scrollY;document.getElementById('header')
 
 // Scroll to top
 document.getElementById('scrollTop').addEventListener('click',()=>{scrollTo({top:0,behavior:'smooth'})});
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
+})();
 </script>
 </body>
 </html>

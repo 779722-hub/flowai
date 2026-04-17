@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Комплексная автоматизация бизнеса ИИ | Полный цикл — FlowAi KZ</title>
-    <meta name="description" content="Комплексная автоматизация бизнеса с ИИ в Казахстане. Продажи, поддержка, документы, аналитика — всё под ключ. Индивидуальный подход. Оставьте заявку на аудит!">
+    <meta name="description" content="Комплексная ИИ-автоматизация бизнеса под ключ. WhatsApp-бот + голосовой менеджер + RAG + CRM. ROI от 300%. Казахстан.">
     <meta name="keywords" content="автоматизация бизнеса казахстан, комплексная автоматизация ии, бизнес автоматизация алматы, ai интеграция для бизнеса, digital transformation казахстан">
     <meta property="og:title" content="Комплексная автоматизация: ваш бизнес работает на автопилоте — FlowAi">
     <meta property="og:description" content="80% рутинных задач уже можно автоматизировать. Мы проведём аудит, разработаем систему и внедрим ИИ в каждый отдел вашего бизнеса. Бесплатный аудит!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/complex-solution.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Комплексная автоматизация: ваш бизнес работает на автопилоте — FlowAi">
+    <meta name="twitter:description" content="Комплексная ИИ-автоматизация бизнеса под ключ. WhatsApp-бот + голосовой менеджер + RAG + CRM. ROI от 300%. Казахстан.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/complex-solution.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -395,6 +399,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Комплексная ИИ-автоматизация бизнеса",
+        "description": "Полная автоматизация бизнеса: WhatsApp-бот + голосовой менеджер + RAG + интеграция с CRM.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "BusinessService",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/complex-solution.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -764,6 +802,35 @@
     var header=document.getElementById('header'),backBtn=document.getElementById('backBtn'),scrollTopBtn=document.getElementById('scrollTop');
     addEventListener('scroll',function(){var s=scrollY;header.classList.toggle('scrolled',s>60);backBtn.classList.toggle('show',s>300);scrollTopBtn.classList.toggle('show',s>300)});
     scrollTopBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

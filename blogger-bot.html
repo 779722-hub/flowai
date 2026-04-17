@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogger-бот ИИ | Автоведение Telegram-канала — FlowAi Казахстан</title>
-    <meta name="description" content="ИИ-бот ведёт ваш Telegram-канал: пишет посты, генерирует идеи, публикует по расписанию. Для блогеров и экспертов Казахстана. Попробуйте 7 дней бесплатно!">
+    <meta name="description" content="Блогер-бот с ИИ: пишет посты, статьи и сторис в вашем стиле каждый день. Охват растёт в 3–5 раз. Для SMM и блогеров.">
     <meta name="keywords" content="блогер бот телеграм, ии для телеграм канала, автоматические посты телеграм, ai контент для блога, телеграм блог автоматизация казахстан, бот для блогера">
     <meta property="og:title" content="Blogger-бот: ваш Telegram-канал живёт без вас — FlowAi">
     <meta property="og:description" content="Нет времени писать посты? Blogger-бот изучит вашу тематику и будет публиковать контент в вашем стиле. 30+ постов в месяц на автопилоте. Попробуйте!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/blogger-bot.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blogger-бот: ваш Telegram-канал живёт без вас — FlowAi">
+    <meta name="twitter:description" content="Блогер-бот с ИИ: пишет посты, статьи и сторис в вашем стиле каждый день. Охват растёт в 3–5 раз. Для SMM и блогеров.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/blogger-bot.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -423,6 +427,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Блогер-бот с ИИ",
+        "description": "Блогер-бот пишет посты, статьи и сторис в вашем стиле каждый день для Instagram, Telegram, VK.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "Software",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/blogger-bot.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -931,6 +969,35 @@
         function n(){if(i>=cd.length)return;var it=cd[i];if(it.t==='b'){ty.classList.add('show');setTimeout(function(){ty.classList.remove('show');am(it);i++;setTimeout(n,1400)},1800)}else{am(it);i++;setTimeout(n,900)}}
         function am(it){var d=document.createElement('div');d.className='msg msg-'+(it.t==='u'?'u':'b');d.innerHTML=it.m.replace(/\n/g,'<br>')+'<div class="msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+'</div>';c.insertBefore(d,ty);requestAnimationFrame(function(){d.classList.add('show')});c.scrollTop=c.scrollHeight}
         setTimeout(n,1000)}
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

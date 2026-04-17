@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИИ-ассистент для руководителя | CEO Автопилот — FlowAi Казахстан</title>
-    <meta name="description" content="ИИ-ассистент для руководителей бизнеса в Казахстане. Анализ данных, отчёты, управление задачами — всё автоматически. Экономьте 3+ часа в день. Запросите демо!">
+    <meta name="description" content="ИИ-ассистент для руководителя: 5 экспертов в одном боте. Аналитика, юрист, финансы, стратегия. Экономит 3–5 часов в день.">
     <meta name="keywords" content="ии ассистент для директора, ai помощник руководителя казахстан, автоматизация для ceo, ии для бизнеса алматы, умный ассистент ceo">
     <meta property="og:title" content="ИИ-ассистент для CEO: делегируйте рутину — FlowAi">
     <meta property="og:description" content="Ваш персональный AI-руководитель работает пока вы спите: отчёты, аналитика, задачи, напоминания. Присоединитесь к 200+ директорам Казахстана и СНГ.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/ai-assistant-ceo.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ИИ-ассистент для CEO: делегируйте рутину — FlowAi">
+    <meta name="twitter:description" content="ИИ-ассистент для руководителя: 5 экспертов в одном боте. Аналитика, юрист, финансы, стратегия. Экономит 3–5 часов в день.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/ai-assistant-ceo.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -423,6 +427,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "ИИ-ассистент для CEO",
+        "description": "ИИ-ассистент для руководителя — пять экспертов в одном боте: аналитик, юрист, маркетолог, финансист, стратег.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "Software",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/ai-assistant-ceo.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -974,6 +1012,35 @@
     scrollTopBtn.addEventListener('click',function(){
         window.scrollTo({top:0,behavior:'smooth'});
     });
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

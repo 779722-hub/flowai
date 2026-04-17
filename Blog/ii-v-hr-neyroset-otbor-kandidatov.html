@@ -13,6 +13,10 @@
     <meta property="og:url" content="https://flowai.kz/blog/ii-v-hr-neyroset-otbor-kandidatov">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:image" content="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=630&fit=crop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ИИ в HR: Как нейросеть отбирает лучших кандидатов — FlowAi">
+    <meta name="twitter:description" content="ИИ в найме 2026: умный скрининг, виртуальные рекрутеры, прогноз успешности. Экономия 70% времени HR-департамента.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=630&fit=crop">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="geo.region" content="KZ">
     <meta name="geo.placename" content="Астана">
@@ -244,6 +248,32 @@
         @media (max-width: 360px) { .container { padding: 0 12px } .article-hero h1 { font-size: 1.25rem } .btn { padding: 12px 16px; font-size: .84rem } }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .01ms !important } }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://flowai.kz/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Блог",
+                "item": "https://flowai.kz/Blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "ИИ в HR: Как нейросеть отбирает лучших кандидатов",
+                "item": "https://flowai.kz/Blog/ii-v-hr-neyroset-otbor-kandidatov.html"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -286,7 +316,7 @@
         <h1 class="fi">ИИ в HR: Как нейросеть<br><span class="gtext">отбирает лучших кандидатов</span></h1>
         <p class="article-lead fi">HR-менеджер тратил дни на просмотр сотен резюме. В 2026 году ИИ стал полноценным аналитическим центром, который находит идеальное соответствие между амбициями кандидата и целями бизнеса.</p>
         <div class="hero-img-wrap fi">
-            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop&q=90" alt="HR-специалист проводит собеседование в современном офисе" width="1200" height="600" decoding="async">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop&q=90" alt="HR-специалист проводит собеседование в современном офисе" width="1200" height="600" decoding="async" loading="lazy">
             <div class="hero-img-overlay">
                 <div class="hero-stat"><div class="hero-stat-num green">-70%</div><div class="hero-stat-label">времени на скрининг</div></div>
                 <div class="hero-stat"><div class="hero-stat-num indigo">3-6x</div><div class="hero-stat-label">стоимость ошибки найма</div></div>
@@ -578,6 +608,35 @@
     var sections = document.querySelectorAll('[id^="s"]'), tocLinks = document.querySelectorAll('.toc a');
     var tocObs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { tocLinks.forEach(function(l) { l.classList.remove('active') }); var link = document.querySelector('.toc a[href="#' + e.target.id + '"]'); if (link) link.classList.add('active') } }) }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
     sections.forEach(function(s) { tocObs.observe(s) });
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

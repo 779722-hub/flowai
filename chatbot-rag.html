@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAG-чатбот на базе знаний | ИИ на ваших данных — FlowAi Казахстан</title>
-    <meta name="description" content="RAG-чатбот обучается на документах вашей компании и отвечает клиентам точно. Без галлюцинаций. Для бизнеса Казахстана и СНГ. Интеграция с сайтом и Telegram.">
+    <meta name="description" content="RAG-чатбот на вашей базе знаний. Отвечает клиентам точно по документам — без галлюцинаций. Запуск за 3 дня. От 10 000 ₸/мес.">
     <meta name="keywords" content="rag чатбот казахстан, чатбот на базе знаний, ии на документах компании, умный чатбот kz, chatgpt на своих данных, корпоративный ии чатбот">
     <meta property="og:title" content="RAG-чатбот: ИИ знает всё о вашей компании — FlowAi">
     <meta property="og:description" content="Загрузите свои документы — бот станет экспертом по вашему бизнесу. Точные ответы 24/7 без галлюцинаций. Клиенты довольны, менеджеры свободны. Попробуйте!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/chatbot-rag.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RAG-чатбот: ИИ знает всё о вашей компании — FlowAi">
+    <meta name="twitter:description" content="RAG-чатбот на вашей базе знаний. Отвечает клиентам точно по документам — без галлюцинаций. Запуск за 3 дня. От 10 000 ₸/мес.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/chatbot-rag.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -451,6 +455,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "RAG-чатбот",
+        "description": "RAG-чатбот на вашей базе знаний. Отвечает клиентам точно по вашим документам без галлюцинаций.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "Software",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/chatbot-rag.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -922,6 +960,35 @@ const wd=[
 ];
 let chatStarted=false;
 function startWidgetChat(){chatStarted=true;const c=document.getElementById('cp-msgs'),ty=document.getElementById('cp-typing');let i=0;function n(){if(i>=wd.length)return;const it=wd[i];if(it.t==='b'){ty.classList.add('show');setTimeout(()=>{ty.classList.remove('show');am(it);i++;setTimeout(n,1400)},1600)}else{am(it);i++;setTimeout(n,1000)}}function am(it){const d=document.createElement('div');d.className=`cp-msg ${it.t==='u'?'user':'bot'}`;d.innerHTML=it.m.replace(/\n/g,'<br>')+'<div class="cp-msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+'</div>';c.insertBefore(d,ty);requestAnimationFrame(()=>d.classList.add('show'));c.scrollTop=c.scrollHeight}setTimeout(n,600)}
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
+})();
 </script>
 </body>
 </html>

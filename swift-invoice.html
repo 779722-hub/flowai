@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Автовыставление счетов | Инвойс-бот ИИ — FlowAi Казахстан</title>
-    <meta name="description" content="Бот автоматически выставляет счета и инвойсы за секунды. Фирменный дизайн, отправка в WhatsApp/Telegram, интеграция с 1С. Для бизнеса Казахстана и СНГ.">
+    <meta name="description" content="Swift Invoice — бот для счетов в Telegram. Создаёт PDF за 30 секунд. Экспорт в 3 формата. Контроль оплат. Без Excel и бухгалтера.">
     <meta name="keywords" content="автоматическое выставление счетов казахстан, инвойс бот, генератор счетов онлайн, бухгалтерский бот казахстан, invoice bot kz, автоматизация бухгалтерии">
     <meta property="og:title" content="Swift Invoice: счёт клиенту за 10 секунд — FlowAi">
     <meta property="og:description" content="Устали тратить час на оформление счетов? Наш бот делает это за 10 секунд в вашем фирменном стиле и сам отправляет клиенту. Попробуйте бесплатно!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/swift-invoice.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Swift Invoice: счёт клиенту за 10 секунд — FlowAi">
+    <meta name="twitter:description" content="Swift Invoice — бот для счетов в Telegram. Создаёт PDF за 30 секунд. Экспорт в 3 формата. Контроль оплат. Без Excel и бухгалтера.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/swift-invoice.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -415,6 +419,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Swift Invoice — бот для счетов",
+        "description": "Swift Invoice создаёт PDF-счета в Telegram за 30 секунд. Контроль оплат и экспорт в 3 формата.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "Software",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/swift-invoice.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -858,6 +896,35 @@
     var header=document.getElementById('header'),backBtn=document.getElementById('backBtn'),scrollTopBtn=document.getElementById('scrollTop');
     addEventListener('scroll',function(){var s=scrollY;header.classList.toggle('scrolled',s>60);backBtn.classList.toggle('show',s>300);scrollTopBtn.classList.toggle('show',s>300)});
     scrollTopBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

@@ -13,6 +13,10 @@
     <meta property="og:url" content="https://flowai.kz/blog/skripty-prodazh-mertvy-ii-luchshe">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:image" content="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=630&fit=crop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Скрипты продаж мертвы: почему ИИ общается лучше менеджеров — FlowAi">
+    <meta name="twitter:description" content="ИИ-ассистент отрабатывает возражения лучше опытного продавца, не выгорает и обновляется за 1 минуту. Рост конверсии +25% для бизнеса в Казахстане.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=630&fit=crop">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="geo.region" content="KZ">
     <meta name="geo.placename" content="Астана">
@@ -247,6 +251,32 @@
         @media (max-width: 360px) { .container { padding: 0 12px } .article-hero h1 { font-size: 1.25rem } .btn { padding: 12px 16px; font-size: .84rem } }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .01ms !important } }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://flowai.kz/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Блог",
+                "item": "https://flowai.kz/Blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Скрипты продаж мертвы: почему ИИ общается лучше менеджеров",
+                "item": "https://flowai.kz/Blog/skripty-prodazh-mertvy-ii-luchshe.html"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -289,7 +319,7 @@
         <h1 class="fi">Скрипты продаж мертвы:<br><span class="gtext">почему ИИ общается лучше менеджеров</span></h1>
         <p class="article-lead fi">В течение десятилетий основой обучения отделов продаж были жёсткие скрипты. Однако современный потребитель выработал устойчивый иммунитет к «роботизированной» речи живых сотрудников. На смену пришёл адаптивный интеллект.</p>
         <div class="hero-img-wrap fi">
-            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Менеджер продаж в современном офисе" width="1200" height="600" decoding="async">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Менеджер продаж в современном офисе" width="1200" height="600" decoding="async" loading="lazy">
             <div class="hero-img-overlay">
                 <div class="hero-stat"><div class="hero-stat-num green">+25%</div><div class="hero-stat-label">рост конверсии</div></div>
                 <div class="hero-stat"><div class="hero-stat-num blue">1 мин</div><div class="hero-stat-label">обновление скрипта</div></div>
@@ -533,6 +563,35 @@
     var sections = document.querySelectorAll('[id^="s"]'), tocLinks = document.querySelectorAll('.toc a');
     var tocObs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { tocLinks.forEach(function(l) { l.classList.remove('active') }); var link = document.querySelector('.toc a[href="#' + e.target.id + '"]'); if (link) link.classList.add('active') } }) }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
     sections.forEach(function(s) { tocObs.observe(s) });
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>

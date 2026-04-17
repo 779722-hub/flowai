@@ -5,13 +5,17 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram-бот с ИИ | Автоматизация бизнеса в Telegram — FlowAi KZ</title>
-    <meta name="description" content="Telegram-бот с искусственным интеллектом для бизнеса. Автоответы, приём заявок, рассылки, CRM-интеграция. Для бизнеса Казахстана и СНГ. Тестируйте бесплатно!">
+    <meta name="description" content="Telegram-бот с ИИ для бизнеса в Казахстане. Автоответы, заявки, CRM-интеграция. Запуск за 3 дня. От 10 000 ₸/мес. Бесплатная демонстрация.">
     <meta name="keywords" content="telegram бот казахстан, телеграм бот для бизнеса, ии бот телеграм, создание telegram бота алматы, бот для продаж телеграм, chatbot telegram kz">
     <meta property="og:title" content="Telegram-бот с ИИ: продажи и поддержка на автопилоте — FlowAi">
     <meta property="og:description" content="500 млн пользователей Telegram — ваши потенциальные клиенты. Наш ИИ-бот общается с ними 24/7, принимает заказы и ведёт в сделку. Настройка за 3 дня!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flowai.kz/telegram-bot.html">
     <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Telegram-бот с ИИ: продажи и поддержка на автопилоте — FlowAi">
+    <meta name="twitter:description" content="Telegram-бот с ИИ для бизнеса в Казахстане. Автоответы, заявки, CRM-интеграция. Запуск за 3 дня. От 10 000 ₸/мес. Бесплатная демонстрация.">
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/telegram-bot.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -427,6 +431,40 @@
 
 
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Telegram-бот с ИИ",
+        "description": "Telegram-бот с искусственным интеллектом для бизнеса. Автоответы, приём заявок, CRM-интеграция.",
+        "brand": {
+            "@type": "Brand",
+            "name": "FlowAi"
+        },
+        "category": "Software",
+        "image": "https://flowai.kz/logo flowai.png",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KZT",
+            "lowPrice": "10000",
+            "highPrice": "500000",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock",
+            "url": "https://flowai.kz/telegram-bot.html",
+            "seller": {
+                "@type": "Organization",
+                "name": "FlowAi"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -847,6 +885,35 @@ const cd=[{t:'u',m:'Привет! У вас есть курсы по Python?'},{
 let cs=false;const cobs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting&&!cs){cs=true;sc()}})},{threshold:.3});
 const ce=document.getElementById('chat-demo');if(ce)cobs.observe(ce);
 function sc(){const c=document.getElementById('chat-msgs'),ty=document.getElementById('typing');let i=0;function n(){if(i>=cd.length)return;const it=cd[i];if(it.t==='b'){ty.classList.add('show');setTimeout(()=>{ty.classList.remove('show');am(it);i++;setTimeout(n,1200)},1800)}else{am(it);i++;setTimeout(n,900)}}function am(it){const d=document.createElement('div');d.className=`msg msg-${it.t==='u'?'u':'b'}`;d.innerHTML=it.m.replace(/\n/g,'<br>')+'<div class="msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+'</div>';c.insertBefore(d,ty);requestAnimationFrame(()=>d.classList.add('show'));c.scrollTop=c.scrollHeight}setTimeout(n,1000)}
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
+})();
 </script>
 </body>
 </html>

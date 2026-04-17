@@ -5,7 +5,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты FlowAi — связаться с командой ИИ-автоматизации</title>
-    <meta name="description" content="Свяжитесь с FlowAi: WhatsApp, Telegram, телефон, email. Офис в Астане, пр. Республики, 68. Бесплатная консультация по внедрению ИИ-решений в бизнес.">
+    <meta name="description" content="Свяжитесь с FlowAi: WhatsApp, Telegram, телефон, email. Офис в Астане, пр. Республики 68. Бесплатная консультация — ответ за 30 минут.">
     <meta name="keywords" content="контакты flowai, связаться flowai, ии автоматизация астана, чатбот алматы контакты, заказать ии бот казахстан, телефон flowai, whatsapp telegram flowai">
     <meta property="og:title" content="Контакты FlowAi — связаться с командой">
     <meta property="og:description" content="WhatsApp, Telegram, телефон, email. Офис в Астане. Отвечаем за 5 минут в рабочее время.">
@@ -13,6 +13,10 @@
     <meta property="og:url" content="https://flowai.kz/kontakty">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:image" content="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=630&fit=crop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Контакты FlowAi — связаться с командой">
+    <meta name="twitter:description" content="Свяжитесь с FlowAi: WhatsApp, Telegram, телефон, email. Офис в Астане, пр. Республики 68. Бесплатная консультация — ответ за 30 минут.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=630&fit=crop">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="geo.region" content="KZ">
     <meta name="geo.placename" content="Астана">
@@ -583,6 +587,35 @@
         success.classList.add('show');
         setTimeout(function() { form.reset(); success.classList.remove('show') }, 5000);
     });
+})();
+</script>
+
+<script>
+/* FlowAi: WhatsApp click conversion tracking */
+(function(){
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
+        if (!isWa) return;
+        /* Google Analytics 4 */
+        if (typeof gtag === 'function') {
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'engagement',
+                'event_label': href,
+                'value': 1
+            });
+        }
+        /* Google Ads conversion (will work after AW- ID added) */
+        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
+            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        }
+        /* Yandex Metrica goal */
+        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
+            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
+        }
+    }, true);
 })();
 </script>
 </body>
