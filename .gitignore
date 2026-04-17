@@ -1,0 +1,31 @@
+# Claude Code artifacts
+.claude/
+CLAUDE.md
+
+# Research/scratch folders (локальные заметки)
+research/
+docs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python scripts (временные скрипты для массовых правок)
+*.py
+__pycache__/
+
+# Backup files
+*.bak
+*.tmp
+*.orig
+
+# Logs
+*.log

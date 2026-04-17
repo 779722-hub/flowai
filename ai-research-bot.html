@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИИ-бот для исследований | AI Research и аналитика — FlowAi KZ</title>
+    <meta name="description" content="ИИ-бот исследует рынки и анализирует конкурентов за минуты. Автоматический сбор данных и структурированные отчёты. Для бизнеса и аналитиков Казахстана и СНГ.">
+    <meta name="keywords" content="ии исследование рынка казахстан, ai аналитик бот, анализ конкурентов ии, research bot kz, автоматический анализ рынка, нейросеть для аналитики, бизнес аналитика ии казахстан">
+    <meta property="og:title" content="ИИ-исследователь: анализ рынка за 5 минут вместо 5 дней — FlowAi">
+    <meta property="og:description" content="Конкурентный анализ, мониторинг рынка, исследование ЦА — всё автоматически. Наш ИИ-бот соберёт данные из 100+ источников и сделает отчёт. Попробуйте!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flowai.kz/ai-research-bot.html">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flowai.kz/ai-research-bot.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"LocalBusiness","name":"FlowAi","description":"AI-бот для автоматического создания исследований и отчётов","url":"https://flowai.kz","telephone":"+77787806540","address":{"@type":"PostalAddress","streetAddress":"пр. Республики, д. 68","addressLocality":"Астана","addressCountry":"KZ"},"areaServed":["Казахстан","СНГ"],"priceRange":"от 20 000 ₸","sameAs":["https://t.me/FlowAItest_bot","https://wa.me/77787806540"]}
+    </script>
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#000812;--bg-alt:#060f1e;--bg-card:#0a1628;
+            --accent:#7C3AED;--accent-2:#A78BFA;--accent-3:#C4B5FD;
+            --sky:#0EA5E9;--sky-light:#38BDF8;--sky-glow:rgba(14,165,233,.15);
+            --green:#10B981;--green-light:#34D399;--green-glow:rgba(16,185,129,.2);
+            --rose:#E11D48;--rose-light:#FB7185;
+            --wa:#25D366;--wa-glow:rgba(37,211,102,.25);
+            --tg:#2AABEE;
+            --glow:rgba(124,58,237,.25);--glow-2:rgba(167,139,250,.15);
+            --text:#fff;--muted:#8fa3bf;--muted-2:#4a6080;
+            --border:rgba(124,58,237,.12);--border-h:rgba(124,58,237,.3);
+            --r:18px;--rs:12px
+        }
+        html{scroll-behavior:smooth;overflow-x:hidden}
+        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;overflow-wrap:break-word;word-wrap:break-word}
+        h1,h2,h3{font-family:'Space Grotesk','Inter',sans-serif}
+        a{color:var(--accent-2);text-decoration:none;transition:color .3s}a:hover{color:var(--accent-3)}
+        .container{max-width:1200px;margin:0 auto;padding:0 28px}
+        .gtext{background:linear-gradient(135deg,var(--accent),var(--sky-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+        /* ── BUTTONS ── */
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font-weight:600;font-size:.95rem;font-family:'Inter',sans-serif;transition:all .35s;cursor:pointer;border:none;text-decoration:none;white-space:nowrap;touch-action:manipulation}
+        .btn-pri{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;box-shadow:0 4px 24px var(--glow);animation:ppulse 3s ease-in-out infinite}
+        .btn-pri:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(124,58,237,.4);color:#fff}
+        @keyframes ppulse{0%,100%{box-shadow:0 4px 24px var(--glow)}50%{box-shadow:0 4px 50px rgba(124,58,237,.4)}}
+        .btn-sky{background:linear-gradient(135deg,var(--sky),var(--sky-light));color:#0a1628;font-weight:700;box-shadow:0 4px 16px var(--sky-glow)}
+        .btn-sky:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(14,165,233,.35);color:#0a1628}
+        .btn-wa{background:linear-gradient(135deg,var(--wa),#1eb854);color:#fff;box-shadow:0 4px 20px var(--wa-glow)}
+        .btn-wa:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(37,211,102,.35);color:#fff}
+        .btn-tg{background:linear-gradient(135deg,var(--tg),#1E96D1);color:#fff;box-shadow:0 4px 20px rgba(42,171,238,.2)}
+        .btn-tg:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(42,171,238,.35);color:#fff}
+        .btn-o{background:transparent;color:var(--text);border:2px solid rgba(255,255,255,.12)}
+        .btn-o:hover{border-color:var(--accent);color:var(--accent-2);transform:translateY(-3px)}
+
+        /* ── HEADER ── */
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,8,18,.6);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:all .4s}
+        .header.scrolled{background:rgba(0,8,18,.96);box-shadow:0 4px 40px rgba(0,0,0,.5)}
+        .hd-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:14px 28px}
+        .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;text-decoration:none;flex-shrink:0}
+        .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--sky-light));border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--glow);flex-shrink:0}
+        .logo-icon svg{width:22px;height:22px;fill:#fff}
+        .nav{display:flex;align-items:center;gap:28px}
+        .nav a{color:var(--muted);font-size:.87rem;font-weight:500;transition:color .3s}.nav a:hover{color:#fff}
+        .hd-btns{display:flex;gap:8px}
+        .hd-btns .btn{padding:9px 20px;font-size:.83rem}
+        .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:1002}
+        .burger span{display:block;width:24px;height:2px;background:#fff;transition:.3s;border-radius:2px}
+        .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .burger.open span:nth-child(2){opacity:0}
+        .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+        /* ── HERO ── */
+        .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:stretch;overflow:hidden}
+        #neural-canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.2;pointer-events:none}
+        .hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(124,58,237,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 30%,rgba(14,165,233,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 60% 80%,rgba(16,185,129,.04) 0%,transparent 60%);pointer-events:none}
+        .hero-main{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 460px;gap:48px;align-items:center;max-width:1200px;margin:0 auto;padding:92px 28px 60px;width:100%}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);font-size:.83rem;color:var(--accent-2);margin-bottom:28px;font-weight:500}
+        .hero-badge .live{width:8px;height:8px;border-radius:50%;background:var(--green-light);animation:pd 2s ease-in-out infinite;flex-shrink:0}
+        @keyframes pd{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+        .hero h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px}
+        .hero-sub{font-size:clamp(.95rem,1.6vw,1.12rem);color:var(--muted);line-height:1.75;margin-bottom:36px;max-width:520px}
+        .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+        .hero-trust{display:flex;gap:24px;flex-wrap:wrap}
+        .trust-item{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.83rem;font-weight:500}
+        .trust-dot{width:6px;height:6px;border-radius:50%;background:var(--accent-2);flex-shrink:0}
+
+        /* Email mockup in hero */
+        .hero-right{display:flex;align-items:center;justify-content:center}
+        .email-hero-wrap{position:relative;width:380px;animation:float 6s ease-in-out infinite}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+        .email-hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.15),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+        .email-hero{width:100%;background:var(--bg-card);border-radius:20px;border:1.5px solid rgba(124,58,237,.2);box-shadow:0 0 0 1px rgba(124,58,237,.06),0 30px 80px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.03);overflow:hidden;position:relative}
+        .eh-bar{background:#0d1a2e;padding:8px 14px;display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--muted-2)}
+        .eh-dot{width:8px;height:8px;border-radius:50%}.eh-dot.r{background:#ff5f57}.eh-dot.y{background:#febc2e}.eh-dot.g{background:#28c840}
+        .eh-hdr{padding:12px 16px;border-bottom:1px solid rgba(124,58,237,.06);font-size:.72rem}
+        .eh-hdr .from{color:var(--accent-2);font-weight:600}.eh-hdr .to{color:var(--muted-2)}
+        .eh-hdr .subj{color:#fff;font-weight:700;font-size:.82rem;margin-top:4px}
+        .eh-body{padding:14px 16px;font-size:.7rem;line-height:1.65;color:var(--muted)}
+        .eh-body h4{color:#fff;font-size:.78rem;margin:10px 0 5px;font-weight:700;display:flex;align-items:center;gap:5px}
+        .eh-body h4:first-child{margin-top:0}
+        .eh-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:.58rem;font-weight:600}
+        .eh-tag-v{background:rgba(124,58,237,.08);color:var(--accent-2);border:1px solid rgba(124,58,237,.15)}
+        .eh-tag-s{background:rgba(14,165,233,.06);color:var(--sky-light);border:1px solid rgba(14,165,233,.15)}
+        .eh-tag-e{background:rgba(16,185,129,.06);color:var(--green-light);border:1px solid rgba(16,185,129,.15)}
+        .eh-hl{background:rgba(124,58,237,.05);border-left:2px solid var(--accent);padding:6px 10px;border-radius:0 6px 6px 0;margin:8px 0;font-size:.68rem}
+        .eh-stat{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.65rem}
+        .eh-stat .lbl{color:var(--muted-2)}.eh-stat .val{color:var(--sky-light);font-weight:600}
+        .eh-body ul{margin:5px 0 5px 12px;list-style:none;font-size:.68rem}
+        .eh-body ul li{padding:2px 0;position:relative;padding-left:10px}
+        .eh-body ul li::before{content:'>';position:absolute;left:0;color:var(--accent-2);font-weight:700}
+        .eh-footer{padding:8px 16px;border-top:1px solid rgba(124,58,237,.06);font-size:.6rem;color:var(--muted-2);display:flex;justify-content:space-between}
+        .eh-footer .time{color:var(--accent-2)}
+
+        /* Ticker */
+        .ticker-wrap{position:relative;z-index:2;overflow:hidden;border-top:1px solid rgba(255,255,255,.05);padding:14px 0;background:rgba(0,8,18,.4)}
+        .ticker{display:flex;gap:56px;animation:tick 25s linear infinite;white-space:nowrap}
+        .ticker span{color:var(--muted);font-size:.85rem;font-weight:500;flex-shrink:0}
+        .ticker .n{color:var(--accent-2);font-weight:700}
+        @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        /* ── SECTIONS ── */
+        section{padding:100px 0}
+        .salt{background:var(--bg-alt)}
+        .stitle{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:-.02em}
+        .ssub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 56px;font-size:1rem;line-height:1.7}
+        .fi{opacity:0;transform:translateY(36px);transition:opacity .75s,transform .75s}.fi.v{opacity:1;transform:translateY(0)}
+        .fil{opacity:0;transform:translateX(-44px);transition:all .75s}.fil.v{opacity:1;transform:translateX(0)}
+        .fir{opacity:0;transform:translateX(44px);transition:all .75s}.fir.v{opacity:1;transform:translateX(0)}
+
+        /* ── STATS ── */
+        .stats-bar{padding:52px 0;background:linear-gradient(135deg,rgba(124,58,237,.05),rgba(14,165,233,.03));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+        .stat-item h3{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;background:linear-gradient(135deg,var(--accent),var(--sky-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .stat-item p{color:var(--muted);font-size:.87rem;margin-top:6px}
+
+        /* ── DEMO ── */
+        .demo-layout{display:grid;grid-template-columns:minmax(0,480px) 1fr;gap:56px;align-items:flex-start}
+        .email-mock{background:var(--bg-card);border-radius:20px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 0 1px rgba(124,58,237,.08);width:100%;max-width:480px}
+        .email-bar{background:#0d1a2e;padding:10px 16px;display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--muted-2)}
+        .email-dot{width:10px;height:10px;border-radius:50%}
+        .email-dot.r{background:#ff5f57}.email-dot.y{background:#febc2e}.email-dot.g{background:#28c840}
+        .email-subj{margin-left:12px;flex:1}
+        .email-hdr{padding:16px 20px;border-bottom:1px solid rgba(124,58,237,.06);font-size:.82rem}
+        .email-hdr .from{color:var(--accent-2);font-weight:600}.email-hdr .to{color:var(--muted)}
+        .email-hdr .subj{color:#fff;font-weight:700;font-size:.95rem;margin-top:6px}
+        .email-body{padding:20px;font-size:.82rem;line-height:1.7;color:var(--muted)}
+        .email-body h3{color:#fff;font-size:1rem;margin:16px 0 8px;font-weight:700;display:flex;align-items:center;gap:6px}
+        .email-body h3:first-child{margin-top:0}
+        .email-body .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:600}
+        .tag-v{background:rgba(124,58,237,.08);color:var(--accent-2);border:1px solid rgba(124,58,237,.15)}
+        .tag-s{background:rgba(14,165,233,.06);color:var(--sky-light);border:1px solid rgba(14,165,233,.15)}
+        .tag-e{background:rgba(16,185,129,.06);color:var(--green-light);border:1px solid rgba(16,185,129,.15)}
+        .email-body ul{margin:8px 0 8px 16px;list-style:none}
+        .email-body ul li{padding:3px 0;position:relative;padding-left:14px}
+        .email-body ul li::before{content:'>';position:absolute;left:0;color:var(--accent-2);font-weight:700}
+        .email-body .highlight{background:rgba(124,58,237,.06);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+        .email-body .stat-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.78rem}
+        .email-body .stat-lbl{color:var(--muted)}.email-body .stat-val{color:var(--sky-light);font-weight:600}
+        .email-footer{padding:14px 20px;border-top:1px solid rgba(124,58,237,.06);font-size:.72rem;color:var(--muted-2);display:flex;justify-content:space-between;align-items:center}
+        .email-footer .time{color:var(--accent-2)}
+        .demo-txt h3{font-size:1.6rem;margin-bottom:18px;line-height:1.3}
+        .demo-txt p{color:var(--muted);font-size:1rem;margin-bottom:14px;line-height:1.7}
+        .demo-fl{list-style:none;margin-top:22px}
+        .demo-fl li{padding:9px 0;color:var(--muted);font-size:.93rem;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
+        .demo-fl li::before{content:'✓';color:var(--green-light);font-weight:700;flex-shrink:0}
+
+        /* ── PROCESS ── */
+        .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+        .process-card{background:var(--bg-card);border-radius:var(--r);padding:32px;border:1px solid var(--border);text-align:center;transition:all .4s;position:relative}
+        .process-card:hover{transform:translateY(-5px);border-color:var(--border-h);box-shadow:0 14px 40px rgba(124,58,237,.1)}
+        .process-num{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--sky-light));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;margin:0 auto 18px;box-shadow:0 4px 20px var(--glow)}
+        .process-card h3{font-size:1.05rem;margin-bottom:8px;font-weight:600}
+        .process-card p{color:var(--muted);font-size:.88rem;line-height:1.6}
+        .process-arrow{position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--accent-2);font-size:1.2rem;opacity:.3}
+        .process-card:last-child .process-arrow{display:none}
+
+        /* ── PROBLEMS ── */
+        .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .prob-card{background:var(--bg-card);border-radius:var(--r);padding:36px 32px;border:1px solid rgba(225,29,72,.08);transition:all .4s;position:relative;overflow:hidden}
+        .prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--rose),transparent);opacity:.3}
+        .prob-card:hover{transform:translateY(-5px);border-color:rgba(225,29,72,.2);box-shadow:0 16px 48px rgba(0,0,0,.3)}
+        .prob-n{font-size:3rem;font-weight:800;color:rgba(225,29,72,.08);line-height:1;margin-bottom:16px}
+        .prob-card h3{font-size:1.1rem;margin-bottom:12px;font-weight:600;line-height:1.4}
+        .prob-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
+
+        /* ── FEATURES ── */
+        .feat-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+        .feat-visual{position:relative;display:flex;align-items:center;justify-content:center}
+        .feat-art{width:100%;max-width:420px;background:linear-gradient(135deg,rgba(124,58,237,.06),rgba(14,165,233,.03));border:1px solid var(--border);border-radius:24px;padding:32px;position:relative;overflow:hidden}
+        .feat-art::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.1),transparent 70%)}
+        .feat-art-title{font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif}
+        .feat-art-title span{width:8px;height:8px;border-radius:50%;background:var(--green-light);display:inline-block}
+        .feat-stat-row{display:flex;gap:14px;margin-bottom:18px}
+        .feat-stat{flex:1;background:rgba(124,58,237,.05);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+        .feat-stat .val{font-size:1.5rem;font-weight:800;font-family:'Space Grotesk',sans-serif}
+        .feat-stat .val.v{color:var(--accent-2)}.feat-stat .val.g{color:var(--green-light)}.feat-stat .val.s{color:var(--sky-light)}
+        .feat-stat p{font-size:.72rem;color:var(--muted);margin-top:4px}
+        .feat-bar-row{display:flex;flex-direction:column;gap:10px}
+        .feat-bar-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:5px}
+        .feat-bar-label span:last-child{color:var(--accent-2);font-weight:600}
+        .feat-bar-track{height:6px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
+        .feat-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--sky-light))}
+
+        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .feat-card{background:var(--bg-card);border-radius:var(--r);padding:28px;border:1px solid var(--border);transition:all .4s;position:relative;overflow:hidden}
+        .feat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--sky-light),transparent);opacity:0;transition:opacity .4s}
+        .feat-card:hover{transform:translateY(-5px);border-color:var(--border-h);box-shadow:0 12px 36px rgba(124,58,237,.1)}
+        .feat-card:hover::after{opacity:1}
+        .feat-ic{width:48px;height:48px;border-radius:14px;background:rgba(124,58,237,.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
+        .feat-card h4{font-size:.95rem;margin-bottom:6px;font-weight:600}
+        .feat-card p{color:var(--muted);font-size:.84rem;line-height:1.6}
+
+        /* ── USE CASES ── */
+        .use-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+        .use-card{background:var(--bg-card);border-radius:var(--r);padding:28px 22px;border:1px solid var(--border);text-align:center;transition:all .4s;position:relative;overflow:hidden}
+        .use-card:hover{transform:translateY(-6px);border-color:var(--border-h);box-shadow:0 14px 40px rgba(124,58,237,.1)}
+        .use-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .4s}
+        .use-card:hover::after{opacity:1}
+        .use-ic{font-size:2.2rem;margin-bottom:14px;display:block}
+        .use-card h3{font-size:.95rem;margin-bottom:7px;font-weight:600}
+        .use-card p{color:var(--muted);font-size:.82rem;line-height:1.5}
+
+        /* ── PRICING ── */
+        .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+        .price-card{background:var(--bg-card);border-radius:var(--r);padding:44px 32px;border:1px solid var(--border);transition:all .4s;text-align:center;position:relative;overflow:hidden}
+        .price-card.pop{border-color:var(--accent);box-shadow:0 0 60px rgba(124,58,237,.08)}
+        .price-card.pop::before{content:'Популярный';position:absolute;top:20px;right:-28px;background:linear-gradient(135deg,var(--accent),var(--sky-light));color:#fff;padding:5px 44px;font-size:.72rem;font-weight:700;transform:rotate(45deg);letter-spacing:.05em;text-transform:uppercase}
+        .price-card:hover{transform:translateY(-7px);box-shadow:0 20px 60px rgba(124,58,237,.14)}
+        .price-card h3{font-size:1.3rem;margin-bottom:8px;font-weight:700}
+        .price-amt{font-size:2.6rem;font-weight:800;margin:18px 0 6px;background:linear-gradient(135deg,#fff,var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .price-per{color:var(--muted);font-size:.88rem;margin-bottom:28px;display:block}
+        .price-fl{list-style:none;text-align:left;margin-bottom:30px}
+        .price-fl li{padding:9px 0;color:var(--muted);font-size:.86rem;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:10px}
+        .price-fl li::before{content:'✓';color:var(--green-light);font-weight:700;flex-shrink:0}
+
+        /* ── FAQ ── */
+        .faq-list{max-width:760px;margin:0 auto}
+        .faq-item{border-bottom:1px solid rgba(255,255,255,.06)}
+        .faq-q{width:100%;background:none;border:none;color:var(--text);padding:22px 0;font-size:1.02rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Space Grotesk',sans-serif;transition:color .3s;gap:16px}
+        .faq-q:hover{color:var(--accent-2)}
+        .faq-arrow{font-size:1rem;transition:transform .4s;color:var(--accent);min-width:20px;text-align:center;flex-shrink:0}
+        .faq-item.active .faq-arrow{transform:rotate(180deg)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height .5s,padding .5s;color:var(--muted);font-size:.93rem;line-height:1.75}
+        .faq-item.active .faq-a{max-height:300px;padding-bottom:22px}
+
+        /* ── CONTACT ── */
+        .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+        .contact-info h2{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:16px;line-height:1.25;letter-spacing:-.02em}
+        .contact-info>p{color:var(--muted);margin-bottom:30px;font-size:1rem}
+        .contact-btns{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+        .contact-btns .btn{justify-content:center;font-size:.98rem;padding:16px 32px}
+        .contact-det{display:flex;flex-direction:column;gap:12px}
+        .contact-det a,.contact-det span{color:var(--muted);font-size:.92rem;display:flex;align-items:center;gap:10px}
+        .contact-det a:hover{color:var(--accent-2)}
+
+        /* ── FLOATING ── */
+        .float-wa{position:fixed;bottom:28px;right:28px;z-index:998;width:56px;height:56px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px var(--wa-glow);animation:wafloat 3s ease-in-out infinite;transition:transform .3s;text-decoration:none}
+        .float-wa:hover{transform:scale(1.12)}
+        @keyframes wafloat{0%,100%{box-shadow:0 6px 28px var(--wa-glow)}50%{box-shadow:0 6px 56px rgba(37,211,102,.45)}}
+        .float-wa svg{width:26px;height:26px;fill:#fff}
+        .scroll-top{position:fixed;bottom:28px;right:96px;z-index:997;width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--accent-2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;opacity:0;pointer-events:none;font-size:1.2rem;font-weight:700;font-family:inherit}
+        .scroll-top.show{opacity:1;pointer-events:auto}
+        .scroll-top:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-3px)}
+        .back-btn{position:fixed;bottom:28px;left:28px;z-index:997;background:rgba(0,8,18,.9);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:50px;padding:11px 22px;color:var(--muted);font-size:.84rem;font-weight:500;transition:all .3s;opacity:0;pointer-events:none;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+        .back-btn.show{opacity:1;pointer-events:auto}
+        .back-btn:hover{color:var(--accent-2);border-color:var(--accent)}
+
+        /* ── FOOTER ── */
+        .footer{background:var(--bg-alt);border-top:1px solid rgba(255,255,255,.05);padding:60px 0 28px}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer h4{font-size:.93rem;margin-bottom:16px;font-weight:600}
+        .footer p,.footer a{color:var(--muted);font-size:.86rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:10px}.footer-links a:hover{color:var(--accent-2)}
+        .footer-bot{text-align:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);color:var(--muted-2);font-size:.78rem}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:1100px){
+            .hero-main{grid-template-columns:1fr 340px;gap:32px}
+            .email-hero-wrap{width:320px}
+            .use-grid{grid-template-columns:repeat(2,1fr)}
+        }
+        @media(max-width:900px){
+            .feat-layout{grid-template-columns:1fr}.feat-visual{order:-1}.feat-art{max-width:100%}
+            .hero-main{grid-template-columns:1fr 280px;gap:24px}.email-hero-wrap{width:260px}
+            .contact-layout{grid-template-columns:1fr;gap:36px}
+            .demo-layout{grid-template-columns:1fr;gap:36px}.email-mock{max-width:100%}
+        }
+        @media(max-width:768px){
+            html,body{overflow-x:hidden;max-width:100vw}*{max-width:100vw}
+            section{padding:56px 0;overflow:hidden}
+            .container{padding:0 16px;max-width:100%;overflow:hidden}
+            .nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,8,18,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background-image:radial-gradient(ellipse at 50% 30%,rgba(59,130,246,.06),transparent 60%);flex-direction:column;justify-content:center;align-items:center;gap:28px;z-index:1000}
+            .nav.open{display:flex}.nav a{font-size:1.15rem}
+            .hd-btns{display:none}
+            .nav .nav-mob{display:flex;flex-direction:column;gap:12px;margin-top:20px;align-items:center}
+            .nav .nav-mob .btn{width:220px;justify-content:center}
+            .burger{display:flex}
+            .hero-main{grid-template-columns:1fr;padding:90px 16px 32px}
+            .hero{min-height:auto}.hero-right{display:none}
+            .hero h1{font-size:1.9rem}.hero-sub{font-size:.9rem}
+            .hero-btns{flex-direction:column;align-items:stretch;gap:10px}
+            .hero-btns .btn{justify-content:center;padding:14px 20px;white-space:normal;font-size:.9rem}
+            .hero-trust{gap:10px;flex-direction:column}.trust-item{font-size:.78rem}
+            .hero-badge{font-size:.78rem;padding:6px 14px}
+            .stats-grid{grid-template-columns:repeat(2,1fr);gap:16px}.stat-item h3{font-size:1.8rem}
+            .prob-grid{grid-template-columns:1fr}.prob-card{padding:24px 18px}
+            .feat-layout{grid-template-columns:1fr;gap:28px}.feat-art{padding:20px;max-width:100%}
+            .feat-grid{grid-template-columns:1fr}.feat-card{padding:22px 18px}
+            .process-grid{grid-template-columns:1fr;gap:20px}.process-arrow{display:none!important}
+            .use-grid{grid-template-columns:1fr}.use-card{padding:20px 16px}
+            .pricing-grid{grid-template-columns:1fr;max-width:100%}.price-card{padding:28px 20px}.price-amt{font-size:2.2rem}
+            .demo-layout{grid-template-columns:1fr;gap:24px}.email-mock{max-width:100%}
+            .faq-q{font-size:.93rem;padding:18px 0}
+            .contact-layout{grid-template-columns:1fr;gap:28px}.contact-layout>div:last-child{display:none}
+            .contact-btns{align-items:stretch}.contact-btns .btn{justify-content:center;font-size:.9rem;padding:14px 20px}
+            .contact-info h2{font-size:1.5rem}
+            .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+            .hd-inner{padding:12px 16px}.stitle{font-size:1.5rem}.ssub{font-size:.88rem;padding:0}
+            .ticker-wrap{display:none}
+            .float-wa{bottom:16px;right:16px;width:50px;height:50px}
+            .scroll-top{bottom:16px;right:74px;width:42px;height:42px;font-size:1rem}
+            .back-btn{bottom:16px;left:16px;font-size:.75rem;padding:8px 14px}
+            .fi,.fil,.fir{opacity:1;transform:none;transition:none}
+        }
+        @media(max-width:480px){
+            .hero h1{font-size:1.6rem}.hero-main{padding:84px 14px 28px}
+            .footer-grid{grid-template-columns:1fr}
+            .btn{white-space:normal;text-align:center;font-size:.87rem}
+            .prob-n{font-size:2.2rem}
+            .price-card.pop::before{top:14px;right:-32px;font-size:.65rem;padding:4px 40px}
+            .feat-stat-row{flex-direction:column;gap:10px}
+            .stats-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+        }
+        @media(max-width:360px){
+            .hero h1{font-size:1.4rem}.hero-sub{font-size:.85rem}
+            .container{padding:0 12px}.price-amt{font-size:1.8rem}
+            .btn{padding:12px 18px;font-size:.84rem}.stitle{font-size:1.3rem}.ssub{font-size:.84rem}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+            #neural-canvas{display:none !important}
+        }
+        /* PHOTO SHOWCASE */
+        .photo-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; overflow: hidden; margin: 0 }
+        .photo-split.rev .photo-img { order: 2 }
+        .photo-split.rev .photo-txt { order: 1 }
+        .photo-img { position: relative; overflow: hidden; min-height: 380px }
+        .photo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s }
+        .photo-img:hover img { transform: scale(1.04) }
+        .photo-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,116,255,.12), rgba(0,198,255,.06)); pointer-events: none }
+        .photo-txt { display: flex; flex-direction: column; justify-content: center; padding: 64px 60px; background: var(--bg-alt, #051228) }
+        .photo-txt .pt-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(0,116,255,.10); border: 1px solid rgba(0,116,255,.22); color: #7dd3fc; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; width: fit-content }
+        .photo-txt h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; line-height: 1.25; margin-bottom: 16px; color: #f0f8ff }
+        .photo-txt p { font-size: .97rem; color: #7aafd4; line-height: 1.75; max-width: 440px }
+        .photo-full { position: relative; height: 400px; overflow: hidden; margin: 0 }
+        .photo-full img { width: 100%; height: 100%; object-fit: cover; display: block }
+        .photo-full::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.7) 100%); pointer-events: none }
+        .photo-full-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px 48px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px }
+        .photo-full-cap h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 2vw, 1.7rem); font-weight: 800; color: #fff; max-width: 540px; margin: 0 }
+        .photo-full-cap span { flex-shrink: 0; padding: 10px 22px; border-radius: 50px; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: .83rem; font-weight: 600; white-space: nowrap }
+        @media (max-width: 768px) {
+            .photo-split { grid-template-columns: 1fr }
+            .photo-split.rev .photo-img { order: 0 }
+            .photo-split.rev .photo-txt { order: 0 }
+            .photo-img { min-height: 260px }
+            .photo-txt { padding: 36px 28px }
+            .photo-full { height: 280px }
+            .photo-full-cap { padding: 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px }
+        }
+        /* === UNIFIED ICON STYLE (matches main page solutions block) === */
+        .feat-ic, .niche-ic, .how-ic, .ben-ic, .prob-ic, .mod-ic, .use-ic,
+        .data-ic, .why-ic, .fmt-ic, .type-ic, .inc-ic, .process-ic,
+        .step-ic, .form-ic, .info-ic, .val-ic, .ch-ic, .sbar-ic {
+            width: 56px !important;
+            height: 56px !important;
+            min-width: 56px !important;
+            border-radius: 14px !important;
+            background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)) !important;
+            border: 1px solid rgba(0,116,255,.25) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 6px 22px rgba(0,116,255,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
+            font-size: 0 !important;
+            margin-bottom: 16px !important;
+            transition: all .35s !important;
+            padding: 0 !important;
+        }
+        .niche-ic { margin: 0 auto 14px !important }
+        .feat-ic svg, .niche-ic svg, .how-ic svg, .ben-ic svg, .prob-ic svg,
+        .mod-ic svg, .use-ic svg, .data-ic svg, .why-ic svg, .fmt-ic svg,
+        .type-ic svg, .inc-ic svg, .process-ic svg, .step-ic svg, .form-ic svg,
+        .info-ic svg, .val-ic svg, .ch-ic svg, .sbar-ic svg {
+            width: 28px !important;
+            height: 28px !important;
+            stroke: #00c6ff !important;
+            fill: none !important;
+            stroke-width: 1.7 !important;
+            stroke-linecap: round !important;
+            stroke-linejoin: round !important;
+            transition: stroke .35s !important;
+        }
+        .niche-card:hover .niche-ic, .feat-card:hover .feat-ic, .feat-item:hover .feat-ic,
+        .ben-card:hover .ben-ic, .how-card:hover .how-ic, .prob-card:hover .prob-ic,
+        .mod-card:hover .mod-ic, .use-card:hover .use-ic, .data-card:hover .data-ic,
+        .why-card:hover .why-ic, .fmt-card:hover .fmt-ic, .type-card:hover .type-ic,
+        .inc-card:hover .inc-ic, .process-card:hover .process-ic, .step:hover .step-ic {
+            transform: scale(1.08) translateY(-2px) !important;
+            border-color: rgba(0,198,255,.55) !important;
+            box-shadow: 0 12px 36px rgba(0,198,255,.28) !important;
+        }
+        .niche-card:hover .niche-ic svg, .feat-item:hover .feat-ic svg,
+        .ben-card:hover .ben-ic svg, .how-card:hover .how-ic svg,
+        .mod-card:hover .mod-ic svg, .use-card:hover .use-ic svg {
+            stroke: #fff !important;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="hd-inner">
+        <a href="index.html" class="logo"><img src="logo flowai.png" alt="FlowAi" class="logo-img"></a>
+        <nav class="nav" id="nav">
+            <a href="#demo">Пример</a>
+            <a href="#how">Как работает</a>
+            <a href="#features">Возможности</a>
+            <a href="#pricing">Цены</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Контакты</a>
+            <div class="nav-mob" style="display:none">
+                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">WhatsApp</a>
+                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Telegram</a>
+            </div>
+        </nav>
+        <div class="hd-btns">
+            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </a>
+            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Telegram</a>
+        </div>
+        <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <canvas id="neural-canvas"></canvas>
+    <div class="hero-mesh"></div>
+    <div class="hero-main">
+        <div class="hero-left">
+            <div class="hero-badge"><span class="live"></span> AI Research &bull; 2026</div>
+            <h1><span class="gtext">ИИ-исследователь</span><br>— анализирует рынок<br>и конкурентов за минуты</h1>
+            <p class="hero-sub">Отправьте запрос &mdash; получите готовое исследование с красивым HTML-оформлением на email. Переслать заказчику или партнёру &mdash; один клик.</p>
+            <div class="hero-btns">
+                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-pri">Попробовать бота</a>
+                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-sky">Бесплатная консультация</a>
+                <a href="#pricing" class="btn btn-o">Узнать стоимость</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item"><div class="trust-dot"></div>2 минуты на отчёт</div>
+                <div class="trust-item"><div class="trust-dot"></div>HTML-оформление</div>
+                <div class="trust-item"><div class="trust-dot"></div>24/7 без перерывов</div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="email-hero-wrap">
+                <div class="email-hero-glow"></div>
+                <div class="email-hero">
+                    <div class="eh-bar"><div class="eh-dot r"></div><div class="eh-dot y"></div><div class="eh-dot g"></div><span style="margin-left:8px">mail.google.com</span></div>
+                    <div class="eh-hdr">
+                        <div><span class="from">FlowAi Research Bot</span> <span class="to">&lt;research@flowai.kz&gt;</span></div>
+                        <div class="subj">Исследование: Рынок EV в Казахстане 2026</div>
+                    </div>
+                    <div class="eh-body">
+                        <h4>&#128202; Обзор рынка <span class="eh-tag eh-tag-v">AI Research</span></h4>
+                        <p>Рынок электромобилей в Казахстане показывает рост +68% к 2024.</p>
+                        <div class="eh-hl">Прогноз: к 2028 доля EV достигнет 8% от продаж новых авто.</div>
+                        <h4>&#128200; Ключевые цифры <span class="eh-tag eh-tag-s">Статистика</span></h4>
+                        <div class="eh-stat"><span class="lbl">Продажи 2025</span><span class="val">12 400 шт</span></div>
+                        <div class="eh-stat"><span class="lbl">Рост YoY</span><span class="val">+68%</span></div>
+                        <div class="eh-stat"><span class="lbl">ТОП бренд</span><span class="val">BYD (34%)</span></div>
+                        <h4>&#128161; Выводы <span class="eh-tag eh-tag-e">Рекомендации</span></h4>
+                        <ul>
+                            <li>Высокий потенциал роста</li>
+                            <li>Инфраструктура зарядок &mdash; барьер</li>
+                        </ul>
+                    </div>
+                    <div class="eh-footer"><span>FlowAi Research Bot</span><span class="time">2 мин назад</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span><span class="n">2 мин</span> &mdash; готовый отчёт</span>
+            <span><span class="n">HTML</span> &mdash; красивое оформление</span>
+            <span><span class="n">Email</span> &mdash; автоматическая отправка</span>
+            <span><span class="n">AI</span> &mdash; глубокий анализ</span>
+            <span><span class="n">1 клик</span> &mdash; переслать заказчику</span>
+            <span><span class="n">24/7</span> &mdash; работает всегда</span>
+            <span><span class="n">2 мин</span> &mdash; готовый отчёт</span>
+            <span><span class="n">HTML</span> &mdash; красивое оформление</span>
+            <span><span class="n">Email</span> &mdash; автоматическая отправка</span>
+            <span><span class="n">AI</span> &mdash; глубокий анализ</span>
+            <span><span class="n">1 клик</span> &mdash; переслать заказчику</span>
+            <span><span class="n">24/7</span> &mdash; работает всегда</span>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item fi"><h3><span class="counter" data-target="2">0</span> мин</h3><p>Среднее время отчёта</p></div>
+            <div class="stat-item fi"><h3><span class="counter" data-target="500">0</span>+</h3><p>Тем для исследований</p></div>
+            <div class="stat-item fi"><h3>24/7</h3><p>Работает без перерывов</p></div>
+            <div class="stat-item fi"><h3>HTML</h3><p>Красивое оформление</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- DEMO EMAIL -->
+<section class="salt" id="demo">
+    <div class="container">
+        <h2 class="stitle fi">Как выглядит <span class="gtext">исследование</span></h2>
+        <p class="ssub fi">Вы отправляете запрос &mdash; через 2 минуты на email приходит готовый отчёт</p>
+        <div class="demo-layout">
+            <div class="email-mock fil">
+                <div class="email-bar"><div class="email-dot r"></div><div class="email-dot y"></div><div class="email-dot g"></div><span class="email-subj">mail.google.com</span></div>
+                <div class="email-hdr">
+                    <div><span class="from">FlowAi Research Bot</span> <span class="to">&lt;research@flowai.kz&gt;</span></div>
+                    <div class="subj">Исследование: Рынок электромобилей в Казахстане 2026</div>
+                </div>
+                <div class="email-body">
+                    <h3>&#128202; Обзор рынка <span class="tag tag-v">AI Research</span></h3>
+                    <p>Рынок электромобилей в Казахстане показывает устойчивый рост. За 2025 год продано 12 400 электромобилей (+68% к 2024).</p>
+                    <div class="highlight">Прогноз: к 2028 году доля EV достигнет 8% от всех продаж новых автомобилей в РК.</div>
+                    <h3>&#128200; Ключевые цифры <span class="tag tag-s">Статистика</span></h3>
+                    <div class="stat-row"><span class="stat-lbl">Продажи 2025</span><span class="stat-val">12 400 шт</span></div>
+                    <div class="stat-row"><span class="stat-lbl">Рост YoY</span><span class="stat-val">+68%</span></div>
+                    <div class="stat-row"><span class="stat-lbl">Средняя цена</span><span class="stat-val">14.2 млн ₸</span></div>
+                    <div class="stat-row"><span class="stat-lbl">ТОП бренд</span><span class="stat-val">BYD (34%)</span></div>
+                    <h3>&#128161; Выводы <span class="tag tag-e">Рекомендации</span></h3>
+                    <ul>
+                        <li>Рынок на стадии раннего роста &mdash; высокий потенциал</li>
+                        <li>Инфраструктура зарядок &mdash; основной барьер</li>
+                        <li>Гос. субсидии стимулируют спрос</li>
+                    </ul>
+                </div>
+                <div class="email-footer"><span>FlowAi Research Bot</span><span class="time">2 мин назад</span></div>
+            </div>
+            <div class="demo-txt fir">
+                <h3>Запрос в боте &#8594; <span style="color:var(--accent-2)">отчёт на email</span></h3>
+                <p>Напишите боту короткий запрос: &laquo;Рынок электромобилей в Казахстане&raquo; &mdash; и через 2 минуты на вашу почту придёт готовое исследование с графиками, цифрами и выводами.</p>
+                <ul class="demo-fl">
+                    <li>Красивое HTML-оформление &mdash; можно сразу переслать</li>
+                    <li>Структура: обзор, статистика, тренды, выводы</li>
+                    <li>Источники и ссылки на данные</li>
+                    <li>Отправка на любой email за секунды</li>
+                    <li>Один клик &mdash; переслать заказчику или партнёру</li>
+                    <li>Работает 24/7 по любым темам</li>
+                </ul>
+                <div style="margin-top:24px"><a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-pri">Попробовать сейчас</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+    <div class="container">
+        <h2 class="stitle fi">Как это <span class="gtext">работает</span></h2>
+        <p class="ssub fi">Три шага &mdash; от запроса до готового исследования на email</p>
+        <div class="process-grid">
+            <div class="process-card fi">
+                <div class="process-num">1</div>
+                <h3>Отправьте запрос</h3>
+                <p>Напишите боту в Telegram тему исследования. Коротко: &laquo;Рынок доставки еды в Астане&raquo; или &laquo;Тренды EdTech 2026&raquo;.</p>
+                <span class="process-arrow">&#8594;</span>
+            </div>
+            <div class="process-card fi">
+                <div class="process-num">2</div>
+                <h3>AI анализирует</h3>
+                <p>Бот собирает информацию, анализирует данные, формирует структурированный отчёт с цифрами и выводами.</p>
+                <span class="process-arrow">&#8594;</span>
+            </div>
+            <div class="process-card fi">
+                <div class="process-num">3</div>
+                <h3>Отчёт на email</h3>
+                <p>Через 2 минуты на вашу почту приходит красиво оформленный HTML-отчёт. Переслать заказчику &mdash; один клик.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="photo-split">
+    <div class="photo-img">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&h=700&fit=crop&q=85" alt="Аналитик изучает отчёты и данные за рабочим столом" loading="lazy">
+    </div>
+    <div class="photo-txt">
+        <div class="pt-badge">Исследование за минуты</div>
+        <h3>Бот анализирует десятки источников и даёт структурированный отчёт</h3>
+        <p>Вместо того чтобы часами читать статьи и отчёты, задайте вопрос боту. Он просмотрит актуальные источники и предоставит выжимку с ключевыми выводами.</p>
+    </div>
+</div>
+
+
+<!-- PROBLEMS -->
+<section class="salt" id="problems">
+    <div class="container">
+        <h2 class="stitle fi">Какие <span class="gtext">проблемы</span> решает</h2>
+        <p class="ssub fi">Исследования отнимают часы и дни &mdash; AI делает это за минуты</p>
+        <div class="prob-grid">
+            <div class="prob-card fi"><div class="prob-n">01</div><h3>Исследование = часы работы</h3><p>Поиск информации, анализ, структурирование, оформление &mdash; минимум 4&ndash;8 часов. AI-бот делает это за 2 минуты.</p></div>
+            <div class="prob-card fi"><div class="prob-n">02</div><h3>Некрасивая подача</h3><p>Текст в Word или Google Docs выглядит скучно. HTML-отчёт от бота &mdash; с типографикой, цветами и структурой &mdash; готов к отправке клиенту.</p></div>
+            <div class="prob-card fi"><div class="prob-n">03</div><h3>Нет под рукой аналитика</h3><p>Нужен быстрый анализ для встречи, презентации или тендера? Бот &mdash; ваш персональный аналитик. Работает 24/7.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+    <div class="container">
+        <h2 class="stitle fi">Возможности <span class="gtext">AI-бота</span></h2>
+        <p class="ssub fi">Не просто текст &mdash; структурированное исследование с оформлением</p>
+
+        <!-- Dashboard visualization -->
+        <div class="feat-layout fi" style="margin-bottom:56px">
+            <div class="feat-visual">
+                <div class="feat-art">
+                    <div class="feat-art-title"><span></span> AI Research Dashboard</div>
+                    <div class="feat-stat-row">
+                        <div class="feat-stat"><div class="val v">2 мин</div><p>Время отчёта</p></div>
+                        <div class="feat-stat"><div class="val g">98%</div><p>Точность данных</p></div>
+                        <div class="feat-stat"><div class="val s">24/7</div><p>Доступность</p></div>
+                    </div>
+                    <div class="feat-bar-row">
+                        <div><div class="feat-bar-label"><span>Скорость анализа</span><span>95%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:95%"></div></div></div>
+                        <div><div class="feat-bar-label"><span>Качество оформления</span><span>99%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:99%"></div></div></div>
+                        <div><div class="feat-bar-label"><span>Покрытие тем</span><span>90%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:90%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="font-size:1.5rem;margin-bottom:16px;line-height:1.3">Аналитика <span class="gtext">нового уровня</span></h3>
+                <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:14px">AI-бот анализирует данные из множества источников и формирует структурированный отчёт с цифрами, графиками и рекомендациями.</p>
+                <p style="color:var(--muted);font-size:1rem;line-height:1.7">Результат &mdash; красивый HTML-документ, который не стыдно переслать клиенту или инвестору.</p>
+            </div>
+        </div>
+
+        <div class="feat-grid">
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h4>Глубокий анализ</h4><p>AI изучает тему, находит данные, статистику, тренды и формирует выводы с рекомендациями</p></div>
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h4>HTML-оформление</h4><p>Красивый отчёт с типографикой, цветными блоками, таблицами и структурой &mdash; не стыдно отправить клиенту</p></div>
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4>Автоотправка на email</h4><p>Отчёт приходит на вашу почту автоматически. Переслать заказчику или партнёру &mdash; один Forward</p></div>
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h4>2 минуты</h4><p>Полноценное исследование готово через 2 минуты после отправки запроса. Вместо часов ручной работы</p></div>
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><h4>Любая тема</h4><p>Рынки, конкуренты, технологии, тренды, аналитика регионов &mdash; бот работает по любому вопросу</p></div>
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Структура отчёта</h4><p>Обзор, ключевые цифры, анализ трендов, конкуренты, выводы и рекомендации &mdash; всё по шаблону</p></div>
+        </div>
+    </div>
+</section>
+<div class="photo-full">
+    <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=1400&h=500&fit=crop&q=85" alt="Библиотека с рядами книг и документов" loading="lazy">
+    <div class="photo-full-cap">
+        <h3>Весь интернет как ваш личный аналитик</h3>
+        <span>AI Research Bot</span>
+    </div>
+</div>
+
+
+<!-- USE CASES -->
+<section class="salt" id="usecases">
+    <div class="container">
+        <h2 class="stitle fi">Кому <span class="gtext">полезен</span></h2>
+        <p class="ssub fi">От предпринимателя до аналитика &mdash; AI-исследования экономят время каждому</p>
+        <div class="use-grid">
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><h3>Руководители</h3><p>Быстрый анализ рынка перед решением</p></div>
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><h3>Маркетологи</h3><p>Исследование конкурентов и трендов</p></div>
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><h3>Инвесторы</h3><p>Анализ ниш и рынков для инвестиций</p></div>
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><h3>Стартапы</h3><p>Валидация идеи и анализ рынка</p></div>
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><h3>Студенты</h3><p>Исследования для курсовых и дипломных</p></div>
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span><h3>Юристы</h3><p>Анализ регуляторной среды</p></div>
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/></svg></span><h3>Тендеры</h3><p>Быстрая аналитика для заявки</p></div>
+            <div class="use-card fi"><span class="use-ic"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><h3>Консалтинг</h3><p>Отчёты для клиентов за минуты</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+    <div class="container">
+        <h2 class="stitle fi">Тарифы <span class="gtext">AI Research</span></h2>
+        <p class="ssub fi">Выберите подходящий формат</p>
+        <div class="pricing-grid">
+            <div class="price-card fi">
+                <h3>Поддержка</h3>
+                <div class="price-amt">от 10 000 ₸</div>
+                <span class="price-per">в месяц</span>
+                <ul class="price-fl"><li>Мониторинг работы бота</li><li>Исправление сбоев</li><li>Обновления AI-модели</li><li>Консультации</li><li>Реакция до 2 часов</li></ul>
+                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-o" style="width:100%;justify-content:center">Подключить</a>
+            </div>
+            <div class="price-card pop fi">
+                <h3>Аренда</h3>
+                <div class="price-amt">от 20 000 ₸</div>
+                <span class="price-per">в месяц</span>
+                <ul class="price-fl"><li>Готовый AI Research бот</li><li>Неограниченные запросы</li><li>HTML-оформление отчётов</li><li>Отправка на email</li><li>Поддержка включена</li><li>Запуск за 1&ndash;2 дня</li></ul>
+                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-pri" style="width:100%;justify-content:center">Начать аренду</a>
+            </div>
+            <div class="price-card fi">
+                <h3>Разработка</h3>
+                <div class="price-amt">от 200 000 ₸</div>
+                <span class="price-per">единоразово</span>
+                <ul class="price-fl"><li>Кастомная разработка</li><li>Бот ваш навсегда</li><li>Кастомные шаблоны отчётов</li><li>Брендирование</li><li>API-интеграции</li><li>30 дней поддержки</li></ul>
+                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-sky" style="width:100%;justify-content:center">Заказать</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="salt" id="faq">
+    <div class="container">
+        <h2 class="stitle fi">Частые <span class="gtext">вопросы</span></h2>
+        <div class="faq-list">
+            <div class="faq-item fi"><button class="faq-q">Насколько точны исследования?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">AI использует актуальные данные из открытых источников. Точность зависит от темы &mdash; для рыночной аналитики, трендов и обзоров результат сопоставим с работой junior-аналитика. Рекомендуем проверять критичные цифры.</div></div>
+            <div class="faq-item fi"><button class="faq-q">На какие темы можно делать исследования?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Практически любые: рынки, конкуренты, технологии, регионы, отрасли, тренды, регуляторика. Бот работает с текстовыми запросами на русском и английском языках.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Можно ли кастомизировать шаблон отчёта?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да &mdash; при кастомной разработке. Ваш логотип, цвета бренда, структура отчёта, блоки &mdash; всё настраивается. Отчёт будет выглядеть как от вашей компании.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Как быстро приходит отчёт?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Среднее время &mdash; 2 минуты. Зависит от сложности темы: простой обзор &mdash; 1 минута, глубокое исследование &mdash; до 3&ndash;4 минут.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Можно переслать отчёт клиенту?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да &mdash; HTML-оформление сохраняется при пересылке. Клиент получит красивый отчёт с типографикой, таблицами и цветовыми блоками. Выглядит профессионально.</div></div>
+        </div>
+    </div>
+</section>
+<div class="photo-split rev">
+    <div class="photo-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=700&fit=crop&q=85" alt="Исследователь работает с несколькими мониторами с данными" loading="lazy">
+    </div>
+    <div class="photo-txt">
+        <div class="pt-badge">Конкурентная разведка</div>
+        <h3>Мониторьте рынок, конкурентов и тренды в реальном времени</h3>
+        <p>Кто что запустил, какие цены у конкурентов, что пишут клиенты в отзывах — AI Research Bot собирает всё это по вашему запросу и структурирует в удобный отчёт.</p>
+    </div>
+</div>
+
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-layout">
+            <div class="contact-info fi">
+                <h2>Готовы получать <span class="gtext">исследования</span> за минуты?</h2>
+                <p>Покажем демо &mdash; отправим реальный отчёт на ваш email. Бесплатно.</p>
+                <div class="contact-btns">
+                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-pri">Написать в Telegram</a>
+                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
+                </div>
+                <div class="contact-det">
+                    <span>&#128205; г. Астана, пр. Республики, д. 68</span>
+                    <a href="tel:+77787806540">&#128222; +7 778 780 65 40</a>
+                    <a href="https://flowai.kz">&#127760; flowai.kz</a>
+                </div>
+            </div>
+            <div class="fir" style="text-align:center">
+                <svg width="260" height="260" viewBox="0 0 260 260" fill="none" style="opacity:.5">
+                    <circle cx="130" cy="130" r="100" stroke="url(#cg5)" stroke-width="1" fill="none" opacity=".15"/>
+                    <circle cx="130" cy="130" r="65" stroke="url(#cg5)" stroke-width="1.5" fill="none" opacity=".2"/>
+                    <circle cx="130" cy="130" r="10" fill="#7C3AED" opacity=".8"/>
+                    <rect x="95" y="55" width="70" height="5" rx="2" fill="#A78BFA" opacity=".3"/>
+                    <rect x="105" y="65" width="50" height="3" rx="1.5" fill="#38BDF8" opacity=".2"/>
+                    <rect x="100" y="73" width="60" height="3" rx="1.5" fill="#A78BFA" opacity=".15"/>
+                    <line x1="130" y1="82" x2="130" y2="120" stroke="#7C3AED" stroke-width=".5" opacity=".2"/>
+                    <rect x="60" y="180" width="55" height="4" rx="2" fill="#38BDF8" opacity=".25"/>
+                    <rect x="65" y="188" width="45" height="3" rx="1.5" fill="#A78BFA" opacity=".15"/>
+                    <line x1="87" y1="175" x2="120" y2="140" stroke="#38BDF8" stroke-width=".4" opacity=".15"/>
+                    <rect x="155" y="175" width="55" height="4" rx="2" fill="#34D399" opacity=".25"/>
+                    <rect x="160" y="183" width="45" height="3" rx="1.5" fill="#A78BFA" opacity=".15"/>
+                    <line x1="182" y1="172" x2="140" y2="140" stroke="#34D399" stroke-width=".4" opacity=".15"/>
+                    <circle cx="75" cy="105" r="3" fill="#38BDF8" opacity=".4"/><line x1="78" y1="105" x2="120" y2="130" stroke="#38BDF8" stroke-width=".4" opacity=".15"/>
+                    <circle cx="195" cy="110" r="3" fill="#A78BFA" opacity=".4"/><line x1="192" y1="110" x2="140" y2="130" stroke="#A78BFA" stroke-width=".4" opacity=".15"/>
+                    <defs><linearGradient id="cg5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#38BDF8"/></linearGradient></defs>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FLOATING ELEMENTS -->
+<a href="https://wa.me/77787806540" target="_blank" class="float-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="scroll-top" id="scrollTop" aria-label="Наверх">&#8593;</button>
+<a href="https://flowai.kz" class="back-btn" id="backBtn">&#8592; На главную</a>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div><h4 style="font-size:1.2rem;margin-bottom:10px"><span class="gtext" style="font-weight:800">FlowAi</span></h4><p>AI-бот Исследование &mdash; автоматические отчёты и аналитика за минуты.</p></div>
+            <div><h4>Навигация</h4><ul class="footer-links"><li><a href="#how">Как работает</a></li><li><a href="#features">Возможности</a></li><li><a href="#pricing">Тарифы</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+            <div><h4>Связаться</h4><ul class="footer-links"><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="tel:+77787806540">+7 778 780 65 40</a></li></ul></div>
+            <div><h4>Адрес</h4><p>&#128205; г. Астана, пр. Республики, д. 68</p><p style="margin-top:10px"><a href="https://flowai.kz">&#127760; FlowAi.kz</a></p></div>
+        </div>
+        <div class="footer-bot">&copy; 2024&ndash;2026 FlowAi.kz &mdash; AI Research Bot. Все права защищены.</div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    var isMobile=window.innerWidth<768;
+    var canvas=document.getElementById('neural-canvas');
+    if(!isMobile&&canvas){
+        var ctx=canvas.getContext('2d');var pts=[];var N=40,D=110;
+        function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+        resize();addEventListener('resize',function(){resize();isMobile=innerWidth<768});
+        for(var i=0;i<N;i++)pts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.5+.5});
+        (function draw(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            for(var i=0;i<pts.length;i++){
+                var a=pts[i];a.x+=a.vx;a.y+=a.vy;
+                if(a.x<0||a.x>canvas.width)a.vx*=-1;if(a.y<0||a.y>canvas.height)a.vy*=-1;
+                ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='rgba(124,58,237,.3)';ctx.fill();
+                for(var j=i+1;j<pts.length;j++){
+                    var b=pts[j],dx=a.x-b.x,dy=a.y-b.y,dd=Math.sqrt(dx*dx+dy*dy);
+                    if(dd<D){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(124,58,237,'+(0.06*(1-dd/D))+')';ctx.lineWidth=.5;ctx.stroke()}
+                }
+            }
+            requestAnimationFrame(draw);
+        })();
+    }
+
+    // Reveal animations
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});
+    document.querySelectorAll('.fi,.fil,.fir').forEach(function(el){obs.observe(el)});
+
+    // Counter animation
+    var co=new IntersectionObserver(function(entries){entries.forEach(function(e){
+        if(e.isIntersecting&&!e.target.dataset.d){e.target.dataset.d='1';var t=+e.target.dataset.target,c=0,s=t/60;
+        var iv=setInterval(function(){c+=s;if(c>=t){c=t;clearInterval(iv)}e.target.textContent=Math.round(c)},25)}
+    })},{threshold:.5});
+    document.querySelectorAll('.counter').forEach(function(el){co.observe(el)});
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){
+        var item=btn.parentElement,isOpen=item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('active')});
+        if(!isOpen)item.classList.add('active');
+    })});
+
+    // Burger menu
+    var burger=document.getElementById('burger'),nav=document.getElementById('nav'),mobBtns=nav.querySelector('.nav-mob');
+    burger.addEventListener('click',function(){burger.classList.toggle('open');nav.classList.toggle('open');if(mobBtns)mobBtns.style.display=nav.classList.contains('open')?'flex':'none'});
+    nav.querySelectorAll('a:not(.btn)').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');nav.classList.remove('open');if(mobBtns)mobBtns.style.display='none'})});
+
+    // Scroll events
+    var header=document.getElementById('header'),backBtn=document.getElementById('backBtn'),scrollTopBtn=document.getElementById('scrollTop');
+    addEventListener('scroll',function(){var s=scrollY;header.classList.toggle('scrolled',s>60);backBtn.classList.toggle('show',s>300);scrollTopBtn.classList.toggle('show',s>300)});
+    scrollTopBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>

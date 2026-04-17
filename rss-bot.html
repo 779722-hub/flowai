@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS автопостинг бот | Автоматические публикации в Telegram — FlowAi KZ</title>
+    <meta name="description" content="RSS-бот автоматически публикует контент из любых источников в ваши Telegram-каналы. Фильтры, расписание, AI-рерайт. Для медиа и бизнеса Казахстана и СНГ.">
+    <meta name="keywords" content="rss бот казахстан, автопостинг телеграм, rss для телеграм канала, автоматические публикации, контент автоматизация казахстан, telegram rss bot">
+    <meta property="og:title" content="RSS-бот: ваш канал публикует контент сам — FlowAi">
+    <meta property="og:description" content="Забудьте о ручном копировании новостей. RSS-бот мониторит источники и публикует в ваш Telegram-канал автоматически. Фильтры + ИИ-рерайт. Попробуйте!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flowai.kz/rss-bot.html">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flowai.kz/rss-bot.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"LocalBusiness","name":"FlowAi","description":"RSS-бот с автопостингом в Telegram-канал. Автоматизация контента с ИИ для бизнеса в Казахстане","url":"https://flowai.kz","telephone":"+77787806540","address":{"@type":"PostalAddress","streetAddress":"пр. Республики, д. 68","addressLocality":"Астана","addressCountry":"KZ"},"areaServed":["Казахстан","СНГ"],"priceRange":"от 10 000 ₸","sameAs":["https://t.me/FlowAItest_bot","https://wa.me/77787806540"]}
+    </script>
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#000812;--bg-alt:#060f1e;--bg-card:#0a1628;
+            --rss:#3B9EFF;--rss-light:#50B4FF;--rss-glow:rgba(59,158,255,.25);
+            --accent:#50B4FF;--accent-2:#7DD3FC;--accent-3:#BAE6FD;
+            --tg:#2AABEE;--tg-dark:#1E96D1;--tg-glow:rgba(42,171,238,.25);
+            --wa:#25D366;--wa-glow:rgba(37,211,102,.25);
+            --green:#059669;--green-light:#10B981;--green-glow:rgba(5,150,105,.2);
+            --orange:#EA580C;--orange-light:#F97316;
+            --text:#fff;--muted:#8fa3bf;--muted-2:#4a6080;
+            --border:rgba(59,158,255,.12);--border-h:rgba(59,158,255,.3);
+            --r:18px;--rs:12px
+        }
+        html{scroll-behavior:smooth;overflow-x:hidden}
+        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;overflow-wrap:break-word}
+        h1,h2,h3{font-family:'Space Grotesk','Inter',sans-serif}
+        a{color:var(--accent-2);text-decoration:none;transition:color .3s}a:hover{color:var(--accent-3)}
+        .container{max-width:1200px;margin:0 auto;padding:0 28px}
+        .gtext{background:linear-gradient(135deg,var(--rss),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+        /* -- BUTTONS -- */
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font-weight:600;font-size:.95rem;font-family:'Inter',sans-serif;transition:all .35s;cursor:pointer;border:none;text-decoration:none;white-space:nowrap;touch-action:manipulation}
+        .btn-tg{background:linear-gradient(135deg,var(--tg),var(--tg-dark));color:#fff;box-shadow:0 4px 24px var(--tg-glow);animation:tgpulse 3s ease-in-out infinite}
+        .btn-tg:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(42,171,238,.5);color:#fff}
+        @keyframes tgpulse{0%,100%{box-shadow:0 4px 24px var(--tg-glow)}50%{box-shadow:0 4px 50px rgba(42,171,238,.45)}}
+        .btn-rss{background:linear-gradient(135deg,var(--rss),var(--accent-2));color:#0a1628;font-weight:700;box-shadow:0 4px 24px var(--rss-glow)}
+        .btn-rss:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(59,158,255,.4);color:#0a1628}
+        .btn-wa{background:linear-gradient(135deg,var(--wa),#1eb854);color:#fff;box-shadow:0 4px 20px var(--wa-glow)}
+        .btn-wa:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(37,211,102,.35);color:#fff}
+        .btn-o{background:transparent;color:var(--text);border:2px solid rgba(255,255,255,.12)}
+        .btn-o:hover{border-color:var(--rss);color:var(--rss);transform:translateY(-3px)}
+
+        /* -- HEADER -- */
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,8,18,.6);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:all .4s}
+        .header.scrolled{background:rgba(0,8,18,.96);box-shadow:0 4px 40px rgba(0,0,0,.5)}
+        .hd-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:14px 28px}
+        .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;text-decoration:none;flex-shrink:0}
+        .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--rss),var(--accent-2));border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--rss-glow);flex-shrink:0}
+        .logo-icon svg{width:22px;height:22px;fill:#fff}
+        .nav{display:flex;align-items:center;gap:28px}
+        .nav a{color:var(--muted);font-size:.87rem;font-weight:500;transition:color .3s}.nav a:hover{color:#fff}
+        .hd-btns{display:flex;gap:8px}
+        .hd-btns .btn{padding:9px 20px;font-size:.83rem}
+        .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:1002}
+        .burger span{display:block;width:24px;height:2px;background:#fff;transition:.3s;border-radius:2px}
+        .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .burger.open span:nth-child(2){opacity:0}
+        .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+        /* -- HERO -- */
+        .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:stretch;overflow:hidden}
+        #neural-canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.2;pointer-events:none}
+        .hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(59,158,255,.1) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 30%,rgba(125,211,252,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 60% 80%,rgba(5,150,105,.04) 0%,transparent 60%);pointer-events:none}
+        .hero-main{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 460px;gap:48px;align-items:center;max-width:1200px;margin:0 auto;padding:92px 28px 60px;width:100%}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;background:rgba(59,158,255,.08);border:1px solid rgba(59,158,255,.18);font-size:.83rem;color:var(--accent-2);margin-bottom:28px;font-weight:500}
+        .hero-badge .live{width:8px;height:8px;border-radius:50%;background:var(--green-light);animation:pd 2s ease-in-out infinite;flex-shrink:0}
+        @keyframes pd{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+        .hero h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px}
+        .hero-sub{font-size:clamp(.95rem,1.6vw,1.12rem);color:var(--muted);line-height:1.75;margin-bottom:36px;max-width:520px}
+        .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+        .hero-trust{display:flex;gap:24px;flex-wrap:wrap}
+        .trust-item{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.83rem;font-weight:500}
+        .trust-dot{width:6px;height:6px;border-radius:50%;background:var(--accent-2);flex-shrink:0}
+
+        /* Phone mockup */
+        .hero-right{display:flex;align-items:center;justify-content:center}
+        .phone-wrap{position:relative;width:280px;animation:float 6s ease-in-out infinite}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+        .phone-glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(59,158,255,.18),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+        .phone-frame{width:100%;background:#0d1f35;border-radius:36px;border:2px solid rgba(59,158,255,.25);box-shadow:0 0 0 1px rgba(59,158,255,.08),0 30px 80px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.03);overflow:hidden;position:relative}
+        .phone-notch{width:100px;height:26px;background:#000812;border-radius:0 0 18px 18px;margin:0 auto}
+        .phone-tg-hdr{background:linear-gradient(135deg,#1c2b3a,#213243);padding:12px 14px;display:flex;align-items:center;gap:10px}
+        .p-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--rss),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.7rem;flex-shrink:0;color:#fff}
+        .p-nm{font-size:.83rem;font-weight:600}.p-st{font-size:.68rem;color:var(--rss)}
+        .phone-msgs{padding:10px;background:#0e1621;min-height:280px;display:flex;flex-direction:column;gap:6px}
+        .pm{max-width:88%;padding:8px 10px;border-radius:10px;font-size:.7rem;line-height:1.4}
+        .pm-b{background:#1c2b3a;align-self:flex-start;border-bottom-left-radius:3px}
+        .pm-t{font-size:.55rem;color:rgba(255,255,255,.3);text-align:right;margin-top:2px}
+        .pm .bl{color:var(--accent-2)}.pm .gr{color:var(--green-light)}
+        .phone-inp{background:#1c2b3a;padding:8px 12px;display:flex;align-items:center;gap:8px}
+        .inp-field{flex:1;background:rgba(255,255,255,.05);border-radius:20px;padding:6px 12px;font-size:.7rem;color:var(--muted)}
+        .inp-send{width:28px;height:28px;border-radius:50%;background:var(--tg);display:flex;align-items:center;justify-content:center}
+
+        /* Ticker */
+        .ticker-wrap{position:relative;z-index:2;overflow:hidden;border-top:1px solid rgba(255,255,255,.05);padding:14px 0;background:rgba(0,8,18,.4)}
+        .ticker{display:flex;gap:56px;animation:tick 25s linear infinite;white-space:nowrap}
+        .ticker span{color:var(--muted);font-size:.85rem;font-weight:500;flex-shrink:0}
+        .ticker .n{color:var(--accent-2);font-weight:700}
+        @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        /* -- SECTIONS -- */
+        section{padding:100px 0}
+        .salt{background:var(--bg-alt)}
+        .stitle{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:-.02em}
+        .ssub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 56px;font-size:1rem;line-height:1.7}
+        .fi{opacity:0;transform:translateY(36px);transition:opacity .75s,transform .75s}.fi.v{opacity:1;transform:translateY(0)}
+        .fil{opacity:0;transform:translateX(-44px);transition:all .75s}.fil.v{opacity:1;transform:translateX(0)}
+        .fir{opacity:0;transform:translateX(44px);transition:all .75s}.fir.v{opacity:1;transform:translateX(0)}
+
+        /* -- STATS -- */
+        .stats-bar{padding:52px 0;background:linear-gradient(135deg,rgba(59,158,255,.06),rgba(5,150,105,.03));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+        .stat-item h3{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;background:linear-gradient(135deg,var(--rss),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .stat-item p{color:var(--muted);font-size:.87rem;margin-top:6px}
+
+        /* -- DEMO -- */
+        .demo-layout{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:56px;align-items:center}
+        .chat-window{background:#0e1621;border-radius:22px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 0 1px rgba(59,158,255,.08);width:100%;max-width:420px}
+        .chat-hdr{background:linear-gradient(135deg,#1c2b3a,#213243);padding:14px 18px;display:flex;align-items:center;gap:12px}
+        .chat-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--rss),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#fff;flex-shrink:0}
+        .chat-nm{font-weight:600;font-size:.95rem;color:#fff}.chat-st{font-size:.73rem;color:var(--rss)}
+        .chat-msgs{padding:18px;min-height:400px;display:flex;flex-direction:column;gap:10px;background:#0e1621}
+        .msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:.84rem;line-height:1.55;opacity:0;transform:translateY(10px);transition:all .4s}
+        .msg.show{opacity:1;transform:translateY(0)}
+        .msg-u{background:rgba(59,158,255,.08);border:1px solid rgba(59,158,255,.15);align-self:flex-end;border-bottom-right-radius:4px;color:var(--accent-3)}
+        .msg-b{background:#1c2b3a;align-self:flex-start;border-bottom-left-radius:4px}
+        .msg-b .lbl{color:var(--accent-2);font-weight:600;display:block;margin-bottom:4px;font-size:.85rem}
+        .msg-b .gr{color:var(--green-light)}.msg-b .bl{color:var(--accent-2)}
+        .msg-t{font-size:.65rem;color:rgba(255,255,255,.3);text-align:right;margin-top:4px}
+        .typing{display:flex;gap:4px;padding:12px 16px;background:#1c2b3a;border-radius:12px;align-self:flex-start;opacity:0;transition:opacity .3s}
+        .typing.show{opacity:1}
+        .td{width:6px;height:6px;border-radius:50%;background:var(--accent-2);animation:tb 1.4s infinite}
+        .td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+        @keyframes tb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+        .demo-txt h3{font-size:1.6rem;margin-bottom:18px;line-height:1.3}
+        .demo-txt p{color:var(--muted);font-size:1rem;margin-bottom:14px;line-height:1.7}
+        .demo-fl{list-style:none;margin-top:22px}
+        .demo-fl li{padding:9px 0;color:var(--muted);font-size:.93rem;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
+        .demo-fl li::before{content:'\2713';color:var(--green-light);font-weight:700;flex-shrink:0}
+
+        /* -- HOW IT WORKS -- */
+        .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .how-card{background:var(--bg-card);border-radius:var(--r);padding:30px;border:1px solid var(--border);text-align:center;transition:all .4s}
+        .how-card:hover{transform:translateY(-5px);border-color:var(--border-h);box-shadow:0 12px 30px rgba(59,158,255,.1)}
+        .how-ic{font-size:2.4rem;margin-bottom:14px;display:block}
+        .how-card h3{font-size:1rem;margin-bottom:8px;font-weight:600;color:var(--accent-2)}
+        .how-card p{color:var(--muted);font-size:.85rem;line-height:1.6}
+
+        /* -- PROBLEMS -- */
+        .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .prob-card{background:var(--bg-card);border-radius:var(--r);padding:36px 32px;border:1px solid rgba(234,88,12,.08);transition:all .4s;position:relative;overflow:hidden}
+        .prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:.3}
+        .prob-card:hover{transform:translateY(-5px);border-color:rgba(234,88,12,.2);box-shadow:0 16px 48px rgba(0,0,0,.3)}
+        .prob-n{font-size:3rem;font-weight:800;color:rgba(234,88,12,.08);line-height:1;margin-bottom:16px}
+        .prob-card h3{font-size:1.1rem;margin-bottom:12px;font-weight:600;line-height:1.4}
+        .prob-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
+
+        /* -- FEATURES -- */
+        .feat-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+        .feat-visual{position:relative;display:flex;align-items:center;justify-content:center}
+        .feat-art{width:100%;max-width:420px;background:linear-gradient(135deg,rgba(59,158,255,.06),rgba(5,150,105,.03));border:1px solid var(--border);border-radius:24px;padding:32px;position:relative;overflow:hidden}
+        .feat-art::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(59,158,255,.1),transparent 70%)}
+        .feat-art-title{font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif}
+        .feat-art-title span{width:8px;height:8px;border-radius:50%;background:var(--green-light);display:inline-block}
+        .feat-stat-row{display:flex;gap:14px;margin-bottom:18px}
+        .feat-stat{flex:1;background:rgba(59,158,255,.05);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+        .feat-stat .val{font-size:1.5rem;font-weight:800;font-family:'Space Grotesk',sans-serif}
+        .feat-stat .val.b{color:var(--accent-2)}.feat-stat .val.g{color:var(--green-light)}
+        .feat-stat p{font-size:.72rem;color:var(--muted);margin-top:4px}
+        .feat-bar-row{display:flex;flex-direction:column;gap:10px}
+        .feat-bar-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:5px}
+        .feat-bar-label span:last-child{color:var(--accent-2);font-weight:600}
+        .feat-bar-track{height:6px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
+        .feat-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--rss),var(--accent-2))}
+
+        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .feat-card{background:var(--bg-card);border-radius:var(--r);padding:28px;border:1px solid var(--border);transition:all .4s;position:relative;overflow:hidden}
+        .feat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--rss),transparent);opacity:0;transition:opacity .4s}
+        .feat-card:hover{transform:translateY(-5px);border-color:var(--border-h);box-shadow:0 12px 36px rgba(59,158,255,.1)}
+        .feat-card:hover::after{opacity:1}
+        .feat-ic{width:48px;height:48px;border-radius:14px;background:rgba(59,158,255,.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
+        .feat-card h4{font-size:.95rem;margin-bottom:6px;font-weight:600}
+        .feat-card p{color:var(--muted);font-size:.84rem;line-height:1.6}
+
+        /* -- NICHES -- */
+        .niches-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+        .niche-card{background:var(--bg-card);border-radius:var(--r);padding:28px 22px;border:1px solid var(--border);text-align:center;transition:all .4s;position:relative;overflow:hidden}
+        .niche-card:hover{transform:translateY(-6px);border-color:var(--border-h);box-shadow:0 14px 40px rgba(59,158,255,.1)}
+        .niche-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--rss),transparent);opacity:0;transition:opacity .4s}
+        .niche-card:hover::after{opacity:1}
+        .niche-ic{font-size:2.2rem;margin-bottom:14px;display:block}
+        .niche-card h3{font-size:.95rem;margin-bottom:7px;font-weight:600}
+        .niche-card p{color:var(--muted);font-size:.82rem;line-height:1.5}
+
+        /* -- STEPS -- */
+        .steps-track{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+        .steps-track::before{content:'';position:absolute;top:40px;left:17%;right:17%;height:2px;background:linear-gradient(90deg,var(--rss),var(--accent-2),var(--rss));opacity:.18}
+        .step{text-align:center;padding:0 12px;position:relative}
+        .step-num{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--rss),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 22px;box-shadow:0 0 40px var(--rss-glow);position:relative;z-index:2;color:#0a1628}
+        .step h3{font-size:1.05rem;margin-bottom:10px;font-weight:600}
+        .step p{color:var(--muted);font-size:.92rem;line-height:1.65}
+        .step-badge{display:inline-block;margin-top:10px;padding:4px 14px;background:rgba(59,158,255,.06);border:1px solid rgba(59,158,255,.2);border-radius:50px;font-size:.78rem;color:var(--rss);font-weight:500}
+
+        /* -- INTEGRATIONS -- */
+        .mq-wrap{overflow:hidden;padding:30px 0;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+        .mq-track{display:flex;gap:20px;animation:mq 25s linear infinite;align-items:center;white-space:nowrap}
+        .mq-item{padding:11px 26px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);font-weight:600;font-size:.87rem;color:var(--muted);flex-shrink:0;transition:all .3s}
+        .mq-item:hover{border-color:var(--border-h);color:var(--accent-2)}
+        @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        /* -- PRICING -- */
+        .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:820px;margin:0 auto}
+        .price-card{background:var(--bg-card);border-radius:var(--r);padding:44px 36px;border:1px solid var(--border);transition:all .4s;text-align:center;position:relative;overflow:hidden}
+        .price-card.pop{border-color:var(--rss);box-shadow:0 0 60px rgba(59,158,255,.08)}
+        .price-card.pop::before{content:'Популярный';position:absolute;top:20px;right:-28px;background:linear-gradient(135deg,var(--rss),var(--accent-2));color:#0a1628;padding:5px 44px;font-size:.72rem;font-weight:700;transform:rotate(45deg);letter-spacing:.05em;text-transform:uppercase}
+        .price-card:hover{transform:translateY(-7px);box-shadow:0 20px 60px rgba(59,158,255,.14)}
+        .price-card h3{font-size:1.3rem;margin-bottom:8px;font-weight:700}
+        .price-amt{font-size:2.6rem;font-weight:800;margin:18px 0 6px;background:linear-gradient(135deg,#fff,var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .price-per{color:var(--muted);font-size:.88rem;margin-bottom:28px;display:block}
+        .price-fl{list-style:none;text-align:left;margin-bottom:30px}
+        .price-fl li{padding:9px 0;color:var(--muted);font-size:.86rem;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:10px}
+        .price-fl li::before{content:'\2713';color:var(--green-light);font-weight:700;flex-shrink:0}
+        .price-cmp{text-align:center;margin-top:40px;padding:20px;background:rgba(255,255,255,.02);border-radius:var(--rs);border:1px solid rgba(255,255,255,.05)}
+        .price-cmp p{color:var(--muted);font-size:.9rem;line-height:1.6}.price-cmp strong{color:var(--accent-2)}
+
+        /* -- FAQ -- */
+        .faq-list{max-width:760px;margin:0 auto}
+        .faq-item{border-bottom:1px solid rgba(255,255,255,.06)}
+        .faq-q{width:100%;background:none;border:none;color:var(--text);padding:22px 0;font-size:1.02rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Space Grotesk',sans-serif;transition:color .3s;gap:16px}
+        .faq-q:hover{color:var(--rss)}
+        .faq-arrow{font-size:1rem;transition:transform .4s;color:var(--rss);min-width:20px;text-align:center;flex-shrink:0}
+        .faq-item.active .faq-arrow{transform:rotate(180deg)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height .5s,padding .5s;color:var(--muted);font-size:.93rem;line-height:1.75}
+        .faq-item.active .faq-a{max-height:300px;padding-bottom:22px}
+
+        /* -- CONTACT -- */
+        .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+        .contact-info h2{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:16px;line-height:1.25;letter-spacing:-.02em}
+        .contact-info>p{color:var(--muted);margin-bottom:30px;font-size:1rem}
+        .contact-btns{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+        .contact-btns .btn{justify-content:center;font-size:.98rem;padding:16px 32px}
+        .contact-det{display:flex;flex-direction:column;gap:12px}
+        .contact-det a,.contact-det span{color:var(--muted);font-size:.92rem;display:flex;align-items:center;gap:10px}
+        .contact-det a:hover{color:var(--rss)}
+
+        /* -- FLOATING -- */
+        .float-wa{position:fixed;bottom:28px;right:28px;z-index:998;width:56px;height:56px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px var(--wa-glow);animation:wafloat 3s ease-in-out infinite;transition:transform .3s;text-decoration:none}
+        .float-wa:hover{transform:scale(1.12)}
+        @keyframes wafloat{0%,100%{box-shadow:0 6px 28px var(--wa-glow)}50%{box-shadow:0 6px 56px rgba(37,211,102,.45)}}
+        .float-wa svg{width:26px;height:26px;fill:#fff}
+        .scroll-top{position:fixed;bottom:28px;right:96px;z-index:997;width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--rss);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;opacity:0;pointer-events:none;font-size:1.2rem;font-weight:700;font-family:inherit}
+        .scroll-top.show{opacity:1;pointer-events:auto}
+        .scroll-top:hover{background:var(--rss);color:#fff;border-color:var(--rss);transform:translateY(-3px)}
+        .back-btn{position:fixed;bottom:28px;left:28px;z-index:997;background:rgba(0,8,18,.9);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:50px;padding:11px 22px;color:var(--muted);font-size:.84rem;font-weight:500;transition:all .3s;opacity:0;pointer-events:none;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+        .back-btn.show{opacity:1;pointer-events:auto}
+        .back-btn:hover{color:var(--rss);border-color:var(--rss)}
+
+        /* -- FOOTER -- */
+        .footer{background:var(--bg-alt);border-top:1px solid rgba(255,255,255,.05);padding:60px 0 28px}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer h4{font-size:.93rem;margin-bottom:16px;font-weight:600}
+        .footer p,.footer a{color:var(--muted);font-size:.86rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:10px}.footer-links a:hover{color:var(--rss)}
+        .footer-bot{text-align:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);color:var(--muted-2);font-size:.78rem}
+
+        /* -- RESPONSIVE -- */
+        @media(max-width:1100px){
+            .hero-main{grid-template-columns:1fr 360px;gap:32px}
+            .phone-wrap{width:240px}
+            .how-grid{grid-template-columns:repeat(2,1fr)}
+        }
+        @media(max-width:900px){
+            .feat-layout{grid-template-columns:1fr}.feat-visual{order:-1}.feat-art{max-width:100%}
+            .hero-main{grid-template-columns:1fr 280px;gap:24px}.phone-wrap{width:200px}
+            .contact-layout{grid-template-columns:1fr;gap:36px}
+            .niches-grid{grid-template-columns:repeat(2,1fr)}
+            .demo-layout{grid-template-columns:1fr;gap:36px}.chat-window{max-width:100%}
+        }
+        @media(max-width:768px){
+            html,body{overflow-x:hidden}*{max-width:100vw}
+            section{padding:56px 0;overflow:hidden}
+            .container{padding:0 16px;max-width:100%;overflow:hidden}
+            .nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,8,18,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background-image:radial-gradient(ellipse at 50% 30%,rgba(59,130,246,.06),transparent 60%);flex-direction:column;justify-content:center;align-items:center;gap:28px;z-index:1000}
+            .nav.open{display:flex}.nav a{font-size:1.15rem}
+            .hd-btns{display:none}
+            .nav .nav-mob{display:flex;flex-direction:column;gap:12px;margin-top:20px;align-items:center}
+            .nav .nav-mob .btn{width:220px;justify-content:center}
+            .burger{display:flex}
+            .hero-main{grid-template-columns:1fr;padding:90px 16px 32px}
+            .hero{min-height:auto}.hero-right{display:none}
+            .hero h1{font-size:1.9rem}.hero-sub{font-size:.9rem}
+            .hero-btns{flex-direction:column;align-items:stretch;gap:10px}
+            .hero-btns .btn{justify-content:center;padding:14px 20px;white-space:normal;font-size:.9rem}
+            .hero-trust{gap:10px;flex-direction:column}.trust-item{font-size:.78rem}
+            .hero-badge{font-size:.78rem;padding:6px 14px}
+            .stats-grid{grid-template-columns:repeat(2,1fr);gap:16px}.stat-item h3{font-size:1.8rem}
+            .prob-grid{grid-template-columns:1fr}.prob-card{padding:24px 18px}
+            .feat-layout{grid-template-columns:1fr;gap:28px}.feat-art{padding:20px;max-width:100%}
+            .feat-grid{grid-template-columns:1fr}.feat-card{padding:22px 18px}
+            .how-grid{grid-template-columns:1fr}.how-card{padding:22px 16px}
+            .niches-grid{grid-template-columns:1fr}.niche-card{padding:20px 16px}
+            .steps-track{grid-template-columns:1fr;gap:24px}.steps-track::before{display:none}
+            .step-num{width:64px;height:64px;font-size:1.3rem}
+            .demo-layout{grid-template-columns:1fr;gap:24px}.chat-window{max-width:100%}.chat-msgs{min-height:300px;padding:14px}
+            .pricing-grid{grid-template-columns:1fr;max-width:100%}.price-card{padding:28px 20px}.price-amt{font-size:2.2rem}
+            .faq-q{font-size:.93rem;padding:18px 0}
+            .contact-layout{grid-template-columns:1fr;gap:28px}.contact-layout>div:last-child{display:none}
+            .contact-btns{align-items:stretch}.contact-btns .btn{justify-content:center;font-size:.9rem;padding:14px 20px}
+            .contact-info h2{font-size:1.5rem}
+            .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+            .hd-inner{padding:12px 16px}.stitle{font-size:1.5rem}.ssub{font-size:.88rem;padding:0}
+            .ticker-wrap{display:none}.mq-wrap{overflow:hidden}
+            .float-wa{bottom:16px;right:16px;width:50px;height:50px}
+            .scroll-top{bottom:16px;right:74px;width:42px;height:42px;font-size:1rem}
+            .back-btn{bottom:16px;left:16px;font-size:.75rem;padding:8px 14px}
+            .fi,.fil,.fir{opacity:1;transform:none;transition:none}
+        }
+        @media(max-width:480px){
+            .hero h1{font-size:1.6rem}.hero-main{padding:84px 14px 28px}
+            .footer-grid{grid-template-columns:1fr}
+            .btn{white-space:normal;text-align:center;font-size:.87rem}
+            .prob-n{font-size:2.2rem}
+            .price-card.pop::before{top:14px;right:-32px;font-size:.65rem;padding:4px 40px}
+            .feat-stat-row{flex-direction:column;gap:10px}
+        }
+        @media(max-width:360px){
+            .hero h1{font-size:1.4rem}.hero-sub{font-size:.85rem}
+            .container{padding:0 12px}.price-amt{font-size:1.8rem}
+            .btn{padding:12px 18px;font-size:.84rem}.stitle{font-size:1.3rem}.ssub{font-size:.84rem}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+            #neural-canvas{display:none !important}
+        }
+        /* PHOTO SHOWCASE */
+        .photo-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; overflow: hidden; margin: 0 }
+        .photo-split.rev .photo-img { order: 2 }
+        .photo-split.rev .photo-txt { order: 1 }
+        .photo-img { position: relative; overflow: hidden; min-height: 380px }
+        .photo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s }
+        .photo-img:hover img { transform: scale(1.04) }
+        .photo-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,116,255,.12), rgba(0,198,255,.06)); pointer-events: none }
+        .photo-txt { display: flex; flex-direction: column; justify-content: center; padding: 64px 60px; background: var(--bg-alt, #051228) }
+        .photo-txt .pt-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(0,116,255,.10); border: 1px solid rgba(0,116,255,.22); color: #7dd3fc; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; width: fit-content }
+        .photo-txt h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; line-height: 1.25; margin-bottom: 16px; color: #f0f8ff }
+        .photo-txt p { font-size: .97rem; color: #7aafd4; line-height: 1.75; max-width: 440px }
+        .photo-full { position: relative; height: 400px; overflow: hidden; margin: 0 }
+        .photo-full img { width: 100%; height: 100%; object-fit: cover; display: block }
+        .photo-full::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.7) 100%); pointer-events: none }
+        .photo-full-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px 48px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px }
+        .photo-full-cap h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 2vw, 1.7rem); font-weight: 800; color: #fff; max-width: 540px; margin: 0 }
+        .photo-full-cap span { flex-shrink: 0; padding: 10px 22px; border-radius: 50px; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: .83rem; font-weight: 600; white-space: nowrap }
+        @media (max-width: 768px) {
+            .photo-split { grid-template-columns: 1fr }
+            .photo-split.rev .photo-img { order: 0 }
+            .photo-split.rev .photo-txt { order: 0 }
+            .photo-img { min-height: 260px }
+            .photo-txt { padding: 36px 28px }
+            .photo-full { height: 280px }
+            .photo-full-cap { padding: 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px }
+        }
+        /* === UNIFIED ICON STYLE (matches main page solutions block) === */
+        .feat-ic, .niche-ic, .how-ic, .ben-ic, .prob-ic, .mod-ic, .use-ic,
+        .data-ic, .why-ic, .fmt-ic, .type-ic, .inc-ic, .process-ic,
+        .step-ic, .form-ic, .info-ic, .val-ic, .ch-ic, .sbar-ic {
+            width: 56px !important;
+            height: 56px !important;
+            min-width: 56px !important;
+            border-radius: 14px !important;
+            background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)) !important;
+            border: 1px solid rgba(0,116,255,.25) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 6px 22px rgba(0,116,255,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
+            font-size: 0 !important;
+            margin-bottom: 16px !important;
+            transition: all .35s !important;
+            padding: 0 !important;
+        }
+        .niche-ic { margin: 0 auto 14px !important }
+        .feat-ic svg, .niche-ic svg, .how-ic svg, .ben-ic svg, .prob-ic svg,
+        .mod-ic svg, .use-ic svg, .data-ic svg, .why-ic svg, .fmt-ic svg,
+        .type-ic svg, .inc-ic svg, .process-ic svg, .step-ic svg, .form-ic svg,
+        .info-ic svg, .val-ic svg, .ch-ic svg, .sbar-ic svg {
+            width: 28px !important;
+            height: 28px !important;
+            stroke: #00c6ff !important;
+            fill: none !important;
+            stroke-width: 1.7 !important;
+            stroke-linecap: round !important;
+            stroke-linejoin: round !important;
+            transition: stroke .35s !important;
+        }
+        .niche-card:hover .niche-ic, .feat-card:hover .feat-ic, .feat-item:hover .feat-ic,
+        .ben-card:hover .ben-ic, .how-card:hover .how-ic, .prob-card:hover .prob-ic,
+        .mod-card:hover .mod-ic, .use-card:hover .use-ic, .data-card:hover .data-ic,
+        .why-card:hover .why-ic, .fmt-card:hover .fmt-ic, .type-card:hover .type-ic,
+        .inc-card:hover .inc-ic, .process-card:hover .process-ic, .step:hover .step-ic {
+            transform: scale(1.08) translateY(-2px) !important;
+            border-color: rgba(0,198,255,.55) !important;
+            box-shadow: 0 12px 36px rgba(0,198,255,.28) !important;
+        }
+        .niche-card:hover .niche-ic svg, .feat-item:hover .feat-ic svg,
+        .ben-card:hover .ben-ic svg, .how-card:hover .how-ic svg,
+        .mod-card:hover .mod-ic svg, .use-card:hover .use-ic svg {
+            stroke: #fff !important;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="hd-inner">
+        <a href="index.html" class="logo"><img src="logo flowai.png" alt="FlowAi" class="logo-img"></a>
+        <nav class="nav" id="nav">
+            <a href="#demo">Демо</a>
+            <a href="#features">Возможности</a>
+            <a href="#how-it-works">Как работает</a>
+            <a href="#pricing">Цены</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Контакты</a>
+            <div class="nav-mob" style="display:none">
+                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Telegram</a>
+                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">WhatsApp</a>
+            </div>
+        </nav>
+        <div class="hd-btns">
+            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Telegram
+            </a>
+            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </a>
+        </div>
+        <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <canvas id="neural-canvas"></canvas>
+    <div class="hero-mesh"></div>
+    <div class="hero-main">
+        <div class="hero-left">
+            <div class="hero-badge"><span class="live"></span> Автопостинг из RSS в Telegram</div>
+            <h1><span class="gtext">RSS-бот</span> —<br>автоматически публикует<br>контент в ваши каналы 24/7</h1>
+            <p class="hero-sub">ИИ-бот собирает свежие новости из RSS-лент, оформляет посты и публикует в ваш Telegram-канал. Настройте тематику, стиль и расписание — бот сделает остальное.</p>
+            <div class="hero-btns">
+                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Написать в Telegram
+                </a>
+                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-rss">Бесплатная консультация</a>
+                <a href="#pricing" class="btn btn-o">Узнать стоимость</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item"><div class="trust-dot"></div>24/7 автопостинг</div>
+                <div class="trust-item"><div class="trust-dot"></div>100+ RSS-источников</div>
+                <div class="trust-item"><div class="trust-dot"></div>ИИ оформляет посты</div>
+                <div class="trust-item"><div class="trust-dot"></div>80% экономия времени</div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="phone-wrap">
+                <div class="phone-glow"></div>
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="phone-tg-hdr">
+                        <div class="p-av">RSS</div>
+                        <div><div class="p-nm">Ваш Telegram-канал</div><div class="p-st">&#9679; автопостинг активен</div></div>
+                    </div>
+                    <div class="phone-msgs">
+                        <div class="pm pm-b">&#128240; <b>Новый пост</b><br><br>&#128293; OpenAI представила GPT-5 с видео в реальном времени<br><br>#AI #OpenAI #технологии<div class="pm-t">09:15</div></div>
+                        <div class="pm pm-b">&#128200; <b>Новый пост</b><br><br>&#128176; Биткоин преодолел $95 000<br><br>#крипто #финансы<div class="pm-t">12:00</div></div>
+                        <div class="pm pm-b">&#9989; Сегодня: <span class="bl">12 постов</span><br>Охват: <span class="gr">+2 340</span><div class="pm-t">18:00</div></div>
+                    </div>
+                    <div class="phone-inp">
+                        <div class="inp-field">Автопостинг активен...</div>
+                        <div class="inp-send"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span><span class="n">24/7</span> автопостинг</span>
+            <span><span class="n">100+</span> RSS-источников</span>
+            <span><span class="n">0</span> ручной работы</span>
+            <span><span class="n">ИИ</span> оформляет посты</span>
+            <span><span class="n">5 мин</span> на настройку</span>
+            <span><span class="n">80%</span> экономия времени</span>
+            <span><span class="n">24/7</span> автопостинг</span>
+            <span><span class="n">100+</span> RSS-источников</span>
+            <span><span class="n">0</span> ручной работы</span>
+            <span><span class="n">ИИ</span> оформляет посты</span>
+            <span><span class="n">5 мин</span> на настройку</span>
+            <span><span class="n">80%</span> экономия времени</span>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item fi"><h3><span class="counter" data-target="100">0</span>+</h3><p>RSS-источников</p></div>
+            <div class="stat-item fi"><h3><span class="counter" data-target="80">0</span>%</h3><p>экономия времени</p></div>
+            <div class="stat-item fi"><h3><span class="counter" data-target="50">0</span>+</h3><p>постов в день</p></div>
+            <div class="stat-item fi"><h3>24/7</h3><p>без перерывов</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- DEMO -->
+<section class="salt" id="demo">
+    <div class="container">
+        <h2 class="stitle fi">Как выглядят <span class="gtext">посты</span> от бота</h2>
+        <p class="ssub fi">Бот собирает новость из RSS, оформляет и публикует в ваш канал</p>
+        <div class="demo-layout">
+            <div class="chat-window fil" id="chat-demo">
+                <div class="chat-hdr">
+                    <div class="chat-av">RSS</div>
+                    <div><div class="chat-nm">Ваш Telegram-канал</div><div class="chat-st">автопостинг активен</div></div>
+                </div>
+                <div class="chat-msgs" id="chat-msgs">
+                    <div class="typing" id="typing"><div class="td"></div><div class="td"></div><div class="td"></div></div>
+                </div>
+            </div>
+            <div class="demo-txt fir">
+                <h3>Бот ведёт канал <span class="gtext">за вас</span></h3>
+                <p>Добавьте RSS-ленты нужных сайтов — бот будет отслеживать новые материалы, оформлять их в красивые посты и публиковать по расписанию.</p>
+                <ul class="demo-fl">
+                    <li>Сбор новостей из любых RSS-источников</li>
+                    <li>ИИ выбирает самые интересные материалы</li>
+                    <li>Настройка объёма поста: краткий или подробный</li>
+                    <li>Добавление эмодзи и хештегов автоматически</li>
+                    <li>Публикация по расписанию или мгновенно</li>
+                    <li>Фильтрация по ключевым словам и тематике</li>
+                </ul>
+                <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Попробовать бота</a>
+                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+    <div class="container">
+        <h2 class="stitle fi">Как <span class="gtext">работает</span> RSS-бот?</h2>
+        <p class="ssub fi">Полный цикл от сбора новостей до публикации — без вашего участия</p>
+        <div class="how-grid">
+            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></span><h3>Сбор из RSS-лент</h3><p>Бот мониторит десятки RSS-источников и находит свежие публикации по вашей тематике в реальном времени.</p></div>
+            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><h3>ИИ оформляет пост</h3><p>Искусственный интеллект создаёт пост нужного объёма: краткий дайджест или подробный пересказ. С эмодзи и хештегами.</p></div>
+            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><h3>Публикация в канал</h3><p>Готовый пост публикуется в ваш Telegram-канал по расписанию или мгновенно. Вы контролируете время и частоту.</p></div>
+            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span><h3>Фильтрация контента</h3><p>Настройте ключевые слова, темы и стоп-слова — бот публикует только то, что интересно вашей аудитории.</p></div>
+            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span><h3>Расписание постинга</h3><p>Выберите время публикаций: утро, день, вечер или конкретные часы. Бот соблюдает расписание без напоминаний.</p></div>
+            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Аналитика и отчёты</h3><p>Отслеживайте количество постов, охваты и вовлечённость. Бот подстраивается под лучшее время для публикаций.</p></div>
+        </div>
+    </div>
+</section>
+<div class="photo-split">
+    <div class="photo-img">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&h=700&fit=crop&q=85" alt="Экран с новостной лентой и контентом" loading="lazy">
+    </div>
+    <div class="photo-txt">
+        <div class="pt-badge">Автоматический постинг</div>
+        <h3>Бот мониторит 100+ источников и постит лучшее в ваш канал</h3>
+        <p>Настройте источники один раз — и забудьте. RSS-бот сам отбирает релевантный контент, адаптирует его под ваш стиль и публикует по расписанию.</p>
+    </div>
+</div>
+
+
+<!-- PROBLEMS -->
+<section class="salt" id="problems">
+    <div class="container">
+        <h2 class="stitle fi">Узнаёте <span class="gtext">себя</span>?</h2>
+        <p class="ssub fi">Ведение канала вручную отнимает время и энергию</p>
+        <div class="prob-grid">
+            <div class="prob-card fi"><div class="prob-n">01</div><h3>Нет времени вести канал</h3><p>Каждый день искать новости, писать посты, оформлять — это 2–3 часа ежедневно. У вас есть дела поважнее. Бот делает это за секунды.</p></div>
+            <div class="prob-card fi"><div class="prob-n">02</div><h3>Канал публикует нерегулярно</h3><p>Пропустили день — подписчики уходят. Алгоритмы Telegram снижают охваты. RSS-бот публикует стабильно и по расписанию.</p></div>
+            <div class="prob-card fi"><div class="prob-n">03</div><h3>Контент-менеджер — дорого</h3><p>Нанять SMM-специалиста — от 150 000 &#8376;/мес. Бот делает ту же работу в 15 раз дешевле и не берёт выходных.</p></div>
+        </div>
+        <div style="text-align:center;margin-top:44px" class="fi">
+            <p style="color:var(--accent-2);font-size:1.15rem;font-weight:600;font-family:'Space Grotesk',sans-serif">Есть решение &#8595;</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+    <div class="container">
+        <h2 class="stitle fi">Возможности <span class="gtext">RSS-бота</span></h2>
+        <p class="ssub fi">Полноценный инструмент автоматизации контента для Telegram-канала</p>
+        <div class="feat-layout" style="margin-bottom:48px">
+            <div class="feat-visual fil">
+                <div class="feat-art">
+                    <div class="feat-art-title"><span></span> Аналитика бота за месяц</div>
+                    <div class="feat-stat-row">
+                        <div class="feat-stat"><div class="val b">1 520</div><p>Постов опубликовано</p></div>
+                        <div class="feat-stat"><div class="val g">80%</div><p>Экономия времени</p></div>
+                    </div>
+                    <div class="feat-bar-row">
+                        <div><div class="feat-bar-label"><span>Покрытие RSS-лент</span><span>100%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:100%"></div></div></div>
+                        <div><div class="feat-bar-label"><span>Уникальность контента</span><span>95%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:95%"></div></div></div>
+                        <div><div class="feat-bar-label"><span>Публикация по расписанию</span><span>99%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:99%"></div></div></div>
+                        <div><div class="feat-bar-label"><span>Фильтрация по тематике</span><span>97%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:97%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="fir">
+                <div class="feat-grid" style="grid-template-columns:1fr">
+                    <div class="feat-card"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h4>Мониторинг любых RSS-лент</h4><p>Добавляйте неограниченное количество источников — новостные сайты, блоги, медиа, агрегаторы.</p></div>
+                    <div class="feat-card"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h4>ИИ-редактор постов</h4><p>Искусственный интеллект переписывает материал, задаёт нужный тон и объём — от одного абзаца до лонгрида.</p></div>
+                    <div class="feat-card"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h4>Эмодзи и оформление</h4><p>Автоматическое добавление эмодзи, хештегов и форматирования. Посты выглядят как написанные человеком.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="feat-grid">
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Гибкое расписание</h4><p>Настройте точное время публикаций: утро, обед, вечер. Или интервал — каждые 2, 4, 6 часов.</p></div>
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h4>Фильтры по тематике</h4><p>Ключевые слова, стоп-слова, категории — бот публикует только релевантный контент для вашей аудитории.</p></div>
+            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><h4>Картинки и превью</h4><p>Бот подтягивает изображения из источника и формирует красивый пост с обложкой.</p></div>
+        </div>
+    </div>
+</section>
+<div class="photo-full">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1400&h=500&fit=crop&q=85" alt="Команда анализирует контент-стратегию на экранах" loading="lazy">
+    <div class="photo-full-cap">
+        <h3>Ваш канал работает 24/7 — без вашего участия</h3>
+        <span>RSS-автопостинг</span>
+    </div>
+</div>
+
+
+<!-- NICHES -->
+<section class="salt" id="niches">
+    <div class="container">
+        <h2 class="stitle fi"><span class="gtext">RSS-бот</span> для любой тематики</h2>
+        <p class="ssub fi">Настроим автопостинг под вашу нишу и аудиторию</p>
+        <div class="niches-grid">
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/></svg></span><h3>Новости и медиа</h3><p>Агрегация из топовых СМИ</p></div>
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><h3>IT и технологии</h3><p>Хабр, TechCrunch, Wired</p></div>
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span><h3>Финансы и крипто</h3><p>Курсы, аналитика, тренды</p></div>
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><h3>Спорт</h3><p>Результаты, трансферы, обзоры</p></div>
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h3>Развлечения</h3><p>Кино, музыка, игры</p></div>
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><h3>Наука и образование</h3><p>Исследования, открытия</p></div>
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span><h3>Недвижимость</h3><p>Обзоры рынка, аналитика</p></div>
+            <div class="niche-card fi"><span class="niche-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><h3>Здоровье</h3><p>Медицина, ЗОЖ, фитнес</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- STEPS -->
+<section id="steps">
+    <div class="container">
+        <h2 class="stitle fi">Запустить RSS-бота — <span class="gtext">проще</span>, чем кажется</h2>
+        <p class="ssub fi">Три шага — и ваш канал наполняется контентом автоматически</p>
+        <div class="steps-track">
+            <div class="step fi"><div class="step-num">1</div><h3>Выберите источники</h3><p>Укажите RSS-ленты, тематику и ключевые слова. Мы поможем подобрать лучшие источники.</p><span class="step-badge">Бесплатно</span></div>
+            <div class="step fi"><div class="step-num">2</div><h3>Настроим стиль постов</h3><p>Объём, эмодзи, хештеги, тон — всё по вашему вкусу. ИИ адаптирует контент под вашу аудиторию.</p></div>
+            <div class="step fi"><div class="step-num">3</div><h3>Бот ведёт канал за вас</h3><p>Подключаем к каналу. Бот мониторит RSS, оформляет и публикует посты — 24/7 без выходных.</p></div>
+        </div>
+        <div style="text-align:center;margin-top:48px" class="fi"><a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Начать за 2 клика &#8594;</a></div>
+    </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="salt" id="integrations">
+    <div class="container">
+        <h2 class="stitle fi">Работает с <span class="gtext">любыми источниками</span></h2>
+        <p class="ssub fi" style="margin-bottom:0">Подключите RSS-ленты популярных сайтов и сервисов</p>
+    </div>
+    <div class="mq-wrap" style="margin-top:40px">
+        <div class="mq-track">
+            <div class="mq-item">Habr</div><div class="mq-item">TechCrunch</div><div class="mq-item">The Verge</div><div class="mq-item">BBC</div><div class="mq-item">Reuters</div><div class="mq-item">Medium</div><div class="mq-item">Reddit</div><div class="mq-item">CoinDesk</div><div class="mq-item">Tengrinews</div><div class="mq-item">Inform.kz</div><div class="mq-item">Любой RSS</div>
+            <div class="mq-item">Habr</div><div class="mq-item">TechCrunch</div><div class="mq-item">The Verge</div><div class="mq-item">BBC</div><div class="mq-item">Reuters</div><div class="mq-item">Medium</div><div class="mq-item">Reddit</div><div class="mq-item">CoinDesk</div><div class="mq-item">Tengrinews</div><div class="mq-item">Inform.kz</div><div class="mq-item">Любой RSS</div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+    <div class="container">
+        <h2 class="stitle fi">Прозрачные <span class="gtext">цены</span> — без сюрпризов</h2>
+        <p class="ssub fi">Аренда для быстрого старта или полная разработка под ключ</p>
+        <div class="pricing-grid">
+            <div class="price-card pop fi">
+                <h3>Аренда</h3>
+                <div class="price-amt">от 10 000 &#8376;</div>
+                <span class="price-per">в месяц</span>
+                <ul class="price-fl">
+                    <li>RSS-бот с автопостингом 24/7</li>
+                    <li>ИИ-оформление постов</li>
+                    <li>До 50 RSS-источников</li>
+                    <li>Настройка расписания</li>
+                    <li>Эмодзи и хештеги</li>
+                    <li>Техподдержка включена</li>
+                    <li>Хостинг оплачен</li>
+                    <li>Запуск за 1–2 дня</li>
+                </ul>
+                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg" style="width:100%;justify-content:center">Начать аренду</a>
+            </div>
+            <div class="price-card fi">
+                <h3>Разработка под ключ</h3>
+                <div class="price-amt">от 200 000 &#8376;</div>
+                <span class="price-per">единоразово</span>
+                <ul class="price-fl">
+                    <li>Полная разработка под ваш проект</li>
+                    <li>Бот ваш навсегда</li>
+                    <li>Неограниченные RSS-источники</li>
+                    <li>ИИ-редактор с тонкой настройкой</li>
+                    <li>Кастомные фильтры и правила</li>
+                    <li>Исходный код включён</li>
+                    <li>Аналитика и отчёты</li>
+                    <li>30 дней поддержки бесплатно</li>
+                </ul>
+                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-rss" style="width:100%;justify-content:center">Заказать разработку</a>
+            </div>
+        </div>
+        <div class="price-cmp fi"><p>Сравните: SMM-менеджер — <strong>от 150 000 &#8376;/мес</strong> + выходные + больничные. RSS-бот — в 15 раз дешевле и работает всегда.</p></div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="salt" id="faq">
+    <div class="container">
+        <h2 class="stitle fi">Остались <span class="gtext">вопросы</span>?</h2>
+        <p class="ssub fi">Отвечаем на самые популярные</p>
+        <div class="faq-list">
+            <div class="faq-item fi"><button class="faq-q">Что такое RSS и откуда бот берёт новости?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">RSS — это формат, в котором сайты публикуют обновления. Почти все крупные СМИ, блоги и порталы имеют RSS-ленту. Бот подписывается на них и получает новости автоматически.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Можно настроить стиль и объём постов?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да. Вы выбираете: краткий дайджест (2–3 предложения), средний пост или подробный пересказ. ИИ добавит эмодзи, хештеги и оформит текст в вашем стиле.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Сколько источников можно подключить?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">В аренде — до 50 RSS-источников. При покупке — без ограничений. Можно добавлять и убирать источники в любое время.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Бот публикует дубликаты?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Нет. Бот запоминает все опубликованные материалы и никогда не повторяет одну и ту же новость дважды.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Можно фильтровать новости по теме?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да — настройте ключевые слова, стоп-слова и категории. Бот будет публиковать только то, что соответствует вашей тематике.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Как настроить расписание публикаций?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Укажите конкретные часы (например, 9:00, 13:00, 19:00) или интервал (каждые 2 часа). Бот публикует строго по расписанию.</div></div>
+            <div class="faq-item fi"><button class="faq-q">Работает на казахском языке?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да — бот может оформлять посты на казахском, русском и английском языках. Автоматический перевод также доступен.</div></div>
+        </div>
+    </div>
+</section>
+<div class="photo-split rev">
+    <div class="photo-img">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=700&fit=crop&q=85" alt="Аналитика и метрики контент-маркетинга" loading="lazy">
+    </div>
+    <div class="photo-txt">
+        <div class="pt-badge">Рост подписчиков</div>
+        <h3>Каналы с регулярным постингом растут в 4 раза быстрее</h3>
+        <p>Telegram-каналы с ежедневными публикациями набирают аудиторию органически. Ваш RSS-бот публикует до 10 постов в день без вашего участия.</p>
+    </div>
+</div>
+
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-layout">
+            <div class="contact-info fi">
+                <h2>Готовы запустить <span class="gtext">RSS-бота</span>?</h2>
+                <p>Первая консультация — бесплатно. Отвечаем в течение 15 минут.</p>
+                <div class="contact-btns">
+                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        Написать в Telegram
+                    </a>
+                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Написать в WhatsApp
+                    </a>
+                </div>
+                <div class="contact-det">
+                    <span>&#128205; г. Астана, пр. Республики, д. 68</span>
+                    <a href="tel:+77787806540">&#128222; +7 778 780 65 40</a>
+                    <a href="https://flowai.kz">&#127760; flowai.kz</a>
+                </div>
+            </div>
+            <div class="fir" style="display:flex;align-items:center;justify-content:center">
+                <svg width="320" height="320" viewBox="0 0 320 320" fill="none" style="opacity:.55">
+                    <defs><linearGradient id="cg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3B9EFF"/><stop offset="100%" stop-color="#7DD3FC"/></linearGradient></defs>
+                    <circle cx="160" cy="160" r="120" stroke="url(#cg2)" stroke-width="1" fill="none" opacity=".1"/>
+                    <circle cx="160" cy="160" r="80" stroke="url(#cg2)" stroke-width="1.5" fill="none" opacity=".15"/>
+                    <circle cx="160" cy="160" r="50" stroke="url(#cg2)" stroke-width="1" fill="none" opacity=".1"/>
+                    <circle cx="160" cy="160" r="10" fill="#3B9EFF" opacity=".8"/>
+                    <circle cx="160" cy="160" r="18" fill="rgba(59,158,255,.12)"/>
+                    <!-- RSS icon stylized -->
+                    <circle cx="145" cy="175" r="5" fill="#7DD3FC" opacity=".6"/>
+                    <path d="M145 155 a20 20 0 0 1 20 20" stroke="#7DD3FC" stroke-width="2" fill="none" opacity=".4"/>
+                    <path d="M145 145 a30 30 0 0 1 30 30" stroke="#50B4FF" stroke-width="2" fill="none" opacity=".3"/>
+                    <path d="M145 135 a40 40 0 0 1 40 40" stroke="#3B9EFF" stroke-width="1.5" fill="none" opacity=".2"/>
+                    <!-- Nodes -->
+                    <circle cx="100" cy="80" r="7" fill="#7DD3FC" opacity=".5"/><line x1="105" y1="85" x2="150" y2="140" stroke="#3B9EFF" stroke-width=".6" opacity=".2"/>
+                    <circle cx="230" cy="90" r="6" fill="#3B9EFF" opacity=".4"/><line x1="225" y1="94" x2="175" y2="142" stroke="#3B9EFF" stroke-width=".5" opacity=".15"/>
+                    <circle cx="80" cy="200" r="6" fill="#7DD3FC" opacity=".4"/><line x1="85" y1="196" x2="145" y2="168" stroke="#7DD3FC" stroke-width=".5" opacity=".15"/>
+                    <circle cx="240" cy="210" r="7" fill="#10B981" opacity=".4"/><line x1="235" y1="206" x2="178" y2="172" stroke="#10B981" stroke-width=".6" opacity=".15"/>
+                    <circle cx="160" cy="50" r="5" fill="#BAE6FD" opacity=".35"/><line x1="160" y1="55" x2="160" y2="135" stroke="#BAE6FD" stroke-width=".4" opacity=".1"/>
+                    <circle cx="260" cy="155" r="5" fill="#3B9EFF" opacity=".3"/><line x1="255" y1="155" x2="180" y2="158" stroke="#3B9EFF" stroke-width=".4" opacity=".1"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FLOATING -->
+<a href="https://wa.me/77787806540" target="_blank" class="float-wa" aria-label="Написать в WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="scroll-top" id="scrollTop" aria-label="Наверх">&#8593;</button>
+<a href="https://flowai.kz" class="back-btn" id="backBtn">&#8592; На главную</a>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+                    <div class="logo-icon" style="width:30px;height:30px"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+                    <span class="gtext" style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800">FlowAi</span>
+                </div>
+                <p>RSS-бот с автопостингом в Telegram-канал. Автоматизация контента с ИИ для бизнеса в Казахстане и СНГ.</p>
+            </div>
+            <div><h4>Навигация</h4><ul class="footer-links"><li><a href="#features">Возможности</a></li><li><a href="#how-it-works">Как работает</a></li><li><a href="#pricing">Цены</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Контакты</a></li></ul></div>
+            <div><h4>Связаться</h4><ul class="footer-links"><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="tel:+77787806540">+7 778 780 65 40</a></li></ul></div>
+            <div><h4>Адрес</h4><p>&#128205; г. Астана<br>пр. Республики, д. 68</p><p style="margin-top:12px"><a href="https://flowai.kz">&#127760; FlowAi.kz</a></p></div>
+        </div>
+        <div class="footer-bot">&copy; 2024–2026 FlowAi.kz — RSS-бот с автопостингом в Telegram. Все права защищены.</div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    var isMobile=window.innerWidth<768;
+    var canvas=document.getElementById('neural-canvas');
+    if(!isMobile&&canvas){
+        var ctx=canvas.getContext('2d');var pts=[];var N=45,D=120;
+        function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+        resize();addEventListener('resize',function(){resize();isMobile=innerWidth<768});
+        for(var i=0;i<N;i++)pts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.8+.5});
+        (function draw(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            for(var i=0;i<pts.length;i++){
+                var a=pts[i];a.x+=a.vx;a.y+=a.vy;
+                if(a.x<0||a.x>canvas.width)a.vx*=-1;if(a.y<0||a.y>canvas.height)a.vy*=-1;
+                ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='rgba(59,158,255,.35)';ctx.fill();
+                for(var j=i+1;j<pts.length;j++){
+                    var b=pts[j],dx=a.x-b.x,dy=a.y-b.y,dd=Math.sqrt(dx*dx+dy*dy);
+                    if(dd<D){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(59,158,255,'+(0.08*(1-dd/D))+')';ctx.lineWidth=.5;ctx.stroke()}
+                }
+            }
+            requestAnimationFrame(draw);
+        })();
+    }
+
+    // Reveal animations
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});
+    document.querySelectorAll('.fi,.fil,.fir').forEach(function(el){obs.observe(el)});
+
+    // Counters
+    var co=new IntersectionObserver(function(entries){entries.forEach(function(e){
+        if(e.isIntersecting&&!e.target.dataset.d){e.target.dataset.d='1';var t=+e.target.dataset.target,c=0,s=t/60;
+        var iv=setInterval(function(){c+=s;if(c>=t){c=t;clearInterval(iv)}e.target.textContent=Math.round(c)},25)}
+    })},{threshold:.5});
+    document.querySelectorAll('.counter').forEach(function(el){co.observe(el)});
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){
+        var item=btn.parentElement,isOpen=item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('active')});
+        if(!isOpen)item.classList.add('active');
+    })});
+
+    // Burger menu
+    var burger=document.getElementById('burger'),nav=document.getElementById('nav'),mobBtns=nav.querySelector('.nav-mob');
+    burger.addEventListener('click',function(){burger.classList.toggle('open');nav.classList.toggle('open');if(mobBtns)mobBtns.style.display=nav.classList.contains('open')?'flex':'none'});
+    nav.querySelectorAll('a:not(.btn)').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');nav.classList.remove('open');if(mobBtns)mobBtns.style.display='none'})});
+
+    // Scroll: header, back button, scroll-to-top
+    var header=document.getElementById('header'),backBtn=document.getElementById('backBtn'),scrollTopBtn=document.getElementById('scrollTop');
+    addEventListener('scroll',function(){var s=scrollY;header.classList.toggle('scrolled',s>60);backBtn.classList.toggle('show',s>300);scrollTopBtn.classList.toggle('show',s>300)});
+    scrollTopBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+
+    // Chat demo — RSS post examples
+    var cd=[
+        {t:'b',m:'&#128240; <b>Новый пост опубликован</b><br><br>&#128293; OpenAI представила GPT-5 с возможностью работы с видео в реальном времени<br><br>Новая модель способна анализировать видеопоток и отвечать на вопросы о происходящем. Доступ для разработчиков откроется в мае.<br><br>#AI #OpenAI #GPT5 #технологии'},
+        {t:'b',m:'&#128200; <b>Новый пост опубликован</b><br><br>&#128176; Биткоин преодолел отметку $95 000 на фоне притока институциональных инвесторов<br><br>Аналитики прогнозируют рост до $100К к концу месяца.<br><br>#крипто #биткоин #финансы'},
+        {t:'b',m:'&#127758; <b>Новый пост опубликован</b><br><br>&#128640; Казахстан вошёл в топ-10 стран по росту IT-экспорта<br><br>Экспорт IT-услуг вырос на 42% за первый квартал 2026 года.<br><br>#Казахстан #IT #экспорт'},
+        {t:'b',m:'&#9989; За сегодня опубликовано: 12 постов<br>&#128202; Охват: +2 340 просмотров<br>&#128197; Следующий пост: 19:00'}
+    ];
+    var cs=false;var cobs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!cs){cs=true;startChat()}})},{threshold:.3});
+    var ce=document.getElementById('chat-demo');if(ce)cobs.observe(ce);
+
+    function startChat(){
+        var msgs=document.getElementById('chat-msgs'),typing=document.getElementById('typing'),i=0;
+        function next(){
+            if(i>=cd.length)return;var item=cd[i];
+            typing.classList.add('show');
+            setTimeout(function(){typing.classList.remove('show');addMsg(item);i++;setTimeout(next,1400)},1500);
+        }
+        function addMsg(item){
+            var d=document.createElement('div');d.className='msg msg-b';
+            d.innerHTML=item.m+'<div class="msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+'</div>';
+            msgs.insertBefore(d,typing);requestAnimationFrame(function(){d.classList.add('show')});msgs.scrollTop=msgs.scrollHeight;
+        }
+        setTimeout(next,1000);
+    }
+})();
+</script>
+</body>
+</html>
