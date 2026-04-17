@@ -230,6 +230,7 @@
         <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>
 </header>
+<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1162,25 +1163,23 @@
     // Burger + mobile dropdown
     var burger = document.getElementById('burger');
     var nav = document.getElementById('nav');
+    var navBackdrop = document.getElementById('navBackdrop');
     function closeNav() {
         burger && burger.classList.remove('open');
         nav && nav.classList.remove('open');
+        navBackdrop && navBackdrop.classList.remove('open');
         document.body.classList.remove('nav-open');
         nav && nav.querySelectorAll('.dropdown').forEach(function(d) { d.classList.remove('mob-open') });
     }
     function openNav() {
         burger && burger.classList.add('open');
         nav && nav.classList.add('open');
+        navBackdrop && navBackdrop.classList.add('open');
         document.body.classList.add('nav-open');
     }
+    if (navBackdrop) navBackdrop.addEventListener('click', closeNav);
     var navClose = document.getElementById('navClose');
     if (navClose) navClose.addEventListener('click', closeNav);
-    if (nav) {
-        // Close when tapping on empty area of the overlay (not on menu items)
-        nav.addEventListener('click', function(e) {
-            if (e.target === nav) closeNav();
-        });
-    }
     if (burger && nav) {
         burger.addEventListener('click', function(e) {
             e.stopPropagation();
