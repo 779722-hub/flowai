@@ -1102,19 +1102,20 @@
         if (!track) return;
         var cards = track.children;
         var total = cards.length;
+        var GAP = 16;
+
         function perView() {
             if (window.innerWidth < 768) return 1;
             if (window.innerWidth < 1024) return 2;
             return 3;
         }
-        var pages = function() { return Math.max(1, total - perView() + 1); };
+        function pages() { return Math.max(1, total - perView() + 1); }
         var idx = 0;
 
         function render() {
-            var pv = perView();
-            var cardWidth = track.clientWidth / pv;
-            track.style.transform = 'translateX(' + (-idx * cardWidth) + 'px)';
-            track.style.gridTemplateColumns = '';
+            if (!cards[0]) return;
+            var step = cards[0].getBoundingClientRect().width + GAP;
+            track.style.transform = 'translateX(' + (-idx * step) + 'px)';
             dots.innerHTML = '';
             var p = pages();
             for (var i = 0; i < p; i++) {
@@ -1127,8 +1128,14 @@
 
         prev && prev.addEventListener('click', function() { go(idx - 1); });
         next && next.addEventListener('click', function() { go(idx + 1); });
-        window.addEventListener('resize', function() { go(idx); });
-        render();
+        var rTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(rTimer);
+            rTimer = setTimeout(function() { go(idx); }, 120);
+        });
+
+        // Wait a frame so flex has laid out before measuring
+        requestAnimationFrame(render);
 
         // Auto-advance every 5s
         var autoTimer = setInterval(function() {

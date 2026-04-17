@@ -1009,6 +1009,14 @@ section { position: relative; padding: var(--section-py) 0; }
     flex: 0 0 calc((100% - 32px) / 3);
     min-width: 0;
 }
+
+@media (max-width: 1024px) {
+    .testi-card { flex: 0 0 calc((100% - 16px) / 2); padding: 28px; }
+}
+@media (max-width: 768px) {
+    .testi-card { flex: 0 0 100%; padding: 24px; gap: 16px; }
+    .testi-text { font-size: 14px; }
+}
 .testi-controls {
     display: flex;
     justify-content: center;
