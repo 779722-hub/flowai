@@ -29,3 +29,6 @@ __pycache__/
 
 # Logs
 *.log
+
+# Local deploy script
+deploy.bat
