@@ -32,3 +32,13 @@ __pycache__/
 
 # Local deploy script
 deploy.bat
+
+# Node / Puppeteer artifacts (dev-only screenshots)
+node_modules/
+package.json
+package-lock.json
+screenshot*.mjs
+assets/screenshots/
+
+# Marketing CSV imports (не для публичного репо)
+google_ads_import/

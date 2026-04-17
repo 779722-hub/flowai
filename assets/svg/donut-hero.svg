@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <!-- ring base -->
+    <circle cx="200" cy="200" r="160" stroke="currentColor" stroke-opacity=".08" stroke-width="48"/>
+
+    <!-- segments (pathLength=100 for clean percentages); rotate from top -->
+    <g transform="rotate(-90 200 200)" pathLength="100">
+        <!-- 44% WhatsApp — main accent lime -->
+        <circle cx="200" cy="200" r="160" stroke="var(--accent,#C3FF36)" stroke-width="48"
+                pathLength="100" stroke-dasharray="44 100" stroke-dashoffset="0" stroke-linecap="butt"/>
+        <!-- 22% Telegram — purple -->
+        <circle cx="200" cy="200" r="160" stroke="var(--accent-2,#9D6CFF)" stroke-width="48"
+                pathLength="100" stroke-dasharray="22 100" stroke-dashoffset="-45" stroke-linecap="butt"/>
+        <!-- 18% Voice — light lime tint -->
+        <circle cx="200" cy="200" r="160" stroke="var(--accent,#C3FF36)" stroke-opacity=".55" stroke-width="48"
+                pathLength="100" stroke-dasharray="18 100" stroke-dashoffset="-68" stroke-linecap="butt"/>
+        <!-- 10% Web/RAG — deeper purple tint -->
+        <circle cx="200" cy="200" r="160" stroke="var(--accent-2,#9D6CFF)" stroke-opacity=".55" stroke-width="48"
+                pathLength="100" stroke-dasharray="10 100" stroke-dashoffset="-87" stroke-linecap="butt"/>
+        <!-- 6% Other — muted -->
+        <circle cx="200" cy="200" r="160" stroke="currentColor" stroke-opacity=".25" stroke-width="48"
+                pathLength="100" stroke-dasharray="6 100" stroke-dashoffset="-98" stroke-linecap="butt"/>
+    </g>
+
+    <!-- segment labels -->
+    <g font-family="Manrope, Inter, sans-serif" font-weight="800" fill="currentColor">
+        <text x="290" y="120" font-size="22" text-anchor="middle">44%</text>
+        <text x="70"  y="135" font-size="18" text-anchor="middle">22%</text>
+        <text x="80"  y="290" font-size="14" text-anchor="middle" opacity=".75">18%</text>
+        <text x="230" y="332" font-size="12" text-anchor="middle" opacity=".75">10%</text>
+    </g>
+</svg>
