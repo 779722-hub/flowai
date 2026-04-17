@@ -468,6 +468,7 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-LFTCZN8X4T');
+      gtag('config', 'AW-964186887');
     </script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -1010,8 +1011,12 @@
             });
         }
         /* Google Ads conversion (will work after AW- ID added) */
-        if (typeof gtag === 'function' && window.GOOGLE_ADS_CONVERSION_ID) {
-            gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
+        if (typeof gtag === 'function') {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-964186887/DfhdCMSR850cEIem4csD',
+                'value': 1.0,
+                'currency': 'USD'
+            });
         }
         /* Yandex Metrica goal */
         if (typeof ym === 'function') {
