@@ -1287,6 +1287,47 @@
         script.async = true;
         document.head.appendChild(script);
     })();
+
+    /* Rename "Gemini 3.1 Flash Live" → "FlowAi-бот" inside widget DOM (incl. shadow roots) */
+    (function() {
+        var FROM = /Gemini\s*3\.1\s*Flash\s*Live/gi;
+        var TO = 'FlowAi-бот';
+
+        function walkShadows(root, visit) {
+            if (!root) return;
+            visit(root);
+            var all = root.querySelectorAll ? root.querySelectorAll('*') : [];
+            for (var i = 0; i < all.length; i++) {
+                if (all[i].shadowRoot) walkShadows(all[i].shadowRoot, visit);
+            }
+        }
+        function replaceIn(root) {
+            if (!root) return;
+            var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+            var n, hits = [];
+            while ((n = walker.nextNode())) {
+                if (n.nodeValue && FROM.test(n.nodeValue)) hits.push(n);
+                FROM.lastIndex = 0;
+            }
+            hits.forEach(function(node) { node.nodeValue = node.nodeValue.replace(FROM, TO); });
+
+            // attributes: title, aria-label, placeholder, alt
+            if (root.querySelectorAll) {
+                root.querySelectorAll('[title], [aria-label], [placeholder], [alt]').forEach(function(el) {
+                    ['title','aria-label','placeholder','alt'].forEach(function(a) {
+                        var v = el.getAttribute(a);
+                        if (v && FROM.test(v)) { el.setAttribute(a, v.replace(FROM, TO)); FROM.lastIndex = 0; }
+                    });
+                });
+            }
+        }
+        function pass() { walkShadows(document, replaceIn); }
+
+        var mo = new MutationObserver(pass);
+        mo.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+        // Re-run a few times while widget loads async
+        [300, 800, 1600, 3000, 6000].forEach(function(ms) { setTimeout(pass, ms); });
+    })();
 </script>
 <!-- End Gemini 3.1 Flash Live Widget -->
 

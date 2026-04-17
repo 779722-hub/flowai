@@ -1563,7 +1563,7 @@ section { position: relative; padding: var(--section-py) 0; }
     .nav > a:hover,
     .nav .dropdown-toggle:hover { background: transparent; color: var(--accent); }
 
-    .dropdown { width: 100%; }
+    .dropdown { width: 100%; position: static; }
     .dropdown .dropdown-toggle::after {
         content: "";
         width: 10px;
@@ -1576,16 +1576,23 @@ section { position: relative; padding: var(--section-py) 0; }
         margin-right: 6px;
     }
     .dropdown-menu {
-        position: static;
-        transform: none;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        inset: auto !important;
+        transform: none !important;
         opacity: 1;
         visibility: visible;
         display: none;
         box-shadow: none;
         border: 0;
-        padding: 8px 0 16px 8px;
+        padding: 8px 0 16px 0;
+        margin: 0;
         background: transparent;
         min-width: 0;
+        max-width: none;
         width: 100%;
     }
     .dropdown-menu a {
