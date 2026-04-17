@@ -1423,7 +1423,7 @@ section { position: relative; padding: var(--section-py) 0; }
 /* FLOATING BUTTONS ------------------------------------------ */
 .wa-float {
     position: fixed;
-    bottom: 20px; right: 20px;
+    bottom: 20px; left: 20px;
     width: 56px; height: 56px;
     border-radius: 50%;
     background: var(--wa);
@@ -1442,7 +1442,7 @@ section { position: relative; padding: var(--section-py) 0; }
 
 .scroll-top {
     position: fixed;
-    bottom: 88px; right: 20px;
+    bottom: 88px; left: 20px;
     width: 44px; height: 44px;
     border-radius: 50%;
     background: var(--bg-card);
