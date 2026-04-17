@@ -1159,13 +1159,21 @@
     // Burger + mobile dropdown
     var burger = document.getElementById('burger');
     var nav = document.getElementById('nav');
+    function closeNav() {
+        burger && burger.classList.remove('open');
+        nav && nav.classList.remove('open');
+        document.body.classList.remove('nav-open');
+        nav && nav.querySelectorAll('.dropdown').forEach(function(d) { d.classList.remove('mob-open') });
+    }
+    function openNav() {
+        burger && burger.classList.add('open');
+        nav && nav.classList.add('open');
+        document.body.classList.add('nav-open');
+    }
     if (burger && nav) {
-        burger.addEventListener('click', function() {
-            burger.classList.toggle('open');
-            nav.classList.toggle('open');
-            if (!nav.classList.contains('open')) {
-                nav.querySelectorAll('.dropdown').forEach(function(d) { d.classList.remove('mob-open') });
-            }
+        burger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (nav.classList.contains('open')) closeNav(); else openNav();
         });
         nav.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
             toggle.addEventListener('click', function(e) {
@@ -1179,12 +1187,16 @@
                 }
             });
         });
-        nav.querySelectorAll('a:not(.dropdown-toggle)').forEach(function(a) {
-            a.addEventListener('click', function() {
-                burger.classList.remove('open');
-                nav.classList.remove('open');
-                nav.querySelectorAll('.dropdown').forEach(function(d) { d.classList.remove('mob-open') });
-            });
+        nav.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', function() { closeNav(); });
+        });
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
+        });
+        // Close when resized to desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && nav.classList.contains('open')) closeNav();
         });
     }
 
