@@ -167,6 +167,9 @@
             <span>FlowAi</span>
         </a>
         <nav class="nav" id="nav">
+            <button class="nav-close" id="navClose" type="button" aria-label="Закрыть меню">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
             <div class="dropdown">
                 <span class="dropdown-toggle">Боты</span>
                 <div class="dropdown-menu">
@@ -1169,6 +1172,14 @@
         burger && burger.classList.add('open');
         nav && nav.classList.add('open');
         document.body.classList.add('nav-open');
+    }
+    var navClose = document.getElementById('navClose');
+    if (navClose) navClose.addEventListener('click', closeNav);
+    if (nav) {
+        // Close when tapping on empty area of the overlay (not on menu items)
+        nav.addEventListener('click', function(e) {
+            if (e.target === nav) closeNav();
+        });
     }
     if (burger && nav) {
         burger.addEventListener('click', function(e) {
