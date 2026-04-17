@@ -469,6 +469,18 @@
       gtag('js', new Date());
       gtag('config', 'G-LFTCZN8X4T');
     </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983', 'ym');
+        ym(108596983, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108596983" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
 
@@ -1045,9 +1057,9 @@
             gtag('event', 'conversion', {'send_to': window.GOOGLE_ADS_CONVERSION_ID});
         }
         /* Yandex Metrica goal */
-        if (typeof ym === 'function' && window.YM_COUNTER_ID) {
-            ym(window.YM_COUNTER_ID, 'reachGoal', 'whatsapp_click');
-        }
+        if (typeof ym === 'function') {
+                ym(108596983, 'reachGoal', 'whatsapp_click');
+            }
     }, true);
 })();
 </script>
