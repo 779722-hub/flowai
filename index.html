@@ -320,6 +320,7 @@
 
 <!-- ROBOT -->
 <section class="robot-section">
+    <div class="stars-wrap" id="starsWrapRobot" aria-hidden="true"></div>
     <div class="container">
         <div class="robot-grid">
             <div class="robot-stage fi">
@@ -1348,8 +1349,8 @@
 </script>
 <script>
 (function () {
-    var wrap = document.getElementById('starsWrap');
-    if (!wrap) return;
+    var wraps = document.querySelectorAll('.stars-wrap');
+    if (!wraps.length) return;
     function genShadows(count, color) {
         var s = [];
         for (var i = 0; i < count; i++) {
@@ -1360,7 +1361,6 @@
         return s.join(', ');
     }
     function build() {
-        wrap.innerHTML = '';
         var isLight = document.documentElement.getAttribute('data-theme') === 'light';
         var color = isLight ? 'rgba(20,20,20,0.55)' : '#ffffff';
         var layers = [
@@ -1368,35 +1368,73 @@
             { count: 380, size: 2, dur: 120 },
             { count: 180, size: 3, dur: 180 }
         ];
-        layers.forEach(function (cfg) {
-            var layer = document.createElement('div');
-            layer.className = 'star-layer';
-            layer.style.setProperty('--dur', cfg.dur + 's');
-            var shadows = genShadows(cfg.count, color);
-            [false, true].forEach(function (second) {
-                var dot = document.createElement('div');
-                dot.className = 'dot' + (second ? ' second' : '');
-                dot.style.setProperty('--sz', cfg.size + 'px');
-                dot.style.boxShadow = shadows;
-                layer.appendChild(dot);
+        wraps.forEach(function (wrap) {
+            wrap.innerHTML = '';
+            layers.forEach(function (cfg) {
+                var layer = document.createElement('div');
+                layer.className = 'star-layer';
+                layer.style.setProperty('--dur', cfg.dur + 's');
+                var shadows = genShadows(cfg.count, color);
+                [false, true].forEach(function (second) {
+                    var dot = document.createElement('div');
+                    dot.className = 'dot' + (second ? ' second' : '');
+                    dot.style.setProperty('--sz', cfg.size + 'px');
+                    dot.style.boxShadow = shadows;
+                    layer.appendChild(dot);
+                });
+                wrap.appendChild(layer);
             });
-            wrap.appendChild(layer);
         });
     }
     build();
-    // Rebuild on theme switch
     new MutationObserver(build).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    // Mouse parallax
-    var hero = wrap.parentElement;
+    // Mouse parallax per-section
     var factor = 0.05;
-    hero.addEventListener('mousemove', function (e) {
-        var cx = window.innerWidth / 2;
-        var cy = window.innerHeight / 2;
-        var ox = -(e.clientX - cx) * factor;
-        var oy = -(e.clientY - cy) * factor;
-        wrap.style.transform = 'translate(' + ox + 'px, ' + oy + 'px)';
+    wraps.forEach(function (wrap) {
+        var host = wrap.parentElement;
+        host.addEventListener('mousemove', function (e) {
+            var cx = window.innerWidth / 2;
+            var cy = window.innerHeight / 2;
+            var ox = -(e.clientX - cx) * factor;
+            var oy = -(e.clientY - cy) * factor;
+            wrap.style.transform = 'translate(' + ox + 'px, ' + oy + 'px)';
+        });
+        host.addEventListener('mouseleave', function () { wrap.style.transform = 'translate(0, 0)'; });
     });
-    hero.addEventListener('mouseleave', function () { wrap.style.transform = 'translate(0, 0)'; });
+})();
+/* Butterfly cursor over the robot stage */
+(function () {
+    if (matchMedia('(hover: none)').matches || window.innerWidth < 1100) return;
+    var stage = document.querySelector('.robot-stage');
+    if (!stage) return;
+    var butterfly = document.createElement('div');
+    butterfly.className = 'butterfly-cursor';
+    butterfly.setAttribute('aria-hidden', 'true');
+    butterfly.innerHTML = '<span class="wings">\uD83E\uDD8B</span>';
+    document.body.appendChild(butterfly);
+    var tx = 0, ty = 0, cx = 0, cy = 0;
+    var raf = null;
+    function tick() {
+        cx += (tx - cx) * 0.22;
+        cy += (ty - cy) * 0.22;
+        butterfly.style.transform = 'translate(' + (cx - 20) + 'px, ' + (cy - 20) + 'px)';
+        raf = requestAnimationFrame(tick);
+    }
+    stage.addEventListener('mouseenter', function (e) {
+        tx = cx = e.clientX;
+        ty = cy = e.clientY;
+        butterfly.style.transform = 'translate(' + (cx - 20) + 'px, ' + (cy - 20) + 'px)';
+        butterfly.classList.add('show');
+        if (!raf) raf = requestAnimationFrame(tick);
+    });
+    stage.addEventListener('mouseleave', function () {
+        butterfly.classList.remove('show');
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+    });
+    stage.addEventListener('mousemove', function (e) {
+        tx = e.clientX;
+        ty = e.clientY;
+    });
 })();
 </script>
 <script>
