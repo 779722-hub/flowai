@@ -1912,11 +1912,13 @@ section { position: relative; padding: var(--section-py) 0; }
     border-color: var(--accent);
 }
 .world-labels .lbl-below { transform: translate(-50%, 60%); }
+.world-labels .lbl-right { transform: translate(8%, -50%); }
 .world-wrap.play .world-labels .lbl { opacity: 1; }
 
 @media (max-width: 900px) {
     .world-labels .lbl { font-size: 10px; padding: 3px 7px; transform: translate(-50%, -200%); }
     .world-labels .lbl-below { transform: translate(-50%, 100%); }
+    .world-labels .lbl-right { transform: translate(8%, -50%); }
 }
 @media (max-width: 700px) {
     /* Drop secondary labels on phones — too cramped */
