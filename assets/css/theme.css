@@ -2199,7 +2199,7 @@ section { position: relative; padding: var(--section-py) 0; }
     .consult form .btn { grid-column: 1; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     /* Remove backdrop-filter on mobile — creates containing block that breaks fixed nav */
     .header {
         backdrop-filter: none;
@@ -2346,7 +2346,9 @@ section { position: relative; padding: var(--section-py) 0; }
         padding: 12px 16px;
     }
     .hd-btns { margin-left: auto; }
+}
 
+@media (max-width: 768px) {
     .num-grid { grid-template-columns: repeat(2, 1fr); }
     .niche-grid { grid-template-columns: repeat(3, 1fr); }
     .price-grid { grid-template-columns: 1fr; }

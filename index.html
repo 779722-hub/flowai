@@ -1187,7 +1187,7 @@
         });
         nav.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
             toggle.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1100) {
                     e.preventDefault();
                     e.stopPropagation();
                     var dd = toggle.closest('.dropdown');
@@ -1206,7 +1206,7 @@
         });
         // Close when resized to desktop
         window.addEventListener('resize', function() {
-            if (window.innerWidth > 768 && nav.classList.contains('open')) closeNav();
+            if (window.innerWidth > 1100 && nav.classList.contains('open')) closeNav();
         });
     }
 
