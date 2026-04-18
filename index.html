@@ -952,6 +952,63 @@
     </div>
 </section>
 
+<!-- WORLD MAP -->
+<section class="s-alt">
+    <div class="container">
+        <div class="eyebrow">География</div>
+        <h2 class="section-title fi">Из Астаны — <span class="accent">по всему миру</span></h2>
+        <p class="section-sub fi">Клиенты FlowAi работают в Казахстане, СНГ, на Ближнем Востоке и в Европе</p>
+        <div class="world-wrap fi">
+            <img src="assets/svg/world-dots.svg" alt="Карта мира" class="world-bg" draggable="false">
+            <svg class="world-arcs" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"   stop-color="#C3FF36" stop-opacity="0"/>
+                        <stop offset="12%"  stop-color="#C3FF36" stop-opacity="1"/>
+                        <stop offset="88%"  stop-color="#C3FF36" stop-opacity="1"/>
+                        <stop offset="100%" stop-color="#C3FF36" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+                <!-- Arcs: from Астана (571.0, 86.3) to each destination -->
+                <!-- Астана → Москва (483.6, 76.1) -->
+                <path class="arc" style="--d:0s"   pathLength="1" d="M 558.8 86.3 Q 527.3 16.2 483.6 76.1" fill="none" stroke="url(#arcGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Астана → Алматы (570.8 104.0) -->
+                <path class="arc" style="--d:.3s" pathLength="1" d="M 558.8 86.3 Q 570.9 36.3 570.8 104.0" fill="none" stroke="url(#arcGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Астана → Ташкент (553.9 108.2) -->
+                <path class="arc" style="--d:.6s" pathLength="1" d="M 558.8 86.3 Q 562.5 36.3 553.9 108.2" fill="none" stroke="url(#arcGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Астана → Дубай (522.8 144.0) -->
+                <path class="arc" style="--d:.9s" pathLength="1" d="M 558.8 86.3 Q 546.9 36.3 522.8 144.0" fill="none" stroke="url(#arcGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Астана → Стамбул (464.4 108.9) -->
+                <path class="arc" style="--d:1.2s" pathLength="1" d="M 558.8 86.3 Q 517.7 36.3 464.4 108.9" fill="none" stroke="url(#arcGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Астана → Лондон (399.7 85.5) -->
+                <path class="arc" style="--d:1.5s" pathLength="1" d="M 558.8 86.3 Q 485.4 15.5 399.7 85.5" fill="none" stroke="url(#arcGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Астана → Сеул (682.2 116.5) -->
+                <path class="arc" style="--d:1.8s" pathLength="1" d="M 558.8 86.3 Q 620.5 36.3 682.2 116.5" fill="none" stroke="url(#arcGrad)" stroke-width="1.2" stroke-linecap="round"/>
+
+                <!-- Points -->
+                <g class="pt pt-hub"><circle cx="571.0" cy="86.3" r="3" fill="#C3FF36"/><circle cx="571.0" cy="86.3" r="3" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="3" to="12" dur="1.6s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.6s" begin="0s" repeatCount="indefinite"/></circle></g>
+                <g class="pt"><circle cx="483.6" cy="76.1" r="2" fill="#C3FF36"/><circle cx="483.6" cy="76.1" r="2" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="2" to="8" dur="1.5s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.5s" begin="0s" repeatCount="indefinite"/></circle></g>
+                <g class="pt"><circle cx="570.8" cy="104.0" r="2" fill="#C3FF36"/><circle cx="570.8" cy="104.0" r="2" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="2" to="8" dur="1.5s" begin=".2s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.5s" begin=".2s" repeatCount="indefinite"/></circle></g>
+                <g class="pt"><circle cx="553.9" cy="108.2" r="2" fill="#C3FF36"/><circle cx="553.9" cy="108.2" r="2" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="2" to="8" dur="1.5s" begin=".4s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.5s" begin=".4s" repeatCount="indefinite"/></circle></g>
+                <g class="pt"><circle cx="522.8" cy="144.0" r="2" fill="#C3FF36"/><circle cx="522.8" cy="144.0" r="2" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="2" to="8" dur="1.5s" begin=".6s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.5s" begin=".6s" repeatCount="indefinite"/></circle></g>
+                <g class="pt"><circle cx="464.4" cy="108.9" r="2" fill="#C3FF36"/><circle cx="464.4" cy="108.9" r="2" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="2" to="8" dur="1.5s" begin=".8s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.5s" begin=".8s" repeatCount="indefinite"/></circle></g>
+                <g class="pt"><circle cx="399.7" cy="85.5" r="2" fill="#C3FF36"/><circle cx="399.7" cy="85.5" r="2" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="2" to="8" dur="1.5s" begin="1.0s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.5s" begin="1.0s" repeatCount="indefinite"/></circle></g>
+                <g class="pt"><circle cx="682.2" cy="116.5" r="2" fill="#C3FF36"/><circle cx="682.2" cy="116.5" r="2" fill="#C3FF36" opacity=".5"><animate attributeName="r" from="2" to="8" dur="1.5s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" from=".5" to="0" dur="1.5s" begin="1.2s" repeatCount="indefinite"/></circle></g>
+            </svg>
+            <div class="world-labels">
+                <span class="lbl lbl-hub" style="left:69.9%;top:21.6%">Астана</span>
+                <span class="lbl" style="left:60.5%;top:19.0%">Москва</span>
+                <span class="lbl lbl-sec" style="left:71.4%;top:26.0%">Алматы</span>
+                <span class="lbl lbl-sec" style="left:69.2%;top:27.1%">Ташкент</span>
+                <span class="lbl" style="left:65.3%;top:36.0%">Дубай</span>
+                <span class="lbl" style="left:58.0%;top:27.2%">Стамбул</span>
+                <span class="lbl" style="left:49.9%;top:21.4%">Лондон</span>
+                <span class="lbl lbl-sec" style="left:85.3%;top:29.1%">Сеул</span>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
     <div class="container">
@@ -1075,6 +1132,21 @@
         }
         setTimeout(typeStep, 1200);
     }
+
+    // World map: trigger arc-draw animation on scroll into view
+    (function() {
+        var world = document.querySelector('.world-wrap');
+        if (!world || !('IntersectionObserver' in window)) { world && world.classList.add('play'); return; }
+        var wObs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) {
+                    world.classList.add('play');
+                    wObs.disconnect();
+                }
+            });
+        }, { threshold: 0.2 });
+        wObs.observe(world);
+    })();
 
     // FAQ
     document.querySelectorAll('.faq-q').forEach(function(btn) {
