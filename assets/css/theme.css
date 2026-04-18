@@ -412,12 +412,14 @@ section { position: relative; padding: var(--section-py) 0; }
     to   { transform: translateY(-2000px); }
 }
 
-/* Soft top-right bloom sits above the stars */
+/* Soft top-right bloom + bottom fade that blends hero into the next section */
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle 800px at 100% 200px, var(--hero-bloom), transparent 65%);
+    background:
+        linear-gradient(to bottom, transparent 62%, var(--bg) 100%),
+        radial-gradient(circle 800px at 100% 200px, var(--hero-bloom), transparent 65%);
     z-index: 1;
     pointer-events: none;
 }
@@ -1277,13 +1279,23 @@ section { position: relative; padding: var(--section-py) 0; }
     padding: clamp(48px, 7vw, 120px) 0;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(ellipse at bottom, #1f1f1f 0%, #050505 100%);
-}
-:root[data-theme="light"] .robot-section {
-    background: radial-gradient(ellipse at bottom, #EEEEEA 0%, #F7F7F5 100%);
 }
 .robot-section > .container { position: relative; z-index: 3; }
-/* Bottom-left bloom sits above stars */
+/* Grid pattern around the robot */
+.robot-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--robot-grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--robot-grid-line) 1px, transparent 1px);
+    background-size: 6rem 4rem;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 35%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 35%, transparent 90%);
+    z-index: 0;
+    pointer-events: none;
+}
+/* Bottom-left bloom */
 .robot-section::after {
     content: "";
     position: absolute;
@@ -1293,14 +1305,31 @@ section { position: relative; padding: var(--section-py) 0; }
     pointer-events: none;
 }
 :root {
+    --robot-grid-line: rgba(255, 255, 255, 0.08);
     --robot-bloom: rgba(195, 255, 54, 0.16);
 }
 :root[data-theme="light"] {
+    --robot-grid-line: #e8e8e8;
     --robot-bloom: #d5c5ff;
 }
 
-/* Butterfly cursor over the robot stage ------------------------ */
-.robot-stage { cursor: none; }
+/* Cosmic viewport inside the robot stage -------------------- */
+.robot-stage {
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    background: radial-gradient(ellipse at bottom, #1f1f1f 0%, #050505 100%);
+}
+.robot-stage > .stars-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+.robot-stage > .robot-badge,
+.robot-stage > spline-viewer { position: relative; z-index: 2; }
+
+/* Butterfly cursor over the robot stage -------------------- */
 .robot-stage.no-butterfly { cursor: auto; }
 .butterfly-cursor {
     position: fixed;
@@ -1308,26 +1337,63 @@ section { position: relative; padding: var(--section-py) 0; }
     top: 0;
     width: 40px;
     height: 40px;
-    transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9999;
     opacity: 0;
     transition: opacity .2s var(--ease);
-    filter: drop-shadow(0 0 10px rgba(195, 255, 54, 0.55));
-    font-size: 32px;
+    filter: drop-shadow(0 0 12px rgba(195, 255, 54, 0.7));
     line-height: 1;
     text-align: center;
     will-change: transform;
 }
 .butterfly-cursor.show { opacity: 1; }
-.butterfly-cursor .wings { display: inline-block; animation: butterflyFlutter .32s ease-in-out infinite alternate; }
+.butterfly-cursor svg { width: 40px; height: 40px; animation: butterflyFlutter .08s ease-in-out infinite alternate; transform-origin: 50% 50%; }
 @keyframes butterflyFlutter {
-    from { transform: scale(1, 1) rotate(-6deg); }
-    to   { transform: scale(0.78, 1) rotate(6deg); }
+    from { transform: scale(1, 1) rotate(-8deg); }
+    to   { transform: scale(0.6, 1) rotate(8deg); }
 }
 @media (max-width: 1100px) {
     .robot-stage { cursor: auto; }
     .butterfly-cursor { display: none; }
+}
+
+/* PAIN section — grid + top-left bloom, fades into black -------- */
+#pain {
+    position: relative;
+    overflow: hidden;
+}
+#pain > .container { position: relative; z-index: 3; }
+#pain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--robot-grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--robot-grid-line) 1px, transparent 1px);
+    background-size: 6rem 4rem;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 35%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 35%, transparent 90%);
+    z-index: 0;
+    pointer-events: none;
+}
+#pain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, transparent 65%, #050505 100%),
+        radial-gradient(circle 800px at 0% 0%, var(--robot-bloom), transparent 65%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* SOLUTIONS section starts on near-black, blends hero-like dark */
+#solutions {
+    background: radial-gradient(ellipse at top, #1f1f1f 0%, #050505 100%);
+    color: var(--text);
+}
+:root[data-theme="light"] #solutions {
+    background: radial-gradient(ellipse at top, #F0EEE8 0%, var(--bg) 100%);
 }
 .robot-grid {
     display: grid;
