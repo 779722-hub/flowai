@@ -268,35 +268,35 @@
                         <circle cx="200" cy="200" r="160" stroke="var(--donut-4)" stroke-width="54" pathLength="100" stroke-dasharray="15.4 100" stroke-dashoffset="-84"/>
                     </g>
 
-                    <!-- Callouts: leader lines + dots + labels -->
+                    <!-- Callouts: leader lines + dots + labels. Dots sit at sector midpoints on r=160 ring. -->
                     <g class="callouts">
-                        <!-- 32% WhatsApp — upper right -->
-                        <path class="callout-line" d="M338,110 L430,60"/>
-                        <circle class="callout-dot" cx="338" cy="110" r="4" fill="var(--donut-1)"/>
+                        <!-- 32% WhatsApp — midpoint at 16% → upper right -->
+                        <path class="callout-line" d="M335,114 L430,60"/>
+                        <circle class="callout-dot" cx="335" cy="114" r="4" fill="var(--donut-1)"/>
                         <text class="callout-num" x="440" y="50"  font-size="34">32%</text>
                         <text x="440" y="74" font-size="11" fill="currentColor" opacity=".65" font-weight="600" letter-spacing="1">WHATSAPP</text>
 
-                        <!-- 21% Telegram — lower right -->
-                        <path class="callout-line" d="M332,300 L430,360"/>
-                        <circle class="callout-dot" cx="332" cy="300" r="4" fill="var(--donut-2)"/>
+                        <!-- 21% Telegram — midpoint at 42.5% → lower right -->
+                        <path class="callout-line" d="M273,343 L430,368"/>
+                        <circle class="callout-dot" cx="273" cy="343" r="4" fill="var(--donut-2)"/>
                         <text class="callout-num" x="440" y="368" font-size="28">21%</text>
                         <text x="440" y="388" font-size="11" fill="currentColor" opacity=".65" font-weight="600" letter-spacing="1">TELEGRAM</text>
 
-                        <!-- 12% Web — bottom left -->
-                        <path class="callout-line" d="M115,310 L-20,370"/>
-                        <circle class="callout-dot" cx="115" cy="310" r="4" fill="var(--donut-5)"/>
+                        <!-- 12% Web — midpoint at 59% → bottom left -->
+                        <path class="callout-line" d="M114,335 L-20,370"/>
+                        <circle class="callout-dot" cx="114" cy="335" r="4" fill="var(--donut-5)"/>
                         <text class="callout-num" x="-30" y="378" font-size="20" text-anchor="end">12%</text>
                         <text x="-30" y="396" font-size="10" fill="currentColor" opacity=".65" font-weight="600" text-anchor="end" letter-spacing="1">WEB</text>
 
-                        <!-- 19% Voice — left -->
-                        <path class="callout-line" d="M48,220 L-30,245"/>
-                        <circle class="callout-dot" cx="48" cy="220" r="4" fill="var(--donut-3)"/>
+                        <!-- 19% Voice — midpoint at 74.5% → left -->
+                        <path class="callout-line" d="M40,205 L-30,245"/>
+                        <circle class="callout-dot" cx="40" cy="205" r="4" fill="var(--donut-3)"/>
                         <text class="callout-num" x="-40" y="240" font-size="26" text-anchor="end">19%</text>
                         <text x="-40" y="258" font-size="10" fill="currentColor" opacity=".65" font-weight="600" text-anchor="end" letter-spacing="1">VOICE</text>
 
-                        <!-- 16% RAG — upper left -->
-                        <path class="callout-line" d="M90,110 L-10,60"/>
-                        <circle class="callout-dot" cx="90" cy="110" r="4" fill="var(--donut-4)"/>
+                        <!-- 16% RAG — midpoint at 92% → upper left -->
+                        <path class="callout-line" d="M123,60 L-10,60"/>
+                        <circle class="callout-dot" cx="123" cy="60" r="4" fill="var(--donut-4)"/>
                         <text class="callout-num" x="-20" y="50" font-size="22" text-anchor="end">16%</text>
                         <text x="-20" y="68" font-size="10" fill="currentColor" opacity=".65" font-weight="600" text-anchor="end" letter-spacing="1">RAG</text>
                     </g>
