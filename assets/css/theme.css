@@ -665,6 +665,145 @@ section { position: relative; padding: var(--section-py) 0; }
     pointer-events: none;
 }
 
+/* TELEGRAM PHONE MOCKUP ------------------------------------- */
+.tg-phone {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    aspect-ratio: 9 / 19;
+    padding: 14px;
+    background: linear-gradient(180deg, #1c1c1c, #0a0a0a);
+    border-radius: 46px;
+    border: 2px solid #2a2a2a;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(42,171,238,.25);
+}
+.tg-phone .screen {
+    width: 100%; height: 100%;
+    border-radius: 34px;
+    background: #17212b;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.tg-phone .notch {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 110px; height: 22px;
+    background: #0a0a0a;
+    border-radius: 0 0 18px 18px;
+    z-index: 5;
+}
+.tg-phone .hdr {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 28px 14px 12px;
+    background: #232e3c;
+    color: #fff;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.tg-phone .av {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2AABEE, #229ED9);
+    display: grid; place-items: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+}
+.tg-phone .nm { font-size: 14px; font-weight: 600; line-height: 1.1; }
+.tg-phone .st { font-size: 11px; opacity: .7; color: #8a9da5; }
+.tg-phone .body {
+    flex: 1;
+    padding: 14px 10px 10px;
+    background: #0e1621;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.tg-phone .bub {
+    max-width: 82%;
+    padding: 8px 12px;
+    font-size: 11px;
+    line-height: 1.35;
+    border-radius: 12px;
+    opacity: 0;
+    animation: waBub .35s var(--ease) forwards;
+    color: #eaeaea;
+}
+.tg-phone .bub.u {
+    align-self: flex-end;
+    background: #2b5278;
+    color: #fff;
+    border-bottom-right-radius: 3px;
+}
+.tg-phone .bub.b {
+    align-self: flex-start;
+    background: #182533;
+    border-bottom-left-radius: 3px;
+}
+.tg-phone .bub .t {
+    display: block;
+    font-size: 9px;
+    opacity: .55;
+    margin-top: 2px;
+    text-align: right;
+}
+.tg-phone .bub:nth-child(1) { animation-delay: .3s; }
+.tg-phone .bub:nth-child(2) { animation-delay: 1.2s; }
+.tg-phone .bub:nth-child(3) { animation-delay: 2.2s; }
+.tg-phone .bub:nth-child(4) { animation-delay: 3.3s; }
+.tg-phone .bub:nth-child(5) { animation-delay: 4.4s; }
+.tg-phone .bub:nth-child(6) { animation-delay: 5.5s; }
+
+.tg-phone .inline-kb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+}
+.tg-phone .inline-kb .kb {
+    padding: 7px 10px;
+    background: #2a5278;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    flex: 1 1 calc(50% - 4px);
+}
+.tg-phone .foot {
+    padding: 8px 10px;
+    background: #17212b;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,.05);
+}
+.tg-phone .foot .inp {
+    flex: 1;
+    padding: 8px 12px;
+    background: #242f3d;
+    border-radius: 999px;
+    font-size: 11px;
+    color: #8a9da5;
+}
+.tg-phone .foot .send {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #2AABEE;
+    display: grid; place-items: center;
+    color: #fff;
+    animation: waSend 2s ease-in-out infinite;
+}
+.tg-phone .foot .send svg { width: 14px; height: 14px; }
+
 /* ROI CALCULATOR ------------------------------------------- */
 .roi {
     display: grid;
