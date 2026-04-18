@@ -433,7 +433,7 @@ section { position: relative; padding: var(--section-py) 0; }
     width: 100%;
     max-width: 640px;
     margin-left: auto;
-    margin-top: -38px;
+    margin-top: -72px;
     aspect-ratio: 1.1 / 1;
     isolation: isolate;
 }
@@ -442,23 +442,23 @@ section { position: relative; padding: var(--section-py) 0; }
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 4%;
-    width: 58%;
-    height: 14%;
+    bottom: -2%;
+    width: 52%;
+    height: 10%;
     transform: translateX(-50%);
-    background: radial-gradient(ellipse at center, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 70%);
-    filter: blur(10px);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(14px);
     z-index: -1;
     pointer-events: none;
 }
-/* Accent glow bloom behind the ring */
+/* Very subtle accent bloom behind the ring — reads as volumetric light */
 .hero-chart::after {
     content: "";
     position: absolute;
-    inset: 10% 14%;
+    inset: 8% 12%;
     border-radius: 50%;
-    background: radial-gradient(circle at 55% 40%, rgba(195,255,54,.18) 0%, rgba(157,108,255,.1) 35%, transparent 65%);
-    filter: blur(30px);
+    background: radial-gradient(circle at 55% 40%, rgba(195,255,54,.09) 0%, rgba(157,108,255,.06) 40%, transparent 70%);
+    filter: blur(40px);
     z-index: -1;
     pointer-events: none;
 }
@@ -469,8 +469,9 @@ section { position: relative; padding: var(--section-py) 0; }
     transform: perspective(1400px) rotateX(10deg) rotateY(-4deg);
     transform-origin: 50% 55%;
     filter:
-        drop-shadow(0 28px 32px rgba(0,0,0,.5))
-        drop-shadow(0 6px 10px rgba(0,0,0,.35));
+        drop-shadow(0 34px 36px rgba(0,0,0,.55))
+        drop-shadow(0 8px 14px rgba(0,0,0,.4))
+        drop-shadow(0 0 24px rgba(195,255,54,.08));
     transition: transform .4s var(--ease);
 }
 .hero-chart:hover svg { transform: perspective(1400px) rotateX(6deg) rotateY(-2deg); }
