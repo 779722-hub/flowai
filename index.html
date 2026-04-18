@@ -337,7 +337,7 @@
                     <li>Обучается на вашей базе знаний</li>
                 </ul>
                 <div class="hero-cta">
-                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-primary btn-lg">Поговорить с ботом</a>
+                    <a href="#" class="btn btn-primary btn-lg" id="openVoiceBot">Поговорить с ботом</a>
                     <a href="#consult" class="btn btn-outline btn-lg">Заказать такого же</a>
                 </div>
             </div>
@@ -1397,6 +1397,26 @@
         wrap.style.transform = 'translate(' + ox + 'px, ' + oy + 'px)';
     });
     hero.addEventListener('mouseleave', function () { wrap.style.transform = 'translate(0, 0)'; });
+})();
+</script>
+<script>
+(function () {
+    var btn = document.getElementById('openVoiceBot');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        function tryClick(tries) {
+            var trigger = document.getElementById('wellcomeai-widget-button');
+            if (trigger) {
+                trigger.click();
+                // Scroll the widget into view in case the user hasn't seen it
+                trigger.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                return;
+            }
+            if (tries > 0) setTimeout(function () { tryClick(tries - 1); }, 400);
+        }
+        tryClick(10);
+    });
 })();
 </script>
 </body>
