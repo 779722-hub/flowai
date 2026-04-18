@@ -1770,6 +1770,81 @@ section { position: relative; padding: var(--section-py) 0; }
 .testi-info h4 { font-size: 15px; margin-bottom: 2px; }
 .testi-info p { font-size: 13px; color: var(--text-mute); }
 
+/* TESTIMONIALS (3-column infinite scroll) ------------------- */
+.testi-wall {
+    position: relative;
+    height: 640px;
+    overflow: hidden;
+    margin-top: 48px;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+.testi-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 320px));
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
+}
+.testi-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    will-change: transform;
+    animation: testi-up 32s linear infinite;
+}
+.testi-col-2 { animation-duration: 44s; }
+.testi-col-3 { animation-duration: 38s; }
+.testi-wall:hover .testi-col { animation-play-state: paused; }
+
+@keyframes testi-up {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+.testi-card-v {
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--bg-card);
+    box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    flex-shrink: 0;
+    transition: border-color .2s var(--ease), transform .2s var(--ease);
+}
+.testi-card-v:hover {
+    border-color: var(--border-h);
+    transform: translateY(-2px);
+}
+.testi-card-v .txt {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0 0 18px;
+}
+.testi-card-v .who {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.testi-card-v .who img {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.testi-card-v .who .name { font-size: 14px; font-weight: 600; line-height: 1.3; }
+.testi-card-v .who .role { font-size: 13px; color: var(--text-mute); line-height: 1.3; }
+
+@media (max-width: 1100px) {
+    .testi-cols { grid-template-columns: repeat(2, minmax(0, 320px)); }
+    .testi-col-3 { display: none; }
+}
+@media (max-width: 700px) {
+    .testi-cols { grid-template-columns: minmax(0, 340px); }
+    .testi-col-2 { display: none; }
+    .testi-wall { height: 560px; }
+}
+
 /* NICHE GRID ------------------------------------------------ */
 .niche-grid {
     display: grid;
