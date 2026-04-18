@@ -1,653 +1,161 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta charset="UTF-8"><link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Как мы работаем — процесс внедрения ИИ-решений | FlowAi</title>
     <meta name="description" content="Как FlowAi внедряет ИИ в бизнес: 6 этапов от брифа до запуска. Команда, стек технологий, принципы. Прозрачно и по шагам.">
-    <meta name="keywords" content="как мы работаем flowai, процесс внедрения ии, разработка чатботов казахстан, команда flowai, этапы работы, методология ии, автоматизация бизнеса астана алматы">
-    <meta property="og:title" content="Как мы работаем — процесс внедрения ИИ-решений | FlowAi">
-    <meta property="og:description" content="6 этапов от заявки до запуска. Команда экспертов с опытом 5+ лет. Прозрачные сроки, фиксированная цена, гарантия результата.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://flowai.kz/kak-my-rabotaem">
-    <meta property="og:locale" content="ru_RU">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=630&fit=crop">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Как мы работаем — процесс внедрения ИИ-решений | FlowAi">
+    <meta name="keywords" content="как мы работаем flowai, процесс внедрения ии, этапы разработки чатбота, flowai технологии, стек команды flowai, принципы flowai">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:title" content="Как мы работаем — 6 этапов от заявки до запуска | FlowAi">
+    <meta property="og:description" content="Прозрачный процесс внедрения ИИ: от бесплатной консультации до запуска и поддержки. 12 экспертов FlowAi, проверенный стек, фиксированные сроки.">
+    <meta property="og:type" content="website"><meta property="og:url" content="https://flowai.kz/kak-my-rabotaem.html"><meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Как мы работаем — 6 этапов от заявки до запуска | FlowAi">
     <meta name="twitter:description" content="Как FlowAi внедряет ИИ в бизнес: 6 этапов от брифа до запуска. Команда, стек технологий, принципы. Прозрачно и по шагам.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=630&fit=crop">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="geo.region" content="KZ">
-    <meta name="geo.placename" content="Астана">
-    <link rel="canonical" href="https://flowai.kz/kak-my-rabotaem">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
-        :root {
-            --bg: #02091A; --bg-alt: #051228; --bg-card: #081830;
-            --accent: #0074FF; --accent-2: #00c6ff; --accent-3: #3d88ff;
-            --glow: rgba(0,116,255,.35); --glow-2: rgba(0,198,255,.2);
-            --wa: #25D366; --wa-glow: rgba(37,211,102,.3);
-            --red: #ef4444; --green: #22c55e; --orange: #f59e0b; --purple: #a78bfa;
-            --indigo: #6366f1; --indigo-glow: rgba(99,102,241,.3);
-            --text: #f0f8ff; --muted: #7aafd4; --muted-2: #3a6080;
-            --border: rgba(0,116,255,.18); --border-h: rgba(0,116,255,.45);
-            --r: 18px; --rs: 12px;
-        }
-        html { scroll-behavior: smooth; overflow-x: hidden }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; overflow-wrap: break-word }
-        h1, h2, h3, h4 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.2 }
-        a { color: var(--accent); text-decoration: none; transition: color .3s } a:hover { color: var(--accent-2) }
-        img { max-width: 100%; height: auto; display: block }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 28px }
-        .gtext { background: linear-gradient(135deg, var(--indigo), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
-
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 32px; border-radius: 50px; font-weight: 600; font-size: .95rem; font-family: 'Inter', sans-serif; transition: all .35s; cursor: pointer; border: none; text-decoration: none; white-space: nowrap; touch-action: manipulation }
-        .btn-wa { background: linear-gradient(135deg, #25D366, #1ab355); color: #fff; box-shadow: 0 4px 24px var(--wa-glow); animation: wapulse 3s ease-in-out infinite }
-        .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(37,211,102,.5); color: #fff }
-        @keyframes wapulse { 0%,100%{box-shadow:0 4px 24px var(--wa-glow)} 50%{box-shadow:0 4px 50px rgba(37,211,102,.55)} }
-        .btn-tg { background: linear-gradient(135deg, var(--accent), #0060dd); color: #fff; box-shadow: 0 4px 24px var(--glow) }
-        .btn-tg:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0,116,255,.5); color: #fff }
-        .btn-out { background: transparent; color: var(--text); border: 1px solid var(--border-h) }
-        .btn-out:hover { background: rgba(0,116,255,.1); color: #fff }
-        .btn-sm { padding: 11px 24px; font-size: .85rem }
-
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(2,9,26,.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: all .4s }
-        .header.scrolled { background: rgba(2,9,26,.96); box-shadow: 0 4px 40px rgba(0,0,0,.5) }
-        .hd-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 14px 28px }
-        .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; flex-shrink: 0 }
-        .logo-img { height: 36px; width: auto; display: block; filter: drop-shadow(0 2px 8px rgba(0,116,255,.3)) }
-        .nav { display: flex; align-items: center; gap: 28px }
-        .nav a { color: var(--muted); font-size: .87rem; font-weight: 500; transition: color .3s } .nav a:hover { color: #fff }
-        .hd-btns { display: flex; gap: 8px } .hd-btns .btn { padding: 9px 20px; font-size: .83rem }
-        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; z-index: 1002 }
-        .burger span { display: block; width: 24px; height: 2px; background: #fff; transition: .3s; border-radius: 2px }
-        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
-        .burger.open span:nth-child(2) { opacity: 0 }
-        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
-
-        /* HERO */
-        .page-hero { padding: 92px 0 60px; position: relative; overflow: hidden }
-        .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 25% 40%, rgba(99,102,241,.10) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 30%, rgba(0,198,255,.08) 0%, transparent 60%); pointer-events: none }
-        .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2 }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 50px; background: rgba(0,116,255,.08); border: 1px solid rgba(0,116,255,.2); color: #a0d4ff; font-size: .85rem; font-weight: 500; margin-bottom: 24px }
-        .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2); animation: blink 2s ease-in-out infinite }
-        @keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: .4 } }
-        .page-hero h1 { font-size: clamp(2rem, 4.8vw, 3.4rem); font-weight: 800; letter-spacing: -.02em; margin-bottom: 22px }
-        .page-hero p.lead { font-size: 1.12rem; color: var(--muted); margin-bottom: 32px; max-width: 540px }
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap }
-        .hero-img-wrap { position: relative; border-radius: var(--r); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(99,102,241,.1); border: 1px solid var(--border); aspect-ratio: 4/5 }
-        .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover }
-        .hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(2,9,26,.4) 100%) }
-        .hero-floating { position: absolute; bottom: 20px; left: 20px; right: 20px; display: flex; gap: 12px; z-index: 2 }
-        .hero-float-card { flex: 1; background: rgba(2,9,26,.7); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 14px 16px }
-        .hero-float-card .num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent-2) }
-        .hero-float-card .lbl { font-size: .72rem; color: var(--muted); margin-top: 2px }
-
-        /* STATS BAR */
-        .stats-bar { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 0; margin-top: 40px }
-        .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; text-align: center }
-        .sbar-item { display: flex; flex-direction: column; align-items: center; gap: 4px }
-        .sbar-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800 }
-        .sbar-label { font-size: .85rem; color: var(--muted) }
-
-        /* SECTIONS */
-        section { padding: 80px 0; position: relative }
-        .stitle { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800; text-align: center; letter-spacing: -.01em; margin-bottom: 14px }
-        .ssub { text-align: center; color: var(--muted); margin-bottom: 56px; font-size: 1.05rem }
-
-        /* PROCESS */
-        .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px }
-        .pcard { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 32px 30px; transition: all .4s; position: relative; overflow: hidden }
-        .pcard::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--accent), var(--accent-2)); opacity: 0; transition: opacity .4s }
-        .pcard:hover { transform: translateY(-6px); border-color: var(--border-h); box-shadow: 0 16px 48px rgba(0,116,255,.18) }
-        .pcard:hover::before { opacity: 1 }
-        .pcard-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px }
-        .pcard-num { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)); border: 1px solid rgba(0,116,255,.25); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent-2); flex-shrink: 0; box-shadow: 0 6px 22px rgba(0,116,255,.18) }
-        .pcard h3 { font-size: 1.15rem; font-weight: 700 }
-        .pcard p { color: var(--muted); font-size: .94rem; margin-bottom: 14px }
-        .pcard .timeline { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(0,116,255,.08); border: 1px solid var(--border); border-radius: 50px; font-size: .78rem; color: var(--accent-2); font-weight: 600 }
-        .pcard .timeline svg { width: 14px; height: 14px; stroke: var(--accent-2); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }
-
-        /* TEAM */
-        .team-section { background: var(--bg-alt) }
-        .team-photo-wrap { position: relative; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 24px 70px rgba(0,0,0,.55), 0 0 60px rgba(99,102,241,.12); aspect-ratio: 16/9; max-width: 1100px; margin: 0 auto }
-        .team-photo-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s }
-        .team-photo-wrap:hover img { transform: scale(1.03) }
-        .team-photo-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(2,9,26,.55) 75%, rgba(2,9,26,.85) 100%); pointer-events: none }
-        .team-photo-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 36px 40px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap }
-        .team-photo-overlay h3 { font-size: clamp(1.2rem, 2.2vw, 1.7rem); font-weight: 800; color: #fff; margin-bottom: 6px; letter-spacing: -.01em }
-        .team-photo-overlay p { font-size: .95rem; color: rgba(240,248,255,.82); max-width: 540px }
-        .team-photo-stats { display: flex; gap: 14px; flex-shrink: 0 }
-        .team-photo-stat { background: rgba(2,9,26,.7); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 14px 20px; text-align: center; min-width: 110px }
-        .team-photo-stat .num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--accent-2); line-height: 1 }
-        .team-photo-stat .lbl { font-size: .72rem; color: var(--muted); margin-top: 6px }
-        @media (max-width: 768px) {
-            .team-photo-wrap { aspect-ratio: 4/5 }
-            .team-photo-overlay { padding: 22px 22px; flex-direction: column; align-items: flex-start }
-            .team-photo-stats { width: 100%; justify-content: space-between; gap: 8px }
-            .team-photo-stat { padding: 10px 14px; min-width: 0; flex: 1 }
-            .team-photo-stat .num { font-size: 1.15rem }
-        }
-
-        /* PRINCIPLES */
-        .principles-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px }
-        .prin-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 30px 28px; transition: all .4s; position: relative }
-        .prin-card:hover { transform: translateY(-4px); border-color: var(--border-h); box-shadow: 0 14px 42px rgba(0,116,255,.16) }
-        .prin-ic { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)); border: 1px solid rgba(0,116,255,.25); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 22px rgba(0,116,255,.18); margin-bottom: 18px }
-        .prin-ic svg { width: 28px; height: 28px; stroke: var(--accent-2); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
-        .prin-card h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px }
-        .prin-card p { color: var(--muted); font-size: .9rem; line-height: 1.6 }
-
-        /* CLIENTS COLLAGE */
-        .clients-section { background: var(--bg-alt) }
-        .clients-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center }
-        .clients-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 16px; text-align: left }
-        .clients-text p { color: var(--muted); margin-bottom: 22px; font-size: 1rem }
-        .clients-text ul { list-style: none; padding: 0 }
-        .clients-text li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: .94rem; color: rgba(240,248,255,.88) }
-        .clients-text li::before { content: ''; width: 22px; height: 22px; min-width: 22px; margin-top: 2px; border-radius: 50%; background: linear-gradient(135deg, rgba(0,116,255,.2), rgba(0,198,255,.12)); border: 1px solid rgba(0,198,255,.4); display: flex; align-items: center; justify-content: center; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300c6ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: 14px 14px }
-        .clients-collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 16px }
-        .collage-tile { border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); position: relative; transition: transform .5s }
-        .collage-tile:hover { transform: scale(1.03) }
-        .collage-tile img { width: 100%; height: 100%; object-fit: cover }
-        .collage-tile.tall { grid-row: span 2; grid-template-rows: span 2 }
-        .clients-collage .collage-tile:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: auto }
-        .clients-collage .collage-tile:nth-child(2) { grid-column: 2; grid-row: 1 }
-        .clients-collage .collage-tile:nth-child(3) { grid-column: 2; grid-row: 2 }
-
-        /* TECH STACK */
-        .stack-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 16px }
-        .stack-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 14px; text-align: center; transition: all .35s }
-        .stack-item:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,116,255,.15) }
-        .stack-ic { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)); border: 1px solid rgba(0,116,255,.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; box-shadow: 0 4px 16px rgba(0,116,255,.15) }
-        .stack-ic svg { width: 22px; height: 22px; stroke: var(--accent-2); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round }
-        .stack-item h4 { font-size: .82rem; font-weight: 600 }
-
-        /* CTA */
-        .cta-block { background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(0,116,255,.08)); border: 1px solid rgba(99,102,241,.2); border-radius: var(--r); padding: 56px 40px; text-align: center; margin: 0 0 80px; position: relative; overflow: hidden }
-        .cta-block::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, rgba(99,102,241,.08), transparent 60%); pointer-events: none }
-        .cta-block h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; margin-bottom: 12px; position: relative }
-        .cta-block p { color: var(--muted); margin-bottom: 28px; font-size: 1.05rem; position: relative; max-width: 600px; margin-left: auto; margin-right: auto }
-        .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative }
-
-        /* FOOTER */
-        .footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 60px 0 30px }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px }
-        .footer h4 { font-family: 'Space Grotesk', sans-serif; font-size: .9rem; margin-bottom: 14px; color: var(--text) }
-        .footer p { font-size: .85rem; color: var(--muted); line-height: 1.6 }
-        .footer-links { list-style: none } .footer-links li { margin-bottom: 8px }
-        .footer-links a { color: var(--muted); font-size: .85rem } .footer-links a:hover { color: var(--accent-2) }
-        .footer-bot { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--muted-2) }
-
-        .float-wa { position: fixed; bottom: 28px; left: 28px; z-index: 900; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #25D366, #1ab355); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px var(--wa-glow); animation: wapulse 3s ease-in-out infinite; text-decoration: none; transition: transform .3s }
-        .float-wa:hover { transform: scale(1.1) }
-        .float-wa svg { width: 28px; height: 28px; fill: #fff }
-        .scroll-top { position: fixed; bottom: 28px; right: 28px; z-index: 900; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; background: linear-gradient(135deg, var(--accent), var(--accent-2)); border: none; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.3rem; font-weight: 700; box-shadow: 0 4px 24px var(--glow); opacity: 0; transform: translateY(20px); transition: all .3s; pointer-events: none }
-        .scroll-top.show { opacity: 1; transform: translateY(0); pointer-events: all }
-        .scroll-top:hover { transform: scale(1.1); box-shadow: 0 8px 36px rgba(0,116,255,.5) }
-
-        .fi { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s }
-        .fi.v { opacity: 1; transform: translateY(0) }
-
-        @media (max-width: 1100px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 40px }
-            .team-grid { grid-template-columns: 1fr 1fr }
-            .principles-grid { grid-template-columns: 1fr 1fr }
-            .clients-layout { grid-template-columns: 1fr; gap: 36px }
-            .stack-grid { grid-template-columns: repeat(3,1fr) }
-        }
-        @media (max-width: 768px) {
-            html, body { overflow-x: hidden } * { max-width: 100vw }
-            .container { padding: 0 16px }
-            .nav { display: none; position: fixed; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(0,116,255,.08), rgba(2,9,26,.97) 70%); backdrop-filter: blur(24px); flex-direction: column; justify-content: center; align-items: center; gap: 28px; z-index: 1000 }
-            .nav.open { display: flex } .nav a { color: var(--text); font-size: 1.15rem; padding: 10px 0 }
-            .nav-mob-btns { display: none; flex-direction: column; gap: 12px; margin-top: 20px; align-items: center }
-            .nav-mob-btns .btn { width: 220px; justify-content: center }
-            .burger { display: flex } .hd-btns { display: none } .hd-inner { padding: 12px 16px }
-            .page-hero { padding: 110px 0 36px } .page-hero h1 { font-size: 1.85rem }
-            section { padding: 56px 0 }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px }
-            .process-grid { grid-template-columns: 1fr }
-            .team-grid { grid-template-columns: 1fr 1fr; gap: 14px }
-            .principles-grid { grid-template-columns: 1fr }
-            .stack-grid { grid-template-columns: 1fr 1fr }
-            .clients-collage { grid-template-columns: 1fr; grid-template-rows: 200px 180px 180px }
-            .clients-collage .collage-tile:nth-child(1) { grid-column: 1; grid-row: 1 }
-            .clients-collage .collage-tile:nth-child(2) { grid-column: 1; grid-row: 2 }
-            .clients-collage .collage-tile:nth-child(3) { grid-column: 1; grid-row: 3 }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px }
-            .cta-block { padding: 36px 22px } .cta-btns { flex-direction: column; align-items: stretch } .cta-btns .btn { justify-content: center }
-            .fi { opacity: 1; transform: none; transition: none }
-        }
-        @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr } .team-grid { grid-template-columns: 1fr } .btn { white-space: normal; text-align: center; font-size: .87rem } }
-        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .01ms !important } }
-        /* === UNIFIED ICON STYLE (matches main page solutions block) === */
-        .feat-ic, .niche-ic, .how-ic, .ben-ic, .prob-ic, .mod-ic, .use-ic,
-        .data-ic, .why-ic, .fmt-ic, .type-ic, .inc-ic, .process-ic,
-        .step-ic, .form-ic, .info-ic, .val-ic, .ch-ic, .sbar-ic {
-            width: 56px !important;
-            height: 56px !important;
-            min-width: 56px !important;
-            border-radius: 14px !important;
-            background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)) !important;
-            border: 1px solid rgba(0,116,255,.25) !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            box-shadow: 0 6px 22px rgba(0,116,255,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
-            font-size: 0 !important;
-            margin-bottom: 16px !important;
-            transition: all .35s !important;
-            padding: 0 !important;
-        }
-        .niche-ic { margin: 0 auto 14px !important }
-        .feat-ic svg, .niche-ic svg, .how-ic svg, .ben-ic svg, .prob-ic svg,
-        .mod-ic svg, .use-ic svg, .data-ic svg, .why-ic svg, .fmt-ic svg,
-        .type-ic svg, .inc-ic svg, .process-ic svg, .step-ic svg, .form-ic svg,
-        .info-ic svg, .val-ic svg, .ch-ic svg, .sbar-ic svg {
-            width: 28px !important;
-            height: 28px !important;
-            stroke: #00c6ff !important;
-            fill: none !important;
-            stroke-width: 1.7 !important;
-            stroke-linecap: round !important;
-            stroke-linejoin: round !important;
-            transition: stroke .35s !important;
-        }
-        .niche-card:hover .niche-ic, .feat-card:hover .feat-ic, .feat-item:hover .feat-ic,
-        .ben-card:hover .ben-ic, .how-card:hover .how-ic, .prob-card:hover .prob-ic,
-        .mod-card:hover .mod-ic, .use-card:hover .use-ic, .data-card:hover .data-ic,
-        .why-card:hover .why-ic, .fmt-card:hover .fmt-ic, .type-card:hover .type-ic,
-        .inc-card:hover .inc-ic, .process-card:hover .process-ic, .step:hover .step-ic {
-            transform: scale(1.08) translateY(-2px) !important;
-            border-color: rgba(0,198,255,.55) !important;
-            box-shadow: 0 12px 36px rgba(0,198,255,.28) !important;
-        }
-        .niche-card:hover .niche-ic svg, .feat-item:hover .feat-ic svg,
-        .ben-card:hover .ben-ic svg, .how-card:hover .how-ic svg,
-        .mod-card:hover .mod-ic svg, .use-card:hover .use-ic svg {
-            stroke: #fff !important;
-        }
-
-
-    </style>
-    <!-- Google Analytics 4 -->
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png"><meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flowai.kz/kak-my-rabotaem.html">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Процесс внедрения ИИ-решений FlowAi","provider":{"@type":"Organization","name":"FlowAi","url":"https://flowai.kz"},"description":"6-этапный прозрачный процесс внедрения ИИ-ботов: консультация, аудит, ТЗ, разработка, тестирование, запуск","areaServed":{"@type":"Country","name":"Казахстан"}}</script>
+    <script>(function(){try{var m=localStorage.getItem('flowai-theme')||'auto',r=m;if(m==='auto'){var h=(new Date().getUTCHours()+5)%24;r=(h>=8&&h<20)?'light':'dark';}document.documentElement.setAttribute('data-theme',r);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/theme.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFTCZN8X4T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LFTCZN8X4T');
-      gtag('config', 'AW-964186887');
-    </script>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983', 'ym');
-        ym(108596983, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108596983" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFTCZN8X4T');gtag('config','AW-964186887');</script>
+    <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983','ym');ym(108596983,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",accurateTrackBounce:true,trackLinks:true});</script>
 </head>
 <body>
 
-<header class="header" id="header">
-    <div class="hd-inner">
-        <a href="index.html" class="logo"><img src="logo flowai.png" alt="FlowAi" class="logo-img"></a>
-        <nav class="nav" id="nav">
-            <a href="index.html">Главная</a>
-            <a href="o-kompanii.html">О компании</a>
-            <a href="kak-my-rabotaem.html">Как мы работаем</a>
-            <a href="Blog/index.html">Блог</a>
-            <a href="kontakty.html">Контакты</a>
-            <div class="nav-mob-btns" style="display:none">
-                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa btn-sm">WhatsApp</a>
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg btn-sm">Telegram</a>
-            </div>
-        </nav>
-        <div class="hd-btns">
-            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa btn-sm">WhatsApp</a>
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg btn-sm">Telegram</a>
-        </div>
-        <button class="burger" id="burger"><span></span><span></span><span></span></button>
+<header class="header" id="header"><div class="hd-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FA</span><span>FlowAi</span></a>
+    <nav class="nav" id="nav">
+        <button class="nav-close" id="navClose" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        <div class="dropdown"><span class="dropdown-toggle">Боты</span><div class="dropdown-menu"><a href="whatsapp-bot.html">WhatsApp-бот</a><a href="telegram-bot.html">Telegram-бот</a><a href="voice-manager-bot.html">Голосовой менеджер</a><a href="blogger-bot.html">Blogger-бот</a><a href="rss-bot.html">RSS-автопостинг</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">ИИ-решения</span><div class="dropdown-menu"><a href="chatbot-rag.html">RAG-чатбот</a><a href="ai-assistant-ceo.html">ИИ для CEO</a><a href="auto-kp-bot.html">КП-бот</a><a href="swift-invoice.html">Инвойс-бот</a><a href="nutritionist-bot.html">Нутрициолог-бот</a><a href="ai-research-bot.html">ИИ-исследователь</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">Разработка</span><div class="dropdown-menu"><a href="website-dev.html">Создание сайтов</a><a href="brand-video.html">Брендовое видео</a><a href="complex-solution.html">Комплексное решение</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">О нас</span><div class="dropdown-menu"><a href="o-kompanii.html">О компании</a><a href="kak-my-rabotaem.html">Как мы работаем</a></div></div>
+        <a href="Blog/index.html">Блог</a><a href="kontakty.html">Контакты</a>
+    </nav>
+    <div class="hd-btns">
+        <a href="tel:+77787806540" class="btn-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить нам</a>
+        <a href="https://wa.me/77787806540" target="_blank" class="icon-btn wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://t.me/FlowAItest_bot" target="_blank" class="icon-btn tg" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.04 15.58l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.39 5.18 3.79c.95.52 1.62.25 1.88-.88L22.9 3.82c.31-1.4-.5-1.95-1.43-1.6L1.24 9.95c-1.36.53-1.34 1.3-.23 1.65l5.1 1.59 11.84-7.47c.56-.36 1.07-.16.65.2"/></svg></a>
+        <button class="theme-toggle" type="button" aria-label="Тема"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
-</header>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</div></header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
-<!-- HERO -->
-<section class="page-hero">
-    <div class="container">
-        <div class="hero-grid">
-            <div>
-                <div class="hero-badge fi"><span class="dot"></span>Прозрачный процесс · Гарантия результата</div>
-                <h1 class="fi">Как мы работаем<br><span class="gtext">с вашим бизнесом</span></h1>
-                <p class="lead fi">От первого звонка до запуска — 6 чётких этапов с фиксированными сроками и стоимостью. Команда из 12 IT-специалистов в Астане и Алматы превращает рутину в работающий ИИ-механизм.</p>
-                <div class="hero-btns fi">
-                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">Бесплатная консультация</a>
-                    <a href="#process" class="btn btn-out">Смотреть процесс ↓</a>
-                </div>
-            </div>
-            <div class="fi" style="position:relative">
-                <div class="hero-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&h=1100&fit=crop&q=85" alt="Команда FlowAi за работой над ИИ-проектом" loading="lazy">
-                    <div class="hero-floating">
-                        <div class="hero-float-card"><div class="num">200+</div><div class="lbl">проектов запущено</div></div>
-                        <div class="hero-float-card"><div class="num">7-15</div><div class="lbl">дней до запуска</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="hero"><div class="container"><div class="hero-grid">
+    <div class="hero-left">
+        <div class="eyebrow">Прозрачный процесс · гарантия результата</div>
+        <h1>Как мы работаем с <span class="accent">вашим бизнесом</span></h1>
+        <p class="hero-sub">От первого звонка до запуска — 6 чётких этапов с фиксированными сроками и стоимостью. Команда из 12 IT-специалистов в Астане превращает рутину в работающий ИИ-механизм.</p>
+        <div class="hero-cta"><a href="https://wa.me/77787806540" target="_blank" class="btn btn-primary btn-lg">Бесплатная консультация</a><a href="#process" class="btn btn-outline btn-lg">Смотреть процесс ↓</a></div>
+        <div class="hero-meta"><div class="hero-meta-item"><div class="label">200+</div><div class="value">проектов запущено</div></div><div class="hero-meta-item"><div class="label">7–15 дней</div><div class="value"><span class="accent">от ТЗ</span> до запуска</div></div></div>
     </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-bar">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="sbar-item fi"><div class="sbar-num gtext">200+</div><div class="sbar-label">проектов в Казахстане</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">12</div><div class="sbar-label">экспертов в команде</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">5+</div><div class="sbar-label">лет на рынке ИИ</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">98%</div><div class="sbar-label">довольных клиентов</div></div>
+    <div class="hero-right"><div class="feed-stage">
+        <div class="fh"><span class="fh-title">Процесс · прогресс по проекту</span><span class="fh-live">Этап 4/6</span></div>
+        <div class="feed-items">
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><div class="feed-title">01 · Консультация · 30 мин · ✓</div><div class="feed-meta"><span class="tag">done</span><span>слушаем задачу</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><div class="feed-title">02 · Аудит · 1–2 дня · ✓</div><div class="feed-meta"><span class="tag">done</span><span>анализ процессов</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><div class="feed-title">03 · ТЗ + цена · 2–3 дня · ✓</div><div class="feed-meta"><span class="tag">done</span><span>фиксируем стоимость</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="feed-title">04 · Разработка · 7–15 дней · сейчас</div><div class="feed-meta"><span class="tag">in progress</span><span>обучение ИИ на данных</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg></div><div><div class="feed-title">05 · Тестирование · 2–4 дня</div><div class="feed-meta"><span class="tag">next</span><span>демо · оплата после теста</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg></div><div><div class="feed-title">06 · Запуск · 1 день + поддержка</div><div class="feed-meta"><span class="tag">next</span><span>7 дней саппорта бесплатно</span></div></div></div>
         </div>
+    </div></div>
+</div><div class="marquee-wrap"><div class="marquee" id="marquee"></div></div></div></section>
+
+<div class="stats-bar"><div class="container"><div class="stats-grid">
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="200">0</span>+</div><p>проектов в Казахстане</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="12">0</span></div><p>экспертов в команде</p></div>
+    <div class="stat-item fi"><div class="big">5+</div><p>лет на рынке ИИ</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="98">0</span>%</div><p>довольных клиентов</p></div>
+</div></div></div>
+
+<section class="s-alt" id="process"><div class="container">
+    <div class="eyebrow">6 этапов от заявки до запуска</div>
+    <h2 class="section-title fi">Каждый шаг согласован, <span class="accent">прозрачен и по срокам</span></h2>
+    <div class="num-grid">
+        <div class="num-card fi"><div><div class="num">01</div><h3>Бесплатная консультация · 30 мин</h3><p>Слушаем вашу задачу: что болит, какие процессы хотите автоматизировать, какие цели ставите. Никаких шаблонных скриптов — только живой разговор.</p></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">02</div><h3>Аудит и анализ · 1–2 дня</h3><p>Изучаем ваш процесс продаж, CRM, мессенджеры, сайт. Считаем, сколько денег теряется на каждом этапе и где ИИ принесёт максимальную прибыль.</p></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">03</div><h3>ТЗ + фиксированная цена · 2–3 дня</h3><p>Готовим подробное ТЗ с описанием функций, интеграций и сценариев. Цена фиксируется заранее — никаких сюрпризов в счёте по итогу проекта.</p></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">04</div><h3>Разработка и обучение ИИ · 7–15 дней</h3><p>Команда создаёт бот, обучает модель на ваших данных, настраивает RAG-базу и интеграции с CRM, 1С, Kaspi и другими сервисами.</p></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">05</div><h3>Тестирование с клиентом · 2–4 дня</h3><p>Демонстрируем прототип, тестируем на реальных сценариях. Полная оплата — только после того, как вы убедились: всё работает как нужно.</p></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="22 4 12 14.01 9 11.01"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">06</div><h3>Запуск и поддержка · 1 день + 7 дней саппорта</h3><p>Подключаем к боевым каналам, обучаем команду, передаём документацию. Первые 7 дней — техподдержка в подарок, круглосуточный мониторинг.</p></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg></div></div>
     </div>
-</div>
+</div></section>
 
-<!-- PROCESS -->
-<section id="process">
-    <div class="container">
-        <h2 class="stitle fi">6 этапов от заявки <span class="gtext">до запуска</span></h2>
-        <p class="ssub fi">Каждый шаг согласован, прозрачен и фиксирован по срокам</p>
-
-        <div class="process-grid">
-            <div class="pcard fi">
-                <div class="pcard-top">
-                    <div class="pcard-num">01</div>
-                    <h3>Бесплатная консультация</h3>
-                </div>
-                <p>Слушаем вашу задачу: что болит, какие процессы хотите автоматизировать, какие цели ставите. Никаких шаблонных скриптов — только живой разговор о вашем бизнесе.</p>
-                <div class="timeline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 минут</div>
-            </div>
-
-            <div class="pcard fi">
-                <div class="pcard-top">
-                    <div class="pcard-num">02</div>
-                    <h3>Аудит и анализ</h3>
-                </div>
-                <p>Изучаем ваш текущий процесс продаж, CRM, мессенджеры, сайт. Считаем, сколько денег сейчас теряется на каждом этапе и где ИИ принесёт максимальную прибыль.</p>
-                <div class="timeline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1–2 дня</div>
-            </div>
-
-            <div class="pcard fi">
-                <div class="pcard-top">
-                    <div class="pcard-num">03</div>
-                    <h3>ТЗ и фиксированная цена</h3>
-                </div>
-                <p>Готовим подробное техническое задание с описанием функций, интеграций и сценариев. Цена фиксируется заранее — никаких сюрпризов в счёте по итогу проекта.</p>
-                <div class="timeline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2–3 дня</div>
-            </div>
-
-            <div class="pcard fi">
-                <div class="pcard-top">
-                    <div class="pcard-num">04</div>
-                    <h3>Разработка и обучение ИИ</h3>
-                </div>
-                <p>Команда разработчиков создаёт бот, обучает модель на ваших данных, настраивает RAG-базу и интеграции с CRM, 1С, Kaspi и другими сервисами.</p>
-                <div class="timeline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 7–15 дней</div>
-            </div>
-
-            <div class="pcard fi">
-                <div class="pcard-top">
-                    <div class="pcard-num">05</div>
-                    <h3>Тестирование с клиентом</h3>
-                </div>
-                <p>Демонстрируем прототип, тестируем на реальных сценариях, собираем обратную связь. Полная оплата только после того, как вы убедились — всё работает как нужно.</p>
-                <div class="timeline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2–4 дня</div>
-            </div>
-
-            <div class="pcard fi">
-                <div class="pcard-top">
-                    <div class="pcard-num">06</div>
-                    <h3>Запуск и поддержка</h3>
-                </div>
-                <p>Подключаем бот к боевым каналам, обучаем вашу команду, передаём документацию. Первые 7 дней — техподдержка в подарок и круглосуточный мониторинг.</p>
-                <div class="timeline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 день + поддержка</div>
-            </div>
-        </div>
+<section><div class="container">
+    <div class="eyebrow">Принципы нашей работы</div>
+    <h2 class="section-title fi">6 правил, которые отличают нас <span class="accent">от типичных подрядчиков</span></h2>
+    <div class="feature-grid">
+        <div class="feature-card fi"><h3>Прозрачность</h3><p>Вы видите каждый этап в реальном времени: задачи, прогресс, время команды. Никаких «работаем, доверьтесь нам».</p></div>
+        <div class="feature-card fi"><h3>Гарантия результата</h3><p>Полная оплата — только после демонстрации работающего прототипа. Не работает — возвращаем 100% предоплаты.</p></div>
+        <div class="feature-card fi"><h3>Скорость</h3><p>Не 3 месяца, а 7–15 дней от ТЗ до запуска. Используем готовые компоненты и проверенные паттерны.</p></div>
+        <div class="feature-card fi"><h3>Безопасность данных</h3><p>NDA, шифрование, локальное хранение. Ваши данные не уходят в OpenAI или другие облака без вашего согласия.</p></div>
+        <div class="feature-card fi"><h3>Локальный контекст</h3><p>Понимаем рынок РК: законы, налоги, особенности клиентов в Астане и Алматы. Не копируем западные шаблоны.</p></div>
+        <div class="feature-card fi"><h3>Долгосрочные отношения</h3><p>80% наших клиентов возвращаются за новыми проектами. Мы не «впариваем» — мы строим партнёрство на годы.</p></div>
     </div>
-</section>
+</div></section>
 
-<!-- TEAM -->
-<section class="team-section">
-    <div class="container">
-        <h2 class="stitle fi">Команда <span class="gtext">FlowAi</span></h2>
-        <p class="ssub fi">12 экспертов с опытом 5+ лет в разработке ИИ-решений для бизнеса Казахстана</p>
-
-        <div class="team-photo-wrap fi">
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1600&h=900&fit=crop&q=90" alt="Команда FlowAi на встрече в переговорной комнате офиса" loading="lazy">
-            <div class="team-photo-overlay">
-                <div>
-                    <h3>Каждое утро мы собираемся в переговорной</h3>
-                    <p>Разработчики, дизайнеры, ML-инженеры и менеджеры — обсуждаем проекты клиентов, синхронизируем задачи и принимаем ключевые решения вместе.</p>
-                </div>
-                <div class="team-photo-stats">
-                    <div class="team-photo-stat"><div class="num">12</div><div class="lbl">экспертов</div></div>
-                    <div class="team-photo-stat"><div class="num">5+</div><div class="lbl">лет опыта</div></div>
-                    <div class="team-photo-stat"><div class="num">2</div><div class="lbl">офиса в РК</div></div>
-                </div>
-            </div>
-        </div>
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">Работаем рядом с клиентами</div>
+    <h2 class="section-title fi">Не «через стенку» — <span class="accent">в одном чате</span></h2>
+    <div class="feature-grid">
+        <div class="feature-card fi"><h3>Кикофф-встреча</h3><p>Встречаемся в офисе клиента в Астане или онлайн. Закрепляем цели, сроки, ключевые контакты и формат работы.</p></div>
+        <div class="feature-card fi"><h3>Общий Telegram-чат</h3><p>Все участники проекта — клиент и команда FlowAi — в одном чате. Вопросы решаются за минуты, а не дни.</p></div>
+        <div class="feature-card fi"><h3>Еженедельные демо</h3><p>Каждую неделю — статус по Zoom. Показываем прогресс, обсуждаем риски, корректируем курс по необходимости.</p></div>
+        <div class="feature-card fi"><h3>Доска задач 24/7</h3><p>Trello / Notion с задачами открыт для клиента. Всегда видно, кто что делает, что сделано и что впереди.</p></div>
+        <div class="feature-card fi"><h3>Прямой контакт с разработчиками</h3><p>Без посредников. Если нужно уточнить деталь реализации — пишете напрямую тому, кто её делает.</p></div>
+        <div class="feature-card fi"><h3>Выезд на объекты</h3><p>Выезжаем на ваше производство, склад, точку продаж — чтобы понять реальный процесс, а не по фото.</p></div>
     </div>
-</section>
+</div></section>
 
-<!-- PRINCIPLES -->
-<section>
-    <div class="container">
-        <h2 class="stitle fi">Принципы <span class="gtext">нашей работы</span></h2>
-        <p class="ssub fi">6 правил, которые отличают нас от типичных подрядчиков</p>
-
-        <div class="principles-grid">
-            <div class="prin-card fi">
-                <div class="prin-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-                <h3>Прозрачность</h3>
-                <p>Вы видите каждый этап в реальном времени: задачи, прогресс, время команды. Никаких «работаем, доверьтесь нам»</p>
-            </div>
-
-            <div class="prin-card fi">
-                <div class="prin-ic"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-                <h3>Гарантия результата</h3>
-                <p>Полная оплата — только после демонстрации работающего прототипа. Не работает — возвращаем 100% предоплаты</p>
-            </div>
-
-            <div class="prin-card fi">
-                <div class="prin-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                <h3>Скорость</h3>
-                <p>Не 3 месяца, а 7–15 дней от ТЗ до запуска. Используем готовые компоненты и проверенные паттерны</p>
-            </div>
-
-            <div class="prin-card fi">
-                <div class="prin-ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                <h3>Безопасность данных</h3>
-                <p>NDA, шифрование, локальное хранение. Ваши данные не уходят в OpenAI или другие облака без вашего согласия</p>
-            </div>
-
-            <div class="prin-card fi">
-                <div class="prin-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-7.5-7-13a7 7 0 0 1 14 0c0 5.5-7 13-7 13z"/></svg></div>
-                <h3>Локальный контекст</h3>
-                <p>Понимаем рынок РК: законы, налоги, особенности клиентов в Астане и Алматы. Не копируем западные шаблоны</p>
-            </div>
-
-            <div class="prin-card fi">
-                <div class="prin-ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-                <h3>Долгосрочные отношения</h3>
-                <p>80% наших клиентов возвращаются за новыми проектами. Мы не «впариваем» — мы строим партнёрство на годы</p>
-            </div>
-        </div>
+<section><div class="container">
+    <div class="eyebrow">Стек технологий</div>
+    <h2 class="section-title fi">Проверенный временем <span class="accent">enterprise-уровень</span></h2>
+    <div class="num-grid">
+        <div class="num-card fi"><div><div class="num">01</div><h3>OpenAI / Claude / Gemini</h3></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">02</div><h3>Python · FastAPI</h3></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">03</div><h3>PostgreSQL · Redis</h3></div><div class="ic"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">04</div><h3>React · Next.js</h3></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">05</div><h3>Telegram Bot API</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">06</div><h3>WhatsApp Business</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">07</div><h3>amoCRM · Битрикс24 · 1С</h3></div><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">08</div><h3>Docker · Kubernetes · LangChain</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div></div>
     </div>
-</section>
+</div></section>
 
-<!-- CLIENTS COLLAGE -->
-<section class="clients-section">
-    <div class="container">
-        <div class="clients-layout">
-            <div class="clients-text fi">
-                <h2>Работаем рядом <span class="gtext">с клиентами</span></h2>
-                <p>Не работаем «через стенку». Каждый проект — это совместная работа нашей команды и людей со стороны клиента. Мы встречаемся в офисе, выезжаем на ваши объекты в Астане и Алматы, общаемся в общих чатах ежедневно.</p>
-                <ul>
-                    <li>Кикофф-встреча в офисе клиента или онлайн</li>
-                    <li>Общий Telegram-чат с командой проекта</li>
-                    <li>Еженедельные демо и статусы по Zoom</li>
-                    <li>Доступ к Trello/Notion-доске задач 24/7</li>
-                    <li>Прямой контакт с разработчиками без посредников</li>
-                </ul>
-            </div>
-            <div class="clients-collage fi">
-                <div class="collage-tile"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=800&fit=crop&q=85" alt="Встреча команды FlowAi с клиентом" loading="lazy"></div>
-                <div class="collage-tile"><img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&h=400&fit=crop&q=85" alt="Совместная работа над проектом" loading="lazy"></div>
-                <div class="collage-tile"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop&q=85" alt="Обсуждение технических деталей с клиентом" loading="lazy"></div>
-            </div>
-        </div>
+<section id="consult" class="s-alt"><div class="container"><div class="consult fi">
+    <div class="consult-txt"><h2>Готовы обсудить проект?</h2><p>Бесплатная 30-минутная консультация: расскажем, как ИИ решит вашу задачу, посчитаем сроки и стоимость.</p></div>
+    <div class="consult-sticker"><div class="inner">30 МИН<small>бесплатно</small></div></div>
+    <form onsubmit="event.preventDefault(); window.open('https://wa.me/77787806540','_blank');"><input type="text" placeholder="Имя" required><input type="tel" placeholder="+7 (000) 000-00-00" required><button class="btn btn-primary">Записаться</button><div class="consult-legal">Нажимая кнопку, вы соглашаетесь на обработку данных</div></form>
+</div></div></section>
+
+<footer class="footer"><div class="container">
+    <div class="footer-grid">
+        <div class="footer-col"><h4>О FlowAi</h4><ul><li><a href="kak-my-rabotaem.html">Как мы работаем</a></li><li><a href="o-kompanii.html">О компании</a></li><li><a href="Blog/index.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></div>
+        <div class="footer-col"><h4>Все решения</h4><ul><li><a href="whatsapp-bot.html">WhatsApp-бот</a></li><li><a href="telegram-bot.html">Telegram-бот</a></li><li><a href="voice-manager-bot.html">Голосовой менеджер</a></li><li><a href="chatbot-rag.html">RAG-чатбот</a></li><li><a href="ai-assistant-ceo.html">ИИ для CEO</a></li></ul></div>
+        <div class="footer-col"><h4>Контакты</h4><ul><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="tel:+77787806540">Позвонить нам</a></li><li><a href="mailto:7806540@gmail.com">7806540@gmail.com</a></li></ul></div>
+        <div class="footer-col"><h4>FlowAi.kz</h4><ul><li>пр. Республики, д. 68</li><li>Астана, Казахстан</li><li><small>© 2024–2026 FlowAi</small></li></ul></div>
     </div>
-</section>
+    <div class="footer-bottom"><span>FlowAi — автоматизация бизнеса на ИИ</span><span>Казахстан · СНГ · 2026</span></div>
+</div></footer>
 
-<!-- TECH STACK -->
-<section>
-    <div class="container">
-        <h2 class="stitle fi">Технологии, <span class="gtext">которые мы используем</span></h2>
-        <p class="ssub fi">Только проверенный временем стек enterprise-уровня</p>
+<a href="https://wa.me/77787806540" target="_blank" class="wa-float" id="waFloat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<button class="scroll-top" id="scrollTop">↑</button>
 
-        <div class="stack-grid">
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div>
-                <h4>OpenAI / Claude</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-                <h4>Python / FastAPI</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-                <h4>PostgreSQL</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                <h4>React / Next.js</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
-                <h4>Telegram Bot API</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-                <h4>WhatsApp Business</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-                <h4>amoCRM / Битрикс24</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                <h4>1С Интеграция</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-                <h4>Docker / Kubernetes</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
-                <h4>Kaspi API</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                <h4>NDA / Шифрование</h4>
-            </div>
-            <div class="stack-item fi">
-                <div class="stack-ic"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-                <h4>LangChain / RAG</h4>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<div class="container">
-    <div class="cta-block fi">
-        <h2>Готовы обсудить ваш проект?</h2>
-        <p>Бесплатная 30-минутная консультация: расскажем, как ИИ решит вашу задачу, посчитаем сроки и стоимость без обязательств.</p>
-        <div class="cta-btns">
-            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Telegram</a>
-        </div>
-    </div>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div><h4>FlowAi.kz</h4><p>Автоматизация бизнеса с помощью ИИ. WhatsApp-боты, Telegram-боты, голосовые менеджеры, RAG-чатботы и комплексные решения для компаний в Казахстане и СНГ.</p></div>
-            <div><h4>Навигация</h4><ul class="footer-links"><li><a href="index.html">Главная</a></li><li><a href="o-kompanii.html">О компании</a></li><li><a href="kak-my-rabotaem.html">Как мы работаем</a></li><li><a href="Blog/index.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></div>
-            <div><h4>Связаться</h4><ul class="footer-links"><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="tel:+77787806540">+7 778 780 65 40</a></li></ul></div>
-            <div><h4>Адрес</h4><p>г. Астана<br>пр. Республики, д. 68</p><p style="margin-top:12px"><a href="https://flowai.kz">FlowAi.kz</a></p></div>
-        </div>
-        <div class="footer-bot">&copy; 2024–2026 FlowAi.kz — Автоматизация бизнеса с ИИ. Все права защищены.</div>
-    </div>
-</footer>
-
-<a href="https://wa.me/77787806540" target="_blank" class="float-wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-<button class="scroll-top" id="scrollTop" aria-label="Наверх">↑</button>
-
-<script>
-(function() {
-    var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('v') }) }, { threshold: .08 });
-    document.querySelectorAll('.fi').forEach(function(el) { obs.observe(el) });
-
-    var burger = document.getElementById('burger'), nav = document.getElementById('nav'), mobBtns = nav.querySelector('.nav-mob-btns');
-    burger.addEventListener('click', function() { burger.classList.toggle('open'); nav.classList.toggle('open'); if (mobBtns) mobBtns.style.display = nav.classList.contains('open') ? 'flex' : 'none' });
-    nav.querySelectorAll('a:not(.btn)').forEach(function(a) { a.addEventListener('click', function() { burger.classList.remove('open'); nav.classList.remove('open'); if (mobBtns) mobBtns.style.display = 'none' }) });
-
-    var header = document.getElementById('header'), scrollTopBtn = document.getElementById('scrollTop');
-    addEventListener('scroll', function() { var s = scrollY; header.classList.toggle('scrolled', s > 60); scrollTopBtn.classList.toggle('show', s > 400) });
-    scrollTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }) });
-})();
-</script>
-
-<script>
-/* FlowAi: WhatsApp click conversion tracking */
-(function(){
-    document.addEventListener('click', function(e){
-        var a = e.target.closest('a');
-        if (!a) return;
-        var href = a.getAttribute('href') || '';
-        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
-        if (!isWa) return;
-        /* Google Analytics 4 */
-        if (typeof gtag === 'function') {
-            gtag('event', 'whatsapp_click', {
-                'event_category': 'engagement',
-                'event_label': href,
-                'value': 1
-            });
-        }
-        /* Google Ads conversion (will work after AW- ID added) */
-        if (typeof gtag === 'function') {
-            gtag('event', 'conversion', {
-                'send_to': 'AW-964186887/DfhdCMSR850cEIem4csD',
-                'value': 1.0,
-                'currency': 'USD'
-            });
-        }
-        /* Yandex Metrica goal */
-        if (typeof ym === 'function') {
-                ym(108596983, 'reachGoal', 'whatsapp_click');
-            }
-    }, true);
-})();
-</script>
+<script>(function(){var s=document.createElement('script');s.src='https://voicyfy.ru/static/gemini-31-widget.js';s.dataset.assistantId='a2f68bf8-1968-4d08-9410-acaafcfb7a91';s.dataset.server='https://voicyfy.ru';s.dataset.position='bottom-right';s.async=true;document.head.appendChild(s);})();
+(function(){var F=/Gemini\s*3\.1\s*Flash\s*Live/gi,T='FlowAi-бот';function wS(r,v){if(!r)return;v(r);var a=r.querySelectorAll?r.querySelectorAll('*'):[];for(var i=0;i<a.length;i++)if(a[i].shadowRoot)wS(a[i].shadowRoot,v);}function rep(r){if(!r)return;var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,null,false),n,h=[];while((n=w.nextNode())){if(n.nodeValue&&F.test(n.nodeValue))h.push(n);F.lastIndex=0;}h.forEach(function(n){n.nodeValue=n.nodeValue.replace(F,T);});if(r.querySelectorAll)r.querySelectorAll('[title],[aria-label],[placeholder],[alt]').forEach(function(e){['title','aria-label','placeholder','alt'].forEach(function(a){var v=e.getAttribute(a);if(v&&F.test(v)){e.setAttribute(a,v.replace(F,T));F.lastIndex=0;}});});}function p(){wS(document,rep);}new MutationObserver(p).observe(document.documentElement,{childList:true,subtree:true,characterData:true});[300,800,1600,3000,6000].forEach(function(ms){setTimeout(p,ms);});})();</script>
+<script src="assets/js/theme-toggle.js"></script>
+<script>(function(){
+var mq=document.getElementById('marquee');if(mq){var items=['Как мы работаем','6 этапов','7–15 дней','Фиксированная цена','NDA','Прозрачность','Гарантия результата','12 экспертов'];var hi={'7–15 дней':1,'Фиксированная цена':1,'Гарантия результата':1};function r(){return items.map(function(s){return '<span'+(hi[s]?' class="hi"':'')+'>'+s+'<span class="dot">·</span></span>';}).join('');}mq.innerHTML=r()+r();}
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});document.querySelectorAll('.fi').forEach(function(e){obs.observe(e)});
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done='1';var t=+e.target.dataset.target,c=0,s=t/60;var x=setInterval(function(){c+=s;if(c>=t){c=t;clearInterval(x)}e.target.textContent=Math.round(c)},25)}})},{threshold:.5});document.querySelectorAll('.counter').forEach(function(e){co.observe(e)});
+var bg=document.getElementById('burger'),nv=document.getElementById('nav'),nc=document.getElementById('navClose'),nb=document.getElementById('navBackdrop');function cN(){bg&&bg.classList.remove('open');nv&&nv.classList.remove('open');nb&&nb.classList.remove('open');document.body.classList.remove('nav-open');nv&&nv.querySelectorAll('.dropdown').forEach(function(d){d.classList.remove('mob-open')})}function oN(){bg&&bg.classList.add('open');nv&&nv.classList.add('open');nb&&nb.classList.add('open');document.body.classList.add('nav-open')}if(nb)nb.addEventListener('click',cN);if(nc)nc.addEventListener('click',cN);if(bg&&nv){bg.addEventListener('click',function(e){e.stopPropagation();nv.classList.contains('open')?cN():oN()});nv.querySelectorAll('.dropdown-toggle').forEach(function(t){t.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();e.stopPropagation();var d=t.closest('.dropdown'),wo=d.classList.contains('mob-open');nv.querySelectorAll('.dropdown').forEach(function(x){x.classList.remove('mob-open')});if(!wo)d.classList.add('mob-open')}})});nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',cN)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nv.classList.contains('open'))cN()});window.addEventListener('resize',function(){if(window.innerWidth>768&&nv.classList.contains('open'))cN()})}
+var hdr=document.getElementById('header'),wf=document.getElementById('waFloat'),stb=document.getElementById('scrollTop');addEventListener('scroll',function(){var s=scrollY;hdr.classList.toggle('scrolled',s>60);wf.classList.toggle('show',s>300);stb.classList.toggle('show',s>300)});stb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();</script>
+<script>(function(){document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('wa.me')===-1&&h.indexOf('whatsapp.com')===-1&&(a.className||'').indexOf('btn-wa')===-1)return;if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'engagement',event_label:h,value:1});gtag('event','conversion',{send_to:'AW-964186887/DfhdCMSR850cEIem4csD',value:1.0,currency:'USD'})}if(typeof ym==='function'){ym(108596983,'reachGoal','whatsapp_click')}},true)})();</script>
 </body>
 </html>

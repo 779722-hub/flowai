@@ -1,690 +1,171 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta charset="UTF-8"><link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О компании FlowAi — лидер ИИ-автоматизации в Казахстане</title>
     <meta name="description" content="FlowAi — казахстанская команда ИИ-автоматизации. 200+ проектов, 5+ лет на рынке, офис в Астане. Наша миссия, история и ценности.">
     <meta name="keywords" content="о компании flowai, ии разработка казахстан, история flowai, миссия flowai, команда астана, чатбот разработчик казахстан, лидер ии автоматизации">
-    <meta property="og:title" content="О компании FlowAi — лидер ИИ-автоматизации в Казахстане">
-    <meta property="og:description" content="200+ проектов, 5+ лет опыта, команда из 12 экспертов. Наша миссия — освободить казахстанский бизнес от рутины с помощью ИИ.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://flowai.kz/o-kompanii">
-    <meta property="og:locale" content="ru_RU">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&h=630&fit=crop">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="О компании FlowAi — лидер ИИ-автоматизации в Казахстане">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:title" content="О компании FlowAi — автоматизация бизнеса ИИ в Казахстане">
+    <meta property="og:description" content="FlowAi — команда из 12 экспертов, которая помогает казахстанскому бизнесу автоматизировать рутину с помощью ИИ. 200+ успешных проектов.">
+    <meta property="og:type" content="website"><meta property="og:url" content="https://flowai.kz/o-kompanii.html"><meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="О компании FlowAi — автоматизация бизнеса ИИ в Казахстане">
     <meta name="twitter:description" content="FlowAi — казахстанская команда ИИ-автоматизации. 200+ проектов, 5+ лет на рынке, офис в Астане. Наша миссия, история и ценности.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&h=630&fit=crop">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="geo.region" content="KZ">
-    <meta name="geo.placename" content="Астана">
-    <link rel="canonical" href="https://flowai.kz/o-kompanii">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
-        :root {
-            --bg: #02091A; --bg-alt: #051228; --bg-card: #081830;
-            --accent: #0074FF; --accent-2: #00c6ff; --accent-3: #3d88ff;
-            --glow: rgba(0,116,255,.35); --glow-2: rgba(0,198,255,.2);
-            --wa: #25D366; --wa-glow: rgba(37,211,102,.3);
-            --red: #ef4444; --green: #22c55e; --orange: #f59e0b; --purple: #a78bfa;
-            --indigo: #6366f1; --indigo-glow: rgba(99,102,241,.3);
-            --text: #f0f8ff; --muted: #7aafd4; --muted-2: #3a6080;
-            --border: rgba(0,116,255,.18); --border-h: rgba(0,116,255,.45);
-            --r: 18px; --rs: 12px;
-        }
-        html { scroll-behavior: smooth; overflow-x: hidden }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; overflow-wrap: break-word }
-        h1, h2, h3, h4 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.2 }
-        a { color: var(--accent); text-decoration: none; transition: color .3s } a:hover { color: var(--accent-2) }
-        img { max-width: 100%; height: auto; display: block }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 28px }
-        .gtext { background: linear-gradient(135deg, var(--indigo), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
-
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 32px; border-radius: 50px; font-weight: 600; font-size: .95rem; font-family: 'Inter', sans-serif; transition: all .35s; cursor: pointer; border: none; text-decoration: none; white-space: nowrap; touch-action: manipulation }
-        .btn-wa { background: linear-gradient(135deg, #25D366, #1ab355); color: #fff; box-shadow: 0 4px 24px var(--wa-glow); animation: wapulse 3s ease-in-out infinite }
-        .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(37,211,102,.5); color: #fff }
-        @keyframes wapulse { 0%,100%{box-shadow:0 4px 24px var(--wa-glow)} 50%{box-shadow:0 4px 50px rgba(37,211,102,.55)} }
-        .btn-tg { background: linear-gradient(135deg, var(--accent), #0060dd); color: #fff; box-shadow: 0 4px 24px var(--glow) }
-        .btn-tg:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0,116,255,.5); color: #fff }
-        .btn-out { background: transparent; color: var(--text); border: 1px solid var(--border-h) }
-        .btn-out:hover { background: rgba(0,116,255,.1); color: #fff }
-        .btn-sm { padding: 11px 24px; font-size: .85rem }
-
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(2,9,26,.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: all .4s }
-        .header.scrolled { background: rgba(2,9,26,.96); box-shadow: 0 4px 40px rgba(0,0,0,.5) }
-        .hd-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 14px 28px }
-        .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; flex-shrink: 0 }
-        .logo-img { height: 36px; width: auto; display: block; filter: drop-shadow(0 2px 8px rgba(0,116,255,.3)) }
-        .nav { display: flex; align-items: center; gap: 28px }
-        .nav a { color: var(--muted); font-size: .87rem; font-weight: 500; transition: color .3s } .nav a:hover { color: #fff }
-        .hd-btns { display: flex; gap: 8px } .hd-btns .btn { padding: 9px 20px; font-size: .83rem }
-        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; z-index: 1002 }
-        .burger span { display: block; width: 24px; height: 2px; background: #fff; transition: .3s; border-radius: 2px }
-        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
-        .burger.open span:nth-child(2) { opacity: 0 }
-        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
-
-        /* HERO */
-        .page-hero { padding: 92px 0 60px; position: relative; overflow: hidden }
-        .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 25% 40%, rgba(99,102,241,.10) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 30%, rgba(0,198,255,.08) 0%, transparent 60%); pointer-events: none }
-        .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2 }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 50px; background: rgba(0,116,255,.08); border: 1px solid rgba(0,116,255,.2); color: #a0d4ff; font-size: .85rem; font-weight: 500; margin-bottom: 24px }
-        .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2); animation: blink 2s ease-in-out infinite }
-        @keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: .4 } }
-        .page-hero h1 { font-size: clamp(2rem, 4.8vw, 3.4rem); font-weight: 800; letter-spacing: -.02em; margin-bottom: 22px }
-        .page-hero p.lead { font-size: 1.12rem; color: var(--muted); margin-bottom: 32px; max-width: 540px }
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap }
-        .hero-img-wrap { position: relative; border-radius: var(--r); overflow: hidden; box-shadow: 0 24px 70px rgba(0,0,0,.55), 0 0 60px rgba(99,102,241,.12); border: 1px solid var(--border); aspect-ratio: 4/5 }
-        .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover }
-        .hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(2,9,26,.55) 100%) }
-        .hero-floating { position: absolute; bottom: 22px; left: 22px; right: 22px; display: flex; gap: 12px; z-index: 2 }
-        .hero-float-card { flex: 1; background: rgba(2,9,26,.7); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 14px 16px }
-        .hero-float-card .num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent-2) }
-        .hero-float-card .lbl { font-size: .72rem; color: var(--muted); margin-top: 2px }
-
-        /* STATS */
-        .stats-bar { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 0; margin-top: 40px }
-        .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; text-align: center }
-        .sbar-item { display: flex; flex-direction: column; align-items: center; gap: 4px }
-        .sbar-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800 }
-        .sbar-label { font-size: .85rem; color: var(--muted) }
-
-        section { padding: 80px 0; position: relative }
-        .stitle { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800; text-align: center; letter-spacing: -.01em; margin-bottom: 14px }
-        .ssub { text-align: center; color: var(--muted); margin-bottom: 56px; font-size: 1.05rem }
-
-        /* MISSION SPLIT */
-        .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center }
-        .mission-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 18px; letter-spacing: -.01em }
-        .mission-text p { color: rgba(240,248,255,.85); font-size: 1rem; margin-bottom: 16px; line-height: 1.75 }
-        .mission-text strong { color: var(--accent-2) }
-        .mission-img { position: relative; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,.45); aspect-ratio: 5/4 }
-        .mission-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s }
-        .mission-img:hover img { transform: scale(1.04) }
-        .mission-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(2,9,26,.4) 100%) }
-
-        /* VALUES */
-        .values-section { background: var(--bg-alt) }
-        .values-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px }
-        .val-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 32px 28px; transition: all .4s }
-        .val-card:hover { transform: translateY(-6px); border-color: var(--border-h); box-shadow: 0 16px 48px rgba(0,116,255,.18) }
-        .val-ic { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)); border: 1px solid rgba(0,116,255,.25); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 22px rgba(0,116,255,.18); margin-bottom: 18px }
-        .val-ic svg { width: 28px; height: 28px; stroke: var(--accent-2); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
-        .val-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px }
-        .val-card p { font-size: .92rem; color: var(--muted); line-height: 1.65 }
-
-        /* TIMELINE */
-        .timeline { position: relative; max-width: 920px; margin: 0 auto; padding: 20px 0 }
-        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, var(--accent), var(--accent-2), transparent); transform: translateX(-50%) }
-        .tl-item { position: relative; margin-bottom: 48px; display: grid; grid-template-columns: 1fr 80px 1fr; gap: 0; align-items: start }
-        .tl-item:last-child { margin-bottom: 0 }
-        .tl-marker { width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, var(--indigo), var(--accent-2)); border: 4px solid var(--bg); box-shadow: 0 0 0 3px rgba(0,198,255,.3), 0 0 24px rgba(0,198,255,.4); margin: 8px auto 0; position: relative; z-index: 2 }
-        .tl-content { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 28px; transition: all .35s }
-        .tl-content:hover { border-color: var(--border-h); box-shadow: 0 12px 36px rgba(0,116,255,.16); transform: translateY(-3px) }
-        .tl-year { display: inline-block; padding: 4px 14px; background: rgba(0,116,255,.12); border: 1px solid var(--border); border-radius: 50px; font-size: .78rem; font-weight: 700; color: var(--accent-2); margin-bottom: 10px; letter-spacing: .04em }
-        .tl-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px }
-        .tl-content p { font-size: .9rem; color: var(--muted); line-height: 1.6 }
-        .tl-item:nth-child(odd) .tl-content { grid-column: 1; text-align: right }
-        .tl-item:nth-child(odd) .tl-marker { grid-column: 2 }
-        .tl-item:nth-child(odd) > div:nth-child(3) { display: none }
-        .tl-item:nth-child(even) .tl-content { grid-column: 3 }
-        .tl-item:nth-child(even) .tl-marker { grid-column: 2 }
-        .tl-item:nth-child(even) > div:first-child { display: none }
-
-        /* WHY US */
-        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px }
-        .why-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 30px 30px; display: flex; gap: 20px; transition: all .4s }
-        .why-card:hover { transform: translateY(-4px); border-color: var(--border-h); box-shadow: 0 14px 42px rgba(0,116,255,.16) }
-        .why-num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 2.4rem; line-height: 1; background: linear-gradient(135deg, var(--indigo), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0 }
-        .why-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px }
-        .why-card p { font-size: .9rem; color: var(--muted); line-height: 1.6 }
-
-        /* INDUSTRIES */
-        .industries-section { background: var(--bg-alt) }
-        .industries-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px }
-        .ind-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 26px 22px; text-align: center; transition: all .4s }
-        .ind-card:hover { transform: translateY(-4px); border-color: var(--border-h); box-shadow: 0 12px 36px rgba(0,116,255,.16) }
-        .ind-ic { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)); border: 1px solid rgba(0,116,255,.25); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 6px 20px rgba(0,116,255,.16) }
-        .ind-ic svg { width: 26px; height: 26px; stroke: var(--accent-2); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
-        .ind-card h4 { font-size: .92rem; font-weight: 700; margin-bottom: 4px }
-        .ind-card p { font-size: .78rem; color: var(--muted) }
-
-        /* TEAM CTA */
-        .team-cta { padding: 80px 0 }
-        .team-cta-wrap { position: relative; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 21/9; box-shadow: 0 24px 70px rgba(0,0,0,.55), 0 0 60px rgba(99,102,241,.1) }
-        .team-cta-wrap img { width: 100%; height: 100%; object-fit: cover }
-        .team-cta-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,9,26,.92) 0%, rgba(2,9,26,.65) 50%, rgba(2,9,26,.4) 100%) }
-        .team-cta-overlay { position: absolute; left: 0; top: 0; bottom: 0; padding: 56px 64px; z-index: 2; max-width: 60%; display: flex; flex-direction: column; justify-content: center }
-        .team-cta-overlay h3 { font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; margin-bottom: 14px; color: #fff }
-        .team-cta-overlay p { color: rgba(240,248,255,.85); font-size: 1rem; margin-bottom: 22px; max-width: 480px }
-
-        /* CTA */
-        .cta-block { background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(0,116,255,.08)); border: 1px solid rgba(99,102,241,.2); border-radius: var(--r); padding: 56px 40px; text-align: center; margin: 0 0 80px; position: relative; overflow: hidden }
-        .cta-block::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, rgba(99,102,241,.08), transparent 60%); pointer-events: none }
-        .cta-block h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; margin-bottom: 12px; position: relative }
-        .cta-block p { color: var(--muted); margin-bottom: 28px; font-size: 1.05rem; position: relative; max-width: 600px; margin-left: auto; margin-right: auto }
-        .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative }
-
-        /* FOOTER */
-        .footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 60px 0 30px }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px }
-        .footer h4 { font-family: 'Space Grotesk', sans-serif; font-size: .9rem; margin-bottom: 14px; color: var(--text) }
-        .footer p { font-size: .85rem; color: var(--muted); line-height: 1.6 }
-        .footer-links { list-style: none } .footer-links li { margin-bottom: 8px }
-        .footer-links a { color: var(--muted); font-size: .85rem } .footer-links a:hover { color: var(--accent-2) }
-        .footer-bot { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--muted-2) }
-
-        .float-wa { position: fixed; bottom: 28px; left: 28px; z-index: 900; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #25D366, #1ab355); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px var(--wa-glow); animation: wapulse 3s ease-in-out infinite; text-decoration: none; transition: transform .3s }
-        .float-wa:hover { transform: scale(1.1) }
-        .float-wa svg { width: 28px; height: 28px; fill: #fff }
-        .scroll-top { position: fixed; bottom: 28px; right: 28px; z-index: 900; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; background: linear-gradient(135deg, var(--accent), var(--accent-2)); border: none; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.3rem; font-weight: 700; box-shadow: 0 4px 24px var(--glow); opacity: 0; transform: translateY(20px); transition: all .3s; pointer-events: none }
-        .scroll-top.show { opacity: 1; transform: translateY(0); pointer-events: all }
-        .scroll-top:hover { transform: scale(1.1); box-shadow: 0 8px 36px rgba(0,116,255,.5) }
-
-        .fi { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s }
-        .fi.v { opacity: 1; transform: translateY(0) }
-
-        @media (max-width: 1100px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 40px }
-            .mission-grid { grid-template-columns: 1fr; gap: 36px }
-            .values-grid { grid-template-columns: 1fr 1fr }
-            .industries-grid { grid-template-columns: 1fr 1fr }
-            .why-grid { grid-template-columns: 1fr }
-        }
-        @media (max-width: 768px) {
-            html, body { overflow-x: hidden } * { max-width: 100vw }
-            .container { padding: 0 16px }
-            .nav { display: none; position: fixed; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(0,116,255,.08), rgba(2,9,26,.97) 70%); backdrop-filter: blur(24px); flex-direction: column; justify-content: center; align-items: center; gap: 28px; z-index: 1000 }
-            .nav.open { display: flex } .nav a { color: var(--text); font-size: 1.15rem; padding: 10px 0 }
-            .nav-mob-btns { display: none; flex-direction: column; gap: 12px; margin-top: 20px; align-items: center }
-            .nav-mob-btns .btn { width: 220px; justify-content: center }
-            .burger { display: flex } .hd-btns { display: none } .hd-inner { padding: 12px 16px }
-            .page-hero { padding: 110px 0 36px } .page-hero h1 { font-size: 1.85rem }
-            section { padding: 56px 0 }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px }
-            .values-grid { grid-template-columns: 1fr }
-            .industries-grid { grid-template-columns: 1fr 1fr }
-            .timeline::before { left: 16px }
-            .tl-item { grid-template-columns: 32px 1fr; gap: 16px }
-            .tl-marker { grid-column: 1 !important; margin: 8px 0 0 }
-            .tl-item .tl-content { grid-column: 2 !important; text-align: left !important }
-            .tl-item > div:nth-child(3), .tl-item > div:first-child:not(.tl-marker):not(.tl-content) { display: none !important }
-            .team-cta-wrap { aspect-ratio: 4/5 }
-            .team-cta-overlay { padding: 32px 24px; max-width: 100%; background: linear-gradient(180deg, rgba(2,9,26,.85), rgba(2,9,26,.6)) }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px }
-            .cta-block { padding: 36px 22px } .cta-btns { flex-direction: column; align-items: stretch } .cta-btns .btn { justify-content: center }
-            .fi { opacity: 1; transform: none; transition: none }
-        }
-        @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr } .industries-grid { grid-template-columns: 1fr } .btn { white-space: normal; text-align: center; font-size: .87rem } }
-        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .01ms !important } }
-        /* === UNIFIED ICON STYLE (matches main page solutions block) === */
-        .feat-ic, .niche-ic, .how-ic, .ben-ic, .prob-ic, .mod-ic, .use-ic,
-        .data-ic, .why-ic, .fmt-ic, .type-ic, .inc-ic, .process-ic,
-        .step-ic, .form-ic, .info-ic, .val-ic, .ch-ic, .sbar-ic {
-            width: 56px !important;
-            height: 56px !important;
-            min-width: 56px !important;
-            border-radius: 14px !important;
-            background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)) !important;
-            border: 1px solid rgba(0,116,255,.25) !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            box-shadow: 0 6px 22px rgba(0,116,255,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
-            font-size: 0 !important;
-            margin-bottom: 16px !important;
-            transition: all .35s !important;
-            padding: 0 !important;
-        }
-        .niche-ic { margin: 0 auto 14px !important }
-        .feat-ic svg, .niche-ic svg, .how-ic svg, .ben-ic svg, .prob-ic svg,
-        .mod-ic svg, .use-ic svg, .data-ic svg, .why-ic svg, .fmt-ic svg,
-        .type-ic svg, .inc-ic svg, .process-ic svg, .step-ic svg, .form-ic svg,
-        .info-ic svg, .val-ic svg, .ch-ic svg, .sbar-ic svg {
-            width: 28px !important;
-            height: 28px !important;
-            stroke: #00c6ff !important;
-            fill: none !important;
-            stroke-width: 1.7 !important;
-            stroke-linecap: round !important;
-            stroke-linejoin: round !important;
-            transition: stroke .35s !important;
-        }
-        .niche-card:hover .niche-ic, .feat-card:hover .feat-ic, .feat-item:hover .feat-ic,
-        .ben-card:hover .ben-ic, .how-card:hover .how-ic, .prob-card:hover .prob-ic,
-        .mod-card:hover .mod-ic, .use-card:hover .use-ic, .data-card:hover .data-ic,
-        .why-card:hover .why-ic, .fmt-card:hover .fmt-ic, .type-card:hover .type-ic,
-        .inc-card:hover .inc-ic, .process-card:hover .process-ic, .step:hover .step-ic {
-            transform: scale(1.08) translateY(-2px) !important;
-            border-color: rgba(0,198,255,.55) !important;
-            box-shadow: 0 12px 36px rgba(0,198,255,.28) !important;
-        }
-        .niche-card:hover .niche-ic svg, .feat-item:hover .feat-ic svg,
-        .ben-card:hover .ben-ic svg, .how-card:hover .how-ic svg,
-        .mod-card:hover .mod-ic svg, .use-card:hover .use-ic svg {
-            stroke: #fff !important;
-        }
-
-
-    </style>
-    <!-- Google Analytics 4 -->
+    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png"><meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flowai.kz/o-kompanii.html">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FlowAi","description":"Казахстанская IT-компания, разработчик ИИ-решений для автоматизации бизнеса","url":"https://flowai.kz","logo":"https://flowai.kz/logo flowai.png","foundingDate":"2021","numberOfEmployees":"12","address":{"@type":"PostalAddress","streetAddress":"пр. Республики, д. 68","addressLocality":"Астана","addressCountry":"KZ"},"sameAs":["https://t.me/FlowAItest_bot","https://wa.me/77787806540"]}</script>
+    <script>(function(){try{var m=localStorage.getItem('flowai-theme')||'auto',r=m;if(m==='auto'){var h=(new Date().getUTCHours()+5)%24;r=(h>=8&&h<20)?'light':'dark';}document.documentElement.setAttribute('data-theme',r);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/theme.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFTCZN8X4T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LFTCZN8X4T');
-      gtag('config', 'AW-964186887');
-    </script>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983', 'ym');
-        ym(108596983, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108596983" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFTCZN8X4T');gtag('config','AW-964186887');</script>
+    <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983','ym');ym(108596983,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",accurateTrackBounce:true,trackLinks:true});</script>
 </head>
 <body>
 
-<header class="header" id="header">
-    <div class="hd-inner">
-        <a href="index.html" class="logo"><img src="logo flowai.png" alt="FlowAi" class="logo-img"></a>
-        <nav class="nav" id="nav">
-            <a href="index.html">Главная</a>
-            <a href="o-kompanii.html">О компании</a>
-            <a href="kak-my-rabotaem.html">Как мы работаем</a>
-            <a href="Blog/index.html">Блог</a>
-            <a href="kontakty.html">Контакты</a>
-            <div class="nav-mob-btns" style="display:none">
-                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa btn-sm">WhatsApp</a>
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg btn-sm">Telegram</a>
-            </div>
-        </nav>
-        <div class="hd-btns">
-            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa btn-sm">WhatsApp</a>
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg btn-sm">Telegram</a>
-        </div>
-        <button class="burger" id="burger"><span></span><span></span><span></span></button>
+<header class="header" id="header"><div class="hd-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FA</span><span>FlowAi</span></a>
+    <nav class="nav" id="nav">
+        <button class="nav-close" id="navClose" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        <div class="dropdown"><span class="dropdown-toggle">Боты</span><div class="dropdown-menu"><a href="whatsapp-bot.html">WhatsApp-бот</a><a href="telegram-bot.html">Telegram-бот</a><a href="voice-manager-bot.html">Голосовой менеджер</a><a href="blogger-bot.html">Blogger-бот</a><a href="rss-bot.html">RSS-автопостинг</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">ИИ-решения</span><div class="dropdown-menu"><a href="chatbot-rag.html">RAG-чатбот</a><a href="ai-assistant-ceo.html">ИИ для CEO</a><a href="auto-kp-bot.html">КП-бот</a><a href="swift-invoice.html">Инвойс-бот</a><a href="nutritionist-bot.html">Нутрициолог-бот</a><a href="ai-research-bot.html">ИИ-исследователь</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">Разработка</span><div class="dropdown-menu"><a href="website-dev.html">Создание сайтов</a><a href="brand-video.html">Брендовое видео</a><a href="complex-solution.html">Комплексное решение</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">О нас</span><div class="dropdown-menu"><a href="o-kompanii.html">О компании</a><a href="kak-my-rabotaem.html">Как мы работаем</a></div></div>
+        <a href="Blog/index.html">Блог</a><a href="kontakty.html">Контакты</a>
+    </nav>
+    <div class="hd-btns">
+        <a href="tel:+77787806540" class="btn-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить нам</a>
+        <a href="https://wa.me/77787806540" target="_blank" class="icon-btn wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://t.me/FlowAItest_bot" target="_blank" class="icon-btn tg" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.04 15.58l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.39 5.18 3.79c.95.52 1.62.25 1.88-.88L22.9 3.82c.31-1.4-.5-1.95-1.43-1.6L1.24 9.95c-1.36.53-1.34 1.3-.23 1.65l5.1 1.59 11.84-7.47c.56-.36 1.07-.16.65.2"/></svg></a>
+        <button class="theme-toggle" type="button" aria-label="Тема"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
-</header>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</div></header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
-<!-- HERO -->
-<section class="page-hero">
-    <div class="container">
-        <div class="hero-grid">
-            <div>
-                <div class="hero-badge fi"><span class="dot"></span>FlowAi · с 2021 года в Казахстане</div>
-                <h1 class="fi">Освобождаем бизнес <span class="gtext">от рутины</span> с помощью ИИ</h1>
-                <p class="lead fi">FlowAi — казахстанская IT-компания, которая внедряет интеллектуальные решения в бизнес: от чат-ботов до полноценных ИИ-агентов. За 5+ лет мы помогли 200+ компаниям автоматизировать продажи, поддержку и операционные процессы.</p>
-                <div class="hero-btns fi">
-                    <a href="kontakty.html" class="btn btn-tg">Связаться с нами →</a>
-                    <a href="kak-my-rabotaem.html" class="btn btn-out">Как мы работаем</a>
-                </div>
-            </div>
-            <div class="fi" style="position:relative">
-                <div class="hero-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&h=1100&fit=crop&q=85" alt="Современный офис FlowAi в Астане" loading="lazy">
-                    <div class="hero-floating">
-                        <div class="hero-float-card"><div class="num">2021</div><div class="lbl">год основания</div></div>
-                        <div class="hero-float-card"><div class="num">200+</div><div class="lbl">проектов</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="hero"><div class="container"><div class="hero-grid">
+    <div class="hero-left">
+        <div class="eyebrow">FlowAi · с 2021 года в Казахстане</div>
+        <h1>Освобождаем бизнес от <span class="accent">рутины</span> с помощью ИИ</h1>
+        <p class="hero-sub">FlowAi — казахстанская IT-компания, которая внедряет интеллектуальные решения в бизнес: от чат-ботов до полноценных ИИ-агентов. За 5+ лет — 200+ проектов в РК и СНГ.</p>
+        <div class="hero-cta"><a href="kontakty.html" class="btn btn-primary btn-lg">Связаться с нами</a><a href="kak-my-rabotaem.html" class="btn btn-outline btn-lg">Как мы работаем ↓</a></div>
+        <div class="hero-meta"><div class="hero-meta-item"><div class="label">2021</div><div class="value">год основания</div></div><div class="hero-meta-item"><div class="label">200+</div><div class="value"><span class="accent">проектов</span> в РК и СНГ</div></div></div>
     </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-bar">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="sbar-item fi"><div class="sbar-num gtext">200+</div><div class="sbar-label">проектов в РК и СНГ</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">12</div><div class="sbar-label">экспертов в команде</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">5+</div><div class="sbar-label">лет на рынке ИИ</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">98%</div><div class="sbar-label">довольных клиентов</div></div>
+    <div class="hero-right"><div class="feed-stage">
+        <div class="fh"><span class="fh-title">История FlowAi · вехи</span><span class="fh-live">5+ лет</span></div>
+        <div class="feed-items">
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="feed-title">2021 · Основание в Астане</div><div class="feed-meta"><span class="tag">старт</span><span>3 человека · первый чат-бот</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="feed-title">2022 · Первые 50 клиентов</div><div class="feed-meta"><span class="tag">рост</span><span>WhatsApp, Telegram, голосовые</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div><div><div class="feed-title">2023 · RAG для холдингов</div><div class="feed-meta"><span class="tag">tech</span><span>бот с базой знаний клиента</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div><div><div class="feed-title">2024 · 100+ запущенных проектов</div><div class="feed-meta"><span class="tag">scale</span><span>10 человек · отраслевые решения</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg></div><div><div class="feed-title">2026 · 200+ проектов · 12 человек</div><div class="feed-meta"><span class="tag">сегодня</span><span>РК · Россия · Узбекистан</span></div></div></div>
         </div>
+    </div></div>
+</div><div class="marquee-wrap"><div class="marquee" id="marquee"></div></div></div></section>
+
+<div class="stats-bar"><div class="container"><div class="stats-grid">
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="200">0</span>+</div><p>проектов в РК и СНГ</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="12">0</span></div><p>экспертов в команде</p></div>
+    <div class="stat-item fi"><div class="big">5+</div><p>лет на рынке ИИ</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="98">0</span>%</div><p>довольных клиентов</p></div>
+</div></div></div>
+
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">Наша миссия</div>
+    <h2 class="section-title fi">Предприниматели должны заниматься <span class="accent">стратегией</span>, а не рутиной</h2>
+    <div class="feature-grid">
+        <div class="feature-card fi"><h3>Рутина крадёт время</h3><p>Каждый день руководители тратят часы на ответы клиентам, подсчёт остатков, поиск документов — и теряют деньги на этом.</p></div>
+        <div class="feature-card fi"><h3>ИИ работает 24/7</h3><p>FlowAi берёт рутину на себя. Создаём ИИ-агентов, которые работают круглосуточно, не ошибаются и не уходят в отпуск.</p></div>
+        <div class="feature-card fi"><h3>Автоматизация для всех</h3><p>Чтобы каждая компания в Астане и регионах Казахстана могла позволить себе автоматизацию уровня крупных корпораций.</p></div>
+        <div class="feature-card fi"><h3>Результат, не волшебство</h3><p>Мы не продаём «волшебную таблетку». Строим работающие системы, которые приносят измеримый результат — рост выручки, снижение издержек.</p></div>
     </div>
-</div>
+</div></section>
 
-<!-- MISSION -->
-<section>
-    <div class="container">
-        <div class="mission-grid">
-            <div class="mission-text fi">
-                <h2>Наша <span class="gtext">миссия</span></h2>
-                <p>Мы верим, что предприниматели в Казахстане должны заниматься <strong>стратегией и развитием</strong>, а не разгребать рутину. Каждый день руководители тратят часы на ответы клиентам, подсчёт остатков, поиск документов — и теряют деньги на этом.</p>
-                <p>FlowAi берёт эту рутину на себя. Мы создаём ИИ-агентов, которые работают 24/7, не ошибаются и не уходят в отпуск. Наша цель — чтобы каждая компания в Астане, Нур-Султане и регионах Казахстана могла позволить себе автоматизацию уровня крупных корпораций.</p>
-                <p>Мы не продаём «волшебную таблетку». Мы строим работающие системы, которые приносят измеримый результат — рост выручки, снижение издержек, освобождение времени команды.</p>
-            </div>
-            <div class="mission-img fi">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&h=800&fit=crop&q=85" alt="Команда FlowAi обсуждает стратегию проекта" loading="lazy">
-            </div>
-        </div>
+<section><div class="container">
+    <div class="eyebrow">Наши ценности</div>
+    <h2 class="section-title fi">6 принципов, которые определяют <span class="accent">как мы работаем</span></h2>
+    <div class="num-grid">
+        <div class="num-card fi"><div><div class="num">01</div><h3>Прозрачность</h3><p>Никаких «чёрных ящиков». Клиент видит каждый этап работы, понимает, за что платит, и получает доступ к коду и документации.</p></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">02</div><h3>Результат, а не процесс</h3><p>Измеряем успех проекта не часами разработки, а реальным эффектом для бизнеса — выручкой, экономией, скоростью.</p></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="22 4 12 14.01 9 11.01"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">03</div><h3>Скорость</h3><p>Не 3 месяца, а 7–15 дней до запуска. Используем готовые компоненты и проверенные паттерны.</p></div><div class="ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">04</div><h3>Безопасность</h3><p>Подписываем NDA, шифруем данные, храним в РК. Клиентские базы не уходят в OpenAI без вашего согласия.</p></div><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">05</div><h3>Локальный контекст</h3><p>Понимаем рынок РК: законы, налоги, особенности клиентов. Не копируем западные шаблоны — адаптируем.</p></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-7.5-7-13a7 7 0 0 1 14 0c0 5.5-7 13-7 13z"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">06</div><h3>Долгосрочные отношения</h3><p>80% клиентов возвращаются за новыми проектами. Мы строим партнёрство на годы и сопровождаем после запуска.</p></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/></svg></div></div>
     </div>
-</section>
+</div></section>
 
-<!-- VALUES -->
-<section class="values-section">
-    <div class="container">
-        <h2 class="stitle fi">Наши <span class="gtext">ценности</span></h2>
-        <p class="ssub fi">6 принципов, которые определяют, как мы работаем с клиентами и друг с другом</p>
-
-        <div class="values-grid">
-            <div class="val-card fi">
-                <div class="val-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-                <h3>Прозрачность</h3>
-                <p>Никаких «чёрных ящиков». Клиент видит каждый этап работы, понимает, за что платит, и получает доступ к коду и документации.</p>
-            </div>
-
-            <div class="val-card fi">
-                <div class="val-ic"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-                <h3>Результат, а не процесс</h3>
-                <p>Мы измеряем успех проекта не часами разработки, а реальным эффектом для бизнеса клиента — выручкой, экономией, скоростью.</p>
-            </div>
-
-            <div class="val-card fi">
-                <div class="val-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                <h3>Скорость</h3>
-                <p>Не 3 месяца, а 7–15 дней до запуска. Используем готовые компоненты и проверенные паттерны, не изобретаем велосипед.</p>
-            </div>
-
-            <div class="val-card fi">
-                <div class="val-ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                <h3>Безопасность</h3>
-                <p>Подписываем NDA, шифруем данные, храним в РК. Ваши клиентские базы и документы не уходят в OpenAI без вашего согласия.</p>
-            </div>
-
-            <div class="val-card fi">
-                <div class="val-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-7.5-7-13a7 7 0 0 1 14 0c0 5.5-7 13-7 13z"/></svg></div>
-                <h3>Локальный контекст</h3>
-                <p>Понимаем рынок РК: законы, налоги, особенности клиентов по всему Казахстану. Не копируем западные шаблоны — адаптируем под местный рынок.</p>
-            </div>
-
-            <div class="val-card fi">
-                <div class="val-ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-                <h3>Долгосрочные отношения</h3>
-                <p>80% клиентов возвращаются за новыми проектами. Мы не «впариваем» — мы строим партнёрство на годы и сопровождаем после запуска.</p>
-            </div>
-        </div>
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">История FlowAi</div>
+    <h2 class="section-title fi">От первого чат-бота до <span class="accent">200+ проектов</span></h2>
+    <div class="num-grid">
+        <div class="num-card fi"><div><div class="num">2021</div><h3>Основание FlowAi</h3><p>Команда из 3 человек запускает первый чат-бот для интернет-магазина в Астане. Старт в коворкинге.</p></div><div class="ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">2022</div><h3>Первые 50 клиентов</h3><p>Расширяем линейку: WhatsApp-боты, Telegram-боты, голосовые менеджеры. Офис в Астане, ML-инженеры.</p></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">2023</div><h3>RAG-технологии</h3><p>Внедряем первые RAG-системы для крупных холдингов. Бот понимает контекст и работает с базой знаний клиента.</p></div><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">2024</div><h3>100+ проектов</h3><p>Команда из 10 человек. Запускаем отраслевые решения: строительство, ритейл, HoReCa, медицина, образование.</p></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">2025</div><h3>ИИ-агенты для CEO</h3><p>Линейка ИИ-ассистентов для топ-менеджмента: аналитика, отчёты, КП-боты, исследовательские агенты. Выход в СНГ.</p></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">2026</div><h3>200+ проектов впереди</h3><p>12 экспертов, 2 офиса, проекты в РК, России, Узбекистане. Платформа самообучающихся ИИ-агентов.</p></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="16 12 12 8 8 12"/><line x1="12" y1="16" x2="12" y2="8"/></svg></div></div>
     </div>
-</section>
+</div></section>
 
-<!-- TIMELINE -->
-<section>
-    <div class="container">
-        <h2 class="stitle fi">История <span class="gtext">FlowAi</span></h2>
-        <p class="ssub fi">От первого чат-бота до 200+ проектов по всему Казахстану</p>
-
-        <div class="timeline">
-            <div class="tl-item fi">
-                <div class="tl-content">
-                    <div class="tl-year">2021</div>
-                    <h3>Основание FlowAi</h3>
-                    <p>Команда из 3 человек запускает первый чат-бот для интернет-магазина в Астане. Старт в коворкинге, но с большими амбициями.</p>
-                </div>
-                <div class="tl-marker"></div>
-                <div></div>
-            </div>
-
-            <div class="tl-item fi">
-                <div></div>
-                <div class="tl-marker"></div>
-                <div class="tl-content">
-                    <div class="tl-year">2022</div>
-                    <h3>Первые 50 клиентов</h3>
-                    <p>Расширяем линейку продуктов: WhatsApp-боты, Telegram-боты, голосовые менеджеры. Открываем офис в Астане и нанимаем ML-инженеров.</p>
-                </div>
-            </div>
-
-            <div class="tl-item fi">
-                <div class="tl-content">
-                    <div class="tl-year">2023</div>
-                    <h3>RAG-технологии</h3>
-                    <p>Внедряем первые RAG-системы для крупных холдингов. Бот не просто отвечает по скрипту — он понимает контекст и работает с базой знаний клиента.</p>
-                </div>
-                <div class="tl-marker"></div>
-                <div></div>
-            </div>
-
-            <div class="tl-item fi">
-                <div></div>
-                <div class="tl-marker"></div>
-                <div class="tl-content">
-                    <div class="tl-year">2024</div>
-                    <h3>100+ запущенных проектов</h3>
-                    <p>Команда вырастает до 10 человек. Запускаем линейку отраслевых решений: для строительства, ритейла, HoReCa, медицины и образования.</p>
-                </div>
-            </div>
-
-            <div class="tl-item fi">
-                <div class="tl-content">
-                    <div class="tl-year">2025</div>
-                    <h3>ИИ-агенты для CEO</h3>
-                    <p>Запускаем линейку ИИ-ассистентов для топ-менеджмента: аналитика, отчёты, КП-боты, исследовательские агенты. Выходим на рынок СНГ.</p>
-                </div>
-                <div class="tl-marker"></div>
-                <div></div>
-            </div>
-
-            <div class="tl-item fi">
-                <div></div>
-                <div class="tl-marker"></div>
-                <div class="tl-content">
-                    <div class="tl-year">2026</div>
-                    <h3>200+ проектов и впереди</h3>
-                    <p>12 экспертов, 2 офиса, проекты в РК, России, Узбекистане. Запускаем платформу самообучающихся ИИ-агентов нового поколения для бизнеса.</p>
-                </div>
-            </div>
-        </div>
+<section><div class="container">
+    <div class="eyebrow">Почему выбирают нас</div>
+    <h2 class="section-title fi">6 причин, по которым клиенты <span class="accent">остаются</span></h2>
+    <div class="num-grid">
+        <div class="num-card fi"><div><div class="num">01</div><h3>Знаем рынок РК</h3><p>Понимаем специфику Kaspi, Halyk, 1С, налогового законодательства и поведения клиентов в РК. Не копируем западные шаблоны.</p></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">02</div><h3>Полный цикл «под ключ»</h3><p>От ТЗ до запуска и сопровождения — всё под одной крышей. Не нужно собирать команду из фрилансеров.</p></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">03</div><h3>Гарантия результата</h3><p>Полная оплата только после демонстрации работающего прототипа. Не работает — возвращаем 100% предоплаты.</p></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">04</div><h3>Запуск за 7–15 дней</h3><p>Не 3 месяца, как у больших агентств. Используем готовую инфраструктуру и проверенные модули.</p></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">05</div><h3>Прозрачная стоимость</h3><p>Цена фиксируется в ТЗ и не меняется по ходу проекта. Никаких сюрпризов в счёте на этапе сдачи.</p></div><div class="ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">06</div><h3>Поддержка после запуска</h3><p>Первые 7 дней — техподдержка в подарок. Дальше — гибкие тарифы сопровождения по подписке.</p></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/></svg></div></div>
     </div>
-</section>
+</div></section>
 
-<!-- WHY US -->
-<section class="values-section">
-    <div class="container">
-        <h2 class="stitle fi">Почему <span class="gtext">выбирают нас</span></h2>
-        <p class="ssub fi">6 причин, по которым клиенты приходят к нам и остаются</p>
-
-        <div class="why-grid">
-            <div class="why-card fi">
-                <div class="why-num">01</div>
-                <div>
-                    <h3>Мы знаем казахстанский рынок</h3>
-                    <p>Не копируем западные шаблоны. Понимаем специфику Kaspi, Halyk, 1С, налогового законодательства и поведения клиентов в РК.</p>
-                </div>
-            </div>
-
-            <div class="why-card fi">
-                <div class="why-num">02</div>
-                <div>
-                    <h3>Полный цикл «под ключ»</h3>
-                    <p>От ТЗ до запуска и сопровождения — всё под одной крышей. Не нужно собирать команду из фрилансеров.</p>
-                </div>
-            </div>
-
-            <div class="why-card fi">
-                <div class="why-num">03</div>
-                <div>
-                    <h3>Гарантия результата</h3>
-                    <p>Полная оплата только после демонстрации работающего прототипа. Не работает — возвращаем 100% предоплаты.</p>
-                </div>
-            </div>
-
-            <div class="why-card fi">
-                <div class="why-num">04</div>
-                <div>
-                    <h3>Запуск за 7–15 дней</h3>
-                    <p>Не 3 месяца, как у больших агентств. Используем готовую инфраструктуру и проверенные модули.</p>
-                </div>
-            </div>
-
-            <div class="why-card fi">
-                <div class="why-num">05</div>
-                <div>
-                    <h3>Прозрачная стоимость</h3>
-                    <p>Цена фиксируется в ТЗ и не меняется по ходу проекта. Никаких сюрпризов в счёте на этапе сдачи.</p>
-                </div>
-            </div>
-
-            <div class="why-card fi">
-                <div class="why-num">06</div>
-                <div>
-                    <h3>Поддержка после запуска</h3>
-                    <p>Первые 7 дней — техподдержка в подарок. Дальше — гибкие тарифы сопровождения по подписке.</p>
-                </div>
-            </div>
-        </div>
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">Отрасли, с которыми работаем</div>
+    <h2 class="section-title fi">200+ внедрений в <span class="accent">самых разных нишах</span></h2>
+    <div class="feature-grid">
+        <div class="feature-card fi"><h3>Ритейл</h3><p>Магазины, маркетплейсы, Kaspi Shop. Чат-боты для консультаций, WhatsApp-автоворонки, интеграция с 1С и CRM.</p></div>
+        <div class="feature-card fi"><h3>Строительство</h3><p>Застройщики и подрядчики. Квалификация лидов, КП-боты, интеграция с amoCRM, напоминания клиентам.</p></div>
+        <div class="feature-card fi"><h3>B2B / SaaS</h3><p>Услуги для бизнеса. Лид-квалификация, email-поддержка, RAG-чатботы с документацией продукта.</p></div>
+        <div class="feature-card fi"><h3>Медицина</h3><p>Клиники и стоматологии. Запись на приём через WA/TG, напоминания о визитах, FAQ по услугам.</p></div>
+        <div class="feature-card fi"><h3>Образование</h3><p>Школы и онлайн-курсы. Квалификация заявок, автоматическое тестирование, AI-ассистент для учеников.</p></div>
+        <div class="feature-card fi"><h3>Логистика</h3><p>Доставка и склады. Трекинг заказов, уведомления водителей, голосовые менеджеры для приёма заявок.</p></div>
+        <div class="feature-card fi"><h3>Недвижимость</h3><p>Агентства и девелоперы. Квалификация покупателей, подбор объектов, CRM-воронки.</p></div>
+        <div class="feature-card fi"><h3>HoReCa</h3><p>Кафе, рестораны, отели. Бронирование, меню в боте, программа лояльности, отзывы.</p></div>
     </div>
-</section>
+</div></section>
 
-<!-- INDUSTRIES -->
-<section class="industries-section">
-    <div class="container">
-        <h2 class="stitle fi">Отрасли, <span class="gtext">с которыми работаем</span></h2>
-        <p class="ssub fi">200+ внедрений в самых разных нишах казахстанского бизнеса</p>
+<section id="consult"><div class="container"><div class="consult fi">
+    <div class="consult-txt"><h2>Хотите работать с нами?</h2><p>Бесплатная 30-минутная консультация: расскажем, как ИИ решит вашу задачу, посчитаем сроки и стоимость.</p></div>
+    <div class="consult-sticker"><div class="inner">30 МИН<small>бесплатно</small></div></div>
+    <form onsubmit="event.preventDefault(); window.open('https://wa.me/77787806540','_blank');"><input type="text" placeholder="Имя" required><input type="tel" placeholder="+7 (000) 000-00-00" required><button class="btn btn-primary">Записаться</button><div class="consult-legal">Нажимая кнопку, вы соглашаетесь на обработку данных</div></form>
+</div></div></section>
 
-        <div class="industries-grid">
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-                <h4>Ритейл</h4>
-                <p>Магазины, маркетплейсы</p>
-            </div>
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M19 21V7l-8-4-8 4v14"/><rect x="9" y="9" width="6" height="6"/></svg></div>
-                <h4>Строительство</h4>
-                <p>Застройщики и подрядчики</p>
-            </div>
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                <h4>B2B сервисы</h4>
-                <p>SaaS и услуги</p>
-            </div>
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-                <h4>Медицина</h4>
-                <p>Клиники и стоматологии</p>
-            </div>
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-                <h4>Образование</h4>
-                <p>Школы и онлайн-курсы</p>
-            </div>
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-                <h4>Логистика</h4>
-                <p>Доставка и склады</p>
-            </div>
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                <h4>Недвижимость</h4>
-                <p>Агентства и девелоперы</p>
-            </div>
-            <div class="ind-card fi">
-                <div class="ind-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8L8 16M8 8l8 8"/></svg></div>
-                <h4>HoReCa</h4>
-                <p>Кафе, рестораны, отели</p>
-            </div>
-        </div>
+<footer class="footer"><div class="container">
+    <div class="footer-grid">
+        <div class="footer-col"><h4>О FlowAi</h4><ul><li><a href="kak-my-rabotaem.html">Как мы работаем</a></li><li><a href="o-kompanii.html">О компании</a></li><li><a href="Blog/index.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></div>
+        <div class="footer-col"><h4>Все решения</h4><ul><li><a href="whatsapp-bot.html">WhatsApp-бот</a></li><li><a href="telegram-bot.html">Telegram-бот</a></li><li><a href="voice-manager-bot.html">Голосовой менеджер</a></li><li><a href="chatbot-rag.html">RAG-чатбот</a></li><li><a href="ai-assistant-ceo.html">ИИ для CEO</a></li></ul></div>
+        <div class="footer-col"><h4>Контакты</h4><ul><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="tel:+77787806540">Позвонить нам</a></li><li><a href="mailto:7806540@gmail.com">7806540@gmail.com</a></li></ul></div>
+        <div class="footer-col"><h4>FlowAi.kz</h4><ul><li>пр. Республики, д. 68</li><li>Астана, Казахстан</li><li><small>© 2024–2026 FlowAi</small></li></ul></div>
     </div>
-</section>
+    <div class="footer-bottom"><span>FlowAi — автоматизация бизнеса на ИИ</span><span>Казахстан · СНГ · 2026</span></div>
+</div></footer>
 
-<!-- TEAM CTA -->
-<section class="team-cta">
-    <div class="container">
-        <div class="team-cta-wrap fi">
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1600&h=686&fit=crop&q=90" alt="Команда FlowAi на встрече в офисе" loading="lazy">
-            <div class="team-cta-overlay">
-                <h3>Команда FlowAi</h3>
-                <p>12 экспертов с опытом 5+ лет в разработке ИИ-решений. Каждое утро мы собираемся в переговорной, чтобы обсудить проекты клиентов и принять ключевые решения вместе.</p>
-                <div><a href="kak-my-rabotaem.html" class="btn btn-tg">Узнать больше →</a></div>
-            </div>
-        </div>
-    </div>
-</section>
+<a href="https://wa.me/77787806540" target="_blank" class="wa-float" id="waFloat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<button class="scroll-top" id="scrollTop">↑</button>
 
-<!-- CTA -->
-<div class="container">
-    <div class="cta-block fi">
-        <h2>Хотите работать с нами?</h2>
-        <p>Бесплатная 30-минутная консультация: расскажем, как ИИ решит вашу задачу, посчитаем сроки и стоимость без обязательств.</p>
-        <div class="cta-btns">
-            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Telegram</a>
-        </div>
-    </div>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div><h4>FlowAi.kz</h4><p>Автоматизация бизнеса с помощью ИИ. WhatsApp-боты, Telegram-боты, голосовые менеджеры, RAG-чатботы и комплексные решения для компаний в Казахстане и СНГ.</p></div>
-            <div><h4>Навигация</h4><ul class="footer-links"><li><a href="index.html">Главная</a></li><li><a href="o-kompanii.html">О компании</a></li><li><a href="kak-my-rabotaem.html">Как мы работаем</a></li><li><a href="Blog/index.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></div>
-            <div><h4>Связаться</h4><ul class="footer-links"><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="tel:+77787806540">+7 778 780 65 40</a></li><li><a href="mailto:7806540@gmail.com">7806540@gmail.com</a></li></ul></div>
-            <div><h4>Адрес</h4><p>г. Астана<br>пр. Республики, д. 68</p><p style="margin-top:12px"><a href="https://flowai.kz">FlowAi.kz</a></p></div>
-        </div>
-        <div class="footer-bot">&copy; 2024–2026 FlowAi.kz — Автоматизация бизнеса с ИИ. Все права защищены.</div>
-    </div>
-</footer>
-
-<a href="https://wa.me/77787806540" target="_blank" class="float-wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-<button class="scroll-top" id="scrollTop" aria-label="Наверх">↑</button>
-
-<script>
-(function() {
-    var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('v') }) }, { threshold: .08 });
-    document.querySelectorAll('.fi').forEach(function(el) { obs.observe(el) });
-
-    var burger = document.getElementById('burger'), nav = document.getElementById('nav'), mobBtns = nav.querySelector('.nav-mob-btns');
-    burger.addEventListener('click', function() { burger.classList.toggle('open'); nav.classList.toggle('open'); if (mobBtns) mobBtns.style.display = nav.classList.contains('open') ? 'flex' : 'none' });
-    nav.querySelectorAll('a:not(.btn)').forEach(function(a) { a.addEventListener('click', function() { burger.classList.remove('open'); nav.classList.remove('open'); if (mobBtns) mobBtns.style.display = 'none' }) });
-
-    var header = document.getElementById('header'), scrollTopBtn = document.getElementById('scrollTop');
-    addEventListener('scroll', function() { var s = scrollY; header.classList.toggle('scrolled', s > 60); scrollTopBtn.classList.toggle('show', s > 400) });
-    scrollTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }) });
-})();
-</script>
-
-<script>
-/* FlowAi: WhatsApp click conversion tracking */
-(function(){
-    document.addEventListener('click', function(e){
-        var a = e.target.closest('a');
-        if (!a) return;
-        var href = a.getAttribute('href') || '';
-        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
-        if (!isWa) return;
-        /* Google Analytics 4 */
-        if (typeof gtag === 'function') {
-            gtag('event', 'whatsapp_click', {
-                'event_category': 'engagement',
-                'event_label': href,
-                'value': 1
-            });
-        }
-        /* Google Ads conversion (will work after AW- ID added) */
-        if (typeof gtag === 'function') {
-            gtag('event', 'conversion', {
-                'send_to': 'AW-964186887/DfhdCMSR850cEIem4csD',
-                'value': 1.0,
-                'currency': 'USD'
-            });
-        }
-        /* Yandex Metrica goal */
-        if (typeof ym === 'function') {
-                ym(108596983, 'reachGoal', 'whatsapp_click');
-            }
-    }, true);
-})();
-</script>
+<script>(function(){var s=document.createElement('script');s.src='https://voicyfy.ru/static/gemini-31-widget.js';s.dataset.assistantId='a2f68bf8-1968-4d08-9410-acaafcfb7a91';s.dataset.server='https://voicyfy.ru';s.dataset.position='bottom-right';s.async=true;document.head.appendChild(s);})();
+(function(){var F=/Gemini\s*3\.1\s*Flash\s*Live/gi,T='FlowAi-бот';function wS(r,v){if(!r)return;v(r);var a=r.querySelectorAll?r.querySelectorAll('*'):[];for(var i=0;i<a.length;i++)if(a[i].shadowRoot)wS(a[i].shadowRoot,v);}function rep(r){if(!r)return;var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,null,false),n,h=[];while((n=w.nextNode())){if(n.nodeValue&&F.test(n.nodeValue))h.push(n);F.lastIndex=0;}h.forEach(function(n){n.nodeValue=n.nodeValue.replace(F,T);});if(r.querySelectorAll)r.querySelectorAll('[title],[aria-label],[placeholder],[alt]').forEach(function(e){['title','aria-label','placeholder','alt'].forEach(function(a){var v=e.getAttribute(a);if(v&&F.test(v)){e.setAttribute(a,v.replace(F,T));F.lastIndex=0;}});});}function p(){wS(document,rep);}new MutationObserver(p).observe(document.documentElement,{childList:true,subtree:true,characterData:true});[300,800,1600,3000,6000].forEach(function(ms){setTimeout(p,ms);});})();</script>
+<script src="assets/js/theme-toggle.js"></script>
+<script>(function(){
+var mq=document.getElementById('marquee');if(mq){var items=['FlowAi с 2021','200+ проектов','12 экспертов','Астана · РК','ИИ-автоматизация','5+ лет','NDA','98% довольных'];var hi={'FlowAi с 2021':1,'200+ проектов':1,'ИИ-автоматизация':1};function r(){return items.map(function(s){return '<span'+(hi[s]?' class="hi"':'')+'>'+s+'<span class="dot">·</span></span>';}).join('');}mq.innerHTML=r()+r();}
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});document.querySelectorAll('.fi').forEach(function(e){obs.observe(e)});
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done='1';var t=+e.target.dataset.target,c=0,s=t/60;var x=setInterval(function(){c+=s;if(c>=t){c=t;clearInterval(x)}e.target.textContent=Math.round(c)},25)}})},{threshold:.5});document.querySelectorAll('.counter').forEach(function(e){co.observe(e)});
+var bg=document.getElementById('burger'),nv=document.getElementById('nav'),nc=document.getElementById('navClose'),nb=document.getElementById('navBackdrop');function cN(){bg&&bg.classList.remove('open');nv&&nv.classList.remove('open');nb&&nb.classList.remove('open');document.body.classList.remove('nav-open');nv&&nv.querySelectorAll('.dropdown').forEach(function(d){d.classList.remove('mob-open')})}function oN(){bg&&bg.classList.add('open');nv&&nv.classList.add('open');nb&&nb.classList.add('open');document.body.classList.add('nav-open')}if(nb)nb.addEventListener('click',cN);if(nc)nc.addEventListener('click',cN);if(bg&&nv){bg.addEventListener('click',function(e){e.stopPropagation();nv.classList.contains('open')?cN():oN()});nv.querySelectorAll('.dropdown-toggle').forEach(function(t){t.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();e.stopPropagation();var d=t.closest('.dropdown'),wo=d.classList.contains('mob-open');nv.querySelectorAll('.dropdown').forEach(function(x){x.classList.remove('mob-open')});if(!wo)d.classList.add('mob-open')}})});nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',cN)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nv.classList.contains('open'))cN()});window.addEventListener('resize',function(){if(window.innerWidth>768&&nv.classList.contains('open'))cN()})}
+var hdr=document.getElementById('header'),wf=document.getElementById('waFloat'),stb=document.getElementById('scrollTop');addEventListener('scroll',function(){var s=scrollY;hdr.classList.toggle('scrolled',s>60);wf.classList.toggle('show',s>300);stb.classList.toggle('show',s>300)});stb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();</script>
+<script>(function(){document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('wa.me')===-1&&h.indexOf('whatsapp.com')===-1&&(a.className||'').indexOf('btn-wa')===-1)return;if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'engagement',event_label:h,value:1});gtag('event','conversion',{send_to:'AW-964186887/DfhdCMSR850cEIem4csD',value:1.0,currency:'USD'})}if(typeof ym==='function'){ym(108596983,'reachGoal','whatsapp_click')}},true)})();</script>
 </body>
 </html>
