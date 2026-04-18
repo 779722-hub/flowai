@@ -377,7 +377,43 @@ section { position: relative; padding: var(--section-py) 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* HERO ------------------------------------------------------- */
-.hero { padding: clamp(32px, 5vw, 72px) 0 clamp(48px, 6vw, 96px); }
+.hero {
+    position: relative;
+    padding: clamp(32px, 5vw, 72px) 0 clamp(48px, 6vw, 96px);
+    overflow: hidden;
+}
+.hero > .container { position: relative; z-index: 1; }
+/* Grid pattern background */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--hero-grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--hero-grid-line) 1px, transparent 1px);
+    background-size: 6rem 4rem;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 85%);
+    z-index: 0;
+    pointer-events: none;
+}
+/* Soft radial bloom — top-right */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 800px at 100% 200px, var(--hero-bloom), transparent 65%);
+    z-index: 0;
+    pointer-events: none;
+}
+:root {
+    --hero-grid-line: rgba(255, 255, 255, 0.08);
+    --hero-bloom: rgba(157, 108, 255, 0.28);
+}
+:root[data-theme="light"] {
+    --hero-grid-line: #e8e8e8;
+    --hero-bloom: #d5c5ff;
+}
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
