@@ -234,6 +234,7 @@
 
 <!-- HERO -->
 <section class="hero">
+    <div class="stars-wrap" id="starsWrap" aria-hidden="true"></div>
     <div class="container">
         <div class="hero-grid">
             <div class="hero-left">
@@ -1343,6 +1344,59 @@
         }
         if (typeof ym === 'function') { ym(108596983, 'reachGoal', 'whatsapp_click'); }
     }, true);
+})();
+</script>
+<script>
+(function () {
+    var wrap = document.getElementById('starsWrap');
+    if (!wrap) return;
+    function genShadows(count, color) {
+        var s = [];
+        for (var i = 0; i < count; i++) {
+            var x = Math.floor(Math.random() * 4000) - 2000;
+            var y = Math.floor(Math.random() * 4000) - 2000;
+            s.push(x + 'px ' + y + 'px ' + color);
+        }
+        return s.join(', ');
+    }
+    function build() {
+        wrap.innerHTML = '';
+        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        var color = isLight ? 'rgba(20,20,20,0.55)' : '#ffffff';
+        var layers = [
+            { count: 900, size: 1, dur: 60 },
+            { count: 380, size: 2, dur: 120 },
+            { count: 180, size: 3, dur: 180 }
+        ];
+        layers.forEach(function (cfg) {
+            var layer = document.createElement('div');
+            layer.className = 'star-layer';
+            layer.style.setProperty('--dur', cfg.dur + 's');
+            var shadows = genShadows(cfg.count, color);
+            [false, true].forEach(function (second) {
+                var dot = document.createElement('div');
+                dot.className = 'dot' + (second ? ' second' : '');
+                dot.style.setProperty('--sz', cfg.size + 'px');
+                dot.style.boxShadow = shadows;
+                layer.appendChild(dot);
+            });
+            wrap.appendChild(layer);
+        });
+    }
+    build();
+    // Rebuild on theme switch
+    new MutationObserver(build).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    // Mouse parallax
+    var hero = wrap.parentElement;
+    var factor = 0.05;
+    hero.addEventListener('mousemove', function (e) {
+        var cx = window.innerWidth / 2;
+        var cy = window.innerHeight / 2;
+        var ox = -(e.clientX - cx) * factor;
+        var oy = -(e.clientY - cy) * factor;
+        wrap.style.transform = 'translate(' + ox + 'px, ' + oy + 'px)';
+    });
+    hero.addEventListener('mouseleave', function () { wrap.style.transform = 'translate(0, 0)'; });
 })();
 </script>
 </body>

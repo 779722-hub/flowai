@@ -381,37 +381,50 @@ section { position: relative; padding: var(--section-py) 0; }
     position: relative;
     padding: clamp(32px, 5vw, 72px) 0 clamp(48px, 6vw, 96px);
     overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #1f1f1f 0%, #050505 100%);
 }
-.hero > .container { position: relative; z-index: 1; }
-/* Grid pattern background */
-.hero::before {
-    content: "";
+:root[data-theme="light"] .hero {
+    background: radial-gradient(ellipse at bottom, #EEEEEA 0%, #F7F7F5 100%);
+}
+.hero > .container { position: relative; z-index: 3; }
+
+/* Starfield wrapper — receives mouse-parallax translate */
+.stars-wrap {
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(to right, var(--hero-grid-line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--hero-grid-line) 1px, transparent 1px);
-    background-size: 6rem 4rem;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 85%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 85%);
-    z-index: 0;
+    overflow: hidden;
     pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+    transition: transform .35s cubic-bezier(.22,.61,.36,1);
 }
-/* Soft radial bloom — top-right */
+.star-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2000px;
+    animation: starScroll var(--dur, 50s) linear infinite;
+}
+.star-layer .dot { position: absolute; width: var(--sz, 1px); height: var(--sz, 1px); border-radius: 50%; }
+.star-layer .dot.second { top: 2000px; }
+@keyframes starScroll {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-2000px); }
+}
+
+/* Soft top-right bloom sits above the stars */
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
     background: radial-gradient(circle 800px at 100% 200px, var(--hero-bloom), transparent 65%);
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
 }
 :root {
-    --hero-grid-line: rgba(255, 255, 255, 0.08);
-    --hero-bloom: rgba(157, 108, 255, 0.28);
+    --hero-bloom: rgba(157, 108, 255, 0.22);
 }
 :root[data-theme="light"] {
-    --hero-grid-line: #e8e8e8;
     --hero-bloom: #d5c5ff;
 }
 .hero-grid {
