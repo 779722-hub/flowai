@@ -3318,3 +3318,74 @@ section { position: relative; padding: var(--section-py) 0; }
     .price-card { padding: 32px 24px; }
     .btn { padding: 14px 22px; font-size: 14px; }
 }
+
+/* BLOG ARTICLE — main-page scale ----------------------------- */
+.post-hero-img { aspect-ratio: 21/9; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); margin-top: 40px; }
+.post-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post-body { padding: 72px 0 96px; max-width: 1200px; margin: 0 auto; }
+.post-body h2 {
+    font-size: clamp(32px, 4.5vw, 72px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 88px 0 28px;
+}
+.post-body h2:first-child { margin-top: 0; }
+.post-body h2 .accent { color: var(--accent); }
+.post-body h3 { font-size: clamp(20px, 1.6vw, 24px); font-weight: 700; margin: 28px 0 12px; letter-spacing: -0.01em; }
+.post-body p { font-size: clamp(17px, 1.3vw, 20px); line-height: 1.7; color: var(--text); margin: 0; max-width: 900px; }
+.post-body p + p { margin-top: 18px; }
+.post-body strong { font-weight: 700; color: var(--text); }
+.post-body ul, .post-body ol { padding-left: 22px; display: grid; gap: 12px; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.7; margin: 16px 0; max-width: 900px; color: var(--text); }
+.post-body blockquote {
+    border-left: 4px solid var(--accent);
+    background: var(--bg-card);
+    padding: 28px 36px;
+    border-radius: 0 var(--r) var(--r) 0;
+    color: var(--text);
+    font-style: italic;
+    margin: 40px 0;
+    font-size: clamp(18px, 1.5vw, 22px);
+    line-height: 1.55;
+}
+.post-section-img { border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); margin: 48px 0; aspect-ratio: 21/7; }
+.post-section-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 40px 0; }
+.post-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 40px 0; }
+.post-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 40px 0; }
+.post-mini-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 36px 32px;
+    transition: border-color .2s var(--ease), transform .2s var(--ease);
+}
+.post-mini-card:hover { border-color: var(--border-h); transform: translateY(-3px); }
+.post-mini-card h3 { font-size: clamp(18px, 1.4vw, 22px); font-weight: 700; margin: 0 0 14px; letter-spacing: -0.01em; }
+.post-mini-card p { font-size: clamp(15px, 1.1vw, 17px); color: var(--text-mute); margin: 0; line-height: 1.6; max-width: none; }
+.post-mini-card .num { font-family: 'Manrope',sans-serif; font-size: clamp(32px, 3vw, 44px); font-weight: 800; color: var(--accent); margin-bottom: 14px; line-height: 1; letter-spacing: -0.02em; }
+.post-kpi { text-align: center; padding: 48px 28px; }
+.post-kpi .val { font-family: 'Manrope',sans-serif; font-size: clamp(44px, 5vw, 72px); font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px; }
+.post-kpi .val.p { color: var(--accent-2); }
+.post-eyebrow { font-size: 13px; font-weight: 600; color: var(--text-mute); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.post-eyebrow a { color: var(--accent); text-decoration: none; }
+.post-eyebrow .sep { opacity: .4; }
+.post-title {
+    font-size: clamp(40px, 5.5vw, 96px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    margin: 0 0 32px;
+    max-width: 1280px;
+    text-transform: none;
+}
+.post-title .accent { color: var(--accent); }
+.post-lead { font-size: clamp(19px, 1.8vw, 26px); line-height: 1.5; color: var(--text-mute); max-width: 980px; margin: 0; }
+@media (max-width: 900px) {
+    .post-grid-3, .post-grid-2, .post-grid-4 { grid-template-columns: 1fr; }
+    .post-body { padding: 48px 0 72px; max-width: 100%; }
+    .post-hero-img { aspect-ratio: 16/9; }
+    .post-section-img { aspect-ratio: 16/9; margin: 36px 0; }
+    .post-body h2 { margin: 56px 0 20px; }
+}

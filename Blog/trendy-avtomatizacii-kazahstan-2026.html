@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" data-theme="dark">
 <head>
-    
-    
+
     <meta charset="UTF-8">
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,110 +39,7 @@
         "image":"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop"
     }
     </script>
-    
-<style>
-/* Restyle override — new theme tweaks for blog articles */
-html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
-h1,h2,h3,h4{font-family:'Manrope','Inter',sans-serif;letter-spacing:-0.01em}
-a{color:var(--accent);transition:color .2s}a:hover{color:var(--accent-2)}
-/* Shared header styles from theme tokens (overrides the blue inline) */
-.header{position:sticky;top:0;left:auto;right:auto;z-index:220;background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid var(--border)}
-.header.scrolled{background:var(--bg);box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.hd-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;max-width:1440px;padding:14px clamp(16px,4vw,40px)}
-.logo{display:flex;align-items:center;gap:10px;color:var(--text);font-family:'Manrope',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.02em;text-decoration:none}
-.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--accent-ink,#0A0A0A);display:grid;place-items:center;font-weight:800;font-size:16px}
-.nav{display:flex;align-items:center;gap:4px;justify-self:center;flex-wrap:nowrap}
-.nav>a,.nav .dropdown-toggle{position:relative;font-size:14px;font-weight:600;color:var(--text);padding:10px 14px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;text-decoration:none;background:transparent;border:0;transition:background-color .2s,color .2s}
-.nav>a:hover,.nav .dropdown-toggle:hover{color:var(--accent);background:var(--bg-card)}
-.nav .dropdown-toggle::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);opacity:.7;transition:transform .2s}
-.dropdown:hover .dropdown-toggle::after{transform:rotate(-135deg) translate(-2px,-2px)}
-.dropdown{position:relative}
-.dropdown-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:240px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:10px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;box-shadow:0 16px 40px rgba(0,0,0,.4);z-index:60}
-.dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-.dropdown-menu a{display:block;padding:12px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--text);text-decoration:none;transition:background-color .15s,color .15s}
-.dropdown-menu a:hover{background:var(--bg-alt);color:var(--accent)}
-.hd-btns{display:flex;align-items:center;gap:8px}
-.btn-call{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;transition:border-color .2s,color .2s,transform .2s}
-.btn-call:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-.btn-call svg{width:14px;height:14px}
-.icon-btn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--bg-card);border:1px solid var(--border);color:var(--text);text-decoration:none;transition:background-color .2s,color .2s,border-color .2s,transform .2s}
-.icon-btn:hover{transform:translateY(-2px);border-color:var(--border-h);color:var(--accent)}
-.icon-btn svg{width:18px;height:18px}
-.icon-btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
-.icon-btn.wa:hover{background:var(--wa);color:#fff;filter:brightness(1.1)}
-.icon-btn.tg{background:#2AABEE;border-color:#2AABEE;color:#fff}
-.icon-btn.tg:hover{background:#2AABEE;color:#fff;filter:brightness(1.1)}
-.theme-toggle{width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);display:grid;place-items:center;position:relative;transition:background-color .2s,border-color .2s,transform .2s;cursor:pointer}
-.theme-toggle:hover{border-color:var(--accent);transform:translateY(-2px)}
-.theme-toggle svg{width:20px;height:20px;position:absolute;opacity:0;transition:opacity .2s}
-.theme-toggle[data-mode="light"] .i-sun{opacity:1;color:var(--accent)}
-.theme-toggle[data-mode="dark"] .i-moon{opacity:1;color:var(--accent)}
-.theme-toggle[data-mode="auto"][data-resolved="light"] .i-auto,.theme-toggle[data-mode="auto"][data-resolved="dark"] .i-auto{opacity:1;color:var(--accent)}
-.burger{display:none;width:40px;height:40px;flex-direction:column;gap:5px;justify-content:center;align-items:center;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer}
-.burger span{width:16px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .2s}
-.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-/* Accent-ink var (lime pairing) */
-:root{--accent-ink:#0A0A0A}
-:root[data-theme="light"]{--bg:#F7F7F5;--bg-alt:#EEEEEA;--bg-card:#FFFFFF;--bg-lift:#F2F2EE;--accent:#5BD100;--accent-2:#6B3DDB;--accent-ink:#FFFFFF;--text:#0A0A0A;--muted:#555555;--muted-2:#777777;--border:rgba(0,0,0,.08);--border-h:rgba(0,0,0,.25)}
-:root[data-theme="light"] body{background:var(--bg);color:var(--text)}
-/* Mobile drawer + backdrop */
-.nav-backdrop{display:none}
-@media (max-width:1100px){
-    .hd-inner{display:flex;gap:8px;padding:12px 16px}
-    .hd-btns{margin-left:auto}
-    .hd-btns .btn-call{display:none}
-    .icon-btn{width:36px;height:36px}
-    .icon-btn svg{width:16px;height:16px}
-    .theme-toggle{width:36px;height:36px}
-    .burger{display:flex}
-    .nav-backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:190;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
-    .nav-backdrop.open{opacity:1;visibility:visible}
-    .nav{position:fixed;top:0;right:0;bottom:0;left:auto;width:min(86vw,400px);min-height:100dvh;background:var(--bg);border-left:1px solid var(--border);flex-direction:column;align-items:stretch;padding:80px 24px 40px;gap:0;margin:0;z-index:200;overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);transition:transform .3s;box-shadow:-20px 0 60px rgba(0,0,0,.4);display:flex;justify-self:auto}
-    .nav.open{transform:translateX(0)}
-    .nav-close{display:grid;place-items:center;position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);z-index:210;cursor:pointer}
-    .nav-close svg{width:20px;height:20px}
-    .nav>a,.nav .dropdown-toggle{display:flex;padding:18px 4px;font-size:18px;font-weight:600;color:var(--text);border-radius:0;border-bottom:1px solid var(--border);justify-content:space-between;align-items:center;width:100%;background:transparent}
-    .dropdown{width:100%;position:static}
-    .dropdown-menu{position:static !important;top:auto !important;left:auto !important;right:auto !important;inset:auto !important;transform:none !important;opacity:1;visibility:visible;display:none;box-shadow:none;border:0;padding:8px 0 16px 0;margin:0;background:transparent;min-width:0;max-width:none;width:100%}
-    .dropdown-menu a{display:block;padding:14px 14px;font-size:16px;border-left:2px solid var(--border);margin-left:4px;border-radius:8px}
-    .dropdown.mob-open .dropdown-menu{display:block}
-    .dropdown.mob-open .dropdown-toggle{color:var(--accent)}
-    .dropdown.mob-open .dropdown-toggle::after{transform:rotate(-135deg);color:var(--accent)}
-    body.nav-open{overflow:hidden}
-}
-.nav-close{display:none}
-@media (max-width:1100px){.nav-close{display:grid}}
-/* Article hero accent updates */
-.article-hero .gtext{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.tag-blue{background:rgba(195,255,54,.12) !important;color:var(--accent) !important;border:1px solid rgba(195,255,54,.3) !important}
-.tag-indigo{background:rgba(157,108,255,.12) !important;color:var(--accent-2) !important;border:1px solid rgba(157,108,255,.3) !important}
-.hero-stat-num.indigo{color:var(--accent-2) !important}
-.hero-stat-num.blue{color:var(--accent) !important}
-.kpi-val.indigo{color:var(--accent-2) !important}
-.kpi-val.blue{color:var(--accent) !important}
-.sbar-num.gtext,.gtext{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.process-num{background:linear-gradient(135deg,var(--accent),var(--accent-2)) !important;color:var(--accent-ink) !important;box-shadow:0 4px 16px var(--glow) !important}
-.breadcrumb{background:var(--bg-card) !important;border:1px solid var(--border) !important}
-.breadcrumb,.breadcrumb span{color:var(--muted) !important}
-.breadcrumb a{color:var(--text) !important}.breadcrumb a:hover{color:var(--accent) !important}
-.breadcrumb svg{fill:var(--muted) !important}
-.breadcrumb span[style*="color"]{color:var(--accent) !important}
-.toc a:hover,.toc a.active{color:var(--accent) !important;border-left-color:var(--accent) !important;background:rgba(195,255,54,.06) !important}
-.faq-item.active .faq-q svg{fill:var(--accent) !important}
-.cta-block{background:linear-gradient(135deg,rgba(195,255,54,.08),rgba(157,108,255,.08)) !important;border-color:rgba(195,255,54,.2) !important}
-.case-block{background:linear-gradient(135deg,rgba(195,255,54,.06),rgba(157,108,255,.06)) !important;border-color:rgba(195,255,54,.2) !important}
-.case-block::before{background:rgba(195,255,54,.15) !important;color:var(--accent) !important}
-.btn-wa{animation:none !important;box-shadow:0 4px 24px var(--wa-glow) !important}
-.btn-tg{background:linear-gradient(135deg,#2AABEE,#1c8fc7) !important;box-shadow:0 4px 24px rgba(42,171,238,.3) !important}
-.btn-tg:hover{box-shadow:0 10px 40px rgba(42,171,238,.45) !important}
-.float-wa{background:#25D366 !important}
-.scroll-top{background:var(--accent) !important;color:var(--accent-ink) !important;box-shadow:0 4px 24px var(--glow) !important}
-.back-btn{background:var(--bg-card) !important;color:var(--text) !important;border-color:var(--border) !important}
-.back-btn:hover{border-color:var(--accent) !important;color:var(--accent) !important}
-</style>
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -199,287 +95,102 @@ a{color:var(--accent);transition:color .2s}a:hover{color:var(--accent-2)}
     <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
 </div></header>
 <div class="nav-backdrop" id="navBackdrop"></div>
-<div class="nav-backdrop" id="navBackdrop"></div>
 
-<section class="article-hero">
-    <div class="container">
-        <nav class="breadcrumb fi">
-            <a href="../index.html">Главная</a><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-            <a href="./">Блог</a><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-            <span style="color:var(--accent-2)">Статья</span>
-        </nav>
-        <div class="article-meta fi">
-            <span class="tag tag-cyan">Тренды 2026</span>
-            <span class="tag tag-purple">Аналитика</span>
-            <span class="article-date">9 апреля 2026</span>
-            <span class="read-time">&#128337; ~14 мин чтения</span>
-        </div>
-        <h1 class="fi">Тренды автоматизации<br><span class="gtext">в Казахстане 2026: Прогнозы</span></h1>
-        <p class="article-lead fi">Сколько прибыли теряет ваша компания, пока данные из CRM не синхронизированы с логистикой? В 2026 году это критическая уязвимость, которую конкуренты уже устраняют с помощью ИИ.</p>
-        <div class="hero-img-wrap fi">
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop" alt="Искусственный интеллект и технологии будущего 2026" width="1200" height="600" decoding="async" loading="lazy">
-            <div class="hero-img-overlay">
-                <div class="hero-stat"><div class="hero-stat-num cyan">5</div><div class="hero-stat-label">ключевых трендов</div></div>
-                <div class="hero-stat"><div class="hero-stat-num green">2026</div><div class="hero-stat-label">год перелома</div></div>
-                <div class="hero-stat"><div class="hero-stat-num purple">x5</div><div class="hero-stat-label">продуктивность</div></div>
-            </div>
-        </div>
+<section style="padding-top:40px"><div class="container">
+    <div class="post-eyebrow">
+        <a href="index.html">Блог</a><span class="sep">·</span><span>Статья</span><span class="sep">·</span><span>9 апреля 2026</span><span class="sep">·</span><span>~14 мин чтения</span>
     </div>
-</section>
-
-<div class="stats-bar">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="sbar-item fi"><div class="sbar-num gtext">5</div><div class="sbar-label">трендов года</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">x5</div><div class="sbar-label">рост продуктивности</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">24/7</div><div class="sbar-label">ИИ-агенты</div></div>
-            <div class="sbar-item fi"><div class="sbar-num gtext">RAG</div><div class="sbar-label">корпоративный разум</div></div>
-        </div>
+    <h1 class="post-title">Тренды автоматизации<br><span class="accent">в Казахстане 2026: Прогнозы</span></h1>
+    <p class="post-lead">Сколько прибыли теряет ваша компания, пока данные из CRM не синхронизированы с логистикой? В 2026 году это критическая уязвимость, которую конкуренты уже устраняют с помощью ИИ.</p>
+    <div class="post-hero-img">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop" alt="Искусственный интеллект и технологии будущего 2026" loading="lazy">
     </div>
-</div>
+</div></section>
 
-<div class="container">
-    <div class="article-body">
-        <article class="article-content prose">
+<div class="stats-bar"><div class="container"><div class="stats-grid">
+    <div class="stat-item fi"><div class="big">5</div><p>трендов года</p></div>
+    <div class="stat-item fi"><div class="big">x5</div><p>рост продуктивности</p></div>
+    <div class="stat-item fi"><div class="big">24/7</div><p>ИИ-агенты</p></div>
+</div></div></div>
 
-            <h2 id="s1" class="fi">Тренд #1: От чат-ботов к ИИ-агентам</h2>
+<section><div class="container"><div class="post-body">
+<h2>Тренд #1: От чат-ботов <span class="accent">к ИИ-агентам</span></h2>
 
-            <p class="fi">Первый и самый заметный тренд — <strong>окончательная смерть кнопочных ботов</strong>. Если раньше клиент был готов нажимать «Меню» и ждать стандартного ответа, то в 2026 году ожидания выросли. Покупатель хочет человеческого общения здесь и сейчас.</p>
+            <p>Первый и самый заметный тренд — <strong>окончательная смерть кнопочных ботов</strong>. Если раньше клиент был готов нажимать «Меню» и ждать стандартного ответа, то в 2026 году ожидания выросли. Покупатель хочет человеческого общения здесь и сейчас.</p>
 
-            <div class="section-img fi">
+            <div class="post-section-img">
                 <img src="https://images.unsplash.com/photo-1531746790095-e5f4ef64f606?w=1200&h=500&fit=crop&q=90" alt="Человек общается с ИИ-ассистентом на смартфоне" loading="lazy" width="1200" height="500">
             </div>
 
-            <div class="compare-grid fi">
-                <div class="compare-card">
-                    <div class="compare-icon">🧠</div>
-                    <h3>Анализ контекста</h3>
-                    <p>ИИ-агенты понимают эмоциональное состояние клиента и подстраивают тон общения под каждую ситуацию</p>
-                    <div class="compare-vs"><span class="old">Шаблонные ответы</span><span class="new">Живой диалог</span></div>
-                </div>
-                <div class="compare-card">
-                    <div class="compare-icon">🎯</div>
-                    <h3>Проактивные действия</h3>
-                    <p>Предлагают товары на основе истории покупок из вашей базы данных, не дожидаясь запроса клиента</p>
-                    <div class="compare-vs"><span class="old">Ждёт вопроса</span><span class="new">Предугадывает</span></div>
-                </div>
-                <div class="compare-card">
-                    <div class="compare-icon">💳</div>
-                    <h3>Закрытие цикла сделки</h3>
-                    <p>ИИ сам выставляет счёт через банковский API или бронирует время визита, проверяя слоты в календаре</p>
-                    <div class="compare-vs"><span class="old">Передаёт менеджеру</span><span class="new">Закрывает сам</span></div>
-                </div>
-            </div>
+            <div class="post-grid-2"><div class="post-mini-card"><h3>Анализ контекста</h3><p>ИИ-агенты понимают эмоциональное состояние клиента и подстраивают тон общения под каждую ситуацию</p></div><div class="post-mini-card"><h3>Проактивные действия</h3><p>Предлагают товары на основе истории покупок из вашей базы данных, не дожидаясь запроса клиента</p></div><div class="post-mini-card"><h3>Закрытие цикла сделки</h3><p>ИИ сам выставляет счёт через банковский API или бронирует время визита, проверяя слоты в календаре</p></div></div><blockquote>Для малого бизнеса и фрилансеров в Казахстане это <strong>виртуальный ассистент 24/7</strong>, который не болеет, не уходит в отпуск и говорит на казахском и русском одинаково безупречно.</blockquote>
 
-            <blockquote class="fi">Для малого бизнеса и фрилансеров в Казахстане это <strong>виртуальный ассистент 24/7</strong>, который не болеет, не уходит в отпуск и говорит на казахском и русском одинаково безупречно.</blockquote>
+            <h2>Тренд #2: <span class="accent">Гиперлокальная автоматизация</span></h2>
 
-            <h2 id="s2" class="fi">Тренд #2: Гиперлокальная автоматизация</h2>
+            <p>Казахстан — огромная территория с уникальной логистикой и языковыми особенностями. В 2026 году тренд сместился в сторону <strong>«умной» локализации</strong>. Компании больше не покупают западные коробочные решения.</p>
 
-            <p class="fi">Казахстан — огромная территория с уникальной логистикой и языковыми особенностями. В 2026 году тренд сместился в сторону <strong>«умной» локализации</strong>. Компании больше не покупают западные коробочные решения.</p>
-
-            <div class="section-img fi">
+            <div class="post-section-img">
                 <img src="https://images.unsplash.com/photo-1524749292158-7540c2494485?w=1200&h=500&fit=crop&q=90" alt="Панорама современного Казахстана — Астана" loading="lazy" width="1200" height="500">
             </div>
 
-            <div class="feat-grid fi">
-                <div class="feat-card">
-                    <div class="feat-icon">🏦</div>
-                    <h3>Интеграция с местными сервисами</h3>
-                    <p>Автоматическая выгрузка в системы бухучёта РК, работа с локальными маркетплейсами и службами доставки</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">🇰🇿</div>
-                    <h3>Культурный код</h3>
-                    <p>ИИ обучается тонкостям общения с казахстанским потребителем, учитывая этикет и предпочтения в разных регионах</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">🛣️</div>
-                    <h3>Оптимизация логистики</h3>
-                    <p>В условиях наших расстояний ИИ-алгоритмы экономят компаниям миллионы тенге на маршрутизации</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">🌐</div>
-                    <h3>Мультиязычность</h3>
-                    <p>Казахский, русский, английский — ИИ свободно переключается между языками в рамках одного диалога</p>
-                </div>
-            </div>
+            <div class="post-grid-3"><div class="post-mini-card"><h3>Интеграция с местными сервисами</h3><p>Автоматическая выгрузка в системы бухучёта РК, работа с локальными маркетплейсами и службами доставки</p></div><div class="post-mini-card"><h3>Культурный код</h3><p>ИИ обучается тонкостям общения с казахстанским потребителем, учитывая этикет и предпочтения в разных регионах</p></div><div class="post-mini-card"><h3>Оптимизация логистики</h3><p>В условиях наших расстояний ИИ-алгоритмы экономят компаниям миллионы тенге на маршрутизации</p></div><div class="post-mini-card"><h3>Мультиязычность</h3><p>Казахский, русский, английский — ИИ свободно переключается между языками в рамках одного диалога</p></div></div><h2>Тренд #3: Автоматизация маркетинга <span class="accent">и контента</span></h2>
 
-            <h2 id="s3" class="fi">Тренд #3: Автоматизация маркетинга и контента</h2>
+            <p>В 2026 году просто «генерировать посты» больше не работает. Трендом стала <strong>осмысленная, персонализированная автоматизация</strong>.</p>
 
-            <p class="fi">В 2026 году просто «генерировать посты» больше не работает. Трендом стала <strong>осмысленная, персонализированная автоматизация</strong>.</p>
-
-            <div class="section-img fi">
+            <div class="post-section-img">
                 <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1200&h=500&fit=crop&q=90" alt="Маркетинговая аналитика и стратегия на экране" loading="lazy" width="1200" height="500">
             </div>
 
-            <div class="feat-grid fi">
-                <div class="feat-card">
-                    <div class="feat-icon">👁️</div>
-                    <h3>Мониторинг конкурентов</h3>
-                    <p>ИИ анализирует цены, акции и рекламу конкурентов в Instagram и TikTok, выдавая готовый отчёт с рекомендациями</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">🧬</div>
-                    <h3>Персонализированный путь клиента</h3>
-                    <p>Вся цепочка касаний — от рекламы до письма — автоматически подстраивается под запрос конкретного пользователя</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">📝</div>
-                    <h3>Генерация смыслов</h3>
-                    <p>Не просто текст, а глубокие аналитические лонгриды, сценарии для видео и стратегии продвижения</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon">🚀</div>
-                    <h3>Один человек = пять сотрудников</h3>
-                    <p>Фрилансер с правильно настроенными ИИ-связками выполняет объём работы целого отдела</p>
-                </div>
-            </div>
+            <div class="post-grid-3"><div class="post-mini-card"><h3>Мониторинг конкурентов</h3><p>ИИ анализирует цены, акции и рекламу конкурентов в Instagram и TikTok, выдавая готовый отчёт с рекомендациями</p></div><div class="post-mini-card"><h3>Персонализированный путь клиента</h3><p>Вся цепочка касаний — от рекламы до письма — автоматически подстраивается под запрос конкретного пользователя</p></div><div class="post-mini-card"><h3>Генерация смыслов</h3><p>Не просто текст, а глубокие аналитические лонгриды, сценарии для видео и стратегии продвижения</p></div><div class="post-mini-card"><h3>Один человек = пять сотрудников</h3><p>Фрилансер с правильно настроенными ИИ-связками выполняет объём работы целого отдела</p></div></div><h2>Тренд #4: RAG-системы — <span class="accent">корпоративный разум</span></h2>
 
-            <h2 id="s4" class="fi">Тренд #4: RAG-системы — корпоративный разум</h2>
+            <p>Один из самых мощных технических трендов — технология <strong>RAG (Retrieval-Augmented Generation)</strong>. Это возможность «подключить» мозг ИИ к базе знаний вашей компании.</p>
 
-            <p class="fi">Один из самых мощных технических трендов — технология <strong>RAG (Retrieval-Augmented Generation)</strong>. Это возможность «подключить» мозг ИИ к базе знаний вашей компании.</p>
-
-            <div class="section-img fi">
+            <div class="post-section-img">
                 <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1200&h=500&fit=crop&q=90" alt="Цифровая база данных и интеллектуальный анализ" loading="lazy" width="1200" height="500">
             </div>
 
-            <p class="fi">Тысячи документов — договоры, регламенты, спецификации, переписка за 10 лет. Раньше поиск нужной информации занимал часы. Теперь ИИ <strong>мгновенно находит ответ</strong> на основе ваших внутренних данных.</p>
+            <p>Тысячи документов — договоры, регламенты, спецификации, переписка за 10 лет. Раньше поиск нужной информации занимал часы. Теперь ИИ <strong>мгновенно находит ответ</strong> на основе ваших внутренних данных.</p>
 
-            <div class="kpi-grid fi">
-                <div class="kpi-card">
-                    <div class="kpi-val cyan">Юристы</div>
-                    <h3>Поиск противоречий</h3>
-                    <p>Мгновенный анализ сотен контрактов на противоречия и риски</p>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-val purple">HR</div>
-                    <h3>Скрининг кандидатов</h3>
-                    <p>Автоматический отбор на основе внутреннего профиля идеального сотрудника</p>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-val green">Продажи</div>
-                    <h3>Онбординг за часы</h3>
-                    <p>Обучение новых сотрудников на базе лучших кейсов компании — не недели, а часы</p>
-                </div>
-            </div>
+            <div class="post-grid-3"><div class="post-mini-card post-kpi"><div class="val">Юристы</div><h3>Поиск противоречий</h3><p>Мгновенный анализ сотен контрактов на противоречия и риски</p></div><div class="post-mini-card post-kpi"><div class="val p">HR</div><h3>Скрининг кандидатов</h3><p>Автоматический отбор на основе внутреннего профиля идеального сотрудника</p></div><div class="post-mini-card post-kpi"><div class="val">Продажи</div><h3>Онбординг за часы</h3><p>Обучение новых сотрудников на базе лучших кейсов компании — не недели, а часы</p></div></div><blockquote>RAG превращает накопленную информацию из «мёртвого груза» на серверах в <strong>активный стратегический ресурс</strong>.</blockquote>
 
-            <blockquote class="fi">RAG превращает накопленную информацию из «мёртвого груза» на серверах в <strong>активный стратегический ресурс</strong>.</blockquote>
+            <h2>Тренд #5: <span class="accent">Невидимая автоматизация</span></h2>
 
-            <h2 id="s5" class="fi">Тренд #5: Невидимая автоматизация</h2>
+            <p>К концу 2026 года автоматизация станет «невидимой» — уйдёт из категории «отдельных проектов» и станет <strong>фундаментом любого бизнеса</strong>.</p>
 
-            <p class="fi">К концу 2026 года автоматизация станет «невидимой» — уйдёт из категории «отдельных проектов» и станет <strong>фундаментом любого бизнеса</strong>.</p>
-
-            <div class="section-img fi">
+            <div class="post-section-img">
                 <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200&h=500&fit=crop&q=90" alt="Современные технологии и цифровой код" loading="lazy" width="1200" height="500">
             </div>
 
-            <div class="trend-grid fi">
-                <div class="trend-card">
-                    <div class="trend-num c1">1</div>
-                    <div><h3>ИИ-агенты вместо кнопочных ботов</h3><p>Человеческий диалог, проактивные продажи, закрытие сделки без участия менеджера</p></div>
-                </div>
-                <div class="trend-card">
-                    <div class="trend-num c2">2</div>
-                    <div><h3>Гиперлокализация</h3><p>Системы, которые понимают казахстанский контекст: язык, логистику, бухучёт, культурный код</p></div>
-                </div>
-                <div class="trend-card">
-                    <div class="trend-num c3">3</div>
-                    <div><h3>Осмысленная автоматизация маркетинга</h3><p>Не количество контента, а персонализированный путь клиента и мониторинг конкурентов</p></div>
-                </div>
-                <div class="trend-card">
-                    <div class="trend-num c4">4</div>
-                    <div><h3>RAG — корпоративный разум</h3><p>Мгновенный доступ к знаниям компании для юристов, HR, продаж и менеджмента</p></div>
-                </div>
-                <div class="trend-card">
-                    <div class="trend-num c5">5</div>
-                    <div><h3>Невидимая автоматизация</h3><p>ИИ из «отдельного проекта» становится фундаментом. Кто не внедрил — проигрывает в себестоимости</p></div>
-                </div>
-            </div>
+            <div class="post-grid-3"><div class="post-mini-card"><h3>ИИ-агенты вместо кнопочных ботов</h3><p>Человеческий диалог, проактивные продажи, закрытие сделки без участия менеджера</p></div><div class="post-mini-card"><h3>Гиперлокализация</h3><p>Системы, которые понимают казахстанский контекст: язык, логистику, бухучёт, культурный код</p></div><div class="post-mini-card"><h3>Осмысленная автоматизация маркетинга</h3><p>Не количество контента, а персонализированный путь клиента и мониторинг конкурентов</p></div><div class="post-mini-card"><h3>RAG — корпоративный разум</h3><p>Мгновенный доступ к знаниям компании для юристов, HR, продаж и менеджмента</p></div><div class="post-mini-card"><h3>Невидимая автоматизация</h3><p>ИИ из «отдельного проекта» становится фундаментом. Кто не внедрил — проигрывает в себестоимости</p></div></div><h2>Заключение: главный вызов <span class="accent">2026 года</span></h2>
 
-            <h2 id="s6" class="fi">Заключение: главный вызов 2026 года</h2>
-
-            <div class="section-img fi">
+            <div class="post-section-img">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=500&fit=crop&q=90" alt="Команда обсуждает стратегию цифровой трансформации" loading="lazy" width="1200" height="500">
             </div>
 
-            <p class="fi">Главный вызов 2026 года — это <strong>не отсутствие технологий, а нехватка компетенций</strong> по их внедрению. Инструментов много — от облачных платформ до визуальных конструкторов. Но собрать из них единую, стабильно работающую систему, которая приносит деньги — задача для профессионалов.</p>
+            <p>Главный вызов 2026 года — это <strong>не отсутствие технологий, а нехватка компетенций</strong> по их внедрению. Инструментов много — от облачных платформ до визуальных конструкторов. Но собрать из них единую, стабильно работающую систему, которая приносит деньги — задача для профессионалов.</p>
 
-            <p class="fi">Автоматизация в Казахстане перестала быть привилегией технологических гигантов. Сегодня это <strong>доступный и необходимый инструмент</strong> для каждого — от индивидуального предпринимателя до крупного холдинга.</p>
+            <p>Автоматизация в Казахстане перестала быть привилегией технологических гигантов. Сегодня это <strong>доступный и необходимый инструмент</strong> для каждого — от индивидуального предпринимателя до крупного холдинга.</p>
 
-            <div class="faq-section fi">
-                <h2 id="s7" style="border:none;padding:0">Часто задаваемые вопросы</h2>
-                <div class="faq-item">
-                    <button class="faq-q"><span>Какой тренд самый важный для малого бизнеса?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
-                    <div class="faq-a">ИИ-агенты вместо кнопочных ботов. Это самый быстрый и ощутимый эффект: виртуальный ассистент 24/7, который продаёт, консультирует и закрывает сделки в WhatsApp и Telegram без участия сотрудника.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q"><span>Сколько стоит начать автоматизацию?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
-                    <div class="faq-a">Зависит от масштаба. Базовый ИИ-бот для WhatsApp/Telegram — от нескольких дней на настройку. RAG-система для крупной компании — от 2 недель. Окупаемость — с первого месяца.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q"><span>Подходит ли автоматизация для фрилансеров?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
-                    <div class="faq-a">Да, это один из главных трендов 2026 года. Один фрилансер с правильно настроенными ИИ-инструментами выполняет объём работы, который раньше требовал 5 сотрудников.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q"><span>Что будет с компаниями, которые не внедрят ИИ?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
-                    <div class="faq-a">Если ваш конкурент обрабатывает заказ за 10 секунд, а вы тратите 10 минут — вы проигрываете в долгосрочной перспективе. Разрыв в себестоимости станет непреодолимым.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q"><span>С чего начать автоматизацию?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
-                    <div class="faq-a">С аудита текущих процессов. FlowAI бесплатно проанализирует ваши бизнес-процессы и покажет, где автоматизация даст максимальный ROI — обычно это обработка входящих лидов и рутинные коммуникации.</div>
-                </div>
+            
             </div>
+</div></div></section>
 
-            <div class="cta-block fi">
-                <h2>Не отставайте от трендов 2026 года</h2>
-                <p>Бесплатный аудит ваших процессов. Покажем, где ИИ даст максимальный результат для вашего бизнеса.</p>
-                <div class="cta-btns">
-                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-primary">Написать в WhatsApp</a>
-                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-outline">Telegram</a>
-                </div>
-            </div>
-
-            <p class="fi" style="font-size:.9rem;color:var(--muted-2);margin-top:32px"><em>Подготовлено командой FlowAI.kz. Мы помогаем компаниям в Казахстане переводить рутинные коммуникации на автопилот с гарантированным результатом.</em></p>
-
-        </article>
-
-        <aside class="sidebar">
-            <div class="sidebar-card fi">
-                <h4>Аудит ваших процессов</h4>
-                <p style="font-size:.9rem;color:var(--muted);margin-bottom:16px">Бесплатно покажем точки роста</p>
-                <div class="sidebar-cta-btns">
-                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-primary">WhatsApp</a>
-                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-outline">Telegram</a>
-                </div>
-            </div>
-            <div class="sidebar-card fi">
-                <h4>Содержание</h4>
-                <ul class="toc">
-                    <li><a href="#s1">#1: ИИ-агенты</a></li>
-                    <li><a href="#s2">#2: Гиперлокализация</a></li>
-                    <li><a href="#s3">#3: Автоматизация маркетинга</a></li>
-                    <li><a href="#s4">#4: RAG-системы</a></li>
-                    <li><a href="#s5">#5: Невидимая автоматизация</a></li>
-                    <li><a href="#s6">Заключение</a></li>
-                    <li><a href="#s7">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="sidebar-card fi">
-                <h4>Теги</h4>
-                <div class="sidebar-tags">
-                    <span>Тренды 2026</span>
-                    <span>ИИ-агенты</span>
-                    <span>RAG</span>
-                    <span>Автоматизация</span>
-                    <span>Маркетинг</span>
-                    <span>Фриланс</span>
-                    <span>Казахстан</span>
-                    <span>LLM</span>
-                </div>
-            </div>
-        </aside>
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="section-title">Частые <span class="accent">вопросы</span></h2>
+    <div class="faq-list" style="margin-top:32px;max-width:900px">
+        <div class="faq-item"><button class="faq-q"><span>Какой тренд самый важный для малого бизнеса?</span><span class="ico">+</span></button><div class="faq-a">ИИ-агенты вместо кнопочных ботов. Это самый быстрый и ощутимый эффект: виртуальный ассистент 24/7, который продаёт, консультирует и закрывает сделки в WhatsApp и Telegram без участия сотрудника.</div></div>
+        <div class="faq-item"><button class="faq-q"><span>Сколько стоит начать автоматизацию?</span><span class="ico">+</span></button><div class="faq-a">Зависит от масштаба. Базовый ИИ-бот для WhatsApp/Telegram — от нескольких дней на настройку. RAG-система для крупной компании — от 2 недель. Окупаемость — с первого месяца.</div></div>
+        <div class="faq-item"><button class="faq-q"><span>Подходит ли автоматизация для фрилансеров?</span><span class="ico">+</span></button><div class="faq-a">Да, это один из главных трендов 2026 года. Один фрилансер с правильно настроенными ИИ-инструментами выполняет объём работы, который раньше требовал 5 сотрудников.</div></div>
+        <div class="faq-item"><button class="faq-q"><span>Что будет с компаниями, которые не внедрят ИИ?</span><span class="ico">+</span></button><div class="faq-a">Если ваш конкурент обрабатывает заказ за 10 секунд, а вы тратите 10 минут — вы проигрываете в долгосрочной перспективе. Разрыв в себестоимости станет непреодолимым.</div></div>
+        <div class="faq-item"><button class="faq-q"><span>С чего начать автоматизацию?</span><span class="ico">+</span></button><div class="faq-a">С аудита текущих процессов. FlowAI бесплатно проанализирует ваши бизнес-процессы и покажет, где автоматизация даст максимальный ROI — обычно это обработка входящих лидов и рутинные коммуникации.</div></div>
     </div>
-</div>
+</div></section>
+
+<section><div class="container"><div class="consult fi">
+    <div class="consult-txt"><h2>Готовы внедрить ИИ в бизнес?</h2><p>Покажем, как автоматизация работает на ваших процессах. Демо за 30 минут — оплата только после результата.</p></div>
+    <div class="consult-sticker"><div class="inner">30 МИН<small>бесплатно</small></div></div>
+    <form onsubmit="event.preventDefault(); window.open('https://wa.me/77787806540','_blank');"><input type="text" placeholder="Имя" required><input type="tel" placeholder="+7 (000) 000-00-00" required><button class="btn btn-primary">Получить демо</button><div class="consult-legal">Нажимая кнопку, вы соглашаетесь на обработку данных</div></form>
+</div></div></section>
 
 <footer class="footer"><div class="container">
     <div class="footer-grid">
@@ -491,18 +202,9 @@ a{color:var(--accent);transition:color .2s}a:hover{color:var(--accent-2)}
     <div class="footer-bottom"><span>FlowAi — автоматизация бизнеса на ИИ</span><span>Казахстан · СНГ · 2026</span></div>
 </div></footer>
 
-
-
-
-
-
-
-
-
-<script src="../assets/js/theme-toggle.js"></script>
-
 <a href="https://wa.me/77787806540" target="_blank" class="wa-float" id="waFloat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <button class="scroll-top" id="scrollTop">↑</button>
+
 <script>(function(){var s=document.createElement('script');s.src='https://voicyfy.ru/static/gemini-31-widget.js';s.dataset.assistantId='a2f68bf8-1968-4d08-9410-acaafcfb7a91';s.dataset.server='https://voicyfy.ru';s.dataset.position='bottom-right';s.async=true;document.head.appendChild(s);})();
 (function(){var F=/Gemini\s*3\.1\s*Flash\s*Live/gi,T='FlowAi-бот';function wS(r,v){if(!r)return;v(r);var a=r.querySelectorAll?r.querySelectorAll('*'):[];for(var i=0;i<a.length;i++)if(a[i].shadowRoot)wS(a[i].shadowRoot,v);}function rep(r){if(!r)return;var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,null,false),n,h=[];while((n=w.nextNode())){if(n.nodeValue&&F.test(n.nodeValue))h.push(n);F.lastIndex=0;}h.forEach(function(n){n.nodeValue=n.nodeValue.replace(F,T);});if(r.querySelectorAll)r.querySelectorAll('[title],[aria-label],[placeholder],[alt]').forEach(function(e){['title','aria-label','placeholder','alt'].forEach(function(a){var v=e.getAttribute(a);if(v&&F.test(v)){e.setAttribute(a,v.replace(F,T));F.lastIndex=0;}});});}function p(){wS(document,rep);}new MutationObserver(p).observe(document.documentElement,{childList:true,subtree:true,characterData:true});[300,800,1600,3000,6000].forEach(function(ms){setTimeout(p,ms);});})();</script>
 <script src="../assets/js/theme-toggle.js"></script>
@@ -511,7 +213,6 @@ var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInte
 document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var i=b.parentElement,o=i.classList.contains('active');i.parentElement.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('active')});if(!o)i.classList.add('active');})});
 var bg=document.getElementById('burger'),nv=document.getElementById('nav'),nc=document.getElementById('navClose'),nb=document.getElementById('navBackdrop');function cN(){bg&&bg.classList.remove('open');nv&&nv.classList.remove('open');nb&&nb.classList.remove('open');document.body.classList.remove('nav-open');nv&&nv.querySelectorAll('.dropdown').forEach(function(d){d.classList.remove('mob-open')})}function oN(){bg&&bg.classList.add('open');nv&&nv.classList.add('open');nb&&nb.classList.add('open');document.body.classList.add('nav-open')}if(nb)nb.addEventListener('click',cN);if(nc)nc.addEventListener('click',cN);if(bg&&nv){bg.addEventListener('click',function(e){e.stopPropagation();nv.classList.contains('open')?cN():oN()});nv.querySelectorAll('.dropdown-toggle').forEach(function(t){t.addEventListener('click',function(e){if(window.innerWidth<=1100){e.preventDefault();e.stopPropagation();var d=t.closest('.dropdown'),wo=d.classList.contains('mob-open');nv.querySelectorAll('.dropdown').forEach(function(x){x.classList.remove('mob-open')});if(!wo)d.classList.add('mob-open')}})});nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',cN)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nv.classList.contains('open'))cN()});window.addEventListener('resize',function(){if(window.innerWidth>1100&&nv.classList.contains('open'))cN()})}
 var hdr=document.getElementById('header'),wf=document.getElementById('waFloat'),stb=document.getElementById('scrollTop');addEventListener('scroll',function(){var s=scrollY;hdr.classList.toggle('scrolled',s>60);wf.classList.toggle('show',s>300);stb.classList.toggle('show',s>300)});stb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
-var sections=document.querySelectorAll('[id^="s"]'),tocLinks=document.querySelectorAll('.toc a');if(sections.length&&tocLinks.length){var tocObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tocLinks.forEach(function(l){l.classList.remove('active')});var link=document.querySelector('.toc a[href="#'+e.target.id+'"]');if(link)link.classList.add('active')}})},{rootMargin:'-100px 0px -60% 0px',threshold:0});sections.forEach(function(s){tocObs.observe(s)});}
 })();</script>
 <script>(function(){document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('wa.me')===-1&&h.indexOf('whatsapp.com')===-1&&(a.className||'').indexOf('btn-wa')===-1)return;if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'engagement',event_label:h,value:1});gtag('event','conversion',{send_to:'AW-964186887/DfhdCMSR850cEIem4csD',value:1.0,currency:'USD'})}if(typeof ym==='function'){ym(108596983,'reachGoal','whatsapp_click')}},true)})();</script>
 </body>
