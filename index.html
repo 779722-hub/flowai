@@ -1436,6 +1436,21 @@
         ty = e.clientY;
     });
 })();
+/* Hide Spline watermark / logo that may live in the viewer's shadow DOM */
+(function () {
+    function hideLogo(sv) {
+        if (!sv || !sv.shadowRoot) return;
+        sv.shadowRoot.querySelectorAll('a[href*="spline"], [part*="logo" i], [class*="logo" i]').forEach(function (el) {
+            el.style.setProperty('display', 'none', 'important');
+        });
+    }
+    function scan() {
+        document.querySelectorAll('spline-viewer').forEach(hideLogo);
+    }
+    scan();
+    var iv = setInterval(scan, 600);
+    setTimeout(function () { clearInterval(iv); }, 12000);
+})();
 </script>
 <script>
 (function () {

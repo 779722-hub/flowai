@@ -1326,8 +1326,13 @@ section { position: relative; padding: var(--section-py) 0; }
     z-index: 0;
     pointer-events: none;
 }
-.robot-stage > .robot-badge,
 .robot-stage > spline-viewer { position: relative; z-index: 2; }
+.robot-stage > .robot-badge { z-index: 10; }
+/* Hide Spline's watermark link */
+spline-viewer::part(logo),
+spline-viewer::part(Logo) { display: none !important; visibility: hidden !important; opacity: 0 !important; }
+spline-viewer a[href*="spline.design"],
+spline-viewer a[href*="spline.tools"] { display: none !important; }
 
 /* Butterfly cursor over the robot stage -------------------- */
 .robot-stage.no-butterfly { cursor: auto; }
