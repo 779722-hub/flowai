@@ -1273,7 +1273,43 @@ section { position: relative; padding: var(--section-py) 0; }
 }
 
 /* ROBOT SECTION --------------------------------------------- */
-.robot-section { padding: clamp(48px, 7vw, 120px) 0; }
+.robot-section {
+    padding: clamp(48px, 7vw, 120px) 0;
+    position: relative;
+    overflow: hidden;
+}
+.robot-section > .container { position: relative; z-index: 2; }
+/* Grid pattern */
+.robot-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--robot-grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--robot-grid-line) 1px, transparent 1px);
+    background-size: 6rem 4rem;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 35%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 35%, transparent 90%);
+    z-index: 0;
+    pointer-events: none;
+}
+/* Bottom-left bloom */
+.robot-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 800px at 0% 100%, var(--robot-bloom), transparent 65%);
+    z-index: 1;
+    pointer-events: none;
+}
+:root {
+    --robot-grid-line: rgba(255, 255, 255, 0.08);
+    --robot-bloom: rgba(195, 255, 54, 0.16);
+}
+:root[data-theme="light"] {
+    --robot-grid-line: #e8e8e8;
+    --robot-bloom: #d5c5ff;
+}
 .robot-grid {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
