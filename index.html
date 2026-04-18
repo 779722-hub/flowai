@@ -503,43 +503,45 @@
 <section class="s-alt">
     <div class="container">
         <div class="eyebrow">Как мы работаем</div>
-        <h2 class="section-title fi">3 шага к <span class="accent">автоматизации</span></h2>
-        <p class="section-sub fi">От заявки до работающего ИИ-менеджера за 7 дней. Наведите на карточку.</p>
-        <div class="ev-grid">
-            <div class="ev-step fi">
-                <div class="ev-card" data-ev>
-                    <div class="ev-bg"></div>
-                    <div class="ev-chars"></div>
-                    <div class="ev-center"><span>01</span></div>
-                </div>
-                <div class="ev-meta">
-                    <div class="ev-badge">30 минут</div>
-                    <h3>Оставить заявку</h3>
-                    <p>Расскажите о вашем бизнесе. Мы проанализируем задачи и предложим решение.</p>
+        <div class="steps-layout">
+            <div>
+                <h2 class="section-title fi">3 шага к <span class="accent">автоматизации</span></h2>
+                <div class="steps-list">
+                    <div class="step-row fi">
+                        <div class="step-n">1</div>
+                        <div>
+                            <h4>Оставить заявку</h4>
+                            <p>Расскажите о вашем бизнесе. Мы проанализируем задачи и предложим решение.</p>
+                        </div>
+                        <div class="badge">30 минут</div>
+                    </div>
+                    <div class="step-row fi">
+                        <div class="step-n">2</div>
+                        <div>
+                            <h4>Настройка и обучение</h4>
+                            <p>За 7–15 дней мы обучим бота на ваших данных, интегрируем в CRM.</p>
+                        </div>
+                        <div class="badge">7–15 дней</div>
+                    </div>
+                    <div class="step-row fi">
+                        <div class="step-n">3</div>
+                        <div>
+                            <h4>Продажи 24/7</h4>
+                            <p>Бот работает автоматически. Вы получаете качественные лиды и растёте.</p>
+                        </div>
+                        <div class="badge">Вечность</div>
+                    </div>
                 </div>
             </div>
-            <div class="ev-step fi">
-                <div class="ev-card" data-ev>
-                    <div class="ev-bg"></div>
-                    <div class="ev-chars"></div>
-                    <div class="ev-center"><span>02</span></div>
-                </div>
-                <div class="ev-meta">
-                    <div class="ev-badge">7–15 дней</div>
-                    <h3>Настройка и обучение</h3>
-                    <p>За 7–15 дней обучим бота на ваших данных и интегрируем в CRM, WhatsApp и Telegram.</p>
-                </div>
-            </div>
-            <div class="ev-step fi">
-                <div class="ev-card" data-ev>
-                    <div class="ev-bg"></div>
-                    <div class="ev-chars"></div>
-                    <div class="ev-center"><span>03</span></div>
-                </div>
-                <div class="ev-meta">
-                    <div class="ev-badge">24/7</div>
-                    <h3>Продажи без сна</h3>
-                    <p>Бот работает автоматически. Вы получаете квалифицированных лидов и растёте.</p>
+            <div class="ev-square fi" data-ev>
+                <div class="ev-bg"></div>
+                <div class="ev-chars"></div>
+                <div class="ev-center">
+                    <div class="ev-inner">
+                        <div class="ev-lead">Запуск<br>бота за</div>
+                        <div class="ev-big">7<span>дней</span></div>
+                        <div class="ev-sub">3 простых шага — от заявки до работающего ИИ-менеджера</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1139,7 +1141,7 @@
 
     // Evervault cards: mouse-track mask + random-character regen
     (function() {
-        var cards = document.querySelectorAll('.ev-card[data-ev]');
+        var cards = document.querySelectorAll('[data-ev]');
         if (!cards.length) return;
         var ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         function rand(n) {
@@ -1149,12 +1151,12 @@
         }
         cards.forEach(function(card) {
             var chars = card.querySelector('.ev-chars');
-            if (chars) chars.textContent = rand(900);
+            if (chars) chars.textContent = rand(1200);
             card.addEventListener('pointermove', function(e) {
                 var r = card.getBoundingClientRect();
                 card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
                 card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-                if (chars) chars.textContent = rand(900);
+                if (chars) chars.textContent = rand(1200);
             });
         });
     })();

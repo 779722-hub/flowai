@@ -1504,68 +1504,62 @@ section { position: relative; padding: var(--section-py) 0; }
     max-width: 80%;
 }
 
-/* EVERVAULT STEPS ------------------------------------------- */
-.ev-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 48px;
-}
-.ev-step {
-    display: flex;
-    flex-direction: column;
-}
-.ev-card {
+/* EVERVAULT right-side square (replaces the green steps-callout) ----- */
+.ev-square {
     --mx: 50%;
     --my: 50%;
     position: relative;
-    aspect-ratio: 1;
     width: 100%;
-    border-radius: 24px;
+    aspect-ratio: 1;
+    border-radius: var(--r);
     overflow: hidden;
     background: var(--bg-card);
     border: 1px solid var(--border);
     cursor: crosshair;
     isolation: isolate;
-    margin-bottom: 20px;
     transition: border-color .3s var(--ease);
 }
-.ev-card:hover { border-color: var(--border-h); }
+.ev-square:hover { border-color: var(--border-h); }
 
-/* Subtle base pattern (faint grid) — visible even without hover */
-.ev-card::before {
+/* Subtle base grid pattern */
+.ev-square::before {
     content: "";
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 24px 24px,
-        linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 24px 24px;
+        linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px) 0 0 / 32px 32px,
+        linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px) 0 0 / 32px 32px;
     -webkit-mask-image: linear-gradient(to bottom, white, transparent);
             mask-image: linear-gradient(to bottom, white, transparent);
     pointer-events: none;
 }
+:root[data-theme="light"] .ev-square::before {
+    background:
+        linear-gradient(to right, rgba(0,0,0,.05) 1px, transparent 1px) 0 0 / 32px 32px,
+        linear-gradient(to bottom, rgba(0,0,0,.05) 1px, transparent 1px) 0 0 / 32px 32px;
+}
 
-/* Gradient reveal (green → purple) */
-.ev-bg {
+/* Gradient reveal (lime → purple) */
+.ev-square .ev-bg {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
     opacity: 0;
     transition: opacity .4s var(--ease);
-    -webkit-mask-image: radial-gradient(220px at var(--mx) var(--my), #000 0%, transparent 80%);
-            mask-image: radial-gradient(220px at var(--mx) var(--my), #000 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(250px at var(--mx) var(--my), #000 0%, transparent 80%);
+            mask-image: radial-gradient(250px at var(--mx) var(--my), #000 0%, transparent 80%);
     pointer-events: none;
 }
-.ev-card:hover .ev-bg { opacity: 1; }
+.ev-square:hover .ev-bg { opacity: 1; }
 
-/* Random characters overlay (mix-blend-mode: overlay) */
-.ev-chars {
+/* Random matrix characters */
+.ev-square .ev-chars {
     position: absolute;
     inset: 0;
-    padding: 14px;
+    padding: 18px;
     font-family: 'JetBrains Mono', 'Menlo', 'Courier New', monospace;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.35;
     color: #fff;
     word-break: break-all;
@@ -1573,15 +1567,15 @@ section { position: relative; padding: var(--section-py) 0; }
     opacity: 0;
     mix-blend-mode: overlay;
     transition: opacity .4s var(--ease);
-    -webkit-mask-image: radial-gradient(220px at var(--mx) var(--my), #000 0%, transparent 80%);
-            mask-image: radial-gradient(220px at var(--mx) var(--my), #000 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(250px at var(--mx) var(--my), #000 0%, transparent 80%);
+            mask-image: radial-gradient(250px at var(--mx) var(--my), #000 0%, transparent 80%);
     pointer-events: none;
     user-select: none;
 }
-.ev-card:hover .ev-chars { opacity: 1; }
+.ev-square:hover .ev-chars { opacity: 1; }
 
-/* Centre badge with step number */
-.ev-center {
+/* Centre content — "Запуск бота за 7 дней" — replicates old steps-callout */
+.ev-square .ev-center {
     position: absolute;
     inset: 0;
     display: grid;
@@ -1589,55 +1583,52 @@ section { position: relative; padding: var(--section-py) 0; }
     z-index: 3;
     pointer-events: none;
 }
-.ev-center span {
-    display: grid;
-    place-items: center;
-    width: clamp(120px, 40%, 176px);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(44px, 5vw, 72px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    background: rgba(10,10,10,0.72);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    position: relative;
-}
-:root[data-theme="light"] .ev-center span {
-    background: rgba(255,255,255,0.82);
-    color: var(--text);
-}
-
-.ev-meta {
+.ev-inner {
+    text-align: center;
+    padding: clamp(24px, 3vw, 40px);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 0 4px;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10,10,10,0.55);
+    border-radius: var(--r);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    max-width: 85%;
 }
-.ev-badge {
-    align-self: flex-start;
-    padding: 5px 12px;
-    background: var(--accent);
-    color: var(--accent-ink);
-    font-size: 11px;
+:root[data-theme="light"] .ev-inner {
+    background: rgba(255,255,255,0.75);
+}
+.ev-lead {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(20px, 2.6vw, 32px);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border-radius: var(--r-pill);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
 }
-.ev-meta h3 { font-size: 20px; font-weight: 700; line-height: 1.2; }
-.ev-meta p { font-size: 14px; line-height: 1.55; color: var(--text-mute); }
-
-@media (max-width: 1024px) {
-    .ev-grid { grid-template-columns: repeat(2, 1fr); }
+.ev-big {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(88px, 12vw, 168px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
 }
-@media (max-width: 640px) {
-    .ev-grid { grid-template-columns: 1fr; gap: 32px; }
-    .ev-card { max-width: 420px; margin-left: auto; margin-right: auto; }
-    .ev-meta { text-align: center; align-items: center; }
-    .ev-badge { align-self: center; }
+.ev-big span {
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-mute);
+}
+.ev-sub {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-mute);
+    max-width: 300px;
 }
 
 /* TRUST BLOCKS (why us) ------------------------------------- */
