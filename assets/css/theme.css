@@ -472,9 +472,7 @@ section { position: relative; padding: var(--section-py) 0; }
         drop-shadow(0 34px 36px rgba(0,0,0,.55))
         drop-shadow(0 8px 14px rgba(0,0,0,.4))
         drop-shadow(0 0 24px rgba(195,255,54,.08));
-    transition: transform .4s var(--ease);
 }
-.hero-chart:hover svg { transform: perspective(1400px) rotateX(6deg) rotateY(-2deg); }
 .hero-chart .legend {
     position: absolute;
     inset: 0;
@@ -483,9 +481,7 @@ section { position: relative; padding: var(--section-py) 0; }
     pointer-events: none;
     transform: perspective(1400px) rotateX(10deg) rotateY(-4deg);
     transform-origin: 50% 55%;
-    transition: transform .4s var(--ease);
 }
-.hero-chart:hover .legend { transform: perspective(1400px) rotateX(6deg) rotateY(-2deg); }
 .hero-chart .legend-inner { text-align: center; }
 .hero-chart .legend-num {
     font-family: 'Manrope', sans-serif;
