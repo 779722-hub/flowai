@@ -2200,11 +2200,13 @@ section { position: relative; padding: var(--section-py) 0; }
 }
 
 @media (max-width: 1100px) {
-    /* Remove backdrop-filter on mobile — creates containing block that breaks fixed nav */
+    /* Remove backdrop-filter on mobile — creates containing block that breaks fixed nav.
+       Raise z-index above .nav-backdrop (190) so nested .nav (z:200) wins in stacking. */
     .header {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         background: var(--bg);
+        z-index: 220;
     }
     .header.scrolled { background: var(--bg); }
 
