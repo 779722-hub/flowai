@@ -1,678 +1,168 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta charset="UTF-8"><link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto-бот для Telegram | FlowAi — Криптовалютный ИИ-бот, Астана</title>
-    <meta name="description" content="Crypto-бот с ИИ: курсы, сигналы, технический анализ 24/7. RSI, MACD, уровни. Мониторинг 100+ монет. Telegram-уведомления.">
-    <meta name="keywords" content="крипто бот Telegram, криптовалютный бот, бот для трейдеров, цены криптовалют бот, книга ордеров Telegram, FlowAi, Казахстан, Астана, крипто трейдинг бот">
-    <meta property="og:title" content="Crypto-бот для Telegram | FlowAi">
-    <meta property="og:description" content="Мгновенная информация о криптовалютах в Telegram. Цены, ордера, свечи, объёмы.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://flowai.kz/crypto-bot">
-    <meta property="og:locale" content="ru_KZ">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Crypto-бот для Telegram | FlowAi">
-    <meta name="twitter:description" content="Crypto-бот с ИИ: курсы, сигналы, технический анализ 24/7. RSI, MACD, уровни. Мониторинг 100+ монет. Telegram-уведомления.">
-    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
-    <link rel="canonical" href="https://flowai.kz/crypto-bot">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"LocalBusiness","name":"FlowAi","description":"Криптовалютный Telegram-бот для трейдеров и инвесторов","url":"https://flowai.kz","telephone":"+77787806540","address":{"@type":"PostalAddress","streetAddress":"пр. Республики, д. 68","addressLocality":"Астана","addressCountry":"KZ"},"areaServed":["Казахстан","СНГ"],"priceRange":"от 20 000 ₸","sameAs":["https://t.me/FlowAItest_bot","https://wa.me/77787806540"]}
-    </script>
-    <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg:#0C0F1A;--bg-alt:#12162A;--bg-card:#181D35;
-            --gold:#F59E0B;--gold-light:#FBBF24;--gold-glow:rgba(245,158,11,.2);--gold-soft:rgba(245,158,11,.06);
-            --green:#10B981;--green-light:#34D399;--green-glow:rgba(16,185,129,.2);
-            --red:#EF4444;--red-light:#F87171;
-            --cyan:#06B6D4;--cyan-light:#22D3EE;
-            --pri:#8B5CF6;--pri-light:#A78BFA;
-            --tg:#2AABEE;--wa:#25D366;
-            --text:#F1F5F9;--muted:#7C8DB5;--muted-light:#A3B3D1;
-            --r:16px;--rs:10px;
-            --mono:'JetBrains Mono',monospace
-        }
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
-        a{color:var(--gold-light);text-decoration:none;transition:color .3s}a:hover{color:var(--gold)}
-        .container{max-width:1200px;margin:0 auto;padding:0 24px}
-
-        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(12,15,26,.6);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(245,158,11,.06);transition:all .4s}
-        .header.scrolled{background:rgba(12,15,26,.95);box-shadow:0 4px 30px rgba(0,0,0,.5)}
-        .header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:12px 24px}
-        .logo{display:flex;align-items:center;gap:8px;font-size:1.4rem;font-weight:800;color:#fff;text-decoration:none}
-        .logo svg{flex-shrink:0}
-        .logo span{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .nav{display:flex;align-items:center;gap:24px}
-        .nav a{color:var(--muted);font-size:.87rem;font-weight:500}.nav a:hover{color:#fff}
-        .hbtns{display:flex;gap:8px}
-        .btn-h{padding:8px 18px;border-radius:50px;font-weight:600;font-size:.82rem;display:inline-flex;align-items:center;gap:5px;transition:all .3s;border:none;cursor:pointer;color:#fff;text-decoration:none}
-        .btn-h.tg{background:var(--tg)}.btn-h.wa{background:var(--wa)}
-        .btn-h:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,158,11,.2);color:#fff}
-        .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:1001}
-        .burger span{display:block;width:24px;height:2px;background:#fff;transition:.3s;border-radius:2px}
-
-        .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 24px 40px;overflow:hidden;flex-direction:column}
-        #neural-canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.15;pointer-events:none}
-        .hero-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-        .ho1{width:500px;height:500px;background:rgba(245,158,11,.06);top:20%;right:10%;animation:ob1 12s ease-in-out infinite}
-        .ho2{width:400px;height:400px;background:rgba(139,92,246,.05);top:50%;left:10%;animation:ob2 16s ease-in-out infinite}
-        .ho3{width:300px;height:300px;background:rgba(16,185,129,.04);bottom:10%;right:30%;animation:ob1 20s ease-in-out infinite reverse}
-        @keyframes ob1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
-        @keyframes ob2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,20px) scale(1.08)}}
-        .hero-content{position:relative;z-index:2;text-align:center;max-width:900px;width:100%}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 22px;border-radius:50px;background:var(--gold-soft);border:1px solid rgba(245,158,11,.2);font-size:.85rem;color:var(--gold-light);margin-bottom:28px;font-weight:500}
-        .hero-badge .live{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pld 2s ease-in-out infinite}
-        @keyframes pld{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
-        .hero h1{font-size:clamp(2rem,4.5vw,3.3rem);font-weight:900;line-height:1.15;margin-bottom:22px}
-        .hero h1 .g{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .hero h1 .gl{color:var(--green-light)}
-        .hero-sub{font-size:clamp(1rem,1.8vw,1.12rem);color:var(--muted-light);margin-bottom:36px;max-width:660px;margin-left:auto;margin-right:auto;line-height:1.75}
-        .hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:50px;font-weight:600;font-size:.95rem;transition:all .35s;cursor:pointer;border:none;text-decoration:none;font-family:inherit}
-        .btn-gold{background:linear-gradient(135deg,var(--gold),#D97706);color:#0C0F1A;font-weight:700;box-shadow:0 4px 20px var(--gold-glow);animation:bp 3s ease-in-out infinite}
-        .btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 40px rgba(245,158,11,.4);color:#0C0F1A}
-        @keyframes bp{0%,100%{box-shadow:0 4px 20px var(--gold-glow)}50%{box-shadow:0 4px 40px rgba(245,158,11,.4)}}
-        .btn-tg{background:linear-gradient(135deg,var(--tg),#1E96D1);color:#fff;box-shadow:0 4px 16px rgba(42,171,238,.2)}
-        .btn-tg:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(42,171,238,.35);color:#fff}
-        .btn-o{background:transparent;color:var(--text);border:2px solid rgba(255,255,255,.1)}
-        .btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
-        .btn-wa{background:linear-gradient(135deg,var(--wa),#1eb854);color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.18)}
-        .btn-wa:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(37,211,102,.3);color:#fff}
-
-        /* Live price ticker */
-        .ticker-wrap{overflow:hidden;margin-top:40px;border-top:1px solid rgba(245,158,11,.08);border-bottom:1px solid rgba(245,158,11,.08);padding:14px 0;position:relative;z-index:2;width:100vw;margin-left:calc(-50vw + 50%);background:rgba(245,158,11,.02)}
-        .ticker{display:flex;gap:40px;animation:ts 30s linear infinite;white-space:nowrap}
-        .ticker span{font-size:.85rem;font-weight:500;flex-shrink:0;font-family:var(--mono)}
-        .ticker .sym{color:var(--gold-light);font-weight:700}
-        .ticker .up{color:var(--green)}.ticker .dn{color:var(--red)}
-        @keyframes ts{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-        section{padding:90px 0}
-        .salt{background:var(--bg-alt)}
-        .stitle{font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:700;text-align:center;margin-bottom:14px}
-        .stitle .a{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .ssub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 50px;font-size:1.02rem}
-        .fi{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}.fi.v{opacity:1;transform:translateY(0)}
-        .fil{opacity:0;transform:translateX(-40px);transition:all .7s}.fil.v{opacity:1;transform:translateX(0)}
-        .fir{opacity:0;transform:translateX(40px);transition:all .7s}.fir.v{opacity:1;transform:translateX(0)}
-
-        /* Demo chat */
-        .demo-layout{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:center}
-        .chat-window{background:#0e1621;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);width:100%;max-width:420px;border:1px solid rgba(245,158,11,.08)}
-        .chat-hdr{background:linear-gradient(135deg,#1a1f35,#1e2540);padding:14px 18px;display:flex;align-items:center;gap:12px}
-        .chat-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--pri));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}
-        .chat-nm{font-weight:600;font-size:.95rem}.chat-st{font-size:.75rem;color:var(--green)}
-        .chat-msgs{padding:16px;min-height:420px;display:flex;flex-direction:column;gap:10px;background:#0a0e1a}
-        .msg{max-width:88%;padding:10px 14px;border-radius:12px;font-size:.82rem;line-height:1.55;opacity:0;transform:translateY(10px);transition:all .4s}
-        .msg.show{opacity:1;transform:translateY(0)}
-        .msg-u{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.12);align-self:flex-end;border-bottom-right-radius:4px;color:var(--gold-light);font-family:var(--mono);font-weight:500}
-        .msg-b{background:#161c30;align-self:flex-start;border-bottom-left-radius:4px;font-family:var(--mono);font-size:.78rem}
-        .msg-b .lbl{color:var(--gold-light);font-weight:600;display:block;margin-bottom:4px;font-family:'Inter',sans-serif;font-size:.82rem}
-        .msg-b .gr{color:var(--green)}.msg-b .rd{color:var(--red-light)}.msg-b .cy{color:var(--cyan-light)}.msg-b .gl{color:var(--gold-light)}
-        .msg-t{font-size:.65rem;color:rgba(255,255,255,.3);text-align:right;margin-top:4px}
-        .typing{display:flex;gap:4px;padding:12px 16px;background:#161c30;border-radius:12px;align-self:flex-start;opacity:0;transition:opacity .3s}
-        .typing.show{opacity:1}
-        .td{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:tb 1.4s infinite}
-        .td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
-        @keyframes tb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-        .demo-txt h3{font-size:1.5rem;margin-bottom:16px;line-height:1.3}
-        .demo-txt p{color:var(--muted-light);font-size:1rem;margin-bottom:14px;line-height:1.7}
-        .demo-fl{list-style:none;margin-top:20px}
-        .demo-fl li{padding:8px 0;color:var(--muted-light);font-size:.93rem;display:flex;align-items:center;gap:10px}
-        .demo-fl li::before{content:'✓';color:var(--gold);font-weight:700}
-
-        /* Features */
-        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-        .feat-card{background:rgba(245,158,11,.02);border-radius:var(--r);padding:28px;border:1px solid rgba(245,158,11,.08);transition:all .4s;position:relative;overflow:hidden}
-        .feat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
-        .feat-card:hover{transform:translateY(-5px);border-color:rgba(245,158,11,.2);box-shadow:0 12px 30px rgba(245,158,11,.08)}
-        .feat-card:hover::after{opacity:1}
-        .feat-ic{width:48px;height:48px;border-radius:14px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
-        .feat-card h4{font-size:.98rem;margin-bottom:6px;font-weight:600}
-        .feat-card p{color:var(--muted);font-size:.85rem;line-height:1.6}
-        .feat-card code{font-family:var(--mono);font-size:.78rem;color:var(--gold-light);background:rgba(245,158,11,.06);padding:2px 6px;border-radius:4px}
-
-        /* Data blocks */
-        .data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-        .data-card{background:var(--bg-card);border-radius:var(--r);padding:28px;border:1px solid rgba(245,158,11,.08);transition:all .4s}
-        .data-card:hover{border-color:rgba(245,158,11,.2);box-shadow:0 8px 25px rgba(245,158,11,.06)}
-        .data-card h3{font-size:1rem;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-        .data-card h3 span{font-size:1.2rem}
-        .data-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.82rem;font-family:var(--mono)}
-        .data-row:last-child{border-bottom:none}
-        .data-lbl{color:var(--muted)}
-        .data-val{font-weight:600}
-        .data-val.gr{color:var(--green)}.data-val.rd{color:var(--red-light)}.data-val.gl{color:var(--gold-light)}.data-val.cy{color:var(--cyan-light)}
-
-        /* Problems */
-        .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-        .prob-card{background:rgba(245,158,11,.02);border-radius:var(--r);padding:32px;border:1px solid rgba(245,158,11,.08);transition:all .4s;position:relative;overflow:hidden}
-        .prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.4}
-        .prob-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.2)}
-        .prob-n{font-size:2.5rem;font-weight:800;color:rgba(245,158,11,.08);margin-bottom:12px}
-        .prob-card h3{font-size:1.1rem;margin-bottom:10px;font-weight:600}
-        .prob-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
-
-        /* Steps */
-        .steps-track{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
-        .steps-track::before{content:'';position:absolute;top:40px;left:15%;right:15%;height:2px;background:linear-gradient(90deg,var(--gold),var(--pri),var(--gold-light));opacity:.2}
-        .step{text-align:center;padding:0 16px;position:relative}
-        .step-num{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#D97706);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 18px;box-shadow:0 0 30px var(--gold-glow);position:relative;z-index:2;color:#0C0F1A}
-        .step h3{font-size:1.02rem;margin-bottom:8px;font-weight:600}.step p{color:var(--muted);font-size:.9rem}
-
-        /* Pricing */
-        .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
-        .price-card{background:rgba(245,158,11,.02);border-radius:var(--r);padding:36px 28px;border:1px solid rgba(245,158,11,.08);transition:all .4s;text-align:center;position:relative;overflow:hidden}
-        .price-card.pop{border-color:var(--gold);box-shadow:0 0 50px rgba(245,158,11,.06)}
-        .price-card.pop::before{content:'Популярный';position:absolute;top:16px;right:-30px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#0C0F1A;padding:5px 40px;font-size:.7rem;font-weight:700;transform:rotate(45deg);text-transform:uppercase}
-        .price-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(245,158,11,.1)}
-        .price-card h3{font-size:1.15rem;margin-bottom:6px;font-weight:700}
-        .price-amt{font-size:2.2rem;font-weight:800;margin:14px 0 4px;background:linear-gradient(135deg,#fff,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .price-per{color:var(--muted);font-size:.85rem;margin-bottom:22px;display:block}
-        .price-fl{list-style:none;text-align:left;margin-bottom:24px}
-        .price-fl li{padding:8px 0;color:var(--muted-light);font-size:.85rem;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:10px}
-        .price-fl li::before{content:'✓';color:var(--gold);font-weight:700}
-
-        /* FAQ */
-        .faq-list{max-width:740px;margin:0 auto}
-        .faq-item{border-bottom:1px solid rgba(245,158,11,.06)}
-        .faq-q{width:100%;background:none;border:none;color:var(--text);padding:20px 0;font-size:1.02rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;transition:color .3s}
-        .faq-q:hover{color:var(--gold)}
-        .faq-arrow{font-size:1rem;transition:transform .4s;color:var(--gold);min-width:20px;text-align:center}
-        .faq-item.active .faq-arrow{transform:rotate(180deg)}
-        .faq-a{max-height:0;overflow:hidden;transition:max-height .5s,padding .5s;color:var(--muted-light);font-size:.92rem;line-height:1.75}
-        .faq-item.active .faq-a{max-height:300px;padding-bottom:20px}
-
-        /* Contact */
-        .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-        .contact-info h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:14px;line-height:1.3}
-        .contact-info>p{color:var(--muted-light);margin-bottom:28px;font-size:1rem}
-        .contact-btns{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-        .contact-btns .btn{justify-content:center;font-size:1rem;padding:16px 32px}
-        .contact-det{display:flex;flex-direction:column;gap:12px}
-        .contact-det a,.contact-det span{color:var(--muted);font-size:.92rem;display:flex;align-items:center;gap:10px}
-        .contact-det a:hover{color:var(--gold)}
-
-        .back-btn{position:fixed;bottom:24px;left:24px;z-index:999;background:rgba(12,15,26,.9);backdrop-filter:blur(12px);border:1px solid rgba(245,158,11,.1);border-radius:50px;padding:10px 20px;color:var(--muted);font-size:.85rem;font-weight:500;transition:all .3s;opacity:0;pointer-events:none;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-        .back-btn.show{opacity:1;pointer-events:auto}.back-btn:hover{color:var(--gold);border-color:var(--gold)}
-
-        .footer{background:var(--bg-alt);border-top:1px solid rgba(245,158,11,.05);padding:50px 0 24px}
-        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
-        .footer h4{font-size:.93rem;margin-bottom:14px;font-weight:600}
-        .footer p,.footer a{color:var(--muted);font-size:.86rem}
-        .footer-links{list-style:none}.footer-links li{margin-bottom:9px}.footer-links a:hover{color:var(--gold)}
-        .footer-bot{text-align:center;padding-top:20px;border-top:1px solid rgba(245,158,11,.05);color:var(--muted);font-size:.78rem}
-
-        @media(max-width:1024px){.demo-layout,.contact-layout{grid-template-columns:1fr}.chat-window{margin:0 auto}.feat-grid,.data-grid{grid-template-columns:1fr 1fr}.pricing-grid{grid-template-columns:1fr}}
-        @media(max-width:768px){html,body{overflow-x:hidden;max-width:100vw}*{max-width:100%}section,.container{overflow-x:hidden}.ticker-wrap{width:100%;margin-left:0}.stitle,.ssub,.demo-txt h3,.demo-txt p,.prob-card h3,.prob-card p,.feat-card h4,.feat-card p,.how-card h3,.how-card p,.niche-card h3,.niche-card p,.step h3,.step p,.price-card h3,.faq-q,.faq-a,.contact-info h2,.contact-info>p,.rag-txt h3,.rag-txt p,.inc-card h4,.inc-card p,.ben-card h4,.ben-card p,.mod-card h3,.mod-card p,.type-card h3,.type-card p,.fmt-card h3,.fmt-card p,.use-card h3,.use-card p,.process-card h3,.process-card p,.why-card h3,.why-card p,.data-card h3{word-break:break-word;overflow-wrap:break-word;max-width:100%}.how-card,.prob-card,.feat-card,.feat-item,.niche-card,.step,.price-card,.inc-card,.ben-card,.mod-card,.type-card,.fmt-card,.format-card,.use-card,.process-card,.why-card,.data-card,.flow-step{padding:20px 14px;max-width:100%}.nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(12,15,26,.98);flex-direction:column;justify-content:center;align-items:center;gap:24px;z-index:999}.nav.open{display:flex}.nav a{font-size:1.15rem}.hbtns{display:none}.nav .nav-mob{display:flex;flex-direction:column;gap:12px;margin-top:20px}.burger{display:flex}.prob-grid,.steps-track,.data-grid{grid-template-columns:1fr}.steps-track::before{display:none}.footer-grid{grid-template-columns:1fr 1fr}.feat-grid{grid-template-columns:1fr}section{padding:60px 0}.demo-layout{grid-template-columns:1fr}.hero{padding:100px 16px 30px}.hero-buttons{flex-direction:column;align-items:center;gap:10px}.hero-buttons .btn{width:100%;max-width:320px;justify-content:center;padding:14px 24px;font-size:.9rem}.hero-sub{font-size:.95rem;padding:0 8px}.hero-badge{font-size:.78rem;padding:6px 16px}.container{padding:0 16px}.chat-window,.email-mock,.widget-wrap,.app-mockup{max-width:100%}.stitle{font-size:1.4rem;padding:0 8px}.ssub{font-size:.92rem;padding:0 8px}.price-card{padding:28px 20px}.price-amt{font-size:2rem}.header-inner{padding:10px 16px}.back-btn{bottom:16px;left:16px;font-size:.78rem;padding:8px 14px}.ticker-wrap{margin-top:28px}.ticker span{font-size:.78rem}.contact-btns .btn{padding:14px 24px;font-size:.92rem}.chat-window,.email-mock,.app-mockup,.widget-wrap{max-width:100%}.demo-layout{gap:24px}.pricing-grid{max-width:100%}.contact-layout{gap:30px}.prob-grid{gap:16px}.feat-grid{gap:14px}}
-        @media(max-width:480px){.hero h1{font-size:1.5rem;padding:0 4px}.stats-grid{grid-template-columns:repeat(2,1fr);gap:16px}.stat-item h3{font-size:1.6rem}.stat-item p{font-size:.78rem}.niches-grid,.footer-grid,.use-grid,.modules-grid,.inc-grid,.formats-grid{grid-template-columns:1fr}.prob-card,.feat-card,.feat-item,.niche-card,.mod-card,.inc-card,.ben-card,.why-card,.format-card,.use-card,.flow-step,.process-card,.data-card{padding:20px 16px}.step{padding:0 8px}.faq-q{font-size:.92rem;padding:16px 0}.faq-a{font-size:.85rem}.demo-txt h3,.rag-txt h3{font-size:1.2rem}.demo-fl li,.rag-list li{font-size:.85rem}.pricing-grid{gap:16px}}
-@media(max-width:360px){.hero h1{font-size:1.3rem}.hero-sub{font-size:.88rem}.logo{font-size:1.2rem}.logo svg{width:26px;height:26px}.price-amt{font-size:1.7rem}.btn{padding:12px 20px;font-size:.85rem}}
-        /* PHOTO SHOWCASE */
-        .photo-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; overflow: hidden; margin: 0 }
-        .photo-split.rev .photo-img { order: 2 }
-        .photo-split.rev .photo-txt { order: 1 }
-        .photo-img { position: relative; overflow: hidden; min-height: 380px }
-        .photo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s }
-        .photo-img:hover img { transform: scale(1.04) }
-        .photo-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,116,255,.12), rgba(0,198,255,.06)); pointer-events: none }
-        .photo-txt { display: flex; flex-direction: column; justify-content: center; padding: 64px 60px; background: var(--bg-alt, #051228) }
-        .photo-txt .pt-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(0,116,255,.10); border: 1px solid rgba(0,116,255,.22); color: #7dd3fc; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; width: fit-content }
-        .photo-txt h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; line-height: 1.25; margin-bottom: 16px; color: #f0f8ff }
-        .photo-txt p { font-size: .97rem; color: #7aafd4; line-height: 1.75; max-width: 440px }
-        .photo-full { position: relative; height: 400px; overflow: hidden; margin: 0 }
-        .photo-full img { width: 100%; height: 100%; object-fit: cover; display: block }
-        .photo-full::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.7) 100%); pointer-events: none }
-        .photo-full-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px 48px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px }
-        .photo-full-cap h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 2vw, 1.7rem); font-weight: 800; color: #fff; max-width: 540px; margin: 0 }
-        .photo-full-cap span { flex-shrink: 0; padding: 10px 22px; border-radius: 50px; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: .83rem; font-weight: 600; white-space: nowrap }
-        @media (max-width: 768px) {
-            .photo-split { grid-template-columns: 1fr }
-            .photo-split.rev .photo-img { order: 0 }
-            .photo-split.rev .photo-txt { order: 0 }
-            .photo-img { min-height: 260px }
-            .photo-txt { padding: 36px 28px }
-            .photo-full { height: 280px }
-            .photo-full-cap { padding: 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px }
-        }
-        /* === UNIFIED ICON STYLE (matches main page solutions block) === */
-        .feat-ic, .niche-ic, .how-ic, .ben-ic, .prob-ic, .mod-ic, .use-ic,
-        .data-ic, .why-ic, .fmt-ic, .type-ic, .inc-ic, .process-ic,
-        .step-ic, .form-ic, .info-ic, .val-ic, .ch-ic, .sbar-ic {
-            width: 56px !important;
-            height: 56px !important;
-            min-width: 56px !important;
-            border-radius: 14px !important;
-            background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)) !important;
-            border: 1px solid rgba(0,116,255,.25) !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            box-shadow: 0 6px 22px rgba(0,116,255,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
-            font-size: 0 !important;
-            margin-bottom: 16px !important;
-            transition: all .35s !important;
-            padding: 0 !important;
-        }
-        .niche-ic { margin: 0 auto 14px !important }
-        .feat-ic svg, .niche-ic svg, .how-ic svg, .ben-ic svg, .prob-ic svg,
-        .mod-ic svg, .use-ic svg, .data-ic svg, .why-ic svg, .fmt-ic svg,
-        .type-ic svg, .inc-ic svg, .process-ic svg, .step-ic svg, .form-ic svg,
-        .info-ic svg, .val-ic svg, .ch-ic svg, .sbar-ic svg {
-            width: 28px !important;
-            height: 28px !important;
-            stroke: #00c6ff !important;
-            fill: none !important;
-            stroke-width: 1.7 !important;
-            stroke-linecap: round !important;
-            stroke-linejoin: round !important;
-            transition: stroke .35s !important;
-        }
-        .niche-card:hover .niche-ic, .feat-card:hover .feat-ic, .feat-item:hover .feat-ic,
-        .ben-card:hover .ben-ic, .how-card:hover .how-ic, .prob-card:hover .prob-ic,
-        .mod-card:hover .mod-ic, .use-card:hover .use-ic, .data-card:hover .data-ic,
-        .why-card:hover .why-ic, .fmt-card:hover .fmt-ic, .type-card:hover .type-ic,
-        .inc-card:hover .inc-ic, .process-card:hover .process-ic, .step:hover .step-ic {
-            transform: scale(1.08) translateY(-2px) !important;
-            border-color: rgba(0,198,255,.55) !important;
-            box-shadow: 0 12px 36px rgba(0,198,255,.28) !important;
-        }
-        .niche-card:hover .niche-ic svg, .feat-item:hover .feat-ic svg,
-        .ben-card:hover .ben-ic svg, .how-card:hover .how-ic svg,
-        .mod-card:hover .mod-ic svg, .use-card:hover .use-ic svg {
-            stroke: #fff !important;
-        }
-
-
-
-    </style>
-    <!-- Google Analytics 4 -->
+    <title>Crypto-бот для Telegram | Аналитика криптовалют — FlowAi KZ</title>
+    <meta name="description" content="Крипто-бот для Telegram: цены, аналитика, сигналы, портфель. Мгновенные ответы. От 10 000 ₸/мес.">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:title" content="Crypto-бот для Telegram — FlowAi"><meta property="og:type" content="website"><meta property="og:url" content="https://flowai.kz/crypto-bot.html"><meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flowai.kz/crypto-bot.html">
+    <script>(function(){try{var m=localStorage.getItem('flowai-theme')||'auto',r=m;if(m==='auto'){var h=(new Date().getUTCHours()+5)%24;r=(h>=8&&h<20)?'light':'dark';}document.documentElement.setAttribute('data-theme',r);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/theme.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFTCZN8X4T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LFTCZN8X4T');
-      gtag('config', 'AW-964186887');
-    </script>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983', 'ym');
-        ym(108596983, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108596983" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFTCZN8X4T');gtag('config','AW-964186887');</script>
+    <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983','ym');ym(108596983,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",accurateTrackBounce:true,trackLinks:true});</script>
 </head>
 <body>
 
-<header class="header" id="header">
-    <div class="header-inner">
-        <a href="index.html" class="logo"><img src="logo flowai.png" alt="FlowAi" class="logo-img"></a>
-        <nav class="nav" id="nav">
-            <a href="#features">Возможности</a>
-            <a href="#data">Данные</a>
-            <a href="#demo">Демо</a>
-            <a href="#pricing">Цены</a>
-            <a href="#contact">Контакты</a>
-            <div class="nav-mob" style="display:none"><a href="https://t.me/FlowAItest_bot" target="_blank" class="btn-h tg">Telegram</a><a href="https://wa.me/77787806540" target="_blank" class="btn-h wa">WhatsApp</a></div>
-        </nav>
-        <div class="hbtns">
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn-h tg">Telegram</a>
-            <a href="https://wa.me/77787806540" target="_blank" class="btn-h wa">WhatsApp</a>
-        </div>
-        <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+<header class="header" id="header"><div class="hd-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FA</span><span>FlowAi</span></a>
+    <nav class="nav" id="nav">
+        <button class="nav-close" id="navClose" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        <div class="dropdown"><span class="dropdown-toggle">Боты</span><div class="dropdown-menu"><a href="whatsapp-bot.html">WhatsApp-бот</a><a href="telegram-bot.html">Telegram-бот</a><a href="voice-manager-bot.html">Голосовой менеджер</a><a href="blogger-bot.html">Blogger-бот</a><a href="rss-bot.html">RSS-автопостинг</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">ИИ-решения</span><div class="dropdown-menu"><a href="chatbot-rag.html">RAG-чатбот</a><a href="ai-assistant-ceo.html">ИИ для CEO</a><a href="auto-kp-bot.html">КП-бот</a><a href="swift-invoice.html">Инвойс-бот</a><a href="nutritionist-bot.html">Нутрициолог-бот</a><a href="ai-research-bot.html">ИИ-исследователь</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">Разработка</span><div class="dropdown-menu"><a href="website-dev.html">Создание сайтов</a><a href="brand-video.html">Брендовое видео</a><a href="complex-solution.html">Комплексное решение</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">О нас</span><div class="dropdown-menu"><a href="o-kompanii.html">О компании</a><a href="kak-my-rabotaem.html">Как мы работаем</a></div></div>
+        <a href="Blog/index.html">Блог</a><a href="kontakty.html">Контакты</a>
+    </nav>
+    <div class="hd-btns">
+        <a href="tel:+77787806540" class="btn-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить нам</a>
+        <a href="https://wa.me/77787806540" target="_blank" class="icon-btn wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://t.me/FlowAItest_bot" target="_blank" class="icon-btn tg" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.04 15.58l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.39 5.18 3.79c.95.52 1.62.25 1.88-.88L22.9 3.82c.31-1.4-.5-1.95-1.43-1.6L1.24 9.95c-1.36.53-1.34 1.3-.23 1.65l5.1 1.59 11.84-7.47c.56-.36 1.07-.16.65.2"/></svg></a>
+        <button class="theme-toggle" type="button" aria-label="Тема"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
-</header>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</div></header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
-<section class="hero" id="hero">
-    <canvas id="neural-canvas"></canvas>
-    <div class="hero-orb ho1"></div>
-    <div class="hero-orb ho2"></div>
-    <div class="hero-orb ho3"></div>
-    <div class="hero-content">
-        <div class="hero-badge"><span class="live"></span> Real-time data</div>
-        <h1><span class="g">Crypto-бот</span> для Telegram —<br>мгновенная аналитика<br><span class="gl">прямо в чате</span></h1>
-        <p class="hero-sub">Цены, ордера, свечи, объёмы — всё по одному запросу. Ваш персональный терминал для трейдинга и инвестиций прямо в Telegram.</p>
-        <div class="hero-buttons">
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-gold">Попробовать бота</a>
-            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-tg">Заказать разработку</a>
-            <a href="#pricing" class="btn btn-o">Узнать стоимость</a>
-        </div>
+<section class="hero"><div class="container"><div class="hero-grid">
+    <div class="hero-left">
+        <div class="eyebrow">Crypto-бот · аналитика в Telegram</div>
+        <h1>Крипто-<span class="accent">аналитика</span> в Telegram за секунды</h1>
+        <p class="hero-sub">Цены, сигналы, портфель, новости и alerts по <span class="hero-typing">BTC, ETH, SOL</span> — всё в одном боте. Без переключения между биржами и сайтами.</p>
+        <div class="hero-cta"><a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-primary btn-lg">Открыть бота</a><a href="#roi" class="btn btn-outline btn-lg">Посчитать выгоду ↓</a></div>
+        <div class="hero-meta"><div class="hero-meta-item"><div class="label">От 10 000 ₸</div><div class="value">стоимость аренды</div></div><div class="hero-meta-item"><div class="label">500+ монет</div><div class="value"><span class="accent">0.5 сек</span> цена</div></div></div>
     </div>
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <span><span class="sym">BTC/USDT</span> 67,842.50 <span class="up">+2.4%</span></span>
-            <span><span class="sym">ETH/USDT</span> 3,521.80 <span class="up">+1.8%</span></span>
-            <span><span class="sym">SOL/USDT</span> 178.45 <span class="dn">-0.6%</span></span>
-            <span><span class="sym">BNB/USDT</span> 612.30 <span class="up">+0.9%</span></span>
-            <span><span class="sym">XRP/USDT</span> 0.6284 <span class="dn">-1.2%</span></span>
-            <span><span class="sym">DOGE/USDT</span> 0.1847 <span class="up">+5.1%</span></span>
-            <span><span class="sym">ADA/USDT</span> 0.4923 <span class="up">+0.3%</span></span>
-            <span><span class="sym">BTC/USDT</span> 67,842.50 <span class="up">+2.4%</span></span>
-            <span><span class="sym">ETH/USDT</span> 3,521.80 <span class="up">+1.8%</span></span>
-            <span><span class="sym">SOL/USDT</span> 178.45 <span class="dn">-0.6%</span></span>
-            <span><span class="sym">BNB/USDT</span> 612.30 <span class="up">+0.9%</span></span>
-            <span><span class="sym">XRP/USDT</span> 0.6284 <span class="dn">-1.2%</span></span>
-            <span><span class="sym">DOGE/USDT</span> 0.1847 <span class="up">+5.1%</span></span>
-            <span><span class="sym">ADA/USDT</span> 0.4923 <span class="up">+0.3%</span></span>
+    <div class="hero-right"><div class="feed-stage">
+        <div class="fh"><span class="fh-title">Крипто-лента · live</span><span class="fh-live">Рынок</span></div>
+        <div class="feed-items">
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div><div><div class="feed-title">BTC: $67 420 · +2.4% (24ч)</div><div class="feed-meta"><span class="tag">bullish</span><span>объём 18.2 млрд $</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div><div><div class="feed-title">ETH: $3 254 · +1.8% (24ч)</div><div class="feed-meta"><span class="tag">bullish</span><span>объём 9.1 млрд $</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="feed-title">Сигнал: SOL вход $184 → TP $220</div><div class="feed-meta"><span class="tag">сигнал</span><span>уверенность 78%</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div><div><div class="feed-title">Alert: ваш BTC перешёл $67k</div><div class="feed-meta"><span class="tag">уведомление</span><span>отправлено 2 мин назад</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="feed-title">Портфель: $12 840 · +18% за месяц</div><div class="feed-meta"><span class="tag">аналитика</span><span>обновлено real-time</span></div></div></div>
         </div>
-    </div>
-</section>
+    </div></div>
+</div><div class="marquee-wrap"><div class="marquee" id="marquee"></div></div></div></section>
 
-<!-- DEMO -->
-<section class="salt" id="demo">
-    <div class="container">
-        <h2 class="stitle fi">Как <span class="a">работает</span> Crypto-бот</h2>
-        <p class="ssub fi">Отправьте тикер — получите полную аналитику за секунды</p>
-        <div class="demo-layout">
-            <div class="chat-window fil" id="chat-demo">
-                <div class="chat-hdr">
-                    <div class="chat-av">&#9879;</div>
-                    <div><div class="chat-nm">FlowAi Crypto</div><div class="chat-st">онлайн</div></div>
-                </div>
-                <div class="chat-msgs" id="chat-msgs">
-                    <div class="typing" id="typing"><div class="td"></div><div class="td"></div><div class="td"></div></div>
-                </div>
-            </div>
-            <div class="demo-txt fir">
-                <h3>Весь терминал — <span style="color:var(--gold)">в одном чате</span></h3>
-                <p>Введите тикер криптопары — бот мгновенно выдаст полный отчёт: цену, ордера, свечи, объёмы и статистику за 24 часа.</p>
-                <ul class="demo-fl">
-                    <li>Текущая цена + лучший bid и ask с объёмами</li>
-                    <li>Статистика 24ч: open, high, low, close, volume</li>
-                    <li>Книга ордеров: ТОП-5 покупателей и продавцов</li>
-                    <li>Последние 5 свечей (15 мин): O/H/L/C</li>
-                    <li>Работает с любой парой на бирже</li>
-                    <li>Ответ за 1–3 секунды</li>
-                </ul>
-                <div style="margin-top:24px"><a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-gold">Попробовать сейчас</a></div>
-            </div>
+<div class="stats-bar"><div class="container"><div class="stats-grid">
+    <div class="stat-item fi"><div class="big">0.5 сек</div><p>актуальность цены</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="500">0</span>+</div><p>монет и токенов</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="12">0</span>+</div><p>бирж в интеграции</p></div>
+    <div class="stat-item fi"><div class="big">24/7</div><p>мониторинг рынка</p></div>
+</div></div></div>
+
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">Проблемы трейдера</div>
+    <h2 class="section-title fi">Где <span class="accent">тонет</span> ваше время?</h2>
+    <div class="feature-grid">
+        <div class="feature-card fi"><h3>10 вкладок с биржами</h3><p>Binance, ByBit, OKX, Bitget — переключение съедает время. Бот даёт всё в одном Telegram-чате.</p></div>
+        <div class="feature-card fi"><h3>Новости не прочитаны вовремя</h3><p>Пропустил сигнал от SEC — потерял деньги. Бот мониторит и шлёт только важное.</p></div>
+        <div class="feature-card fi"><h3>Ручной анализ портфеля</h3><p>Суммы в разных биржах, конвертации, P/L — в Excel. Бот агрегирует автоматически.</p></div>
+        <div class="feature-card fi"><h3>Пропущенные точки входа</h3><p>Alert'ы на цене — больше не проспите. Бот пингует в нужный момент по вашим правилам.</p></div>
+    </div>
+</div></section>
+
+<section id="roi"><div class="container">
+    <div class="eyebrow">Калькулятор выгоды</div>
+    <h2 class="section-title fi">Во что превращается <span class="accent">скорость</span>?</h2>
+    <div class="roi fi">
+        <div class="roi-inputs">
+            <div class="roi-field"><label><span>Сделок в месяц</span><span class="val" id="vT">40</span></label><input type="range" id="iT" min="5" max="500" value="40" step="5"></div>
+            <div class="roi-field"><label><span>Средний P&L на сделку, $</span><span class="val" id="vP">50</span></label><input type="range" id="iP" min="-200" max="1000" value="50" step="10"></div>
+            <div class="roi-field"><label><span>Рост P&L благодаря сигналам</span><span class="val">+<span id="vG">15</span>%</span></label><input type="range" id="iG" min="0" max="100" value="15" step="1"></div>
+        </div>
+        <div class="roi-result">
+            <div class="label">Доп. P&L в месяц</div>
+            <div class="big"><span id="rGain">—</span><span class="unit">$</span></div>
+            <div class="note">Crypto-бот помогает не пропускать вход/выход и мониторит 24/7. Стоит от 10 000 ₸ — окупается с первой улучшенной сделки.</div>
+            <div class="cta"><a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-primary">Открыть в Telegram</a></div>
         </div>
     </div>
-</section>
+</div></section>
 
-<!-- DATA BLOCKS -->
-<section id="data">
-    <div class="container">
-        <h2 class="stitle fi">Какие <span class="a">данные</span> выдаёт бот</h2>
-        <p class="ssub fi">Полный срез рынка по любой криптопаре — одним сообщением</p>
-        <div class="data-grid">
-            <div class="data-card fi">
-                <h3><span>&#128200;</span> Цена сейчас</h3>
-                <div class="data-row"><span class="data-lbl">Цена</span><span class="data-val gl">67,842.50 USDT</span></div>
-                <div class="data-row"><span class="data-lbl">Лучший Bid</span><span class="data-val gr">67,840.20 (2.15 BTC)</span></div>
-                <div class="data-row"><span class="data-lbl">Лучший Ask</span><span class="data-val rd">67,845.10 (1.84 BTC)</span></div>
-                <div class="data-row"><span class="data-lbl">Спред</span><span class="data-val cy">4.90 USDT</span></div>
-            </div>
-            <div class="data-card fi">
-                <h3><span>&#128202;</span> Статистика 24ч</h3>
-                <div class="data-row"><span class="data-lbl">Open</span><span class="data-val">66,280.00</span></div>
-                <div class="data-row"><span class="data-lbl">High</span><span class="data-val gr">68,450.00</span></div>
-                <div class="data-row"><span class="data-lbl">Low</span><span class="data-val rd">65,920.00</span></div>
-                <div class="data-row"><span class="data-lbl">Volume</span><span class="data-val cy">24,518 BTC</span></div>
-                <div class="data-row"><span class="data-lbl">Оборот</span><span class="data-val gl">$1.66B</span></div>
-                <div class="data-row"><span class="data-lbl">Сделки</span><span class="data-val">847,291</span></div>
-            </div>
-            <div class="data-card fi">
-                <h3><span>&#128209;</span> Книга ордеров</h3>
-                <div class="data-row"><span class="data-lbl gr">BID 67,840</span><span class="data-val">2.15 BTC</span></div>
-                <div class="data-row"><span class="data-lbl gr">BID 67,838</span><span class="data-val">1.87 BTC</span></div>
-                <div class="data-row"><span class="data-lbl gr">BID 67,835</span><span class="data-val">3.42 BTC</span></div>
-                <div style="border-top:1px dashed rgba(245,158,11,.15);margin:4px 0"></div>
-                <div class="data-row"><span class="data-lbl rd">ASK 67,845</span><span class="data-val">1.84 BTC</span></div>
-                <div class="data-row"><span class="data-lbl rd">ASK 67,848</span><span class="data-val">2.31 BTC</span></div>
-                <div class="data-row"><span class="data-lbl rd">ASK 67,850</span><span class="data-val">4.05 BTC</span></div>
-            </div>
-        </div>
-        <div style="margin-top:24px">
-            <div class="data-card fi" style="max-width:600px;margin:0 auto">
-                <h3><span>&#128367;</span> Свечи 15 мин (последние 5)</h3>
-                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px;text-align:center;font-family:var(--mono);font-size:.72rem">
-                    <div><div style="color:var(--muted);margin-bottom:4px">14:00</div><div>O <span style="color:var(--gold-light)">67810</span></div><div>H <span style="color:var(--green)">67865</span></div><div>L <span style="color:var(--red-light)">67795</span></div><div>C <span style="color:var(--cyan-light)">67842</span></div></div>
-                    <div><div style="color:var(--muted);margin-bottom:4px">13:45</div><div>O <span style="color:var(--gold-light)">67780</span></div><div>H <span style="color:var(--green)">67830</span></div><div>L <span style="color:var(--red-light)">67760</span></div><div>C <span style="color:var(--cyan-light)">67810</span></div></div>
-                    <div><div style="color:var(--muted);margin-bottom:4px">13:30</div><div>O <span style="color:var(--gold-light)">67820</span></div><div>H <span style="color:var(--green)">67850</span></div><div>L <span style="color:var(--red-light)">67770</span></div><div>C <span style="color:var(--cyan-light)">67780</span></div></div>
-                    <div><div style="color:var(--muted);margin-bottom:4px">13:15</div><div>O <span style="color:var(--gold-light)">67750</span></div><div>H <span style="color:var(--green)">67840</span></div><div>L <span style="color:var(--red-light)">67740</span></div><div>C <span style="color:var(--cyan-light)">67820</span></div></div>
-                    <div><div style="color:var(--muted);margin-bottom:4px">13:00</div><div>O <span style="color:var(--gold-light)">67690</span></div><div>H <span style="color:var(--green)">67770</span></div><div>L <span style="color:var(--red-light)">67680</span></div><div>C <span style="color:var(--cyan-light)">67750</span></div></div>
-                </div>
-            </div>
-        </div>
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">Возможности</div>
+    <h2 class="section-title fi">Что умеет <span class="accent">Crypto-бот</span></h2>
+    <div class="num-grid">
+        <div class="num-card fi"><div><div class="num">01</div><h3>Цены 500+ монет в real-time</h3></div><div class="ic"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">02</div><h3>Alerts на цену / % / объём</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">03</div><h3>Портфель со всех бирж</h3></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">04</div><h3>Сигналы ИИ с бэктестом</h3></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">05</div><h3>Новости и on-chain события</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">06</div><h3>DeFi и стейкинг-аналитика</h3></div><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">07</div><h3>Настраиваемые графики</h3></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">08</div><h3>Казахский, русский, английский</h3></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div></div>
     </div>
-</section>
-<div class="photo-split">
-    <div class="photo-img">
-        <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=900&h=700&fit=crop&q=85" alt="Криптовалюта и блокчейн: монеты Bitcoin и Ethereum" loading="lazy">
+</div></section>
+
+<section class="s-alt" id="pricing"><div class="container">
+    <div class="eyebrow">Цены</div>
+    <h2 class="section-title fi">Прозрачные <span class="accent">тарифы</span></h2>
+    <div class="price-grid">
+        <div class="price-card pop fi"><div class="badge">Популярный</div><h3>Private</h3><div class="price-val">от 10 000 ₸</div><div class="price-period">/ месяц</div><ul class="price-list"><li>Для одного трейдера</li><li>Портфель до 10 бирж</li><li>50 alerts</li><li>Telegram-интерфейс</li><li>Запуск за 1 день</li></ul><a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-primary">Начать</a></div>
+        <div class="price-card fi"><h3>Community</h3><div class="price-val">от 50 000 ₸</div><div class="price-period">/ месяц</div><ul class="price-list"><li>Для трейд-сообществ</li><li>Сигналы в канал</li><li>Безлимит alerts</li><li>Mini App в Telegram</li><li>Приоритетная поддержка</li></ul><a href="https://wa.me/77787806540" target="_blank" class="btn btn-ghost">Выбрать</a></div>
+        <div class="price-card fi"><h3>Custom</h3><div class="price-val">индивидуально</div><div class="price-period">под задачу</div><ul class="price-list"><li>White-label</li><li>Свои торговые стратегии</li><li>API-интеграции с биржами</li><li>SLA 99.9%</li></ul><a href="https://wa.me/77787806540" target="_blank" class="btn btn-ghost">Обсудить</a></div>
     </div>
-    <div class="photo-txt">
-        <div class="pt-badge">Крипторынок 24/7</div>
-        <h3>Бот следит за курсами и сигналит о важных движениях — пока вы спите</h3>
-        <p>Криптовалютный рынок не спит. Crypto-бот FlowAi мониторит курсы, объёмы и новости в реальном времени и уведомляет вас о нужных событиях мгновенно.</p>
+</div></section>
+
+<section><div class="container">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="section-title fi">Остались <span class="accent">вопросы</span>?</h2>
+    <div class="faq-list">
+        <div class="faq-item fi"><button class="faq-q"><span>Бот торгует за меня?</span><span class="ico">+</span></button><div class="faq-a">Базово — нет, только сигналы и аналитика. На Custom-тарифе можем настроить auto-trading через API биржи — но только с вашего явного согласия.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>Безопасно ли подключать API биржи?</span><span class="ico">+</span></button><div class="faq-a">Мы используем read-only ключи без права на вывод средств. Подключение шифруется. Никто не может украсть ваши деньги.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>Какие биржи поддерживаются?</span><span class="ico">+</span></button><div class="faq-a">Binance, ByBit, OKX, Bitget, KuCoin, Kraken, MEXC, Bitfinex, Coinbase, Gate.io — через их API.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>Надёжны ли ИИ-сигналы?</span><span class="ico">+</span></button><div class="faq-a">Каждый сигнал с уверенностью в %. Бэктесты за последние 2 года. Гарантий прибыли нет и быть не может — крипторынок волатилен. Используйте риск-менеджмент.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>Можно для сообщества?</span><span class="ico">+</span></button><div class="faq-a">Да — тариф Community. Шлём сигналы в ваш канал, ведём стату, Mini App для подписчиков.</div></div>
     </div>
-</div>
+</div></section>
 
+<section id="consult" class="s-alt"><div class="container"><div class="consult fi">
+    <div class="consult-txt"><h2>Откройте за 1 день</h2><p>Бесплатно настроим бота под ваш портфель и стратегию.</p></div>
+    <div class="consult-sticker"><div class="inner">1 ЧАС<small>бесплатного аудита</small></div></div>
+    <form onsubmit="event.preventDefault(); window.open('https://t.me/FlowAItest_bot','_blank');"><input type="text" placeholder="Имя" required><input type="tel" placeholder="+7 (000) 000-00-00" required><button class="btn btn-primary">Открыть в Telegram</button><div class="consult-legal">Нажимая кнопку, вы соглашаетесь на обработку данных</div></form>
+</div></div></section>
 
-<!-- PROBLEMS -->
-<section class="salt" id="problems">
-    <div class="container">
-        <h2 class="stitle fi">Какие <span class="a">проблемы</span> решает</h2>
-        <p class="ssub fi">Трейдеры и инвесторы теряют время и деньги без быстрого доступа к данным</p>
-        <div class="prob-grid">
-            <div class="prob-card fi"><div class="prob-n">01</div><h3>Переключение между приложениями</h3><p>Биржа, терминал, графики, новости — 5 вкладок. Crypto-бот выдаёт всё в одном сообщении Telegram за 2 секунды.</p></div>
-            <div class="prob-card fi"><div class="prob-n">02</div><h3>Нет данных под рукой</h3><p>В дороге, на встрече, за рулём — нет доступа к терминалу. Telegram всегда в кармане. Ввёл тикер — получил данные.</p></div>
-            <div class="prob-card fi"><div class="prob-n">03</div><h3>Медленный анализ</h3><p>Пока загружается биржа, пока найдёшь нужную пару — момент упущен. Бот отвечает за 1–3 секунды с полной аналитикой.</p></div>
-        </div>
+<footer class="footer"><div class="container">
+    <div class="footer-grid">
+        <div class="footer-col"><h4>О FlowAi</h4><ul><li><a href="kak-my-rabotaem.html">Как мы работаем</a></li><li><a href="o-kompanii.html">О компании</a></li><li><a href="Blog/index.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></div>
+        <div class="footer-col"><h4>Все решения</h4><ul><li><a href="whatsapp-bot.html">WhatsApp-бот</a></li><li><a href="telegram-bot.html">Telegram-бот</a></li><li><a href="voice-manager-bot.html">Голосовой менеджер</a></li><li><a href="chatbot-rag.html">RAG-чатбот</a></li><li><a href="ai-assistant-ceo.html">ИИ для CEO</a></li></ul></div>
+        <div class="footer-col"><h4>Контакты</h4><ul><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="tel:+77787806540">Позвонить нам</a></li><li><a href="mailto:7806540@gmail.com">7806540@gmail.com</a></li></ul></div>
+        <div class="footer-col"><h4>FlowAi.kz</h4><ul><li>пр. Республики, д. 68</li><li>Астана, Казахстан</li><li><small>© 2024–2026 FlowAi</small></li></ul></div>
     </div>
-</section>
+    <div class="footer-bottom"><span>FlowAi — автоматизация бизнеса на ИИ</span><span>Казахстан · СНГ · 2026</span></div>
+</div></footer>
 
-<!-- FEATURES -->
-<section id="features">
-    <div class="container">
-        <h2 class="stitle fi">Возможности <span class="a">Crypto-бота</span></h2>
-        <p class="ssub fi">Всё, что нужно трейдеру и инвестору — в одном Telegram-боте</p>
-        <div class="feat-grid">
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h4>Цена в реальном времени</h4><p>Текущая цена, лучший bid + объём, лучший ask + объём, спред. По любой паре.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h4>Статистика 24 часа</h4><p>Open, High, Low, Close, Volume, оборот в USDT, количество сделок за сутки.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4>Книга ордеров</h4><p>ТОП-5 покупателей (Bid) и ТОП-5 продавцов (Ask) с объёмами. Видно где стоит стена.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h4>Свечи O/H/L/C</h4><p>Последние 5 свечей на таймфрейме 15 минут. Open, High, Low, Close для каждой.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><h4>Мгновенный ответ</h4><p>1–3 секунды — и полный отчёт у вас. Быстрее, чем открыть биржу в браузере.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Любая криптопара</h4><p>BTC, ETH, SOL, BNB, XRP, DOGE и сотни других. Просто введите тикер: <code>BTC/USDT</code></p></div>
-        </div>
-    </div>
-</section>
-<div class="photo-full">
-    <img src="https://images.unsplash.com/photo-1642790551116-18e150f248e3?w=1400&h=500&fit=crop&q=85" alt="Трейдер анализирует графики криптовалют на нескольких мониторах" loading="lazy">
-    <div class="photo-full-cap">
-        <h3>Торгуйте умнее — с ИИ-аналитикой в кармане</h3>
-        <span>Crypto-бот FlowAi</span>
-    </div>
-</div>
+<a href="https://wa.me/77787806540" target="_blank" class="wa-float" id="waFloat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<button class="scroll-top" id="scrollTop">↑</button>
 
-
-<!-- STEPS -->
-<section class="salt" id="steps">
-    <div class="container">
-        <h2 class="stitle fi">Как <span class="a">получить</span> Crypto-бота</h2>
-        <p class="ssub fi">Три шага — и ваш персональный крипто-терминал готов</p>
-        <div class="steps-track">
-            <div class="step fi"><div class="step-num">1</div><h3>Опишите задачу</h3><p>Какие пары, биржи, данные нужны. Расскажите нам — мы подберём решение.</p></div>
-            <div class="step fi"><div class="step-num">2</div><h3>Мы разрабатываем</h3><p>Подключаем API биржи, настраиваем обработку данных, тестируем на реальных запросах.</p></div>
-            <div class="step fi"><div class="step-num">3</div><h3>Бот работает</h3><p>Запускаем в Telegram. Вводите тикер — получаете полную аналитику за секунды.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-    <div class="container">
-        <h2 class="stitle fi">Тарифы <span class="a">Crypto-бота</span></h2>
-        <p class="ssub fi">Выберите подходящий формат</p>
-        <div class="pricing-grid">
-            <div class="price-card fi">
-                <h3>Поддержка</h3>
-                <div class="price-amt">10 000 ₸</div>
-                <span class="price-per">в месяц</span>
-                <ul class="price-fl">
-                    <li>Мониторинг работы бота</li><li>Исправление сбоев</li><li>Обновления API биржи</li><li>Консультации по работе</li><li>Время реакции до 2 часов</li>
-                </ul>
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-o" style="width:100%;justify-content:center">Подключить</a>
-            </div>
-            <div class="price-card pop fi">
-                <h3>Аренда</h3>
-                <div class="price-amt">20 000 ₸</div>
-                <span class="price-per">в месяц</span>
-                <ul class="price-fl">
-                    <li>Готовый Crypto-бот 24/7</li><li>Все данные: цена, ордера, свечи</li><li>Поддержка включена</li><li>Хостинг оплачен</li><li>Обновления бесплатно</li><li>Запуск за 1–2 дня</li>
-                </ul>
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center">Начать аренду</a>
-            </div>
-            <div class="price-card fi">
-                <h3>Разработка</h3>
-                <div class="price-amt">от 200 000 ₸</div>
-                <span class="price-per">единоразово</span>
-                <ul class="price-fl">
-                    <li>Кастомная разработка</li><li>Бот ваш навсегда</li><li>Исходный код включён</li><li>Выбор бирж и пар</li><li>Кастомные алерты</li><li>API-интеграции</li><li>30 дней поддержки</li>
-                </ul>
-                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-tg" style="width:100%;justify-content:center">Заказать</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ -->
-<section class="salt" id="faq">
-    <div class="container">
-        <h2 class="stitle fi">Частые <span class="a">вопросы</span></h2>
-        <div class="faq-list">
-            <div class="faq-item fi"><button class="faq-q">Какие биржи поддерживает бот?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">По умолчанию — Binance. По запросу подключаем Bybit, OKX, KuCoin, Kraken и другие. При кастомной разработке — любая биржа с открытым API.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Насколько актуальны данные?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Данные запрашиваются в реальном времени через API биржи в момент вашего запроса. Задержка — 1–3 секунды. Это не кэш — это live-данные.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Можно добавить алерты по цене?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да, при кастомной разработке. Бот будет отправлять уведомления, когда цена достигнет заданного уровня, или при резком изменении объёмов.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Бот безопасен? Не украдёт мои данные?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Бот работает только в режиме чтения — он не имеет доступа к вашему аккаунту на бирже, не может совершать сделки и не хранит ваши данные.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Сколько времени занимает разработка?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Аренда — бот готов за 1–2 дня. Кастомная разработка — 7–14 дней в зависимости от количества бирж, пар и дополнительных функций.</div></div>
-        </div>
-    </div>
-</section>
-<div class="photo-split rev">
-    <div class="photo-img">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=700&fit=crop&q=85" alt="Финансовые данные и торговые индикаторы на экране" loading="lazy">
-    </div>
-    <div class="photo-txt">
-        <div class="pt-badge">Точная аналитика</div>
-        <h3>Технический анализ, уровни поддержки и сопротивления — в одном сообщении</h3>
-        <p>Crypto-бот FlowAi анализирует RSI, MACD, объёмы и паттерны свечей. Получайте готовые выводы — без сложных графиков и лишнего шума.</p>
-    </div>
-</div>
-
-
-<!-- CONTACT -->
-<section id="contact">
-    <div class="container">
-        <div class="contact-layout">
-            <div class="contact-info fi">
-                <h2>Готовы получить <span style="color:var(--gold)">Crypto-бота</span>?</h2>
-                <p>Обсудим ваши задачи и подберём оптимальное решение. Отвечаем за 15 минут.</p>
-                <div class="contact-btns">
-                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-gold">Написать в Telegram</a>
-                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
-                </div>
-                <div class="contact-det">
-                    <span>&#128205; г. Астана, пр. Республики, д. 68</span>
-                    <a href="tel:+77787806540">&#128222; +7 778 780 65 40</a>
-                    <a href="https://flowai.kz">&#127760; flowai.kz</a>
-                </div>
-            </div>
-            <div class="fir" style="text-align:center">
-                <svg width="260" height="260" viewBox="0 0 260 260" fill="none" style="opacity:.5">
-                    <circle cx="130" cy="130" r="100" stroke="url(#cg4)" stroke-width="1" fill="none" opacity=".15"/>
-                    <circle cx="130" cy="130" r="65" stroke="url(#cg4)" stroke-width="1.5" fill="none" opacity=".2"/>
-                    <circle cx="130" cy="130" r="10" fill="#F59E0B" opacity=".8"/>
-                    <path d="M70 160 L100 120 L130 140 L160 90 L190 110" stroke="#10B981" stroke-width="2" fill="none" opacity=".5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M70 170 L100 150 L130 160 L160 130 L190 145" stroke="#EF4444" stroke-width="1.5" fill="none" opacity=".3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="70" cy="160" r="3" fill="#10B981" opacity=".6"/>
-                    <circle cx="130" cy="140" r="3" fill="#10B981" opacity=".6"/>
-                    <circle cx="190" cy="110" r="3" fill="#10B981" opacity=".6"/>
-                    <defs><linearGradient id="cg4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#FBBF24"/></linearGradient></defs>
-                </svg>
-            </div>
-        </div>
-    </div>
-</section>
-
-<a href="https://flowai.kz" class="back-btn" id="backBtn">&#8592; На главную</a>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div><h4 style="font-size:1.2rem;margin-bottom:10px"><span style="background:linear-gradient(135deg,#F59E0B,#FBBF24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:800">FlowAi</span></h4><p>Crypto-бот для Telegram — мгновенная аналитика криптовалют для трейдеров и инвесторов.</p></div>
-            <div><h4>Навигация</h4><ul class="footer-links"><li><a href="#features">Возможности</a></li><li><a href="#data">Данные</a></li><li><a href="#pricing">Тарифы</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-            <div><h4>Связаться</h4><ul class="footer-links"><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="tel:+77787806540">+7 778 780 65 40</a></li></ul></div>
-            <div><h4>Адрес</h4><p>&#128205; г. Астана, пр. Республики, д. 68</p><p style="margin-top:10px"><a href="https://flowai.kz">&#127760; FlowAi.kz</a></p></div>
-        </div>
-        <div class="footer-bot">&copy; 2024–2026 FlowAi.kz — Crypto-бот для Telegram. Все права защищены.</div>
-    </div>
-</footer>
-
-<script>
-!function(){const c=document.getElementById('neural-canvas'),x=c.getContext('2d');let p=[];const N=45,D=110;function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);for(let i=0;i<N;i++)p.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.5+.5});!function d(){x.clearRect(0,0,c.width,c.height);for(let i=0;i<p.length;i++){const a=p[i];a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>c.width)a.vx*=-1;if(a.y<0||a.y>c.height)a.vy*=-1;x.beginPath();x.arc(a.x,a.y,a.r,0,Math.PI*2);x.fillStyle='rgba(245,158,11,.3)';x.fill();for(let j=i+1;j<p.length;j++){const b=p[j],dx=a.x-b.x,dy=a.y-b.y,dd=Math.sqrt(dx*dx+dy*dy);if(dd<D){x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.strokeStyle=`rgba(245,158,11,${.06*(1-dd/D)})`;x.lineWidth=.5;x.stroke()}}}requestAnimationFrame(d)}()}();
-const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});
-document.querySelectorAll('.fi,.fil,.fir').forEach(e=>obs.observe(e));
-document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const i=b.parentElement,a=i.classList.contains('active');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('active'));if(!a)i.classList.add('active')})});
-document.getElementById('burger').addEventListener('click',()=>{const n=document.getElementById('nav');n.classList.toggle('open');const m=n.querySelector('.nav-mob');if(m)m.style.display=n.classList.contains('open')?'flex':'none'});
-document.querySelectorAll('#nav a:not(.btn-h)').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('nav').classList.remove('open');const m=document.querySelector('.nav-mob');if(m)m.style.display='none'})});
-addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',scrollY>60);document.getElementById('backBtn').classList.toggle('show',scrollY>300)});
-
-// Chat demo
-const cd=[
-    {t:'u',m:'BTC/USDT'},
-    {t:'b',m:'<span class="lbl">&#128200; BTC/USDT — Текущая цена</span>\nЦена: <span class="gl">67,842.50 USDT</span>\nBid: <span class="gr">67,840.20</span> (2.15 BTC)\nAsk: <span class="rd">67,845.10</span> (1.84 BTC)\nСпред: 4.90 USDT'},
-    {t:'b',m:'<span class="lbl">&#128202; Статистика 24ч</span>\nOpen: 66,280.00 | Close: 67,842.50\nHigh: <span class="gr">68,450.00</span>\nLow: <span class="rd">65,920.00</span>\nVolume: <span class="cy">24,518 BTC</span>\nОборот: $1.66B\nСделки: 847,291'},
-    {t:'b',m:'<span class="lbl">&#128209; Книга ордеров (ТОП 5)</span>\n<span class="gr">BUY</span>  67,840 — 2.15 BTC\n<span class="gr">BUY</span>  67,838 — 1.87 BTC\n<span class="gr">BUY</span>  67,835 — 3.42 BTC\n<span class="gr">BUY</span>  67,830 — 1.56 BTC\n<span class="gr">BUY</span>  67,825 — 2.91 BTC\n───────────\n<span class="rd">SELL</span> 67,845 — 1.84 BTC\n<span class="rd">SELL</span> 67,848 — 2.31 BTC\n<span class="rd">SELL</span> 67,850 — 4.05 BTC\n<span class="rd">SELL</span> 67,855 — 1.72 BTC\n<span class="rd">SELL</span> 67,860 — 3.18 BTC'},
-    {t:'b',m:'<span class="lbl">&#128367; Свечи 15мин (5 шт)</span>\n14:00 O:67810 H:<span class="gr">67865</span> L:<span class="rd">67795</span> C:<span class="cy">67842</span>\n13:45 O:67780 H:<span class="gr">67830</span> L:<span class="rd">67760</span> C:<span class="cy">67810</span>\n13:30 O:67820 H:<span class="gr">67850</span> L:<span class="rd">67770</span> C:<span class="cy">67780</span>\n13:15 O:67750 H:<span class="gr">67840</span> L:<span class="rd">67740</span> C:<span class="cy">67820</span>\n13:00 O:67690 H:<span class="gr">67770</span> L:<span class="rd">67680</span> C:<span class="cy">67750</span>'}
-];
-let cs=false;const cobs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting&&!cs){cs=true;sc()}})},{threshold:.3});
-const ce=document.getElementById('chat-demo');if(ce)cobs.observe(ce);
-function sc(){const c=document.getElementById('chat-msgs'),ty=document.getElementById('typing');let i=0;function n(){if(i>=cd.length)return;const it=cd[i];if(it.t==='b'){ty.classList.add('show');setTimeout(()=>{ty.classList.remove('show');am(it);i++;setTimeout(n,800)},1400)}else{am(it);i++;setTimeout(n,600)}}function am(it){const d=document.createElement('div');d.className=`msg msg-${it.t==='u'?'u':'b'}`;d.innerHTML=it.m.replace(/\n/g,'<br>')+'<div class="msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+'</div>';c.insertBefore(d,ty);requestAnimationFrame(()=>d.classList.add('show'));c.scrollTop=c.scrollHeight}setTimeout(n,800)}
-</script>
-
-<script>
-/* FlowAi: WhatsApp click conversion tracking */
-(function(){
-    document.addEventListener('click', function(e){
-        var a = e.target.closest('a');
-        if (!a) return;
-        var href = a.getAttribute('href') || '';
-        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
-        if (!isWa) return;
-        /* Google Analytics 4 */
-        if (typeof gtag === 'function') {
-            gtag('event', 'whatsapp_click', {
-                'event_category': 'engagement',
-                'event_label': href,
-                'value': 1
-            });
-        }
-        /* Google Ads conversion (will work after AW- ID added) */
-        if (typeof gtag === 'function') {
-            gtag('event', 'conversion', {
-                'send_to': 'AW-964186887/DfhdCMSR850cEIem4csD',
-                'value': 1.0,
-                'currency': 'USD'
-            });
-        }
-        /* Yandex Metrica goal */
-        if (typeof ym === 'function') {
-                ym(108596983, 'reachGoal', 'whatsapp_click');
-            }
-    }, true);
-})();
-</script>
+<script>(function(){var s=document.createElement('script');s.src='https://voicyfy.ru/static/gemini-31-widget.js';s.dataset.assistantId='a2f68bf8-1968-4d08-9410-acaafcfb7a91';s.dataset.server='https://voicyfy.ru';s.dataset.position='bottom-right';s.async=true;document.head.appendChild(s);})();
+(function(){var F=/Gemini\s*3\.1\s*Flash\s*Live/gi,T='FlowAi-бот';function wS(r,v){if(!r)return;v(r);var a=r.querySelectorAll?r.querySelectorAll('*'):[];for(var i=0;i<a.length;i++)if(a[i].shadowRoot)wS(a[i].shadowRoot,v);}function rep(r){if(!r)return;var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,null,false),n,h=[];while((n=w.nextNode())){if(n.nodeValue&&F.test(n.nodeValue))h.push(n);F.lastIndex=0;}h.forEach(function(n){n.nodeValue=n.nodeValue.replace(F,T);});if(r.querySelectorAll)r.querySelectorAll('[title],[aria-label],[placeholder],[alt]').forEach(function(e){['title','aria-label','placeholder','alt'].forEach(function(a){var v=e.getAttribute(a);if(v&&F.test(v)){e.setAttribute(a,v.replace(F,T));F.lastIndex=0;}});});}function p(){wS(document,rep);}new MutationObserver(p).observe(document.documentElement,{childList:true,subtree:true,characterData:true});[300,800,1600,3000,6000].forEach(function(ms){setTimeout(p,ms);});})();</script>
+<script src="assets/js/theme-toggle.js"></script>
+<script>(function(){
+var mq=document.getElementById('marquee');if(mq){var items=['Crypto-бот','500+ монет','24/7 мониторинг','Alerts на цену','Сигналы ИИ','Портфель','Read-only API','Telegram'];var hi={'Crypto-бот':1,'Сигналы ИИ':1,'500+ монет':1};function r(){return items.map(function(s){return '<span'+(hi[s]?' class="hi"':'')+'>'+s+'<span class="dot">·</span></span>';}).join('');}mq.innerHTML=r()+r();}
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});document.querySelectorAll('.fi').forEach(function(e){obs.observe(e)});
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done='1';var t=+e.target.dataset.target,c=0,s=t/60;var x=setInterval(function(){c+=s;if(c>=t){c=t;clearInterval(x)}e.target.textContent=Math.round(c)},25)}})},{threshold:.5});document.querySelectorAll('.counter').forEach(function(e){co.observe(e)});
+var te=document.querySelector('.hero-typing');if(te){var W=['BTC, ETH, SOL','Binance, ByBit','DeFi и стейкингу','новости рынка','технический анализ'],wi=0,ci=0,d=false;function ts(){var w=W[wi];if(!d){ci++;te.textContent=w.substring(0,ci);if(ci===w.length){d=true;setTimeout(ts,2000);return}setTimeout(ts,80)}else{ci--;te.textContent=w.substring(0,ci);if(ci===0){d=false;wi=(wi+1)%W.length;setTimeout(ts,400);return}setTimeout(ts,40)}}setTimeout(ts,1200);}
+document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var i=b.parentElement,o=i.classList.contains('active');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('active')});if(!o)i.classList.add('active');})});
+var bg=document.getElementById('burger'),nv=document.getElementById('nav'),nc=document.getElementById('navClose'),nb=document.getElementById('navBackdrop');function cN(){bg&&bg.classList.remove('open');nv&&nv.classList.remove('open');nb&&nb.classList.remove('open');document.body.classList.remove('nav-open');nv&&nv.querySelectorAll('.dropdown').forEach(function(d){d.classList.remove('mob-open')})}function oN(){bg&&bg.classList.add('open');nv&&nv.classList.add('open');nb&&nb.classList.add('open');document.body.classList.add('nav-open')}if(nb)nb.addEventListener('click',cN);if(nc)nc.addEventListener('click',cN);if(bg&&nv){bg.addEventListener('click',function(e){e.stopPropagation();nv.classList.contains('open')?cN():oN()});nv.querySelectorAll('.dropdown-toggle').forEach(function(t){t.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();e.stopPropagation();var d=t.closest('.dropdown'),wo=d.classList.contains('mob-open');nv.querySelectorAll('.dropdown').forEach(function(x){x.classList.remove('mob-open')});if(!wo)d.classList.add('mob-open')}})});nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',cN)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nv.classList.contains('open'))cN()});window.addEventListener('resize',function(){if(window.innerWidth>768&&nv.classList.contains('open'))cN()})}
+var hdr=document.getElementById('header'),wf=document.getElementById('waFloat'),stb=document.getElementById('scrollTop');addEventListener('scroll',function(){var s=scrollY;hdr.classList.toggle('scrolled',s>60);wf.classList.toggle('show',s>300);stb.classList.toggle('show',s>300)});stb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+(function(){var iT=document.getElementById('iT'),iP=document.getElementById('iP'),iG=document.getElementById('iG');if(!iT)return;var vT=document.getElementById('vT'),vP=document.getElementById('vP'),vG=document.getElementById('vG'),rG=document.getElementById('rGain');function fmt(n){return Math.round(n).toLocaleString('ru-RU')}function c(){var t=+iT.value,p=+iP.value,g=+iG.value/100;vT.textContent=t;vP.textContent=p;vG.textContent=iG.value;rG.textContent=fmt(t*p*g)}[iT,iP,iG].forEach(function(e){e.addEventListener('input',c)});c()})();
+})();</script>
+<script>(function(){document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('wa.me')===-1&&h.indexOf('whatsapp.com')===-1&&(a.className||'').indexOf('btn-wa')===-1)return;if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'engagement',event_label:h,value:1});gtag('event','conversion',{send_to:'AW-964186887/DfhdCMSR850cEIem4csD',value:1.0,currency:'USD'})}if(typeof ym==='function'){ym(108596983,'reachGoal','whatsapp_click')}},true)})();</script>
 </body>
 </html>

@@ -1,948 +1,168 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta charset="UTF-8"><link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бот-нутрициолог с ИИ | Планы питания для фитнеса — FlowAi Казахстан</title>
-    <meta name="description" content="ИИ-нутрициолог в Telegram: индивидуальный план питания за 2 минуты. КБЖУ, рецепты, прогресс. Без записи к специалисту.">
-    <meta name="keywords" content="нутрициолог бот казахстан, ии диетолог бот, план питания бот, фитнес бот казахстан, автоматический нутрициолог, chatbot нутрициолог, кбжу бот телеграм">
-    <meta property="og:title" content="ИИ-нутрициолог: персональный план питания для каждого клиента — FlowAi">
-    <meta property="og:description" content="Ваши клиенты хотят персональный подход — дайте им это без найма 10 нутрициологов. ИИ-бот составит план питания за 2 минуты. Для фитнес-клубов и диетологов.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://flowai.kz/nutritionist-bot.html">
-    <meta property="og:locale" content="ru_RU">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ИИ-нутрициолог: персональный план питания для каждого клиента — FlowAi">
-    <meta name="twitter:description" content="ИИ-нутрициолог в Telegram: индивидуальный план питания за 2 минуты. КБЖУ, рецепты, прогресс. Без записи к специалисту.">
-    <meta name="twitter:image" content="https://flowai.kz/logo flowai.png">
-    <meta name="robots" content="index, follow">
+    <title>ИИ-нутрициолог | Планы питания и фитнеса — FlowAi KZ</title>
+    <meta name="description" content="ИИ-бот нутрициолог составляет персональные планы питания по параметрам клиента. Для фитнес-клубов, диетологов, спортивных проектов. От 15 000 ₸/мес.">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:title" content="ИИ-нутрициолог — планы питания — FlowAi"><meta property="og:type" content="website"><meta property="og:url" content="https://flowai.kz/nutritionist-bot.html"><meta name="robots" content="index, follow">
     <link rel="canonical" href="https://flowai.kz/nutritionist-bot.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"LocalBusiness","name":"FlowAi","description":"AI-бот нутрициолог в Telegram — подсчёт КБЖУ, дневник питания, персональные диеты","url":"https://flowai.kz","telephone":"+77787806540","address":{"@type":"PostalAddress","streetAddress":"пр. Республики, д. 68","addressLocality":"Астана","addressCountry":"KZ"},"areaServed":["Казахстан","СНГ"],"priceRange":"от 20 000 ₸","sameAs":["https://t.me/FlowAItest_bot","https://wa.me/77787806540"]}
-    </script>
-    <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg:#000812;--bg-alt:#060f1e;--bg-card:#0a1628;
-            --green:#22C55E;--green-dark:#16A34A;--green-light:#4ADE80;--green-glow:rgba(34,197,94,.25);
-            --lime:#84CC16;--lime-light:#A3E635;
-            --emerald:#10B981;--emerald-light:#34D399;
-            --accent:#22C55E;--accent-2:#4ADE80;--accent-3:#86EFAC;
-            --tg:#2AABEE;--tg-glow:rgba(42,171,238,.2);
-            --wa:#25D366;--wa-glow:rgba(37,211,102,.25);
-            --orange:#F97316;--orange-light:#FB923C;
-            --glow:rgba(34,197,94,.25);--glow-2:rgba(74,222,128,.15);
-            --text:#fff;--muted:#8fa3bf;--muted-2:#4a6080;
-            --border:rgba(34,197,94,.12);--border-h:rgba(34,197,94,.3);
-            --r:18px;--rs:12px
-        }
-        html{scroll-behavior:smooth;overflow-x:hidden}
-        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;overflow-wrap:break-word;word-wrap:break-word}
-        h1,h2,h3{font-family:'Space Grotesk','Inter',sans-serif}
-        a{color:var(--accent-2);text-decoration:none;transition:color .3s}a:hover{color:var(--accent-3)}
-        .container{max-width:1200px;margin:0 auto;padding:0 28px}
-        .gtext{background:linear-gradient(135deg,var(--green),var(--lime));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-        /* ── BUTTONS ── */
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font-weight:600;font-size:.95rem;font-family:'Inter',sans-serif;transition:all .35s;cursor:pointer;border:none;text-decoration:none;white-space:nowrap;touch-action:manipulation}
-        .btn-green{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;font-weight:700;box-shadow:0 4px 24px var(--green-glow);animation:gpulse 3s ease-in-out infinite}
-        .btn-green:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(34,197,94,.45);color:#fff}
-        @keyframes gpulse{0%,100%{box-shadow:0 4px 24px var(--green-glow)}50%{box-shadow:0 4px 50px rgba(34,197,94,.5)}}
-        .btn-wa{background:linear-gradient(135deg,var(--wa),#1eb854);color:#fff;box-shadow:0 4px 20px var(--wa-glow)}
-        .btn-wa:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(37,211,102,.4);color:#fff}
-        .btn-tg{background:linear-gradient(135deg,var(--tg),#1E96D1);color:#fff;box-shadow:0 4px 20px var(--tg-glow)}
-        .btn-tg:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(42,171,238,.35);color:#fff}
-        .btn-o{background:transparent;color:var(--text);border:2px solid rgba(255,255,255,.12)}
-        .btn-o:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px)}
-
-        /* ── HEADER ── */
-        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,8,18,.6);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:all .4s}
-        .header.scrolled{background:rgba(0,8,18,.96);box-shadow:0 4px 40px rgba(0,0,0,.5)}
-        .hd-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:14px 28px}
-        .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;text-decoration:none;flex-shrink:0}
-        .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--green),var(--lime));border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--glow);flex-shrink:0}
-        .logo-icon svg{width:22px;height:22px;fill:#fff}
-        .nav{display:flex;align-items:center;gap:28px}
-        .nav a{color:var(--muted);font-size:.87rem;font-weight:500;transition:color .3s}.nav a:hover{color:#fff}
-        .hd-btns{display:flex;gap:8px}
-        .hd-btns .btn{padding:9px 20px;font-size:.83rem}
-        .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:1002}
-        .burger span{display:block;width:24px;height:2px;background:#fff;transition:.3s;border-radius:2px}
-        .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-        .burger.open span:nth-child(2){opacity:0}
-        .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-        /* ── HERO ── */
-        .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:stretch;overflow:hidden}
-        #neural-canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.2;pointer-events:none}
-        .hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(34,197,94,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 30%,rgba(132,204,22,.05) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 60% 80%,rgba(16,185,129,.04) 0%,transparent 60%);pointer-events:none}
-        .hero-main{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 460px;gap:48px;align-items:center;max-width:1200px;margin:0 auto;padding:92px 28px 60px;width:100%}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.18);font-size:.83rem;color:var(--green-light);margin-bottom:28px;font-weight:500}
-        .hero-badge .live{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pd 2s ease-in-out infinite;flex-shrink:0}
-        @keyframes pd{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
-        .hero h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px}
-        .hero-sub{font-size:clamp(.95rem,1.6vw,1.12rem);color:var(--muted);line-height:1.75;margin-bottom:36px;max-width:520px}
-        .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
-        .hero-trust{display:flex;gap:24px;flex-wrap:wrap}
-        .trust-item{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.83rem;font-weight:500}
-        .trust-dot{width:6px;height:6px;border-radius:50%;background:var(--green-light);flex-shrink:0}
-
-        /* Phone mockup */
-        .hero-right{display:flex;align-items:center;justify-content:center}
-        .phone-wrap{position:relative;width:280px;animation:float 6s ease-in-out infinite}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
-        .phone-glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,.15),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-        .phone-frame{width:100%;background:#0d1f35;border-radius:36px;border:2px solid rgba(34,197,94,.2);box-shadow:0 0 0 1px rgba(34,197,94,.06),0 30px 80px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.03);overflow:hidden;position:relative}
-        .phone-notch{width:100px;height:26px;background:#000812;border-radius:0 0 18px 18px;margin:0 auto}
-        .phone-tg-hdr{background:linear-gradient(135deg,#12291c,#1a3828);padding:12px 14px;display:flex;align-items:center;gap:10px}
-        .p-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--lime));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0;color:#0a1628}
-        .p-nm{font-size:.83rem;font-weight:600}.p-st{font-size:.68rem;color:var(--green)}
-        .phone-msgs{padding:10px;background:#080d0a;min-height:280px;display:flex;flex-direction:column;gap:6px}
-        .pm{max-width:88%;padding:8px 10px;border-radius:10px;font-size:.7rem;line-height:1.4}
-        .pm-u{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.1);align-self:flex-end;border-bottom-right-radius:3px;color:var(--green-light)}
-        .pm-b{background:#142119;align-self:flex-start;border-bottom-left-radius:3px}
-        .pm-t{font-size:.55rem;color:rgba(255,255,255,.3);text-align:right;margin-top:2px}
-        .pm .gl{color:var(--green-light)}.pm .lm{color:var(--lime-light)}.pm .or{color:var(--orange-light)}
-        .phone-inp{background:#1a2e22;padding:8px 12px;display:flex;align-items:center;gap:8px}
-        .inp-field{flex:1;background:rgba(255,255,255,.05);border-radius:20px;padding:6px 12px;font-size:.7rem;color:var(--muted)}
-        .inp-send{width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center}
-
-        /* Ticker */
-        .ticker-wrap{position:relative;z-index:2;overflow:hidden;border-top:1px solid rgba(255,255,255,.05);padding:14px 0;background:rgba(0,8,18,.4)}
-        .ticker{display:flex;gap:56px;animation:tick 25s linear infinite;white-space:nowrap}
-        .ticker span{color:var(--muted);font-size:.85rem;font-weight:500;flex-shrink:0}
-        .ticker .n{color:var(--green-light);font-weight:700}
-        @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-        /* ── SECTIONS ── */
-        section{padding:100px 0}
-        .salt{background:var(--bg-alt)}
-        .stitle{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:-.02em}
-        .ssub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 56px;font-size:1rem;line-height:1.7}
-        .fi{opacity:0;transform:translateY(36px);transition:opacity .75s,transform .75s}.fi.v{opacity:1;transform:translateY(0)}
-        .fil{opacity:0;transform:translateX(-44px);transition:all .75s}.fil.v{opacity:1;transform:translateX(0)}
-        .fir{opacity:0;transform:translateX(44px);transition:all .75s}.fir.v{opacity:1;transform:translateX(0)}
-
-        /* ── STATS ── */
-        .stats-bar{padding:52px 0;background:linear-gradient(135deg,rgba(34,197,94,.04),rgba(132,204,22,.02));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-        .stat-item h3{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;background:linear-gradient(135deg,var(--green),var(--lime));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .stat-item p{color:var(--muted);font-size:.87rem;margin-top:6px}
-
-        /* ── DEMO ── */
-        .demo-layout{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:56px;align-items:center}
-        .chat-window{background:#080d0a;border-radius:22px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 0 1px rgba(34,197,94,.06);width:100%;max-width:420px}
-        .chat-hdr{background:linear-gradient(135deg,#12291c,#1a3828);padding:14px 18px;display:flex;align-items:center;gap:12px}
-        .chat-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--lime));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:#0a1628;flex-shrink:0}
-        .chat-nm{font-weight:600;font-size:.95rem;color:#fff}.chat-st{font-size:.73rem;color:var(--green)}
-        .chat-msgs{padding:18px;min-height:400px;display:flex;flex-direction:column;gap:10px;background:#080d0a}
-        .msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:.84rem;line-height:1.55;opacity:0;transform:translateY(10px);transition:all .4s}
-        .msg.show{opacity:1;transform:translateY(0)}
-        .msg-u{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.1);align-self:flex-end;border-bottom-right-radius:4px;color:var(--green-light)}
-        .msg-b{background:#142119;align-self:flex-start;border-bottom-left-radius:4px}
-        .msg-b .lbl{color:var(--green-light);font-weight:600;display:block;margin-bottom:4px;font-size:.85rem}
-        .msg-b .gr{color:var(--green-light)}.msg-b .lm{color:var(--lime-light)}.msg-b .or{color:var(--orange-light)}.msg-b .em{color:var(--emerald-light)}
-        .msg-t{font-size:.65rem;color:rgba(255,255,255,.3);text-align:right;margin-top:4px}
-        .typing{display:flex;gap:4px;padding:12px 16px;background:#142119;border-radius:12px;align-self:flex-start;opacity:0;transition:opacity .3s}
-        .typing.show{opacity:1}
-        .td{width:6px;height:6px;border-radius:50%;background:var(--green);animation:tb 1.4s infinite}
-        .td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
-        @keyframes tb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-        .demo-txt h3{font-size:1.6rem;margin-bottom:18px;line-height:1.3}
-        .demo-txt p{color:var(--muted);font-size:1rem;margin-bottom:14px;line-height:1.7}
-        .demo-fl{list-style:none;margin-top:22px}
-        .demo-fl li{padding:9px 0;color:var(--muted);font-size:.93rem;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
-        .demo-fl li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
-
-        /* ── HOW ── */
-        .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-        .how-card{background:var(--bg-card);border-radius:var(--r);padding:30px;border:1px solid var(--border);text-align:center;transition:all .4s}
-        .how-card:hover{transform:translateY(-5px);border-color:var(--border-h);box-shadow:0 12px 30px rgba(34,197,94,.08)}
-        .how-ic{font-size:2.4rem;margin-bottom:14px;display:block}
-        .how-card h3{font-size:1rem;margin-bottom:8px;font-weight:600;color:var(--green-light)}
-        .how-card p{color:var(--muted);font-size:.85rem;line-height:1.6}
-
-        /* ── PROBLEMS ── */
-        .prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-        .prob-card{background:var(--bg-card);border-radius:var(--r);padding:36px 32px;border:1px solid rgba(249,115,22,.06);transition:all .4s;position:relative;overflow:hidden}
-        .prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:.3}
-        .prob-card:hover{transform:translateY(-5px);border-color:rgba(249,115,22,.2);box-shadow:0 16px 48px rgba(0,0,0,.3)}
-        .prob-n{font-size:3rem;font-weight:800;color:rgba(249,115,22,.08);line-height:1;margin-bottom:16px}
-        .prob-card h3{font-size:1.1rem;margin-bottom:12px;font-weight:600;line-height:1.4}
-        .prob-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
-
-        /* ── FEATURES ── */
-        .feat-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-        .feat-visual{position:relative;display:flex;align-items:center;justify-content:center}
-        .feat-art{width:100%;max-width:420px;background:linear-gradient(135deg,rgba(34,197,94,.04),rgba(132,204,22,.02));border:1px solid var(--border);border-radius:24px;padding:32px;position:relative;overflow:hidden}
-        .feat-art::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,.08),transparent 70%)}
-        .feat-art-title{font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif}
-        .feat-art-title span{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}
-        .feat-stat-row{display:flex;gap:14px;margin-bottom:18px}
-        .feat-stat{flex:1;background:rgba(34,197,94,.04);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-        .feat-stat .val{font-size:1.5rem;font-weight:800;font-family:'Space Grotesk',sans-serif}
-        .feat-stat .val.g{color:var(--green-light)}.feat-stat .val.l{color:var(--lime-light)}
-        .feat-stat p{font-size:.72rem;color:var(--muted);margin-top:4px}
-        .feat-bar-row{display:flex;flex-direction:column;gap:10px}
-        .feat-bar-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:5px}
-        .feat-bar-label span:last-child{color:var(--green-light);font-weight:600}
-        .feat-bar-track{height:6px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
-        .feat-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--lime))}
-
-        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-        .feat-card{background:var(--bg-card);border-radius:var(--r);padding:28px;border:1px solid var(--border);transition:all .4s;position:relative;overflow:hidden}
-        .feat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity .4s}
-        .feat-card:hover{transform:translateY(-5px);border-color:var(--border-h);box-shadow:0 12px 36px rgba(34,197,94,.08)}
-        .feat-card:hover::after{opacity:1}
-        .feat-ic{width:48px;height:48px;border-radius:14px;background:rgba(34,197,94,.06);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
-        .feat-card h4{font-size:.95rem;margin-bottom:6px;font-weight:600}
-        .feat-card p{color:var(--muted);font-size:.84rem;line-height:1.6}
-
-        /* ── STEPS ── */
-        .steps-track{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
-        .steps-track::before{content:'';position:absolute;top:40px;left:17%;right:17%;height:2px;background:linear-gradient(90deg,var(--green),var(--lime),var(--green));opacity:.18}
-        .step{text-align:center;padding:0 12px;position:relative}
-        .step-num{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-dark));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 22px;box-shadow:0 0 40px var(--green-glow);position:relative;z-index:2;color:#fff}
-        .step h3{font-size:1.05rem;margin-bottom:10px;font-weight:600}
-        .step p{color:var(--muted);font-size:.92rem;line-height:1.65}
-
-        /* ── PRICING ── */
-        .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
-        .price-card{background:var(--bg-card);border-radius:var(--r);padding:44px 36px;border:1px solid var(--border);transition:all .4s;text-align:center;position:relative;overflow:hidden}
-        .price-card.pop{border-color:var(--green);box-shadow:0 0 60px rgba(34,197,94,.06)}
-        .price-card.pop::before{content:'Популярный';position:absolute;top:20px;right:-28px;background:linear-gradient(135deg,var(--green),var(--lime));color:#0a1628;padding:5px 44px;font-size:.72rem;font-weight:700;transform:rotate(45deg);letter-spacing:.05em;text-transform:uppercase}
-        .price-card:hover{transform:translateY(-7px);box-shadow:0 20px 60px rgba(34,197,94,.1)}
-        .price-card h3{font-size:1.3rem;margin-bottom:8px;font-weight:700}
-        .price-amt{font-size:2.6rem;font-weight:800;margin:18px 0 6px;background:linear-gradient(135deg,#fff,var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .price-per{color:var(--muted);font-size:.88rem;margin-bottom:28px;display:block}
-        .price-fl{list-style:none;text-align:left;margin-bottom:30px}
-        .price-fl li{padding:9px 0;color:var(--muted);font-size:.86rem;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:10px}
-        .price-fl li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
-        .price-cmp{text-align:center;margin-top:40px;padding:20px;background:rgba(34,197,94,.03);border-radius:var(--rs);border:1px solid var(--border)}
-        .price-cmp p{color:var(--muted);font-size:.9rem;line-height:1.6}.price-cmp strong{color:var(--green-light)}
-
-        /* ── FAQ ── */
-        .faq-list{max-width:760px;margin:0 auto}
-        .faq-item{border-bottom:1px solid rgba(255,255,255,.06)}
-        .faq-q{width:100%;background:none;border:none;color:var(--text);padding:22px 0;font-size:1.02rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Space Grotesk',sans-serif;transition:color .3s;gap:16px}
-        .faq-q:hover{color:var(--green)}
-        .faq-arrow{font-size:1rem;transition:transform .4s;color:var(--green);min-width:20px;text-align:center;flex-shrink:0}
-        .faq-item.active .faq-arrow{transform:rotate(180deg)}
-        .faq-a{max-height:0;overflow:hidden;transition:max-height .5s,padding .5s;color:var(--muted);font-size:.93rem;line-height:1.75}
-        .faq-item.active .faq-a{max-height:300px;padding-bottom:22px}
-
-        /* ── CONTACT ── */
-        .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-        .contact-info h2{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:16px;line-height:1.25;letter-spacing:-.02em}
-        .contact-info>p{color:var(--muted);margin-bottom:30px;font-size:1rem}
-        .contact-btns{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
-        .contact-btns .btn{justify-content:center;font-size:.98rem;padding:16px 32px}
-        .contact-det{display:flex;flex-direction:column;gap:12px}
-        .contact-det a,.contact-det span{color:var(--muted);font-size:.92rem;display:flex;align-items:center;gap:10px}
-        .contact-det a:hover{color:var(--green)}
-
-        /* ── FLOATING ── */
-        .float-wa{position:fixed;bottom:28px;right:28px;z-index:998;width:56px;height:56px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px var(--wa-glow);animation:wafloat 3s ease-in-out infinite;transition:transform .3s;text-decoration:none}
-        .float-wa:hover{transform:scale(1.12)}
-        @keyframes wafloat{0%,100%{box-shadow:0 6px 28px var(--wa-glow)}50%{box-shadow:0 6px 56px rgba(37,211,102,.45)}}
-        .float-wa svg{width:26px;height:26px;fill:#fff}
-        .scroll-top{position:fixed;bottom:28px;right:96px;z-index:997;width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--green);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;opacity:0;pointer-events:none;font-size:1.2rem;font-weight:700;font-family:inherit}
-        .scroll-top.show{opacity:1;pointer-events:auto}
-        .scroll-top:hover{background:var(--green);color:#fff;border-color:var(--green);transform:translateY(-3px)}
-        .back-btn{position:fixed;bottom:28px;left:28px;z-index:997;background:rgba(0,8,18,.9);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:50px;padding:11px 22px;color:var(--muted);font-size:.84rem;font-weight:500;transition:all .3s;opacity:0;pointer-events:none;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-        .back-btn.show{opacity:1;pointer-events:auto}
-        .back-btn:hover{color:var(--green);border-color:var(--green)}
-
-        /* ── FOOTER ── */
-        .footer{background:var(--bg-alt);border-top:1px solid rgba(255,255,255,.05);padding:60px 0 28px}
-        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-        .footer h4{font-size:.93rem;margin-bottom:16px;font-weight:600}
-        .footer p,.footer a{color:var(--muted);font-size:.86rem}
-        .footer-links{list-style:none}.footer-links li{margin-bottom:10px}.footer-links a:hover{color:var(--green)}
-        .footer-bot{text-align:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);color:var(--muted-2);font-size:.78rem}
-
-        /* ── RESPONSIVE ── */
-        @media(max-width:1100px){
-            .hero-main{grid-template-columns:1fr 360px;gap:32px}
-            .phone-wrap{width:240px}
-            .how-grid{grid-template-columns:repeat(2,1fr)}
-        }
-        @media(max-width:900px){
-            .feat-layout{grid-template-columns:1fr}.feat-visual{order:-1}.feat-art{max-width:100%}
-            .hero-main{grid-template-columns:1fr 280px;gap:24px}.phone-wrap{width:200px}
-            .contact-layout{grid-template-columns:1fr;gap:36px}
-            .how-grid{grid-template-columns:1fr}
-            .demo-layout{grid-template-columns:1fr;gap:36px}.chat-window{max-width:100%}
-        }
-        @media(max-width:768px){
-            html,body{overflow-x:hidden}*{max-width:100vw}
-            section{padding:56px 0;overflow:hidden}
-            .container{padding:0 16px;max-width:100%;overflow:hidden}
-            .nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,8,18,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background-image:radial-gradient(ellipse at 50% 30%,rgba(59,130,246,.06),transparent 60%);flex-direction:column;justify-content:center;align-items:center;gap:28px;z-index:1000}
-            .nav.open{display:flex}.nav a{font-size:1.15rem}
-            .hd-btns{display:none}
-            .nav .nav-mob{display:flex;flex-direction:column;gap:12px;margin-top:20px;align-items:center}
-            .nav .nav-mob .btn{width:220px;justify-content:center}
-            .burger{display:flex}
-            .hero-main{grid-template-columns:1fr;padding:90px 16px 32px}
-            .hero{min-height:auto}.hero-right{display:none}
-            .hero h1{font-size:1.9rem}.hero-sub{font-size:.9rem}
-            .hero-btns{flex-direction:column;align-items:stretch;gap:10px}
-            .hero-btns .btn{justify-content:center;padding:14px 20px;white-space:normal;font-size:.9rem}
-            .hero-trust{gap:10px;flex-direction:column}.trust-item{font-size:.78rem}
-            .hero-badge{font-size:.78rem;padding:6px 14px}
-            .stats-grid{grid-template-columns:repeat(2,1fr);gap:16px}.stat-item h3{font-size:1.8rem}
-            .prob-grid{grid-template-columns:1fr}.prob-card{padding:24px 18px}
-            .feat-layout{grid-template-columns:1fr;gap:28px}.feat-art{padding:20px;max-width:100%}
-            .feat-grid{grid-template-columns:1fr}.feat-card{padding:22px 18px}
-            .how-grid{grid-template-columns:1fr}.how-card{padding:22px 16px}
-            .steps-track{grid-template-columns:1fr;gap:24px}.steps-track::before{display:none}
-            .step-num{width:64px;height:64px;font-size:1.3rem}
-            .demo-layout{grid-template-columns:1fr;gap:24px}.chat-window{max-width:100%}.chat-msgs{min-height:300px;padding:14px}
-            .pricing-grid{grid-template-columns:1fr;max-width:100%}.price-card{padding:28px 20px}.price-amt{font-size:2.2rem}
-            .faq-q{font-size:.93rem;padding:18px 0}
-            .contact-layout{grid-template-columns:1fr;gap:28px}.contact-layout>div:last-child{display:none}
-            .contact-btns{align-items:stretch}.contact-btns .btn{justify-content:center;font-size:.9rem;padding:14px 20px}
-            .contact-info h2{font-size:1.5rem}
-            .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
-            .hd-inner{padding:12px 16px}.stitle{font-size:1.5rem}.ssub{font-size:.88rem;padding:0}
-            .ticker-wrap{display:none}
-            .float-wa{bottom:16px;right:16px;width:50px;height:50px}
-            .scroll-top{bottom:16px;right:74px;width:42px;height:42px;font-size:1rem}
-            .back-btn{bottom:16px;left:16px;font-size:.75rem;padding:8px 14px}
-            .fi,.fil,.fir{opacity:1;transform:none;transition:none}
-        }
-        @media(max-width:480px){
-            .hero h1{font-size:1.6rem}.hero-main{padding:84px 14px 28px}
-            .footer-grid{grid-template-columns:1fr}
-            .btn{white-space:normal;text-align:center;font-size:.87rem}
-            .prob-n{font-size:2.2rem}
-            .price-card.pop::before{top:14px;right:-32px;font-size:.65rem;padding:4px 40px}
-            .feat-stat-row{flex-direction:column;gap:10px}
-        }
-        @media(max-width:360px){
-            .hero h1{font-size:1.4rem}.hero-sub{font-size:.85rem}
-            .container{padding:0 12px}.price-amt{font-size:1.8rem}
-            .btn{padding:12px 18px;font-size:.84rem}.stitle{font-size:1.3rem}.ssub{font-size:.84rem}
-        }
-        @media(prefers-reduced-motion:reduce){
-            *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
-            #neural-canvas{display:none !important}
-        }
-        /* PHOTO SHOWCASE */
-        .photo-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; overflow: hidden; margin: 0 }
-        .photo-split.rev .photo-img { order: 2 }
-        .photo-split.rev .photo-txt { order: 1 }
-        .photo-img { position: relative; overflow: hidden; min-height: 380px }
-        .photo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s }
-        .photo-img:hover img { transform: scale(1.04) }
-        .photo-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,116,255,.12), rgba(0,198,255,.06)); pointer-events: none }
-        .photo-txt { display: flex; flex-direction: column; justify-content: center; padding: 64px 60px; background: var(--bg-alt, #051228) }
-        .photo-txt .pt-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(0,116,255,.10); border: 1px solid rgba(0,116,255,.22); color: #7dd3fc; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; width: fit-content }
-        .photo-txt h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; line-height: 1.25; margin-bottom: 16px; color: #f0f8ff }
-        .photo-txt p { font-size: .97rem; color: #7aafd4; line-height: 1.75; max-width: 440px }
-        .photo-full { position: relative; height: 400px; overflow: hidden; margin: 0 }
-        .photo-full img { width: 100%; height: 100%; object-fit: cover; display: block }
-        .photo-full::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.7) 100%); pointer-events: none }
-        .photo-full-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px 48px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px }
-        .photo-full-cap h3 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 2vw, 1.7rem); font-weight: 800; color: #fff; max-width: 540px; margin: 0 }
-        .photo-full-cap span { flex-shrink: 0; padding: 10px 22px; border-radius: 50px; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: .83rem; font-weight: 600; white-space: nowrap }
-        @media (max-width: 768px) {
-            .photo-split { grid-template-columns: 1fr }
-            .photo-split.rev .photo-img { order: 0 }
-            .photo-split.rev .photo-txt { order: 0 }
-            .photo-img { min-height: 260px }
-            .photo-txt { padding: 36px 28px }
-            .photo-full { height: 280px }
-            .photo-full-cap { padding: 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px }
-        }
-        /* === UNIFIED ICON STYLE (matches main page solutions block) === */
-        .feat-ic, .niche-ic, .how-ic, .ben-ic, .prob-ic, .mod-ic, .use-ic,
-        .data-ic, .why-ic, .fmt-ic, .type-ic, .inc-ic, .process-ic,
-        .step-ic, .form-ic, .info-ic, .val-ic, .ch-ic, .sbar-ic {
-            width: 56px !important;
-            height: 56px !important;
-            min-width: 56px !important;
-            border-radius: 14px !important;
-            background: linear-gradient(135deg, rgba(0,116,255,.18), rgba(0,198,255,.10)) !important;
-            border: 1px solid rgba(0,116,255,.25) !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            box-shadow: 0 6px 22px rgba(0,116,255,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
-            font-size: 0 !important;
-            margin-bottom: 16px !important;
-            transition: all .35s !important;
-            padding: 0 !important;
-        }
-        .niche-ic { margin: 0 auto 14px !important }
-        .feat-ic svg, .niche-ic svg, .how-ic svg, .ben-ic svg, .prob-ic svg,
-        .mod-ic svg, .use-ic svg, .data-ic svg, .why-ic svg, .fmt-ic svg,
-        .type-ic svg, .inc-ic svg, .process-ic svg, .step-ic svg, .form-ic svg,
-        .info-ic svg, .val-ic svg, .ch-ic svg, .sbar-ic svg {
-            width: 28px !important;
-            height: 28px !important;
-            stroke: #00c6ff !important;
-            fill: none !important;
-            stroke-width: 1.7 !important;
-            stroke-linecap: round !important;
-            stroke-linejoin: round !important;
-            transition: stroke .35s !important;
-        }
-        .niche-card:hover .niche-ic, .feat-card:hover .feat-ic, .feat-item:hover .feat-ic,
-        .ben-card:hover .ben-ic, .how-card:hover .how-ic, .prob-card:hover .prob-ic,
-        .mod-card:hover .mod-ic, .use-card:hover .use-ic, .data-card:hover .data-ic,
-        .why-card:hover .why-ic, .fmt-card:hover .fmt-ic, .type-card:hover .type-ic,
-        .inc-card:hover .inc-ic, .process-card:hover .process-ic, .step:hover .step-ic {
-            transform: scale(1.08) translateY(-2px) !important;
-            border-color: rgba(0,198,255,.55) !important;
-            box-shadow: 0 12px 36px rgba(0,198,255,.28) !important;
-        }
-        .niche-card:hover .niche-ic svg, .feat-item:hover .feat-ic svg,
-        .ben-card:hover .ben-ic svg, .how-card:hover .how-ic svg,
-        .mod-card:hover .mod-ic svg, .use-card:hover .use-ic svg {
-            stroke: #fff !important;
-        }
-
-
-
-    </style>
-    <!-- Google Analytics 4 -->
+    <script>(function(){try{var m=localStorage.getItem('flowai-theme')||'auto',r=m;if(m==='auto'){var h=(new Date().getUTCHours()+5)%24;r=(h>=8&&h<20)?'light':'dark';}document.documentElement.setAttribute('data-theme',r);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/theme.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFTCZN8X4T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LFTCZN8X4T');
-      gtag('config', 'AW-964186887');
-    </script>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983', 'ym');
-        ym(108596983, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108596983" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFTCZN8X4T');gtag('config','AW-964186887');</script>
+    <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108596983','ym');ym(108596983,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",accurateTrackBounce:true,trackLinks:true});</script>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header" id="header">
-    <div class="hd-inner">
-        <a href="index.html" class="logo"><img src="logo flowai.png" alt="FlowAi" class="logo-img"></a>
-        <nav class="nav" id="nav">
-            <a href="#demo">Демо</a>
-            <a href="#features">Возможности</a>
-            <a href="#how-it-works">Как работает</a>
-            <a href="#pricing">Цены</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Контакты</a>
-            <div class="nav-mob" style="display:none">
-                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">WhatsApp</a>
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Telegram</a>
-            </div>
-        </nav>
-        <div class="hd-btns">
-            <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                WhatsApp
-            </a>
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-tg">Telegram</a>
-        </div>
-        <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+<header class="header" id="header"><div class="hd-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">FA</span><span>FlowAi</span></a>
+    <nav class="nav" id="nav">
+        <button class="nav-close" id="navClose" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        <div class="dropdown"><span class="dropdown-toggle">Боты</span><div class="dropdown-menu"><a href="whatsapp-bot.html">WhatsApp-бот</a><a href="telegram-bot.html">Telegram-бот</a><a href="voice-manager-bot.html">Голосовой менеджер</a><a href="blogger-bot.html">Blogger-бот</a><a href="rss-bot.html">RSS-автопостинг</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">ИИ-решения</span><div class="dropdown-menu"><a href="chatbot-rag.html">RAG-чатбот</a><a href="ai-assistant-ceo.html">ИИ для CEO</a><a href="auto-kp-bot.html">КП-бот</a><a href="swift-invoice.html">Инвойс-бот</a><a href="nutritionist-bot.html">Нутрициолог-бот</a><a href="ai-research-bot.html">ИИ-исследователь</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">Разработка</span><div class="dropdown-menu"><a href="website-dev.html">Создание сайтов</a><a href="brand-video.html">Брендовое видео</a><a href="complex-solution.html">Комплексное решение</a></div></div>
+        <div class="dropdown"><span class="dropdown-toggle">О нас</span><div class="dropdown-menu"><a href="o-kompanii.html">О компании</a><a href="kak-my-rabotaem.html">Как мы работаем</a></div></div>
+        <a href="Blog/index.html">Блог</a><a href="kontakty.html">Контакты</a>
+    </nav>
+    <div class="hd-btns">
+        <a href="tel:+77787806540" class="btn-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить нам</a>
+        <a href="https://wa.me/77787806540" target="_blank" class="icon-btn wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://t.me/FlowAItest_bot" target="_blank" class="icon-btn tg" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.04 15.58l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.39 5.18 3.79c.95.52 1.62.25 1.88-.88L22.9 3.82c.31-1.4-.5-1.95-1.43-1.6L1.24 9.95c-1.36.53-1.34 1.3-.23 1.65l5.1 1.59 11.84-7.47c.56-.36 1.07-.16.65.2"/></svg></a>
+        <button class="theme-toggle" type="button" aria-label="Тема"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
-</header>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</div></header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-    <canvas id="neural-canvas"></canvas>
-    <div class="hero-mesh"></div>
-    <div class="hero-main">
-        <div class="hero-left">
-            <div class="hero-badge"><span class="live"></span> Ваш персональный нутрициолог &bull; 2026</div>
-            <h1><span class="gtext">ИИ-нутрициолог</span><br>— персональные планы питания<br>для каждого клиента автоматически</h1>
-            <p class="hero-sub">Сфотографируйте блюдо или опишите голосом — бот определит состав, рассчитает калории и нутриенты. Каждый вечер — отчёт за день с рекомендациями. Персональные диеты под ваш образ жизни.</p>
-            <div class="hero-btns">
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-green">Попробовать бота</a>
-                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-tg">Бесплатная консультация</a>
-                <a href="#pricing" class="btn btn-o">Узнать стоимость</a>
-            </div>
-            <div class="hero-trust">
-                <div class="trust-item"><div class="trust-dot"></div>95% точность</div>
-                <div class="trust-item"><div class="trust-dot"></div>КБЖУ за 5 секунд</div>
-                <div class="trust-item"><div class="trust-dot"></div>24/7 без перерывов</div>
-                <div class="trust-item"><div class="trust-dot"></div>Telegram-бот</div>
-            </div>
-        </div>
-        <div class="hero-right">
-            <div class="phone-wrap">
-                <div class="phone-glow"></div>
-                <div class="phone-frame">
-                    <div class="phone-notch"></div>
-                    <div class="phone-tg-hdr">
-                        <div class="p-av">&#129382;</div>
-                        <div><div class="p-nm">AI Нутрициолог</div><div class="p-st">&#9679; онлайн</div></div>
-                    </div>
-                    <div class="phone-msgs">
-                        <div class="pm pm-u">&#128247; [Фото: тарелка плова]<div class="pm-t">14:22 &#10003;&#10003;</div></div>
-                        <div class="pm pm-b"><b>&#127858; Плов узбекский</b><br>Порция: ~350 г<br><span class="gl">520 ккал</span> | Б: 18 | Ж: 22 | У: 62<br>&#9989; Записано в дневник<div class="pm-t">14:22</div></div>
-                        <div class="pm pm-u">&#127908; «Банан и йогурт»<div class="pm-t">16:05 &#10003;&#10003;</div></div>
-                        <div class="pm pm-b">&#127820; Банан — 107 ккал<br>&#129371; Йогурт — 130 ккал<br>Итого: <span class="gl">237 ккал</span><div class="pm-t">16:05</div></div>
-                    </div>
-                    <div class="phone-inp">
-                        <div class="inp-field">Написать сообщение...</div>
-                        <div class="inp-send"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="hero"><div class="container"><div class="hero-grid">
+    <div class="hero-left">
+        <div class="eyebrow">ИИ-нутрициолог · план за 30 секунд</div>
+        <h1>Персональные <span class="accent">планы питания</span> для каждого клиента — автоматически</h1>
+        <p class="hero-sub">Клиент пишет <span class="hero-typing">рост и вес</span>, бот рассчитывает БЖУ, составляет меню на неделю, шлёт рецепты. Идеально для фитнес-клубов и диетологов.</p>
+        <div class="hero-cta"><a href="https://wa.me/77787806540" target="_blank" class="btn btn-primary btn-lg">Заказать бота</a><a href="#roi" class="btn btn-outline btn-lg">Посчитать выгоду ↓</a></div>
+        <div class="hero-meta"><div class="hero-meta-item"><div class="label">От 15 000 ₸</div><div class="value">стоимость аренды</div></div><div class="hero-meta-item"><div class="label">30 сек на план</div><div class="value"><span class="accent">1000+</span> клиентов/мес</div></div></div>
     </div>
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <span><span class="n">AI</span> распознаёт блюда по фото</span>
-            <span><span class="n">КБЖУ</span> за секунды</span>
-            <span><span class="n">24/7</span> дневник питания</span>
-            <span><span class="n">AI</span> диеты и советы</span>
-            <span><span class="n">&#127908;</span> голосовой ввод</span>
-            <span><span class="n">&#128202;</span> отчёт каждый вечер</span>
-            <span><span class="n">AI</span> распознаёт блюда по фото</span>
-            <span><span class="n">КБЖУ</span> за секунды</span>
-            <span><span class="n">24/7</span> дневник питания</span>
-            <span><span class="n">AI</span> диеты и советы</span>
-            <span><span class="n">&#127908;</span> голосовой ввод</span>
-            <span><span class="n">&#128202;</span> отчёт каждый вечер</span>
+    <div class="hero-right"><div class="feed-stage">
+        <div class="fh"><span class="fh-title">План клиента · сегодня</span><span class="fh-live">Рассчитано</span></div>
+        <div class="feed-items">
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="feed-title">Айгерим, 28 л · 63 кг → 58 кг</div><div class="feed-meta"><span class="tag">цель</span><span>минус 5 кг за 2 мес</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div><div class="feed-title">Дневная норма: 1540 ккал</div><div class="feed-meta"><span class="tag">БЖУ</span><span>Б 115 / Ж 50 / У 160</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/></svg></div><div><div class="feed-title">Завтрак: овсянка + яйца + авокадо</div><div class="feed-meta"><span class="tag">рецепт</span><span>12 мин приготовление</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/></svg></div><div><div class="feed-title">Обед: куриная грудка + киноа + салат</div><div class="feed-meta"><span class="tag">рецепт</span><span>480 ккал</span></div></div></div>
+            <div class="feed-item"><div class="feed-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="16 12 12 8 8 12"/><line x1="12" y1="16" x2="12" y2="8"/></svg></div><div><div class="feed-title">Рекомендация: +2 литра воды в день</div><div class="feed-meta"><span class="tag">напоминания</span><span>в 9:00 / 13:00 / 17:00</span></div></div></div>
+        </div>
+    </div></div>
+</div><div class="marquee-wrap"><div class="marquee" id="marquee"></div></div></div></section>
+
+<div class="stats-bar"><div class="container"><div class="stats-grid">
+    <div class="stat-item fi"><div class="big">30 сек</div><p>на персональный план</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="1000">0</span>+</div><p>клиентов/мес</p></div>
+    <div class="stat-item fi"><div class="big"><span class="counter" data-target="85">0</span>%</div><p>доходят до цели</p></div>
+    <div class="stat-item fi"><div class="big">24/7</div><p>поддержка клиентов</p></div>
+</div></div></div>
+
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">Проблемы нутрициолога / тренера</div>
+    <h2 class="section-title fi">Где <span class="accent">узкое горло</span>?</h2>
+    <div class="feature-grid">
+        <div class="feature-card fi"><h3>План питания — 1–2 часа работы</h3><p>Считать БЖУ, подбирать меню, расписывать рецепты вручную. Бот делает за 30 секунд.</p></div>
+        <div class="feature-card fi"><h3>Клиенты забрасывают после месяца</h3><p>Без напоминаний и коррекции — мотивация падает. Бот шлёт ежедневные чек-ины и корректирует план.</p></div>
+        <div class="feature-card fi"><h3>Вопросы клиентов 24/7</h3><p>«Можно ли банан?», «А это блюдо подходит?» — бот отвечает мгновенно, нутрициолог сосредотачивается на сложных кейсах.</p></div>
+        <div class="feature-card fi"><h3>Один нутрициолог = 50 клиентов макс</h3><p>Бот масштабирует до 1000+ клиентов на одного специалиста. Подписки растут, маржинальность — тоже.</p></div>
+    </div>
+</div></section>
+
+<section id="roi"><div class="container">
+    <div class="eyebrow">Калькулятор выгоды</div>
+    <h2 class="section-title fi">Во сколько раз <span class="accent">вырастет</span> выручка?</h2>
+    <div class="roi fi">
+        <div class="roi-inputs">
+            <div class="roi-field"><label><span>Клиентов сейчас в месяц</span><span class="val" id="vC">30</span></label><input type="range" id="iC" min="5" max="500" value="30" step="5"></div>
+            <div class="roi-field"><label><span>Цена абонемента/мес, ₸</span><span class="val" id="vP">25 000 ₸</span></label><input type="range" id="iP" min="5000" max="150000" value="25000" step="1000"></div>
+            <div class="roi-field"><label><span>Масштабирование с ботом</span><span class="val">×<span id="vX">5</span></span></label><input type="range" id="iX" min="2" max="20" value="5" step="1"></div>
+        </div>
+        <div class="roi-result">
+            <div class="label">Доп. выручка в месяц</div>
+            <div class="big"><span id="rGain">—</span><span class="unit">₸</span></div>
+            <div class="note">Бот превращает 1 нутрициолога в команду для 1000+ клиентов. Цена — от 15 000 ₸/мес, окупается за неделю.</div>
+            <div class="cta"><a href="https://wa.me/77787806540" target="_blank" class="btn btn-primary">Запустить бота</a></div>
         </div>
     </div>
-</section>
+</div></section>
 
-<!-- STATS -->
-<div class="stats-bar">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item fi"><h3><span class="counter" data-target="95">0</span>%</h3><p>точность распознавания</p></div>
-            <div class="stat-item fi"><h3><span class="counter" data-target="5">0</span> сек</h3><p>расчёт КБЖУ</p></div>
-            <div class="stat-item fi"><h3><span class="counter" data-target="10000">0</span>+</h3><p>блюд в базе</p></div>
-            <div class="stat-item fi"><h3>24/7</h3><p>всегда на связи</p></div>
-        </div>
+<section class="s-alt"><div class="container">
+    <div class="eyebrow">Возможности</div>
+    <h2 class="section-title fi">Что умеет <span class="accent">ИИ-нутрициолог</span></h2>
+    <div class="num-grid">
+        <div class="num-card fi"><div><div class="num">01</div><h3>Рассчитывает БЖУ и калории</h3></div><div class="ic"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">02</div><h3>Меню на неделю с рецептами</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">03</div><h3>Учёт аллергий и предпочтений</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">04</div><h3>Чек-ины и напоминания</h3></div><div class="ic"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">05</div><h3>Список покупок в 1 клик</h3></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">06</div><h3>Отслеживает прогресс</h3></div><div class="ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">07</div><h3>Интеграция с фитнес-трекерами</h3></div><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/></svg></div></div>
+        <div class="num-card fi"><div><div class="num">08</div><h3>Эскалация к живому нутрициологу</h3></div><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div></div>
     </div>
-</div>
+</div></section>
 
-<!-- DEMO -->
-<section class="salt" id="demo">
-    <div class="container">
-        <h2 class="stitle fi">Как работает <span class="gtext">AI-Нутрициолог</span></h2>
-        <p class="ssub fi">Фото, текст или голос — бот считает всё за вас</p>
-        <div class="demo-layout">
-            <div class="chat-window fil" id="chat-demo">
-                <div class="chat-hdr">
-                    <div class="chat-av">&#129382;</div>
-                    <div><div class="chat-nm">AI Нутрициолог</div><div class="chat-st">онлайн</div></div>
-                </div>
-                <div class="chat-msgs" id="chat-msgs">
-                    <div class="typing" id="typing"><div class="td"></div><div class="td"></div><div class="td"></div></div>
-                </div>
-            </div>
-            <div class="demo-txt fir">
-                <h3>Дневник питания <span style="color:var(--green)">в кармане</span></h3>
-                <p>Сфотографируйте обед, скажите голосом «два яйца и тост» или напишите текстом — бот всё запомнит, посчитает и вечером выдаст полный отчёт.</p>
-                <ul class="demo-fl">
-                    <li>Распознавание блюд по фотографии</li>
-                    <li>Расчёт калорий, белков, жиров, углеводов</li>
-                    <li>Запись текстом или голосовым сообщением</li>
-                    <li>Вечерний отчёт КБЖУ с рекомендациями</li>
-                    <li>Персональные диеты и советы</li>
-                    <li>История питания за неделю / месяц</li>
-                </ul>
-                <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
-                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-green">Попробовать бота</a>
-                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">WhatsApp</a>
-                </div>
-            </div>
-        </div>
+<section class="s-alt" id="pricing"><div class="container">
+    <div class="eyebrow">Цены</div>
+    <h2 class="section-title fi">Прозрачные <span class="accent">тарифы</span></h2>
+    <div class="price-grid">
+        <div class="price-card pop fi"><div class="badge">Популярный</div><h3>Стандарт</h3><div class="price-val">от 15 000 ₸</div><div class="price-period">/ месяц</div><ul class="price-list"><li>До 100 клиентов</li><li>Планы питания</li><li>Чек-ины и напоминания</li><li>Интеграция с Telegram</li><li>Запуск за 3 дня</li></ul><a href="https://wa.me/77787806540" target="_blank" class="btn btn-primary">Начать</a></div>
+        <div class="price-card fi"><h3>Для клуба</h3><div class="price-val">от 40 000 ₸</div><div class="price-period">/ месяц</div><ul class="price-list"><li>До 1000 клиентов</li><li>Программы + тренировки</li><li>Аналитика клиентов</li><li>Mini App в Telegram</li><li>Приоритетная поддержка</li></ul><a href="https://wa.me/77787806540" target="_blank" class="btn btn-ghost">Выбрать</a></div>
+        <div class="price-card fi"><h3>White-label</h3><div class="price-val">индивидуально</div><div class="price-period">под задачу</div><ul class="price-list"><li>Ваш бренд</li><li>Безлимит клиентов</li><li>Приложение iOS/Android</li><li>SLA 99.9%</li></ul><a href="https://wa.me/77787806540" target="_blank" class="btn btn-ghost">Обсудить</a></div>
     </div>
-</section>
+</div></section>
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works">
-    <div class="container">
-        <h2 class="stitle fi">Как <span class="gtext">работает</span> бот</h2>
-        <p class="ssub fi">Три способа записать приём пищи — один результат: точный КБЖУ</p>
-        <div class="how-grid">
-            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></span><h3>Фото блюда</h3><p>Сфотографируйте тарелку — AI определит блюдо, порцию и рассчитает калории, белки, жиры и углеводы.</p></div>
-            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><h3>Текстовый ввод</h3><p>Напишите «гречка с курицей 250г» — бот найдёт в базе, рассчитает КБЖУ и сохранит в дневник.</p></div>
-            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><h3>Голосовое сообщение</h3><p>Скажите голосом что вы ели — бот расшифрует, определит продукты и посчитает всё автоматически.</p></div>
-            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span><h3>Вечерний отчёт</h3><p>Каждый вечер бот присылает итог дня: сколько съели калорий, БЖУ, и что стоит скорректировать.</p></div>
-            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span><h3>Советы нутрициолога</h3><p>AI анализирует ваш рацион и даёт рекомендации: что добавить, что убрать, как сбалансировать питание.</p></div>
-            <div class="how-card fi"><span class="how-ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Персональная диета</h3><p>Бот составит план питания под ваши цели: похудение, набор массы, поддержание — с учётом образа жизни.</p></div>
-        </div>
+<section><div class="container">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="section-title fi">Остались <span class="accent">вопросы</span>?</h2>
+    <div class="faq-list">
+        <div class="faq-item fi"><button class="faq-q"><span>Насколько точны планы бота?</span><span class="ico">+</span></button><div class="faq-a">Бот использует те же формулы что и нутрициологи (Миффлин-Сан Жеор, Харрис-Бенедикт). При сложных кейсах (патологии, беременность) подключает живого специалиста.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>Можно ли продавать подписки через бота?</span><span class="ico">+</span></button><div class="faq-a">Да — Kaspi, Stripe, YooMoney. Оплата в чате, план выдаётся автоматически после оплаты.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>Работает с фитнес-клубом?</span><span class="ico">+</span></button><div class="faq-a">Да — тариф «Для клуба» включает расписание тренировок, абонементы, Mini App. Клиенты получают всё в одном боте.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>На казахском языке?</span><span class="ico">+</span></button><div class="faq-a">Да, русский / казахский / английский. Рецепты локализованы под казахстанские продукты.</div></div>
+        <div class="faq-item fi"><button class="faq-q"><span>White-label — как работает?</span><span class="ico">+</span></button><div class="faq-a">Бот полностью в вашем бренде. Свой домен, логотип, дизайн. Клиенты не знают что это FlowAi — видят ваш сервис.</div></div>
     </div>
-</section>
-<div class="photo-split">
-    <div class="photo-img">
-        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&h=700&fit=crop&q=85" alt="Здоровое питание и свежие овощи на столе" loading="lazy">
+</div></section>
+
+<section id="consult" class="s-alt"><div class="container"><div class="consult fi">
+    <div class="consult-txt"><h2>Запустим за 3 дня</h2><p>Бесплатная консультация + пример плана питания по параметрам.</p></div>
+    <div class="consult-sticker"><div class="inner">1 ЧАС<small>бесплатного аудита</small></div></div>
+    <form onsubmit="event.preventDefault(); window.open('https://wa.me/77787806540','_blank');"><input type="text" placeholder="Имя" required><input type="tel" placeholder="+7 (000) 000-00-00" required><button class="btn btn-primary">Получить демо</button><div class="consult-legal">Нажимая кнопку, вы соглашаетесь на обработку данных</div></form>
+</div></div></section>
+
+<footer class="footer"><div class="container">
+    <div class="footer-grid">
+        <div class="footer-col"><h4>О FlowAi</h4><ul><li><a href="kak-my-rabotaem.html">Как мы работаем</a></li><li><a href="o-kompanii.html">О компании</a></li><li><a href="Blog/index.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></div>
+        <div class="footer-col"><h4>Все решения</h4><ul><li><a href="whatsapp-bot.html">WhatsApp-бот</a></li><li><a href="telegram-bot.html">Telegram-бот</a></li><li><a href="voice-manager-bot.html">Голосовой менеджер</a></li><li><a href="chatbot-rag.html">RAG-чатбот</a></li><li><a href="ai-assistant-ceo.html">ИИ для CEO</a></li></ul></div>
+        <div class="footer-col"><h4>Контакты</h4><ul><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="tel:+77787806540">Позвонить нам</a></li><li><a href="mailto:7806540@gmail.com">7806540@gmail.com</a></li></ul></div>
+        <div class="footer-col"><h4>FlowAi.kz</h4><ul><li>пр. Республики, д. 68</li><li>Астана, Казахстан</li><li><small>© 2024–2026 FlowAi</small></li></ul></div>
     </div>
-    <div class="photo-txt">
-        <div class="pt-badge">ИИ-нутрициолог</div>
-        <h3>Персональный план питания за 2 минуты — без записи к специалисту</h3>
-        <p>Бот анализирует цель, вес, образ жизни и пищевые предпочтения. Выдаёт индивидуальный рацион, считает КБЖУ и адаптирует меню каждую неделю.</p>
-    </div>
-</div>
+    <div class="footer-bottom"><span>FlowAi — автоматизация бизнеса на ИИ</span><span>Казахстан · СНГ · 2026</span></div>
+</div></footer>
 
+<a href="https://wa.me/77787806540" target="_blank" class="wa-float" id="waFloat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<button class="scroll-top" id="scrollTop">↑</button>
 
-<!-- PROBLEMS -->
-<section class="salt" id="problems">
-    <div class="container">
-        <h2 class="stitle fi">Узнаёте <span class="gtext">себя</span>?</h2>
-        <p class="ssub fi">Контроль питания без помощи — сложно и неудобно</p>
-        <div class="prob-grid">
-            <div class="prob-card fi"><div class="prob-n">01</div><h3>Не знаете сколько едите</h3><p>Без подсчёта калорий невозможно контролировать вес. Вы думаете, что едите мало, а на деле — перебор. Бот считает всё за вас.</p></div>
-            <div class="prob-card fi"><div class="prob-n">02</div><h3>Лень вести дневник</h3><p>Ручной подсчёт КБЖУ — это таблицы, весы, приложения. Скучно и долго. Бот принимает фото, голос или текст — 5 секунд на запись.</p></div>
-            <div class="prob-card fi"><div class="prob-n">03</div><h3>Нутрициолог — дорого</h3><p>Консультация нутрициолога — от 15 000 ₸ за приём. AI-бот даёт советы и составляет диеты 24/7 за долю цены.</p></div>
-            <div class="prob-card fi"><div class="prob-n">04</div><h3>Питание несбалансированное</h3><p>Мало белка, много углеводов, нет клетчатки — вы не замечаете дисбаланс. Бот анализирует рацион и подсказывает.</p></div>
-        </div>
-        <div style="text-align:center;margin-top:44px" class="fi">
-            <p style="color:var(--green-light);font-size:1.15rem;font-weight:600;font-family:'Space Grotesk',sans-serif">Есть решение &#8595;</p>
-        </div>
-    </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features">
-    <div class="container">
-        <h2 class="stitle fi">Возможности <span class="gtext">AI-Нутрициолога</span></h2>
-        <p class="ssub fi">Полноценный ИИ-помощник по питанию — прямо в Telegram</p>
-        <div class="feat-layout" style="margin-bottom:48px">
-            <div class="feat-visual fil">
-                <div class="feat-art">
-                    <div class="feat-art-title"><span></span> Аналитика питания за день</div>
-                    <div class="feat-stat-row">
-                        <div class="feat-stat"><div class="val g">1 840</div><p>ккал съедено</p></div>
-                        <div class="feat-stat"><div class="val l">95%</div><p>точность AI</p></div>
-                    </div>
-                    <div class="feat-bar-row">
-                        <div><div class="feat-bar-label"><span>Калории (1840/2200)</span><span>84%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:84%"></div></div></div>
-                        <div><div class="feat-bar-label"><span>Белки (68/110 г)</span><span>62%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:62%"></div></div></div>
-                        <div><div class="feat-bar-label"><span>Жиры (65/73 г)</span><span>89%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:89%"></div></div></div>
-                        <div><div class="feat-bar-label"><span>Углеводы (240/275 г)</span><span>87%</span></div><div class="feat-bar-track"><div class="feat-bar-fill" style="width:87%"></div></div></div>
-                    </div>
-                </div>
-            </div>
-            <div class="fir">
-                <div class="feat-grid" style="grid-template-columns:1fr">
-                    <div class="feat-card"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h4>Распознавание по фото</h4><p>AI определяет блюдо, ингредиенты и размер порции по фотографии. Точность — до 95%.</p></div>
-                    <div class="feat-card"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h4>Расчёт КБЖУ</h4><p>Калории, белки, жиры, углеводы — мгновенно. База из 10 000+ продуктов и блюд.</p></div>
-                    <div class="feat-card"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h4>Голосовой ввод</h4><p>Скажите что ели — бот расшифрует и посчитает. Удобно на ходу, за рулём, в спортзале.</p></div>
-                </div>
-            </div>
-        </div>
-        <div class="feat-grid">
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Вечерний отчёт</h4><p>Итог за день: съедено ккал, БЖУ, % от нормы. Рекомендации что добавить на ужин.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h4>Персональная диета</h4><p>Бот составит план питания под ваши цели, рост, вес, возраст и уровень активности.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><h4>Статистика и тренды</h4><p>Графики за неделю и месяц: динамика калорий, БЖУ, прогресс к цели.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div><h4>Рекомендации по блюдам</h4><p>Бот предложит что приготовить, чтобы закрыть дефицит белка или добрать калории.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><h4>Учёт активности</h4><p>Сообщите о тренировке — бот пересчитает норму калорий и скорректирует рекомендации.</p></div>
-            <div class="feat-card fi"><div class="feat-ic"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Напоминания</h4><p>Бот напомнит о приёме пищи, воде, витаминах — по вашему расписанию.</p></div>
-        </div>
-    </div>
-</section>
-<div class="photo-full">
-    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1400&h=500&fit=crop&q=85" alt="Активный образ жизни: спорт и здоровое питание" loading="lazy">
-    <div class="photo-full-cap">
-        <h3>Здоровый образ жизни — доступен каждому с ИИ-нутрициологом</h3>
-        <span>Для здоровья и энергии</span>
-    </div>
-</div>
-
-
-<!-- STEPS -->
-<section class="salt" id="steps">
-    <div class="container">
-        <h2 class="stitle fi">Начать — <span class="gtext">проще</span>, чем кажется</h2>
-        <p class="ssub fi">Три шага — и ваш персональный нутрициолог работает</p>
-        <div class="steps-track">
-            <div class="step fi"><div class="step-num">1</div><h3>Расскажите о себе</h3><p>Рост, вес, цели, уровень активности. Бот рассчитает вашу норму КБЖУ.</p></div>
-            <div class="step fi"><div class="step-num">2</div><h3>Записывайте приёмы пищи</h3><p>Фото, текст или голос — бот считает калории и ведёт дневник за вас.</p></div>
-            <div class="step fi"><div class="step-num">3</div><h3>Получайте отчёты и советы</h3><p>Каждый вечер — итог дня. Каждую неделю — аналитика. Персональные рекомендации.</p></div>
-        </div>
-        <div style="text-align:center;margin-top:48px" class="fi">
-            <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-green">Начать за 2 клика &#8594;</a>
-        </div>
-    </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-    <div class="container">
-        <h2 class="stitle fi">Тарифы <span class="gtext">AI-Нутрициолога</span></h2>
-        <p class="ssub fi">Выберите подходящий формат</p>
-        <div class="pricing-grid">
-            <div class="price-card pop fi">
-                <h3>Аренда</h3>
-                <div class="price-amt">от 20 000 &#8376;</div>
-                <span class="price-per">в месяц</span>
-                <ul class="price-fl">
-                    <li>AI-нутрициолог 24/7</li>
-                    <li>Распознавание по фото</li>
-                    <li>Голосовой ввод</li>
-                    <li>Расчёт КБЖУ</li>
-                    <li>Вечерний отчёт</li>
-                    <li>Персональные советы</li>
-                    <li>Хостинг оплачен</li>
-                    <li>Запуск за 3–5 дней</li>
-                </ul>
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-green" style="width:100%;justify-content:center">Начать аренду</a>
-            </div>
-            <div class="price-card fi">
-                <h3>Разработка</h3>
-                <div class="price-amt">от 300 000 &#8376;</div>
-                <span class="price-per">единоразово</span>
-                <ul class="price-fl">
-                    <li>Полная разработка под ключ</li>
-                    <li>Бот ваш навсегда</li>
-                    <li>Кастомная база продуктов</li>
-                    <li>Диеты и планы питания</li>
-                    <li>Статистика и графики</li>
-                    <li>Исходный код включён</li>
-                    <li>Брендирование</li>
-                    <li>30 дней поддержки</li>
-                </ul>
-                <a href="https://wa.me/77787806540" target="_blank" class="btn btn-tg" style="width:100%;justify-content:center">Заказать разработку</a>
-            </div>
-            <div class="price-card fi">
-                <h3>Поддержка</h3>
-                <div class="price-amt">от 10 000 &#8376;</div>
-                <span class="price-per">в месяц</span>
-                <ul class="price-fl">
-                    <li>Техническая поддержка</li>
-                    <li>Обновления бота</li>
-                    <li>Мониторинг 24/7</li>
-                    <li>Обновление базы продуктов</li>
-                    <li>Корректировка алгоритмов</li>
-                    <li>Консультации</li>
-                    <li>Приоритетный ответ</li>
-                    <li>SLA до 4 часов</li>
-                </ul>
-                <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-o" style="width:100%;justify-content:center">Подключить</a>
-            </div>
-        </div>
-        <div class="price-cmp fi"><p>Сравните: нутрициолог — <strong>от 15 000 &#8376; за 1 консультацию</strong>. AI-бот — дешевле и работает 24/7 каждый день.</p></div>
-    </div>
-</section>
-
-<!-- FAQ -->
-<section class="salt" id="faq">
-    <div class="container">
-        <h2 class="stitle fi">Частые <span class="gtext">вопросы</span></h2>
-        <p class="ssub fi">Отвечаем на самые популярные</p>
-        <div class="faq-list">
-            <div class="faq-item fi"><button class="faq-q">Насколько точно бот определяет блюда по фото?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Точность распознавания — до 95% для популярных блюд. Бот определяет тип блюда, основные ингредиенты и примерный размер порции. Для большей точности можно уточнить граммовку текстом.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Какие блюда есть в базе?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Более 10 000 продуктов и блюд: казахская, русская, европейская, азиатская кухня, фастфуд, полуфабрикаты, напитки. База постоянно пополняется.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Бот может составить диету?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да. Укажите цель (похудение, набор массы, поддержание), рост, вес, возраст и уровень активности — бот рассчитает норму КБЖУ и предложит план питания на неделю.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Когда приходит вечерний отчёт?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">По умолчанию — в 21:00. Время можно настроить. Отчёт включает: общие калории, БЖУ, процент от нормы и рекомендации на ужин или следующий день.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Работает на казахском языке?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да — бот понимает и отвечает на казахском, русском и английском. Голосовой ввод также работает на всех трёх языках.</div></div>
-            <div class="faq-item fi"><button class="faq-q">Можно использовать для фитнес-клуба или клиники?<span class="faq-arrow">&#9660;</span></button><div class="faq-a">Да. При разработке под ключ бот брендируется под вашу компанию: логотип, название, кастомная база продуктов и диеты. Идеально для фитнес-клубов, клиник и wellness-центров.</div></div>
-        </div>
-    </div>
-</section>
-<div class="photo-split rev">
-    <div class="photo-img">
-        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&h=700&fit=crop&q=85" alt="Счастливая женщина занимается спортом на природе" loading="lazy">
-    </div>
-    <div class="photo-txt">
-        <div class="pt-badge">Результат через 4 недели</div>
-        <h3>Пользователи отмечают улучшение самочувствия уже в первый месяц</h3>
-        <p>Персональные рекомендации, напоминания о приёмах пищи, контроль прогресса. ИИ-нутрициолог FlowAi — как личный диетолог в кармане.</p>
-    </div>
-</div>
-
-
-<!-- CONTACT -->
-<section id="contact">
-    <div class="container">
-        <div class="contact-layout">
-            <div class="contact-info fi">
-                <h2>Готовы запустить <span class="gtext">AI-Нутрициолога</span>?</h2>
-                <p>Обсудим ваш проект и покажем бота в действии. Консультация — бесплатно.</p>
-                <div class="contact-btns">
-                    <a href="https://t.me/FlowAItest_bot" target="_blank" class="btn btn-green">Написать в Telegram</a>
-                    <a href="https://wa.me/77787806540" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
-                </div>
-                <div class="contact-det">
-                    <span>&#128205; г. Астана, пр. Республики, д. 68</span>
-                    <a href="tel:+77787806540">&#128222; +7 778 780 65 40</a>
-                    <a href="https://flowai.kz">&#127760; flowai.kz</a>
-                </div>
-            </div>
-            <div class="fir" style="display:flex;align-items:center;justify-content:center">
-                <svg width="320" height="320" viewBox="0 0 320 320" fill="none" style="opacity:.55">
-                    <defs><linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#22C55E"/><stop offset="100%" stop-color="#84CC16"/></linearGradient></defs>
-                    <circle cx="160" cy="160" r="120" stroke="url(#cg1)" stroke-width="1" fill="none" opacity=".1"/>
-                    <circle cx="160" cy="160" r="80" stroke="url(#cg1)" stroke-width="1.5" fill="none" opacity=".15"/>
-                    <circle cx="160" cy="160" r="10" fill="#22C55E" opacity=".7"/>
-                    <circle cx="160" cy="160" r="18" fill="rgba(34,197,94,.1)"/>
-                    <!-- Apple icon -->
-                    <path d="M155 145 Q160 133 165 145 Q177 151 172 168 Q166 185 160 185 Q154 185 148 168 Q143 151 155 145z" stroke="#4ADE80" stroke-width="1.5" fill="none" opacity=".4"/>
-                    <path d="M160 145 Q163 137 166 142" stroke="#84CC16" stroke-width="1" fill="none" opacity=".3"/>
-                    <!-- Chart bars -->
-                    <rect x="185" y="165" width="8" height="18" rx="3" fill="#22C55E" opacity=".3"/>
-                    <rect x="197" y="158" width="8" height="25" rx="3" fill="#4ADE80" opacity=".25"/>
-                    <rect x="209" y="150" width="8" height="33" rx="3" fill="#84CC16" opacity=".2"/>
-                    <!-- Nodes -->
-                    <circle cx="100" cy="80" r="5" fill="#4ADE80" opacity=".4"/><line x1="103" y1="83" x2="150" y2="148" stroke="#22C55E" stroke-width=".5" opacity=".15"/>
-                    <circle cx="230" cy="90" r="4" fill="#22C55E" opacity=".35"/><line x1="227" y1="93" x2="170" y2="148" stroke="#22C55E" stroke-width=".5" opacity=".12"/>
-                    <circle cx="80" cy="210" r="4" fill="#84CC16" opacity=".3"/><line x1="83" y1="207" x2="148" y2="170" stroke="#84CC16" stroke-width=".4" opacity=".12"/>
-                    <circle cx="245" cy="220" r="5" fill="#10B981" opacity=".35"/><line x1="241" y1="217" x2="175" y2="175" stroke="#10B981" stroke-width=".5" opacity=".12"/>
-                    <circle cx="160" cy="45" r="4" fill="#A3E635" opacity=".3"/><line x1="160" y1="49" x2="160" y2="142" stroke="#A3E635" stroke-width=".4" opacity=".08"/>
-                    <circle cx="270" cy="155" r="4" fill="#22C55E" opacity=".25"/><line x1="266" y1="155" x2="180" y2="160" stroke="#22C55E" stroke-width=".4" opacity=".08"/>
-                </svg>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FLOATING -->
-<a href="https://wa.me/77787806540" target="_blank" class="float-wa" aria-label="Написать в WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<button class="scroll-top" id="scrollTop" aria-label="Наверх">&#8593;</button>
-<a href="https://flowai.kz" class="back-btn" id="backBtn">&#8592; На главную</a>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-                    <div class="logo-icon" style="width:30px;height:30px"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-                    <span class="gtext" style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800">FlowAi</span>
-                </div>
-                <p>AI-бот Нутрициолог — персональный ИИ-помощник по питанию в Telegram для здорового образа жизни.</p>
-            </div>
-            <div><h4>Навигация</h4><ul class="footer-links"><li><a href="#features">Возможности</a></li><li><a href="#how-it-works">Как работает</a></li><li><a href="#pricing">Тарифы</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Контакты</a></li></ul></div>
-            <div><h4>Связаться</h4><ul class="footer-links"><li><a href="https://t.me/FlowAItest_bot" target="_blank">Telegram</a></li><li><a href="https://wa.me/77787806540" target="_blank">WhatsApp</a></li><li><a href="tel:+77787806540">+7 778 780 65 40</a></li></ul></div>
-            <div><h4>Адрес</h4><p>&#128205; г. Астана<br>пр. Республики, д. 68</p><p style="margin-top:12px"><a href="https://flowai.kz">&#127760; FlowAi.kz</a></p></div>
-        </div>
-        <div class="footer-bot">&copy; 2024–2026 FlowAi.kz — AI-бот Нутрициолог для Telegram. Все права защищены.</div>
-    </div>
-</footer>
-
-<script>
-(function(){
-    var isMobile=window.innerWidth<768;
-    var canvas=document.getElementById('neural-canvas');
-    if(!isMobile&&canvas){
-        var ctx=canvas.getContext('2d');var pts=[];var N=45,D=120;
-        function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
-        resize();addEventListener('resize',function(){resize();isMobile=innerWidth<768});
-        for(var i=0;i<N;i++)pts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.5+.5});
-        (function draw(){
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            for(var i=0;i<pts.length;i++){
-                var a=pts[i];a.x+=a.vx;a.y+=a.vy;
-                if(a.x<0||a.x>canvas.width)a.vx*=-1;if(a.y<0||a.y>canvas.height)a.vy*=-1;
-                ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='rgba(34,197,94,.3)';ctx.fill();
-                for(var j=i+1;j<pts.length;j++){
-                    var b=pts[j],dx=a.x-b.x,dy=a.y-b.y,dd=Math.sqrt(dx*dx+dy*dy);
-                    if(dd<D){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(34,197,94,'+(0.06*(1-dd/D))+')';ctx.lineWidth=.5;ctx.stroke()}
-                }
-            }
-            requestAnimationFrame(draw);
-        })();
-    }
-
-    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});
-    document.querySelectorAll('.fi,.fil,.fir').forEach(function(el){obs.observe(el)});
-
-    var co=new IntersectionObserver(function(entries){entries.forEach(function(e){
-        if(e.isIntersecting&&!e.target.dataset.d){e.target.dataset.d='1';var t=+e.target.dataset.target,c=0,s=t/60;
-        var iv=setInterval(function(){c+=s;if(c>=t){c=t;clearInterval(iv)}e.target.textContent=Math.round(c).toLocaleString()},25)}
-    })},{threshold:.5});
-    document.querySelectorAll('.counter').forEach(function(el){co.observe(el)});
-
-    document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){
-        var item=btn.parentElement,isOpen=item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('active')});
-        if(!isOpen)item.classList.add('active');
-    })});
-
-    var burger=document.getElementById('burger'),nav=document.getElementById('nav'),mobBtns=nav.querySelector('.nav-mob');
-    burger.addEventListener('click',function(){burger.classList.toggle('open');nav.classList.toggle('open');if(mobBtns)mobBtns.style.display=nav.classList.contains('open')?'flex':'none'});
-    nav.querySelectorAll('a:not(.btn)').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');nav.classList.remove('open');if(mobBtns)mobBtns.style.display='none'})});
-
-    var header=document.getElementById('header'),backBtn=document.getElementById('backBtn'),scrollTopBtn=document.getElementById('scrollTop');
-    addEventListener('scroll',function(){var s=scrollY;header.classList.toggle('scrolled',s>60);backBtn.classList.toggle('show',s>300);scrollTopBtn.classList.toggle('show',s>300)});
-    scrollTopBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
-
-    // Chat demo
-    var cd=[
-        {t:'u',m:'&#128247; [Фото: тарелка плова]'},
-        {t:'b',m:'<span class="lbl">&#127858; Определено: Плов узбекский</span>\nПорция: ~350 г\n\n<span class="gr">Калории:</span> 520 ккал\n<span class="lm">Белки:</span> 18 г\n<span class="or">Жиры:</span> 22 г\n<span class="em">Углеводы:</span> 62 г\n\n&#9989; Записано в дневник (обед)'},
-        {t:'u',m:'&#127908; [Голосовое: \u00ABНа перекус съел банан и йогурт\u00BB]'},
-        {t:'b',m:'<span class="lbl">&#127844; Записано: перекус</span>\n\n&#127820; Банан (120 г) \u2014 107 ккал\n&#129371; Йогурт натуральный (200 г) \u2014 130 ккал\n\nИтого перекус: <span class="gr">237 ккал</span>\nБ: 8 г | Ж: 5 г | У: 39 г\n\n&#9989; Сохранено в дневник'},
-        {t:'b',m:'<span class="lbl">&#128202; Ваш отч\u0451т за день</span>\n\n&#128293; Калории: <span class="gr">1 840 / 2 200 ккал</span>\n&#129385; Белки: <span class="or">68 / 110 г</span> (мало!)\n&#129361; Жиры: 65 / 73 г &#9989;\n&#127834; Углеводы: 240 / 275 г &#9989;\n&#128167; Вода: 1.2 / 2.0 л\n\n&#128161; <b>Рекомендация:</b> На ужин добавьте белок \u2014 куриная грудка или творог. Не хватает ~42 г белка и 360 ккал.'},
-        {t:'u',m:'Составь диету для похудения'},
-        {t:'b',m:'<span class="lbl">&#128203; Ваш план питания</span>\nЦель: похудение (-0.5 кг/нед)\nНорма: <span class="gr">1 800 ккал/день</span>\n\n&#127749; <b>Завтрак</b> (~400 ккал)\nОвсянка + ягоды + яйцо\n\n&#9728;&#65039; <b>Обед</b> (~550 ккал)\nКуриная грудка + гречка + салат\n\n&#127772; <b>Ужин</b> (~400 ккал)\nРыба + овощи на пару\n\n&#127823; <b>Перекусы</b> (~450 ккал)\nТворог, орехи, фрукты\n\nПродолжить на неделю?'}
-    ];
-    var cs=false;var cobs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!cs){cs=true;startChat()}})},{threshold:.3});
-    var ce=document.getElementById('chat-demo');if(ce)cobs.observe(ce);
-
-    function startChat(){
-        var msgs=document.getElementById('chat-msgs'),typing=document.getElementById('typing'),i=0;
-        function next(){
-            if(i>=cd.length)return;var item=cd[i];
-            if(item.t==='b'){typing.classList.add('show');setTimeout(function(){typing.classList.remove('show');addMsg(item);i++;setTimeout(next,1200)},1800)}
-            else{addMsg(item);i++;setTimeout(next,800)}
-        }
-        function addMsg(item){
-            var d=document.createElement('div');d.className='msg msg-'+(item.t==='u'?'u':'b');
-            d.innerHTML=item.m.replace(/\n/g,'<br>')+'<div class="msg-t">'+new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})+(item.t==='u'?' \u2713\u2713':'')+'</div>';
-            msgs.insertBefore(d,typing);requestAnimationFrame(function(){d.classList.add('show')});msgs.scrollTop=msgs.scrollHeight;
-        }
-        setTimeout(next,800);
-    }
-})();
-</script>
-
-<script>
-/* FlowAi: WhatsApp click conversion tracking */
-(function(){
-    document.addEventListener('click', function(e){
-        var a = e.target.closest('a');
-        if (!a) return;
-        var href = a.getAttribute('href') || '';
-        var isWa = href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1 || (a.className || '').indexOf('btn-wa') !== -1;
-        if (!isWa) return;
-        /* Google Analytics 4 */
-        if (typeof gtag === 'function') {
-            gtag('event', 'whatsapp_click', {
-                'event_category': 'engagement',
-                'event_label': href,
-                'value': 1
-            });
-        }
-        /* Google Ads conversion (will work after AW- ID added) */
-        if (typeof gtag === 'function') {
-            gtag('event', 'conversion', {
-                'send_to': 'AW-964186887/DfhdCMSR850cEIem4csD',
-                'value': 1.0,
-                'currency': 'USD'
-            });
-        }
-        /* Yandex Metrica goal */
-        if (typeof ym === 'function') {
-                ym(108596983, 'reachGoal', 'whatsapp_click');
-            }
-    }, true);
-})();
-</script>
+<script>(function(){var s=document.createElement('script');s.src='https://voicyfy.ru/static/gemini-31-widget.js';s.dataset.assistantId='a2f68bf8-1968-4d08-9410-acaafcfb7a91';s.dataset.server='https://voicyfy.ru';s.dataset.position='bottom-right';s.async=true;document.head.appendChild(s);})();
+(function(){var F=/Gemini\s*3\.1\s*Flash\s*Live/gi,T='FlowAi-бот';function wS(r,v){if(!r)return;v(r);var a=r.querySelectorAll?r.querySelectorAll('*'):[];for(var i=0;i<a.length;i++)if(a[i].shadowRoot)wS(a[i].shadowRoot,v);}function rep(r){if(!r)return;var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,null,false),n,h=[];while((n=w.nextNode())){if(n.nodeValue&&F.test(n.nodeValue))h.push(n);F.lastIndex=0;}h.forEach(function(n){n.nodeValue=n.nodeValue.replace(F,T);});if(r.querySelectorAll)r.querySelectorAll('[title],[aria-label],[placeholder],[alt]').forEach(function(e){['title','aria-label','placeholder','alt'].forEach(function(a){var v=e.getAttribute(a);if(v&&F.test(v)){e.setAttribute(a,v.replace(F,T));F.lastIndex=0;}});});}function p(){wS(document,rep);}new MutationObserver(p).observe(document.documentElement,{childList:true,subtree:true,characterData:true});[300,800,1600,3000,6000].forEach(function(ms){setTimeout(p,ms);});})();</script>
+<script src="assets/js/theme-toggle.js"></script>
+<script>(function(){
+var mq=document.getElementById('marquee');if(mq){var items=['ИИ-нутрициолог','30 сек на план','БЖУ и калории','1000+ клиентов','Рецепты','Чек-ины','Mini App','White-label'];var hi={'ИИ-нутрициолог':1,'30 сек на план':1,'1000+ клиентов':1};function r(){return items.map(function(s){return '<span'+(hi[s]?' class="hi"':'')+'>'+s+'<span class="dot">·</span></span>';}).join('');}mq.innerHTML=r()+r();}
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});document.querySelectorAll('.fi').forEach(function(e){obs.observe(e)});
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done='1';var t=+e.target.dataset.target,c=0,s=t/60;var x=setInterval(function(){c+=s;if(c>=t){c=t;clearInterval(x)}e.target.textContent=Math.round(c)},25)}})},{threshold:.5});document.querySelectorAll('.counter').forEach(function(e){co.observe(e)});
+var te=document.querySelector('.hero-typing');if(te){var W=['рост и вес','цели и аллергии','бюджет','предпочтения','расписание'],wi=0,ci=0,d=false;function ts(){var w=W[wi];if(!d){ci++;te.textContent=w.substring(0,ci);if(ci===w.length){d=true;setTimeout(ts,2000);return}setTimeout(ts,80)}else{ci--;te.textContent=w.substring(0,ci);if(ci===0){d=false;wi=(wi+1)%W.length;setTimeout(ts,400);return}setTimeout(ts,40)}}setTimeout(ts,1200);}
+document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var i=b.parentElement,o=i.classList.contains('active');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('active')});if(!o)i.classList.add('active');})});
+var bg=document.getElementById('burger'),nv=document.getElementById('nav'),nc=document.getElementById('navClose'),nb=document.getElementById('navBackdrop');function cN(){bg&&bg.classList.remove('open');nv&&nv.classList.remove('open');nb&&nb.classList.remove('open');document.body.classList.remove('nav-open');nv&&nv.querySelectorAll('.dropdown').forEach(function(d){d.classList.remove('mob-open')})}function oN(){bg&&bg.classList.add('open');nv&&nv.classList.add('open');nb&&nb.classList.add('open');document.body.classList.add('nav-open')}if(nb)nb.addEventListener('click',cN);if(nc)nc.addEventListener('click',cN);if(bg&&nv){bg.addEventListener('click',function(e){e.stopPropagation();nv.classList.contains('open')?cN():oN()});nv.querySelectorAll('.dropdown-toggle').forEach(function(t){t.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();e.stopPropagation();var d=t.closest('.dropdown'),wo=d.classList.contains('mob-open');nv.querySelectorAll('.dropdown').forEach(function(x){x.classList.remove('mob-open')});if(!wo)d.classList.add('mob-open')}})});nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',cN)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nv.classList.contains('open'))cN()});window.addEventListener('resize',function(){if(window.innerWidth>768&&nv.classList.contains('open'))cN()})}
+var hdr=document.getElementById('header'),wf=document.getElementById('waFloat'),stb=document.getElementById('scrollTop');addEventListener('scroll',function(){var s=scrollY;hdr.classList.toggle('scrolled',s>60);wf.classList.toggle('show',s>300);stb.classList.toggle('show',s>300)});stb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+(function(){var iC=document.getElementById('iC'),iP=document.getElementById('iP'),iX=document.getElementById('iX');if(!iC)return;var vC=document.getElementById('vC'),vP=document.getElementById('vP'),vX=document.getElementById('vX'),rG=document.getElementById('rGain');function fmt(n){return Math.round(n).toLocaleString('ru-RU')}function c(){var cc=+iC.value,p=+iP.value,x=+iX.value;vC.textContent=cc;vP.textContent=fmt(p)+' ₸';vX.textContent=x;rG.textContent=fmt(cc*(x-1)*p)}[iC,iP,iX].forEach(function(e){e.addEventListener('input',c)});c()})();
+})();</script>
+<script>(function(){document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('wa.me')===-1&&h.indexOf('whatsapp.com')===-1&&(a.className||'').indexOf('btn-wa')===-1)return;if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'engagement',event_label:h,value:1});gtag('event','conversion',{send_to:'AW-964186887/DfhdCMSR850cEIem4csD',value:1.0,currency:'USD'})}if(typeof ym==='function'){ym(108596983,'reachGoal','whatsapp_click')}},true)})();</script>
 </body>
 </html>
