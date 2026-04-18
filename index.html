@@ -533,16 +533,10 @@
                     </div>
                 </div>
             </div>
-            <div class="ev-square fi" data-ev>
-                <div class="ev-bg"></div>
-                <div class="ev-chars"></div>
-                <div class="ev-center">
-                    <div class="ev-inner">
-                        <div class="ev-lead">Запуск<br>бота за</div>
-                        <div class="ev-big">7<span>дней</span></div>
-                        <div class="ev-sub">3 простых шага — от заявки до работающего ИИ-менеджера</div>
-                    </div>
-                </div>
+            <div class="steps-callout fi">
+                <h3>Запуск<br>бота за<br>7 дней</h3>
+                <div class="big">3</div>
+                <p>простых шага — от заявки до работающего ИИ-менеджера в WhatsApp и Telegram</p>
             </div>
         </div>
     </div>
@@ -1138,28 +1132,6 @@
         }
         setTimeout(typeStep, 1200);
     }
-
-    // Evervault cards: mouse-track mask + random-character regen
-    (function() {
-        var cards = document.querySelectorAll('[data-ev]');
-        if (!cards.length) return;
-        var ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        function rand(n) {
-            var s = '';
-            for (var i = 0; i < n; i++) s += ALPHA.charAt(Math.floor(Math.random() * ALPHA.length));
-            return s;
-        }
-        cards.forEach(function(card) {
-            var chars = card.querySelector('.ev-chars');
-            if (chars) chars.textContent = rand(1200);
-            card.addEventListener('pointermove', function(e) {
-                var r = card.getBoundingClientRect();
-                card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-                card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-                if (chars) chars.textContent = rand(1200);
-            });
-        });
-    })();
 
     // World map: trigger arc-draw animation on scroll into view
     (function() {
